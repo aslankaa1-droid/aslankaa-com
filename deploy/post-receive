@@ -1,0 +1,16 @@
+#!/bin/bash
+# Хук для bare git repo /srv/aslankaa/site.git/hooks/post-receive
+# При push в main делает checkout рабочего дерева в /srv/aslankaa/www
+# Caddy подхватывает изменения автоматически (bind mount, без рестарта)
+set -euo pipefail
+
+TARGET=/srv/aslankaa/www
+BRANCH=main
+
+while read oldrev newrev refname; do
+  if [[ "$refname" == "refs/heads/$BRANCH" ]]; then
+    echo "[post-receive] Deploying $newrev to $TARGET"
+    GIT_WORK_TREE=$TARGET git checkout -f "$BRANCH"
+    echo "[post-receive] Done"
+  fi
+done

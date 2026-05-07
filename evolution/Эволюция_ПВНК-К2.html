@@ -1,0 +1,908 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8" />
+<title>Эволюция нефтедобычи — ПВНК К-2</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0a0e1a;
+    --bg-2:#0f1424;
+    --panel:#161c2f;
+    --line:#26304a;
+    --ink:#e8eaf0;
+    --ink-2:#a8b0c4;
+    --ink-3:#6e7793;
+    --gold:#d4a857;
+    --gold-2:#e7c98a;
+    --steel:#5fa3e9;
+    --green:#5fc28d;
+    --red:#e07666;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%;background:var(--bg);color:var(--ink);font-family:'Manrope',system-ui,sans-serif;font-weight:400;-webkit-font-smoothing:antialiased;overflow:hidden}
+  .deck{position:relative;width:100vw;height:100vh;overflow:hidden}
+  .slide{
+    position:absolute;inset:0;
+    padding:6vh 7vw;
+    display:flex;flex-direction:column;justify-content:center;
+    opacity:0;pointer-events:none;
+    transform:translateY(12px);
+    transition:opacity .45s ease, transform .45s ease;
+    background:var(--bg);
+  }
+  .slide.active{opacity:1;pointer-events:auto;transform:none}
+  .slide h1,.slide h2,.slide h3{font-family:'Cormorant Garamond',serif;font-weight:600;letter-spacing:-.01em}
+  .slide h1{font-size:clamp(2.4rem,5.2vw,5rem);line-height:1.04}
+  .slide h2{font-size:clamp(1.8rem,3.4vw,3rem);line-height:1.1;margin-bottom:1.1em}
+  .slide h3{font-size:clamp(1.2rem,1.8vw,1.5rem);font-weight:600;color:var(--gold-2)}
+  .eyebrow{
+    display:inline-block;
+    font-size:.78rem;letter-spacing:.28em;text-transform:uppercase;
+    color:var(--gold);font-weight:600;
+    padding:.4em 0;
+    border-top:1px solid var(--gold);
+    margin-bottom:1.6rem;
+  }
+  .lede{font-size:clamp(1.05rem,1.4vw,1.3rem);line-height:1.55;color:var(--ink-2);max-width:62ch}
+  .meta{font-size:.85rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-3)}
+
+  /* navigation */
+  .nav{
+    position:fixed;left:0;right:0;bottom:0;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:14px 28px;z-index:50;
+    background:linear-gradient(180deg, transparent, rgba(0,0,0,.45));
+    pointer-events:none;
+  }
+  .nav>*{pointer-events:auto}
+  .dots{display:flex;gap:6px}
+  .dot{width:7px;height:7px;border-radius:50%;background:#2a3350;border:none;cursor:pointer;transition:all .2s}
+  .dot.active{background:var(--gold);transform:scale(1.4)}
+  .ctrls{display:flex;gap:8px;align-items:center}
+  .btn{
+    background:rgba(255,255,255,.04);
+    color:var(--ink-2);border:1px solid var(--line);
+    padding:8px 14px;border-radius:6px;cursor:pointer;
+    font-family:inherit;font-size:.78rem;letter-spacing:.06em;
+    transition:all .15s
+  }
+  .btn:hover{color:var(--gold);border-color:var(--gold)}
+  .counter{font-family:'Cormorant Garamond',serif;font-size:1.05rem;color:var(--ink-3);min-width:60px;text-align:center}
+  .counter b{color:var(--gold);font-weight:600}
+  .progress{position:fixed;top:0;left:0;right:0;height:2px;background:transparent;z-index:60}
+  .progress span{display:block;height:100%;background:var(--gold);width:0;transition:width .4s}
+
+  .topnav{
+    position:fixed;top:18px;right:28px;z-index:55;
+    display:flex;gap:8px;align-items:center;
+  }
+  .topnav a{text-decoration:none}
+  .topnav .lang-toggle{
+    display:flex;border:1px solid var(--line);border-radius:6px;overflow:hidden;
+    background:rgba(255,255,255,.04);
+  }
+  .topnav .lang-toggle a{
+    padding:7px 12px;font-size:.72rem;letter-spacing:.18em;
+    color:var(--ink-3);font-weight:600;transition:all .15s;
+  }
+  .topnav .lang-toggle a.on{background:var(--gold);color:#1a1408}
+  .topnav .lang-toggle a:not(.on):hover{color:var(--gold)}
+
+  /* common building blocks */
+  .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:5vw;align-items:center}
+  .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+  .grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+  .card{
+    background:var(--panel);border:1px solid var(--line);
+    border-radius:14px;padding:1.4rem;
+    transition:transform .2s, border-color .2s;
+  }
+  .card:hover{border-color:var(--gold);transform:translateY(-2px)}
+  .card .num{font-family:'Cormorant Garamond',serif;font-size:2.2rem;color:var(--gold);line-height:1;display:block;margin-bottom:.4rem}
+  .card .ttl{font-weight:600;color:var(--ink);margin-bottom:.4rem;font-size:1.02rem}
+  .card .desc{color:var(--ink-2);font-size:.9rem;line-height:1.5}
+
+  ul.bullets{list-style:none;padding:0}
+  ul.bullets li{
+    padding:.55rem 0 .55rem 1.6rem;position:relative;
+    color:var(--ink-2);line-height:1.5;font-size:1.05rem;
+    border-bottom:1px solid var(--line);
+  }
+  ul.bullets li:last-child{border-bottom:none}
+  ul.bullets li::before{
+    content:"";position:absolute;left:0;top:1rem;
+    width:.7rem;height:1px;background:var(--gold);
+  }
+  ul.bullets li b{color:var(--ink);font-weight:600}
+
+  table.matrix{width:100%;border-collapse:collapse;font-size:.92rem}
+  table.matrix th,table.matrix td{
+    padding:.7rem .6rem;text-align:center;
+    border-bottom:1px solid var(--line);
+  }
+  table.matrix thead th{
+    color:var(--ink-3);font-size:.72rem;letter-spacing:.12em;
+    text-transform:uppercase;font-weight:500;
+    border-bottom:1px solid var(--gold);
+  }
+  table.matrix td:first-child,table.matrix th:first-child{text-align:left;color:var(--ink);font-weight:500}
+  table.matrix .yes{color:var(--green);font-weight:700}
+  table.matrix .no{color:var(--ink-3)}
+  table.matrix .mid{color:var(--gold)}
+  table.matrix tr.hero td{background:rgba(212,168,87,.07);color:var(--gold-2);font-weight:700}
+  table.matrix tr.hero td:first-child{color:var(--gold)}
+
+  .tag{
+    display:inline-block;padding:.3em .7em;border-radius:999px;
+    font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;
+    background:rgba(212,168,87,.1);color:var(--gold);
+    border:1px solid rgba(212,168,87,.35);
+  }
+  .tag-steel{background:rgba(95,163,233,.08);color:var(--steel);border-color:rgba(95,163,233,.3)}
+
+  /* slide 1 cover */
+  .cover{
+    background:
+      radial-gradient(ellipse at 30% 80%, rgba(212,168,87,.18), transparent 55%),
+      radial-gradient(ellipse at 80% 20%, rgba(95,163,233,.08), transparent 60%),
+      var(--bg);
+  }
+  .cover .corner{
+    position:absolute;top:6vh;left:7vw;right:7vw;
+    display:flex;justify-content:space-between;align-items:center;
+    color:var(--ink-3);font-size:.78rem;letter-spacing:.22em;text-transform:uppercase
+  }
+  .cover .mainwrap{margin-top:auto;margin-bottom:auto}
+  .cover h1{font-size:clamp(3rem,7vw,7rem);font-weight:500;color:var(--ink)}
+  .cover h1 em{font-style:normal;color:var(--gold);font-weight:600}
+  .cover .sub{
+    margin-top:1.4rem;font-size:clamp(1rem,1.5vw,1.4rem);color:var(--ink-2);
+    max-width:48ch;line-height:1.45;font-weight:300
+  }
+  .cover .footrow{
+    position:absolute;left:7vw;right:7vw;bottom:8vh;
+    display:flex;justify-content:space-between;align-items:flex-end;
+    font-size:.85rem;color:var(--ink-3);letter-spacing:.1em
+  }
+  .cover .footrow b{color:var(--gold);letter-spacing:.18em}
+
+  /* slide 9 hero */
+  .hero{background:radial-gradient(ellipse at 60% 50%, rgba(212,168,87,.16), transparent 60%), var(--bg)}
+  .hero h1{font-size:clamp(3rem,6vw,6rem);font-weight:500}
+  .hero h1 em{font-style:normal;color:var(--gold);font-weight:700}
+  .hero .verdict{
+    margin-top:2rem;padding:1.4rem 1.8rem;border-left:3px solid var(--gold);
+    background:rgba(212,168,87,.05);
+    font-size:1.2rem;line-height:1.5;color:var(--ink);max-width:70ch
+  }
+
+  /* visual axis for principle slide */
+  .principle-vis{
+    width:100%;aspect-ratio:1.4/1;
+    background:linear-gradient(180deg, var(--bg-2), var(--panel));
+    border-radius:16px;border:1px solid var(--line);
+    padding:1.2rem;display:flex;flex-direction:column;gap:.7rem
+  }
+  .principle-vis .row{display:flex;align-items:center;gap:.9rem;padding:.55rem .8rem;background:rgba(255,255,255,.02);border-radius:8px}
+  .principle-vis .row b{color:var(--gold);font-family:'Cormorant Garamond',serif;font-size:1.4rem;min-width:1.8em;text-align:right}
+  .principle-vis .row span{color:var(--ink-2);font-size:.95rem;line-height:1.4}
+
+  /* small util */
+  .row-stack{display:flex;flex-direction:column;gap:.5rem}
+  .stat{display:flex;align-items:baseline;gap:.6em;color:var(--ink-2)}
+  .stat b{font-family:'Cormorant Garamond',serif;font-weight:600;color:var(--gold);font-size:2.2rem}
+
+  /* slide 2 toc */
+  .toc-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem 3rem}
+  .toc-row{
+    display:flex;gap:1rem;padding:.65rem 0;
+    border-bottom:1px solid var(--line);
+    color:var(--ink-2);font-size:1rem
+  }
+  .toc-row b{font-family:'Cormorant Garamond',serif;color:var(--gold);font-weight:600;min-width:2em}
+  .toc-row.hi{color:var(--gold-2);font-weight:600}
+  .toc-row.hi b{color:var(--gold)}
+
+  /* slide 11 components */
+  .comp-list{display:grid;grid-template-columns:repeat(2,1fr);gap:.8rem 1.6rem}
+  .comp{display:flex;gap:1rem;align-items:flex-start;padding:.75rem 0;border-bottom:1px solid var(--line)}
+  .comp .n{font-family:'Cormorant Garamond',serif;font-size:1.8rem;color:var(--gold);line-height:1;min-width:1.5em}
+  .comp .t{color:var(--ink);font-weight:600;margin-bottom:.2rem}
+  .comp .d{color:var(--ink-2);font-size:.86rem;line-height:1.45}
+
+  .well-schema{display:grid;grid-template-columns:5fr 6fr;gap:3vw;align-items:center;margin-top:.4rem}
+  .well-svg{width:100%;height:auto;max-height:68vh;display:block}
+  .comp-mini{display:flex;flex-direction:column}
+  .comp-mini .row{display:flex;gap:.9rem;align-items:flex-start;padding:.62rem 0;border-bottom:1px solid var(--line)}
+  .comp-mini .row:last-child{border-bottom:none}
+  .comp-mini .row .n{
+    flex-shrink:0;width:1.7rem;height:1.7rem;border-radius:50%;
+    background:var(--gold);color:#1a1408;
+    display:inline-flex;align-items:center;justify-content:center;
+    font-weight:700;font-size:.88rem;font-variant-numeric:tabular-nums;
+    margin-top:.05rem;
+  }
+  .comp-mini .row .t{color:var(--ink);font-weight:600;font-size:.96rem;line-height:1.3;margin-bottom:.18rem}
+  .comp-mini .row .d{color:var(--ink-2);font-size:.8rem;line-height:1.45}
+  @media (max-width: 900px){
+    .well-schema{grid-template-columns:1fr}
+  }
+
+  /* slide 8 problem */
+  .problem-stat{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;
+    margin-top:1rem
+  }
+  .problem-stat .item{padding:1rem 0;border-top:1px solid var(--gold)}
+  .problem-stat .big{font-family:'Cormorant Garamond',serif;font-size:3.5rem;font-weight:600;color:var(--gold);line-height:1}
+  .problem-stat .lbl{color:var(--ink-2);margin-top:.4rem;font-size:.92rem;line-height:1.4}
+
+  /* contacts */
+  .contact-block{display:grid;grid-template-columns:1fr 1fr;gap:3vw}
+  .contact-block .label{color:var(--ink-3);font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;margin-bottom:.3rem}
+  .contact-block .val{color:var(--ink);font-size:1.05rem;margin-bottom:1.2rem;line-height:1.4}
+  .contact-block .val a{color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(212,168,87,.3)}
+  .contact-block .val a:hover{border-color:var(--gold)}
+
+  /* trend */
+  .trend{display:flex;align-items:flex-end;gap:1.2rem;height:300px;padding:1.4rem 0 .8rem;border-bottom:1px solid var(--line)}
+  .trend .group{flex:1;display:flex;flex-direction:column;align-items:center;gap:.5rem}
+  .trend .bars{display:flex;align-items:flex-end;gap:4px;height:240px;width:100%;justify-content:center}
+  .trend .bars > div{width:18%;min-width:8px;border-radius:3px 3px 0 0;position:relative}
+  .trend .bars .b1{background:var(--ink-3)}
+  .trend .bars .b2{background:var(--steel)}
+  .trend .bars .b3{background:var(--gold)}
+  .trend .bars .b4{background:var(--green)}
+  .trend .bars .v{
+    position:absolute;top:-18px;left:50%;transform:translateX(-50%);
+    font-size:.72rem;color:var(--ink-2);font-weight:600;
+    font-variant-numeric:tabular-nums;letter-spacing:.02em;
+  }
+  .trend .group .yr{font-size:.88rem;color:var(--ink-2);letter-spacing:.06em;font-weight:500}
+  .trend-legend{display:flex;gap:1.4rem;margin-top:.8rem;font-size:.85rem;color:var(--ink-2)}
+  .trend-legend .sw{display:inline-block;width:14px;height:10px;border-radius:2px;margin-right:.4em;vertical-align:middle}
+
+  @media (max-width: 900px){
+    .grid-2,.grid-3,.grid-4,.toc-grid,.comp-list,.contact-block,.problem-stat{grid-template-columns:1fr}
+    .slide{padding:5vh 6vw}
+    .topnav{top:10px;right:14px}
+    .topnav .btn,.topnav .lang-toggle a{padding:5px 8px;font-size:.68rem}
+  }
+
+  @media print{
+    @page{size:1600px 900px;margin:0}
+    html,body{overflow:visible!important;background:var(--bg);height:auto;width:auto}
+    .deck{position:static;height:auto;width:auto;overflow:visible}
+    .slide{
+      position:relative!important;inset:auto;
+      width:1600px;height:900px;
+      opacity:1!important;transform:none!important;pointer-events:auto;
+      page-break-after:always;break-after:page;
+      display:flex!important;overflow:hidden;
+    }
+    .slide:last-of-type{page-break-after:auto;break-after:auto}
+    .nav,.topnav,.progress{display:none!important}
+    .card:hover,.opt:hover{transform:none!important;box-shadow:none!important}
+    a{color:inherit!important}
+  }
+</style>
+</head>
+<body>
+
+<div class="progress"><span id="progressBar"></span></div>
+
+<div class="topnav">
+  <div class="lang-toggle">
+    <a class="on" href="Эволюция_ПВНК-К2.html">RU</a>
+    <a href="Evolution_SVPC-K2_EN.html">EN</a>
+  </div>
+  <a class="btn" href="index.html" title="На главную проекта">⌂ На главную</a>
+  <a class="btn" href="../index.html" title="На сайт Аслана Каа" onclick="if(document.referrer&&document.referrer.indexOf(location.origin)===0){event.preventDefault();history.back();}">← На сайт</a>
+</div>
+
+<div class="deck" id="deck">
+
+  <!-- 1. COVER -->
+  <section class="slide cover active" data-slide="1">
+    <div class="corner">
+      <span>ГК «ЦЕНТР» · 2026</span>
+      <span>Конфиденциально</span>
+    </div>
+    <div class="mainwrap">
+      <span class="eyebrow">ПВНК К-2 · Новый класс оборудования</span>
+      <h1>Эволюция<br/><em>нефтедобычи</em></h1>
+      <p class="sub">Погружной Вибрационный Насосный Комплекс — добыча там, где все известные способы технологически или экономически бессильны.</p>
+    </div>
+    <div class="footrow">
+      <span>Аслан Каа · ГК «ЦЕНТР»</span>
+      <span><b>2026</b> / Презентация для инвесторов и партнёров</span>
+    </div>
+  </section>
+
+  <!-- 2. CONTENTS -->
+  <section class="slide" data-slide="2">
+    <span class="eyebrow">Содержание</span>
+    <h2>Маршрут к ПВНК К-2</h2>
+    <div class="toc-grid">
+      <div>
+        <div class="toc-row"><b>03</b> Контекст индустрии 2026</div>
+        <div class="toc-row"><b>04</b> Современные способы добычи</div>
+        <div class="toc-row"><b>05</b> Фонтанный способ</div>
+        <div class="toc-row"><b>06</b> Шесть механизированных методов</div>
+        <div class="toc-row"><b>07</b> Динамика 1975 — 2026</div>
+        <div class="toc-row hi"><b>08</b> Проблема: истощённый фонд</div>
+        <div class="toc-row hi"><b>09</b> Решение: ПВНК К-2</div>
+      </div>
+      <div>
+        <div class="toc-row"><b>10</b> Физический принцип</div>
+        <div class="toc-row"><b>11</b> Состав комплекса</div>
+        <div class="toc-row"><b>12</b> Семь преимуществ</div>
+        <div class="toc-row"><b>13</b> Четыре области применения</div>
+        <div class="toc-row hi"><b>14</b> Сравнительная матрица</div>
+        <div class="toc-row"><b>15</b> Экономика и рынок</div>
+        <div class="toc-row"><b>16</b> Контакты</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. CONTEXT -->
+  <section class="slide" data-slide="3">
+    <span class="eyebrow">03 · Контекст</span>
+    <h2>Почему мир нуждается в новом способе добычи</h2>
+    <div class="grid-2">
+      <div>
+        <p class="lede" style="margin-bottom:1.5rem">Современная нефтедобыча упёрлась в три структурных предела, которые существующие технологии не закрывают.</p>
+        <ul class="bullets">
+          <li><b>Истощение «лёгких» месторождений</b> — фонтанная и классическая механизированная добыча выбирают всё меньше нефти при растущих затратах.</li>
+          <li><b>Сдвиг в сторону тяжёлых и вязких нефтей</b> — крупные провинции тяжёлой нефти растут быстрее остальных при дефиците экономически эффективных решений.</li>
+          <li><b>Удалённые и необустроенные месторождения</b> — пласты, до которых классические технологии добычи не доходят по экономике или инфраструктуре.</li>
+        </ul>
+      </div>
+      <div class="row-stack">
+        <div class="card">
+          <span class="tag">Истощённый фонд</span>
+          <div class="ttl" style="margin-top:.8rem">Мировая база простаивающих скважин</div>
+          <div class="desc">Большинство мирового фонда — истощённые и малодебитные скважины. Значительная доля законсервирована из-за нерентабельности существующих методов.</div>
+        </div>
+        <div class="card">
+          <span class="tag tag-steel">Тяжёлые нефти</span>
+          <div class="ttl" style="margin-top:.8rem">Растущий сегмент мировой добычи</div>
+          <div class="desc">Высоковязкая нефть с агрессивной средой — сегмент, в котором классические УЭЦН и ШГН технологически бессильны.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. CURRENT METHODS OVERVIEW -->
+  <section class="slide" data-slide="4">
+    <span class="eyebrow">04 · Существующие способы</span>
+    <h2>Что есть на рынке сегодня</h2>
+    <p class="lede" style="margin-bottom:1.6rem">Семь способов добычи нефти, выработанных индустрией за столетие — и их пределы.</p>
+    <div class="grid-4">
+      <div class="card"><div class="ttl">Фонтанный</div><div class="desc">Естественное пластовое давление. Исчерпывается с возрастом скважины.</div></div>
+      <div class="card"><div class="ttl">ШГН</div><div class="desc">Штанговый глубинный насос со станком-качалкой. Малые глубины, прямые скважины.</div></div>
+      <div class="card"><div class="ttl">УЭЦН</div><div class="desc">Установка электроцентробежного насоса. Требует электрификации, не любит мехпримеси.</div></div>
+      <div class="card"><div class="ttl">Газлифт</div><div class="desc">Закачка газа в кольцевое пространство. Нужна компрессорная инфраструктура.</div></div>
+      <div class="card"><div class="ttl">ГСН</div><div class="desc">Гидравлический струйный насос. Нужна наземная силовая станция.</div></div>
+      <div class="card"><div class="ttl">Винтовой</div><div class="desc">Винтовой насос. Хорош для вязких, но ограничен глубиной и абразивом.</div></div>
+      <div class="card"><div class="ttl">Плунжерлифт</div><div class="desc">Газоконденсатные скважины. Узкая ниша.</div></div>
+      <div class="card" style="border-color:var(--gold);background:rgba(212,168,87,.06)">
+        <div class="ttl" style="color:var(--gold)">ПВНК К-2 →</div>
+        <div class="desc" style="color:var(--ink)">Эволюционное решение в области нефтедобычи.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. FOUNTAIN -->
+  <section class="slide" data-slide="5">
+    <span class="eyebrow">05 · Фонтанный способ</span>
+    <h2>Технологическая база отрасли</h2>
+    <div class="grid-2">
+      <div>
+        <p class="lede">Подъём жидкости за счёт энергии самого пласта — без насосов, без приводов. Самый дешёвый способ добычи и одновременно самый исчерпаемый.</p>
+        <ul class="bullets" style="margin-top:1.2rem">
+          <li><b>Источник энергии:</b> естественное пластовое давление</li>
+          <li><b>Применимость:</b> только новые, ещё не выработанные пласты</li>
+          <li><b>Жизненный цикл:</b> резкое снижение дебита по мере падения пластового давления</li>
+          <li><b>Ограничение:</b> с возрастом фонда мира эта доля сокращается каждый год</li>
+        </ul>
+      </div>
+      <div>
+        <div class="card" style="padding:1.8rem">
+          <span class="tag">База отсчёта</span>
+          <h3 style="margin-top:1rem;color:var(--ink)">Почему мы начинаем с фонтана</h3>
+          <p style="color:var(--ink-2);line-height:1.55;margin-top:.6rem">Фонтан — это идеал индустрии: ноль операционных затрат, ноль оборудования в скважине. Все механизированные способы — это попытки воспроизвести его экономику после того, как пластовое давление уже не справляется. ПВНК К-2 в этом ряду — самая близкая к фонтанной экономике механизированная альтернатива.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. SIX MECHANIZED METHODS -->
+  <section class="slide" data-slide="6">
+    <span class="eyebrow">06 · Механизированные способы</span>
+    <h2>Шесть классических методов и их пределы</h2>
+    <table class="matrix">
+      <thead>
+        <tr>
+          <th>Метод</th><th>Принцип</th><th>Где силён</th><th>Где упирается</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>ШГН</td><td>Штанговый</td><td>Малые глубины, прямые скважины</td><td class="no">Искривлённые скважины, высокая вязкость, металлоёмкий станок-качалка</td></tr>
+        <tr><td>УЭЦН</td><td>Центробежный</td><td>Средние и большие глубины, низкая вязкость</td><td class="no">Высокая вязкость, мехпримеси, отсутствие электричества</td></tr>
+        <tr><td>Газлифт</td><td>Газовый подъём</td><td>Высокий газовый фактор</td><td class="no">Нужна компрессорная станция и газовая магистраль</td></tr>
+        <tr><td>ГСН</td><td>Струйный гидравл.</td><td>Гибкость по дебиту</td><td class="no">Наземная силовая насосная — капитальное обустройство</td></tr>
+        <tr><td>Винтовой</td><td>Объёмный</td><td>Тяжёлые нефти при умеренных глубинах</td><td class="no">Глубина, абразив, ресурс эластомера</td></tr>
+        <tr><td>Плунжерлифт</td><td>Газоконденсат</td><td>Удаление жидкости из газовых скважин</td><td class="no">Узкое применение, не для основной добычи</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:1.4rem;color:var(--ink-2);font-size:1rem;max-width:80ch;line-height:1.55">Каждый из шести методов решает свою часть задачи — и ни один не покрывает истощённые скважины с тяжёлой нефтью на необустроенных площадках одновременно.</p>
+  </section>
+
+  <!-- 7. TREND 1975-2015 -->
+  <section class="slide" data-slide="7">
+    <span class="eyebrow">07 · Динамика</span>
+    <h2>Сравнительная динамика способов добычи</h2>
+    <div class="grid-2" style="gap:3vw">
+      <div>
+        <p class="lede">За четыре десятилетия структура механизированной добычи перестроилась полностью.</p>
+        <ul class="bullets" style="margin-top:1.2rem">
+          <li><b>Фонтанная доля</b> сократилась — каждое новое крупное месторождение остаётся на фонтане недолго.</li>
+          <li><b>УЭЦН</b> вырос с нишевого метода до доминирующего — вместе с ним выросла зависимость от электрификации и обустройства скважин.</li>
+          <li><b>УСШН и газлифт</b> сохранили нишу, но не закрывают новые задачи — истощённый фонд, тяжёлую нефть, удалённые поля.</li>
+        </ul>
+      </div>
+      <div>
+        <div class="trend">
+          <div class="group">
+            <div class="bars">
+              <div class="b1" style="height:65%"><span class="v">65</span></div>
+              <div class="b2" style="height:8%"><span class="v">8</span></div>
+              <div class="b3" style="height:18%"><span class="v">18</span></div>
+              <div class="b4" style="height:9%"><span class="v">9</span></div>
+            </div>
+            <div class="yr">1975</div>
+          </div>
+          <div class="group">
+            <div class="bars">
+              <div class="b1" style="height:40%"><span class="v">40</span></div>
+              <div class="b2" style="height:30%"><span class="v">30</span></div>
+              <div class="b3" style="height:20%"><span class="v">20</span></div>
+              <div class="b4" style="height:10%"><span class="v">10</span></div>
+            </div>
+            <div class="yr">1988</div>
+          </div>
+          <div class="group">
+            <div class="bars">
+              <div class="b1" style="height:18%"><span class="v">18</span></div>
+              <div class="b2" style="height:55%"><span class="v">55</span></div>
+              <div class="b3" style="height:18%"><span class="v">18</span></div>
+              <div class="b4" style="height:9%"><span class="v">9</span></div>
+            </div>
+            <div class="yr">2009</div>
+          </div>
+          <div class="group">
+            <div class="bars">
+              <div class="b1" style="height:10%"><span class="v">10</span></div>
+              <div class="b2" style="height:65%"><span class="v">65</span></div>
+              <div class="b3" style="height:18%"><span class="v">18</span></div>
+              <div class="b4" style="height:7%"><span class="v">7</span></div>
+            </div>
+            <div class="yr">2015</div>
+          </div>
+        </div>
+        <div class="trend-legend">
+          <span><span class="sw" style="background:var(--ink-3)"></span>Фонтан</span>
+          <span><span class="sw" style="background:var(--steel)"></span>УЭЦН</span>
+          <span><span class="sw" style="background:var(--gold)"></span>УСШН</span>
+          <span><span class="sw" style="background:var(--green)"></span>Газлифт и иные</span>
+        </div>
+        <p style="font-size:.78rem;color:var(--ink-3);margin-top:.8rem">Структура мировой механизированной добычи нефти, ориентировочные доли по годам. Тренд по данным ГК «ЦЕНТР».</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. PROBLEM -->
+  <section class="slide" data-slide="8">
+    <span class="eyebrow">08 · Точка боли отрасли</span>
+    <h1 style="font-size:clamp(2.2rem,4.2vw,4rem);margin-bottom:1.2rem">Истощённые месторождения<br/><span style="color:var(--gold)">— крупная нерешённая задача нефтегаза</span></h1>
+    <p class="lede" style="max-width:78ch">Большинство скважин истощённого фонда дают минимальный приток или законсервированы. Их нельзя поднять ни УЭЦН, ни ШГН, ни газлифтом — каждая из этих технологий упирается в свою стенку: высокая вязкость, глубина, отсутствие электричества или инфраструктуры.</p>
+    <div class="problem-stat">
+      <div class="item">
+        <div class="big" style="font-size:2.4rem;line-height:1.15">Истощённый<br/>фонд</div>
+        <div class="lbl">Простаивающие скважины — кандидаты на реанимацию ПВНК К-2.</div>
+      </div>
+      <div class="item">
+        <div class="big" style="font-size:2.4rem;line-height:1.15">Голые<br/>месторождения</div>
+        <div class="lbl">Поля без инфраструктуры и электричества, на которых классические методы экономически невозможны.</div>
+      </div>
+      <div class="item">
+        <div class="big" style="font-size:2.4rem;line-height:1.15">Тяжёлая<br/>нефть</div>
+        <div class="lbl">Высоковязкие пласты с агрессивной средой, в которых сдают УЭЦН и ШГН.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. SOLUTION HERO -->
+  <section class="slide hero" data-slide="9">
+    <span class="eyebrow">09 · Решение</span>
+    <h1>ПВНК К-2 —<br/><em>эволюционный прорыв</em> в нефтедобыче</h1>
+    <div class="verdict">
+      Совершенно новый механизированный способ добычи нефти, позволяющий извлекать сырьё <b>там, где все известные способы технологически или экономически не справляются</b> — без НКТ, без обустройства, без электрификации, на любой глубине, в агрессивной среде, на тяжёлой вязкой нефти.
+    </div>
+    <div style="margin-top:2rem;display:flex;gap:.7rem;flex-wrap:wrap">
+      <span class="tag">Вибрационный принцип подъёма</span>
+      <span class="tag tag-steel">Без НКТ</span>
+      <span class="tag tag-steel">Без электрификации</span>
+      <span class="tag tag-steel">Спуск через каротаж</span>
+      <span class="tag">Любая глубина</span>
+      <span class="tag">Тяжёлые нефти</span>
+    </div>
+  </section>
+
+  <!-- 10. PRINCIPLE -->
+  <section class="slide" data-slide="10">
+    <span class="eyebrow">10 · Физический принцип</span>
+    <h2>Как устроен подъём в ПВНК К-2</h2>
+    <div class="grid-2" style="align-items:flex-start">
+      <div>
+        <ul class="bullets">
+          <li><b>Вибрационный принцип подъёма жидкости</b> — не центробежный, не штанговый, не газлифтный. Новый принцип подъёма в скважинной добыче.</li>
+          <li><b>Спуск на грузонесущем кабеле или тросе</b> через мобильную каротажную установку (ПКС / ПКН). НКТ не требуется.</li>
+          <li><b>Гибкость установки:</b> можно опускать внутри НКТ (если они есть) или вместо НКТ.</li>
+          <li><b>Каротажная установка — стандартное оборудование</b>, доступное в каждом нефтегазовом регионе. Спецтехника не нужна.</li>
+          <li><b>Спуск как стандартная каротажная операция</b> — мобильность вместо обустройства устья.</li>
+        </ul>
+      </div>
+      <div class="principle-vis">
+        <div class="row"><b>1</b><span>Каротажная установка ПКС / ПКН наверху</span></div>
+        <div class="row"><b>2</b><span>Грузонесущий кабель / трос (вместо колонны НКТ)</span></div>
+        <div class="row"><b>3</b><span>Кабель ЭКГ — питание и контроль</span></div>
+        <div class="row"><b>4</b><span>Погружная вибрационная насосная станция</span></div>
+        <div class="row"><b>5</b><span>Специализированная погружная трубная система</span></div>
+        <div class="row"><b>6</b><span>Подъём жидкости вибрационным импульсом</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 11. SIX COMPONENTS -->
+  <section class="slide" data-slide="11">
+    <span class="eyebrow">11 · Состав комплекса</span>
+    <h2>Шесть компонентов ПВНК К-2</h2>
+    <div class="well-schema">
+      <svg class="well-svg" viewBox="0 0 600 760" xmlns="http://www.w3.org/2000/svg" aria-label="Схема скважины с ПВНК К-2">
+        <defs>
+          <linearGradient id="ground" x1="0" x2="0" y1="0" y2="1">
+            <stop offset="0" stop-color="#1c2238"/>
+            <stop offset="1" stop-color="#0a0e1a"/>
+          </linearGradient>
+          <linearGradient id="oil" x1="0" x2="0" y1="0" y2="1">
+            <stop offset="0" stop-color="#3a2a1c"/>
+            <stop offset="1" stop-color="#1a0e0a"/>
+          </linearGradient>
+          <pattern id="hatch" patternUnits="userSpaceOnUse" width="14" height="14" patternTransform="rotate(35)">
+            <line x1="0" y1="0" x2="0" y2="14" stroke="rgba(255,255,255,.025)" stroke-width="1"/>
+          </pattern>
+        </defs>
+
+        <rect x="0" y="0" width="600" height="170" fill="#0a0e1a"/>
+        <rect x="0" y="170" width="600" height="590" fill="url(#ground)"/>
+        <rect x="0" y="170" width="600" height="590" fill="url(#hatch)"/>
+
+        <line x1="0" y1="240" x2="600" y2="240" stroke="rgba(255,255,255,.05)"/>
+        <line x1="0" y1="320" x2="600" y2="320" stroke="rgba(255,255,255,.05)"/>
+        <line x1="0" y1="420" x2="600" y2="420" stroke="rgba(255,255,255,.05)"/>
+        <line x1="0" y1="540" x2="600" y2="540" stroke="rgba(255,255,255,.05)"/>
+
+        <rect x="0" y="700" width="600" height="60" fill="url(#oil)" opacity=".75"/>
+        <line x1="0" y1="700" x2="600" y2="700" stroke="rgba(212,168,87,.35)" stroke-dasharray="4 4"/>
+        <line x1="0" y1="170" x2="600" y2="170" stroke="rgba(212,168,87,.45)" stroke-width="1.2"/>
+
+        <!-- 6: wireline (logging) unit -->
+        <g>
+          <rect x="80" y="125" width="160" height="45" fill="#26304a" stroke="#5fa3e9" stroke-width="1.2" rx="3"/>
+          <rect x="92" y="132" width="38" height="20" fill="#161c2f" stroke="#5fa3e9" stroke-width=".8"/>
+          <circle cx="180" cy="148" r="16" fill="#0f1424" stroke="#d4a857" stroke-width="1.4"/>
+          <circle cx="180" cy="148" r="8" fill="#26304a" stroke="#d4a857" stroke-width=".8"/>
+          <circle cx="115" cy="172" r="9" fill="#0a0e1a" stroke="#5fa3e9" stroke-width="1"/>
+          <circle cx="220" cy="172" r="9" fill="#0a0e1a" stroke="#5fa3e9" stroke-width="1"/>
+          <line x1="220" y1="125" x2="295" y2="50" stroke="#5fa3e9" stroke-width="1.6"/>
+          <line x1="370" y1="125" x2="305" y2="50" stroke="#5fa3e9" stroke-width="1.6"/>
+          <line x1="240" y1="100" x2="350" y2="100" stroke="#5fa3e9" stroke-width="1" stroke-dasharray="3 3"/>
+          <line x1="260" y1="80" x2="340" y2="80" stroke="#5fa3e9" stroke-width="1" stroke-dasharray="3 3"/>
+          <circle cx="300" cy="50" r="6" fill="none" stroke="#d4a857" stroke-width="1.2"/>
+        </g>
+
+        <!-- 2: surface control unit -->
+        <g>
+          <rect x="430" y="115" width="100" height="55" fill="#26304a" stroke="#5fa3e9" stroke-width="1.2" rx="4"/>
+          <rect x="440" y="125" width="80" height="20" fill="#0f1424" stroke="#5fa3e9" stroke-width=".8" rx="2"/>
+          <line x1="448" y1="135" x2="510" y2="135" stroke="#5fa3e9" stroke-width=".5"/>
+          <line x1="448" y1="139" x2="490" y2="139" stroke="#5fa3e9" stroke-width=".5"/>
+          <circle cx="447" cy="158" r="2" fill="#5fc28d"/>
+          <circle cx="457" cy="158" r="2" fill="#d4a857"/>
+          <circle cx="467" cy="158" r="2" fill="#e07666"/>
+          <path d="M 430 145 Q 380 145 360 168" fill="none" stroke="#5fa3e9" stroke-width="1.2"/>
+        </g>
+
+        <!-- wellbore casing -->
+        <line x1="270" y1="170" x2="270" y2="720" stroke="#4a5670" stroke-width="2"/>
+        <line x1="330" y1="170" x2="330" y2="720" stroke="#4a5670" stroke-width="2"/>
+        <rect x="262" y="158" width="76" height="14" fill="#26304a" stroke="#4a5670" stroke-width="1.2"/>
+
+        <!-- 5: load-bearing cable -->
+        <path d="M 180 132 L 180 90 L 290 70 L 300 56 L 300 555" fill="none" stroke="#d4a857" stroke-width="2.2"/>
+
+        <!-- 4: ECG cable -->
+        <path d="M 308 60 L 311 555" fill="none" stroke="#5fa3e9" stroke-width="1.2" stroke-dasharray="6 4"/>
+
+        <!-- 1: vibratory pumping station -->
+        <g>
+          <ellipse cx="300" cy="585" rx="42" ry="18" fill="none" stroke="#d4a857" stroke-width=".8" opacity=".4">
+            <animate attributeName="rx" values="36;52;36" dur="2s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" values=".5;.05;.5" dur="2s" repeatCount="indefinite"/>
+          </ellipse>
+          <ellipse cx="300" cy="585" rx="32" ry="14" fill="none" stroke="#d4a857" stroke-width=".8" opacity=".55">
+            <animate attributeName="rx" values="28;42;28" dur="2s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" values=".7;.15;.7" dur="2s" repeatCount="indefinite"/>
+          </ellipse>
+          <rect x="278" y="555" width="44" height="65" fill="#d4a857" stroke="#e7c98a" stroke-width="1.2" rx="3"/>
+          <line x1="278" y1="572" x2="322" y2="572" stroke="#1a1408" stroke-width=".8"/>
+          <line x1="278" y1="603" x2="322" y2="603" stroke="#1a1408" stroke-width=".8"/>
+          <line x1="288" y1="582" x2="312" y2="582" stroke="#1a1408" stroke-width=".7"/>
+          <line x1="288" y1="588" x2="312" y2="588" stroke="#1a1408" stroke-width=".7"/>
+          <line x1="288" y1="594" x2="312" y2="594" stroke="#1a1408" stroke-width=".7"/>
+        </g>
+
+        <!-- 3: specialized downhole pipe assembly -->
+        <g>
+          <rect x="285" y="625" width="30" height="80" fill="#26304a" stroke="#5fa3e9" stroke-width="1" rx="2"/>
+          <line x1="285" y1="640" x2="315" y2="640" stroke="#5fa3e9" stroke-width=".5" opacity=".6"/>
+          <line x1="285" y1="660" x2="315" y2="660" stroke="#5fa3e9" stroke-width=".5" opacity=".6"/>
+          <line x1="285" y1="680" x2="315" y2="680" stroke="#5fa3e9" stroke-width=".5" opacity=".6"/>
+        </g>
+
+        <!-- callouts -->
+        <g font-family="Manrope, sans-serif">
+          <line x1="155" y1="48" x2="115" y2="100" stroke="#d4a857" stroke-width=".9" opacity=".55"/>
+          <circle cx="155" cy="42" r="14" fill="#d4a857"/>
+          <text x="155" y="47" text-anchor="middle" font-size="14" font-weight="700" fill="#1a1408">6</text>
+
+          <line x1="565" y1="98" x2="525" y2="125" stroke="#d4a857" stroke-width=".9" opacity=".55"/>
+          <circle cx="565" cy="92" r="14" fill="#d4a857"/>
+          <text x="565" y="97" text-anchor="middle" font-size="14" font-weight="700" fill="#1a1408">2</text>
+
+          <line x1="395" y1="270" x2="305" y2="290" stroke="#d4a857" stroke-width=".9" opacity=".55"/>
+          <circle cx="410" cy="270" r="14" fill="#d4a857"/>
+          <text x="410" y="275" text-anchor="middle" font-size="14" font-weight="700" fill="#1a1408">5</text>
+
+          <line x1="210" y1="380" x2="297" y2="395" stroke="#d4a857" stroke-width=".9" opacity=".55"/>
+          <circle cx="195" cy="380" r="14" fill="#d4a857"/>
+          <text x="195" y="385" text-anchor="middle" font-size="14" font-weight="700" fill="#1a1408">4</text>
+
+          <line x1="395" y1="585" x2="328" y2="585" stroke="#d4a857" stroke-width=".9" opacity=".55"/>
+          <circle cx="410" cy="585" r="14" fill="#d4a857"/>
+          <text x="410" y="590" text-anchor="middle" font-size="14" font-weight="700" fill="#1a1408">1</text>
+
+          <line x1="395" y1="665" x2="320" y2="665" stroke="#d4a857" stroke-width=".9" opacity=".55"/>
+          <circle cx="410" cy="665" r="14" fill="#d4a857"/>
+          <text x="410" y="670" text-anchor="middle" font-size="14" font-weight="700" fill="#1a1408">3</text>
+
+          <text x="585" y="183" font-size="9" fill="#6e7793" letter-spacing="2" text-anchor="end">ПОВЕРХНОСТЬ</text>
+          <text x="585" y="694" font-size="9" fill="#d4a857" letter-spacing="2" text-anchor="end">ПРОДУКТИВНЫЙ ПЛАСТ</text>
+        </g>
+      </svg>
+
+      <div class="comp-mini">
+        <div class="row"><span class="n">1</span><div><div class="t">Погружные вибрационные насосные станции</div><div class="d">Сердце комплекса. Реализуют вибрационный принцип подъёма жидкости.</div></div></div>
+        <div class="row"><span class="n">2</span><div><div class="t">Наземная установка управления насосной станции</div><div class="d">Контур контроля и регулирования режимов работы насоса.</div></div></div>
+        <div class="row"><span class="n">3</span><div><div class="t">Специализированная погружная трубная система</div><div class="d">Различные диаметры и длины — под любую геометрию скважины.</div></div></div>
+        <div class="row"><span class="n">4</span><div><div class="t">Кабели ЭКГ</div><div class="d">Грузонесущий кабель с интегрированной линией питания и контроля.</div></div></div>
+        <div class="row"><span class="n">5</span><div><div class="t">Грузонесущий трос</div><div class="d">Альтернатива НКТ для спуска и удержания насосной станции.</div></div></div>
+        <div class="row"><span class="n">6</span><div><div class="t">Грузоподъёмная каротажная установка ПКС / ПКН</div><div class="d">Стандартное оборудование, доступное в каждом нефтегазовом регионе.</div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 12. SEVEN ADVANTAGES -->
+  <section class="slide" data-slide="12">
+    <span class="eyebrow">12 · Преимущества</span>
+    <h2>Семь преимуществ ПВНК К-2</h2>
+    <div class="grid-3">
+      <div class="card"><span class="num">1</span><div class="ttl">Любая глубина скважины</div><div class="desc">Нет ограничения по столбу жидкости — работает там, где центробежные и штанговые насосы сдают.</div></div>
+      <div class="card"><span class="num">2</span><div class="ttl">Без НКТ</div><div class="desc">Снимает крупнейший элемент инфраструктуры скважины и капитальных затрат на колонну.</div></div>
+      <div class="card"><span class="num">3</span><div class="ttl">Без эксплуатационного оборудования</div><div class="desc">Добыча на «голых» месторождениях, без обустроенной устьевой инфраструктуры.</div></div>
+      <div class="card"><span class="num">4</span><div class="ttl">На необустроенных и неэлектрифицированных полях</div><div class="desc">Полная автономность от внешней силовой инфраструктуры.</div></div>
+      <div class="card"><span class="num">5</span><div class="ttl">Реанимация и КИН</div><div class="desc">Возврат в эксплуатацию законсервированных скважин и добыча на неперспективных с большим потенциалом КИНа.</div></div>
+      <div class="card"><span class="num">6</span><div class="ttl">Дешевле любого аналога</div><div class="desc">Стоимость комплекса ниже, чем у любого аналога механизированной добычи.</div></div>
+      <div class="card" style="grid-column:span 3;border-color:var(--gold);background:rgba(212,168,87,.05)">
+        <span class="num">7</span>
+        <div class="ttl" style="color:var(--gold)">Простое обслуживание, экологически безвредно</div>
+        <div class="desc">Минимум персонала, надёжность в эксплуатации, экологически безвредно для окружающей среды.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 13. FOUR APPLICATIONS -->
+  <section class="slide" data-slide="13">
+    <span class="eyebrow">13 · Области применения</span>
+    <h2>Четыре сценария использования</h2>
+    <div class="grid-2" style="gap:1.5rem">
+      <div class="card">
+        <span class="num">I</span>
+        <div class="ttl">Кусты скважин с осложнёнными геологическими характеристиками</div>
+        <div class="desc">Высокая вязкость, искривлённые стволы, мехпримеси, агрессивные пластовые воды — любая комбинация осложнений.</div>
+      </div>
+      <div class="card">
+        <span class="num">II</span>
+        <div class="ttl">Целые месторождения без условий и инфраструктуры</div>
+        <div class="desc">Добыча при минимальных капитальных вложениях, без обустройства устьевой и внешней инфраструктуры.</div>
+      </div>
+      <div class="card">
+        <span class="num">III</span>
+        <div class="ttl">Законсервированные месторождения</div>
+        <div class="desc">Готовые к вводу в эксплуатацию активы, на которых УЭЦН и ШГН экономически бессмысленны.</div>
+      </div>
+      <div class="card">
+        <span class="num">IV</span>
+        <div class="ttl">Отдельные скважины</div>
+        <div class="desc">Где невозможна добыча всеми другими способами. Точечное применение по самым тяжёлым кейсам.</div>
+      </div>
+    </div>
+    <p style="margin-top:1.4rem;color:var(--ink-3);font-size:.92rem;letter-spacing:.04em">Технологические возможности по среде: любое содержание воды, солей, мехпримесей; йодо-бромистые и высокоминерализованные воды; высоковязкая нефть; агрессивные пластовые условия.</p>
+  </section>
+
+  <!-- 14. MATRIX -->
+  <section class="slide" data-slide="14">
+    <span class="eyebrow">14 · Сравнительная матрица</span>
+    <h2>Семь требований — один способ, который их закрывает</h2>
+    <table class="matrix">
+      <thead>
+        <tr>
+          <th>Способ</th><th>Любая глубина</th><th>Без НКТ</th><th>Без инфры</th><th>Тяжёлая нефть</th><th>Искривлённые</th><th>Реанимация</th><th>Стоимость</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Фонтан</td><td class="no">—</td><td class="no">—</td><td class="no">—</td><td class="no">—</td><td class="no">—</td><td class="no">—</td><td class="mid">низкая</td></tr>
+        <tr><td>ШГН</td><td class="no">—</td><td class="no">—</td><td class="no">—</td><td class="no">—</td><td class="no">—</td><td class="no">—</td><td class="mid">низкая</td></tr>
+        <tr><td>УЭЦН</td><td class="yes">да</td><td class="no">—</td><td class="no">—</td><td class="no">—</td><td class="mid">средне</td><td class="no">—</td><td class="no">высокая</td></tr>
+        <tr><td>Газлифт</td><td class="yes">да</td><td class="no">—</td><td class="no">—</td><td class="no">—</td><td class="yes">да</td><td class="no">—</td><td class="no">высокая</td></tr>
+        <tr><td>ГСН</td><td class="mid">средне</td><td class="no">—</td><td class="no">—</td><td class="no">—</td><td class="yes">да</td><td class="no">—</td><td class="mid">средняя</td></tr>
+        <tr><td>Винтовой</td><td class="mid">средне</td><td class="no">—</td><td class="no">—</td><td class="yes">да</td><td class="no">—</td><td class="no">—</td><td class="mid">средняя</td></tr>
+        <tr><td>Плунжерлифт</td><td class="no">—</td><td class="no">—</td><td class="no">—</td><td class="no">—</td><td class="no">—</td><td class="no">—</td><td class="mid">средняя</td></tr>
+        <tr class="hero"><td>ПВНК К-2</td><td class="yes">да</td><td class="yes">да</td><td class="yes">да</td><td class="yes">да</td><td class="yes">да</td><td class="yes">да</td><td class="yes">низкая</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:1.4rem;color:var(--gold-2);font-size:1.05rem;font-weight:500">ПВНК К-2 — единственная технология, которая закрывает все семь требований одновременно.</p>
+  </section>
+
+  <!-- 15. ECONOMICS / MARKET -->
+  <section class="slide" data-slide="15">
+    <span class="eyebrow">15 · Экономика и рынок</span>
+    <h2>Где технология бьёт с максимальным эффектом</h2>
+    <div class="grid-2" style="gap:3vw">
+      <div>
+        <ul class="bullets">
+          <li><b>Мировой фонд истощённых скважин</b> — большая база простаивающих или нерентабельных для классических методов скважин по всему миру.</li>
+          <li><b>Провинции тяжёлых нефтей</b> — растущий сегмент мировой добычи с дефицитом экономически эффективных технологий.</li>
+          <li><b>Удалённые и необустроенные месторождения</b> — поля без электрификации и устьевой инфраструктуры, до которых классические технологии не доходят.</li>
+          <li><b>Независимые операторы и средние добывающие компании</b> — те, для кого УЭЦН и ШГН недоступны капитально или технологически.</li>
+        </ul>
+      </div>
+      <div class="row-stack">
+        <div class="card">
+          <span class="tag">Капекс</span>
+          <div class="ttl" style="margin-top:.8rem">Существенно ниже стандарта отрасли</div>
+          <div class="desc">Отсутствие НКТ, отсутствие наземного обустройства, отсутствие электрификации — три исключённые статьи затрат, которые делают рентабельной добычу там, где УЭЦН экономически невозможен.</div>
+        </div>
+        <div class="card">
+          <span class="tag tag-steel">Скорость ввода</span>
+          <div class="ttl" style="margin-top:.8rem">Стандартная каротажная операция</div>
+          <div class="desc">Спуск ПВНК К-2 выполняется штатной каротажной установкой — без обустройства устья и привлечения специальной техники.</div>
+        </div>
+        <div class="card">
+          <span class="tag">Рыночная позиция</span>
+          <div class="ttl" style="margin-top:.8rem">Уникальная ниша</div>
+          <div class="desc">В целевых сегментах ПВНК К-2 не имеет прямого аналога. Раннее закрепление формирует долгосрочное технологическое преимущество.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 16. CONTACTS -->
+  <section class="slide" data-slide="16" style="background:radial-gradient(ellipse at 30% 70%, rgba(212,168,87,.12), transparent 55%), var(--bg)">
+    <span class="eyebrow">16 · Контакты</span>
+    <h2 style="margin-bottom:.4rem">Аслан Каа</h2>
+    <p class="meta" style="margin-bottom:2.2rem">ГК «ЦЕНТР» · Эволюция нефтедобычи</p>
+    <div class="contact-block">
+      <div>
+        <div class="label">Телефон</div>
+        <div class="val">+7 (969) 795-55-55<br/>+7 (925) 203-77-77</div>
+        <div class="label">Email</div>
+        <div class="val"><a href="mailto:aslankaa@yandex.ru">aslankaa@yandex.ru</a></div>
+        <div class="label">Сайт</div>
+        <div class="val"><a href="https://www.aslankaa.com" target="_blank" rel="noopener">www.aslankaa.com</a></div>
+      </div>
+      <div>
+        <div class="label">Telegram</div>
+        <div class="val">@aslan_kaa</div>
+        <div class="label">Instagram</div>
+        <div class="val">@aslan_kaa</div>
+        <div class="label">X (Twitter)</div>
+        <div class="val">@aslanofff</div>
+      </div>
+    </div>
+    <p style="margin-top:3rem;color:var(--ink-3);font-size:.85rem;letter-spacing:.18em;text-transform:uppercase">Готовы обсудить сотрудничество, лицензирование и пилотные проекты</p>
+  </section>
+
+</div>
+
+<div class="nav">
+  <div class="dots" id="dots"></div>
+  <div class="ctrls">
+    <button class="btn" id="prev">‹ Назад</button>
+    <span class="counter"><b id="cur">01</b> / <span id="total">16</span></span>
+    <button class="btn" id="next">Далее ›</button>
+    <button class="btn" id="fs">⛶ Полноэкранный</button>
+  </div>
+</div>
+
+<script>
+  (function(){
+    const slides = document.querySelectorAll('.slide');
+    const total = slides.length;
+    const dotsWrap = document.getElementById('dots');
+    const cur = document.getElementById('cur');
+    const totalEl = document.getElementById('total');
+    const bar = document.getElementById('progressBar');
+    let idx = 0;
+    totalEl.textContent = String(total).padStart(2,'0');
+
+    for(let i=0;i<total;i++){
+      const d = document.createElement('button');
+      d.className = 'dot' + (i===0?' active':'');
+      d.setAttribute('aria-label','Слайд '+(i+1));
+      d.addEventListener('click',()=>go(i));
+      dotsWrap.appendChild(d);
+    }
+
+    function go(n){
+      idx = Math.max(0,Math.min(total-1,n));
+      slides.forEach((s,i)=>s.classList.toggle('active', i===idx));
+      dotsWrap.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('active', i===idx));
+      cur.textContent = String(idx+1).padStart(2,'0');
+      bar.style.width = ((idx+1)/total*100)+'%';
+    }
+    function next(){go(idx+1)}
+    function prev(){go(idx-1)}
+
+    document.getElementById('next').addEventListener('click',next);
+    document.getElementById('prev').addEventListener('click',prev);
+    document.getElementById('fs').addEventListener('click',()=>{
+      if(!document.fullscreenElement) document.documentElement.requestFullscreen();
+      else document.exitFullscreen();
+    });
+    document.addEventListener('keydown',e=>{
+      if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' ') {next();e.preventDefault()}
+      else if(e.key==='ArrowLeft'||e.key==='PageUp') {prev();e.preventDefault()}
+      else if(e.key==='Home') go(0);
+      else if(e.key==='End') go(total-1);
+      else if(e.key==='f'||e.key==='F') document.getElementById('fs').click();
+    });
+    // swipe support
+    let tx=0;
+    document.addEventListener('touchstart',e=>{tx=e.touches[0].clientX},{passive:true});
+    document.addEventListener('touchend',e=>{
+      const dx=(e.changedTouches[0].clientX-tx);
+      if(Math.abs(dx)>60){ dx<0?next():prev() }
+    },{passive:true});
+
+    bar.style.width = (1/total*100)+'%';
+  })();
+</script>
+</body>
+</html>

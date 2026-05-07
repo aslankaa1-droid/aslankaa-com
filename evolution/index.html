@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Evolution of Oil Recovery — SVPC K-2 / ПВНК К-2</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0a0e1a;
+    --panel:#161c2f;
+    --line:#26304a;
+    --ink:#e8eaf0;
+    --ink-2:#a8b0c4;
+    --ink-3:#6e7793;
+    --gold:#d4a857;
+    --gold-2:#e7c98a;
+    --steel:#5fa3e9;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{
+    min-height:100%;background:var(--bg);color:var(--ink);
+    font-family:'Manrope',system-ui,sans-serif;-webkit-font-smoothing:antialiased
+  }
+  body{
+    min-height:100vh;
+    background:
+      radial-gradient(ellipse at 20% 75%, rgba(212,168,87,.16), transparent 55%),
+      radial-gradient(ellipse at 85% 15%, rgba(95,163,233,.08), transparent 60%),
+      var(--bg);
+    display:flex;flex-direction:column;
+  }
+  .topbar{
+    padding:2rem 4vw;
+    display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;
+    color:var(--ink-3);font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;
+  }
+  .topbar b{color:var(--gold);letter-spacing:.18em}
+  .back-link{
+    color:var(--ink-2);text-decoration:none;font-weight:600;
+    border:1px solid var(--line);border-radius:6px;
+    padding:7px 12px;font-size:.72rem;letter-spacing:.18em;
+    transition:all .15s;
+  }
+  .back-link:hover{color:var(--gold);border-color:var(--gold)}
+  main{
+    flex:1;display:flex;flex-direction:column;justify-content:center;
+    padding:2vh 5vw 4vh;max-width:1280px;margin:0 auto;width:100%;
+  }
+  .eyebrow{
+    display:inline-block;
+    font-size:.78rem;letter-spacing:.28em;text-transform:uppercase;
+    color:var(--gold);font-weight:600;
+    padding-top:.4em;
+    border-top:1px solid var(--gold);
+    margin-bottom:1.4rem;
+  }
+  h1{
+    font-family:'Cormorant Garamond',serif;
+    font-size:clamp(2.6rem,5.6vw,5.4rem);font-weight:500;line-height:1.04;
+    letter-spacing:-.01em;
+  }
+  h1 em{font-style:normal;color:var(--gold);font-weight:600}
+  .sub{
+    margin-top:1.4rem;font-size:clamp(1rem,1.4vw,1.25rem);color:var(--ink-2);
+    max-width:60ch;line-height:1.55;font-weight:300;
+  }
+  .pick{
+    display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;
+    margin-top:3rem;
+  }
+  .opt{
+    display:block;color:inherit;
+    background:var(--panel);border:1px solid var(--line);border-radius:18px;
+    padding:2.2rem 2rem;
+    transition:transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+    position:relative;overflow:hidden;
+  }
+  .opt-main{
+    position:absolute;inset:0;z-index:1;
+    text-decoration:none;color:transparent;
+  }
+  .opt:hover{
+    transform:translateY(-4px);
+    border-color:var(--gold);
+    box-shadow:0 20px 60px -20px rgba(212,168,87,.28);
+  }
+  .opt::after{
+    content:"";position:absolute;inset:0;
+    background:radial-gradient(ellipse at top right, rgba(212,168,87,.08), transparent 50%);
+    opacity:0;transition:opacity .25s ease;pointer-events:none;
+  }
+  .opt:hover::after{opacity:1}
+  .opt .lang{
+    font-family:'Cormorant Garamond',serif;
+    font-size:3.2rem;font-weight:600;color:var(--gold);line-height:1;
+    margin-bottom:.5rem;letter-spacing:-.01em;
+  }
+  .opt .langfull{
+    font-size:.78rem;letter-spacing:.24em;text-transform:uppercase;
+    color:var(--ink-3);margin-bottom:1.4rem;
+  }
+  .opt .ttl{
+    font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:600;
+    color:var(--ink);line-height:1.2;margin-bottom:.7rem;
+  }
+  .opt .desc{color:var(--ink-2);font-size:.95rem;line-height:1.5;margin-bottom:1.4rem}
+  .opt .cta{
+    display:inline-flex;align-items:center;gap:.5rem;
+    color:var(--gold);font-size:.85rem;letter-spacing:.14em;
+    text-transform:uppercase;font-weight:600;
+  }
+  .opt .cta .arrow{
+    display:inline-block;transition:transform .2s ease;
+  }
+  .opt:hover .cta .arrow{transform:translateX(4px)}
+  .opt-actions{
+    display:flex;align-items:center;gap:1.4rem;flex-wrap:wrap;
+    margin-top:.4rem;
+  }
+  .pdf-link{
+    text-decoration:none;
+    font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--ink-3);font-weight:600;
+    border-bottom:1px solid var(--line);
+    padding-bottom:2px;transition:all .15s;
+    z-index:2;position:relative;
+  }
+  .pdf-link:hover{color:var(--gold);border-color:var(--gold)}
+  .meta-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:1rem 2.5rem;
+    margin-top:3.5rem;padding-top:2rem;border-top:1px solid var(--line);
+  }
+  .meta-grid .col .label{
+    font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--ink-3);margin-bottom:.4rem;
+  }
+  .meta-grid .col .val{color:var(--ink-2);font-size:.95rem;line-height:1.5}
+  .meta-grid .col .val b{color:var(--gold-2);font-weight:600}
+  footer{
+    padding:1.6rem 4vw 2.2rem;
+    color:var(--ink-3);font-size:.78rem;letter-spacing:.14em;
+    display:flex;justify-content:space-between;align-items:center;
+  }
+  @media (max-width: 760px){
+    .pick{grid-template-columns:1fr}
+    .meta-grid{grid-template-columns:1fr}
+    .topbar{flex-direction:column;gap:.4rem;align-items:flex-start}
+    footer{flex-direction:column;gap:.6rem;align-items:flex-start}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <a class="back-link" href="../index.html" onclick="if(document.referrer&&document.referrer.indexOf(location.origin)===0){event.preventDefault();history.back();}">← На сайт Аслана Каа</a>
+  <span><b>Center Group Company · ГК «ЦЕНТР»</b> · 2026</span>
+  <span>Confidential / Конфиденциально</span>
+</div>
+
+<main>
+  <span class="eyebrow">SVPC K-2 · ПВНК К-2 · An Evolutionary Lift Solution</span>
+  <h1>The Evolution<br/>of <em>Oil Recovery</em></h1>
+  <p class="sub">A submersible vibratory pumping complex that produces oil where existing artificial-lift methods reach their technical or economic limit. Choose your language to open the briefing.</p>
+
+  <div class="pick">
+    <div class="opt" lang="ru">
+      <a class="opt-main" href="Эволюция_ПВНК-К2.html" aria-label="Открыть русскую версию">·</a>
+      <div class="lang">Ru</div>
+      <div class="langfull">Русская версия</div>
+      <div class="ttl">Эволюция нефтедобычи — ПВНК&nbsp;К-2</div>
+      <div class="desc">Полная презентация на 16 слайдов: проблема истощённого фонда, физический принцип, состав комплекса, 7 преимуществ, 4 области применения, сравнительная матрица.</div>
+      <div class="opt-actions">
+        <span class="cta">Открыть презентацию <span class="arrow">→</span></span>
+        <a class="pdf-link" href="Эволюция_ПВНК-К2.pdf" download>↓ Скачать PDF</a>
+      </div>
+    </div>
+    <div class="opt" lang="en">
+      <a class="opt-main" href="Evolution_SVPC-K2_EN.html" aria-label="Open English version">·</a>
+      <div class="lang">En</div>
+      <div class="langfull">English version</div>
+      <div class="ttl">The Evolution of Oil Recovery — SVPC&nbsp;K-2</div>
+      <div class="desc">Full 16-slide briefing: depleted-stock problem, physical principle, system components, seven advantages, four use cases, head-to-head matrix vs. ESP, SRP, PCP, Gas Lift, HJP.</div>
+      <div class="opt-actions">
+        <span class="cta">Open the deck <span class="arrow">→</span></span>
+        <a class="pdf-link" href="Evolution_SVPC-K2_EN.pdf" download>↓ Download PDF</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="meta-grid">
+    <div class="col">
+      <div class="label">Format · Формат</div>
+      <div class="val">Standalone HTML deck<br/>16 slides · keyboard navigation</div>
+    </div>
+    <div class="col">
+      <div class="label">Audience · Аудитория</div>
+      <div class="val">Investors, partners, licensees<br/>Инвесторы, партнёры, лицензиаты</div>
+    </div>
+    <div class="col">
+      <div class="label">Owner · Владелец технологии</div>
+      <div class="val"><b>Center Group Company · ГК «ЦЕНТР»</b><br/>Aslan Kaa · Аслан Каа</div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <span>Aslan Kaa · aslankaa@yandex.ru · www.aslankaa.com</span>
+  <span>© 2026 Center Group Company</span>
+</footer>
+
+</body>
+</html>

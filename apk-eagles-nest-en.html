@@ -1,0 +1,1586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eagle's Nest — Investment Memorandum 2026 (v2)</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --forest-deep:#061610;--forest:#0C2418;--forest-mid:#133220;--forest-light:#1B4A2E;
+  --green-dark:#1A8A44;--green:#25B85A;--green-light:#4AE080;
+  --gold-dark:#9A6508;--gold:#C9860D;--wheat:#E8A820;--wheat-soft:#F4C95B;
+  --cream:#FEF8EC;--white:#FFFFFF;--text-on-dark:#B8D4C0;
+  --text-muted:#7A9A84;--text-dark:#0F2118;--text-mid:#3A5444;
+  --card-dark:rgba(255,255,255,0.06);--border:rgba(37,184,90,0.2);
+  --red:#C0392B;--blue:#2E86AB;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Montserrat','Segoe UI',Arial,sans-serif;background:#0a0a0a;padding:20px 0;}
+.slide-wrapper{display:flex;justify-content:center;margin-bottom:30px;}
+.slide{width:1280px;height:720px;position:relative;overflow:hidden;box-shadow:0 20px 80px rgba(0,0,0,0.7);flex-shrink:0;}
+.slide-counter{position:fixed;bottom:20px;right:24px;background:rgba(0,0,0,0.65);color:#fff;font-size:13px;padding:6px 14px;border-radius:20px;z-index:1000;}
+.dark{background:linear-gradient(135deg,#030E08 0%,#071A10 40%,#0C2418 100%);color:#fff;}
+.light{background:linear-gradient(135deg,var(--cream) 0%,#F0EBE0 100%);color:var(--text-dark);}
+.grid-over{position:absolute;inset:0;background-image:linear-gradient(rgba(37,184,90,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(37,184,90,0.05) 1px,transparent 1px);background-size:60px 60px;pointer-events:none;}
+.glow-tl{position:absolute;top:-100px;left:-100px;width:400px;height:400px;background:radial-gradient(circle,rgba(37,184,90,0.15) 0%,transparent 70%);pointer-events:none;}
+.glow-br{position:absolute;bottom:-150px;right:-150px;width:500px;height:500px;background:radial-gradient(circle,rgba(201,134,13,0.1) 0%,transparent 70%);pointer-events:none;}
+
+.tag{display:inline-block;background:rgba(37,184,90,0.15);border:1px solid rgba(37,184,90,0.4);color:var(--green);font-size:11px;font-weight:700;letter-spacing:3px;padding:6px 16px;border-radius:4px;margin-bottom:18px;text-transform:uppercase;}
+.tag-gold{background:rgba(201,134,13,0.15);border-color:rgba(201,134,13,0.4);color:var(--wheat);}
+.uline{width:60px;height:4px;background:var(--green);border-radius:2px;margin-bottom:24px;}
+.uline-gold{background:var(--gold);}
+.sh{display:flex;align-items:center;gap:16px;margin-bottom:8px;}
+.sh-num{font-size:11px;font-weight:700;color:var(--green);letter-spacing:3px;}
+h2.title-d{font-size:38px;font-weight:900;color:#fff;letter-spacing:-1px;margin-bottom:6px;line-height:1.05;}
+h2.title-l{font-size:38px;font-weight:900;color:var(--text-dark);letter-spacing:-1px;margin-bottom:6px;line-height:1.05;}
+.subt-d{font-size:13px;font-weight:600;color:var(--green-light);letter-spacing:2px;text-transform:uppercase;margin-bottom:18px;}
+.subt-l{font-size:13px;font-weight:600;color:var(--green-dark);letter-spacing:2px;text-transform:uppercase;margin-bottom:18px;}
+
+#s1 .inner{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;padding:50px 64px 32px;}
+#s1 .row{display:flex;flex:1;align-items:center;gap:30px;}
+#s1 .left{flex:1.2;}
+#s1 h1{font-size:96px;font-weight:900;color:#fff;line-height:0.95;letter-spacing:-2px;margin-bottom:14px;}
+#s1 h1 .acc{color:var(--wheat);}
+#s1 .subtitle{font-size:14px;font-weight:700;color:var(--green);letter-spacing:3px;text-transform:uppercase;margin-bottom:18px;}
+#s1 .desc{font-size:13px;color:var(--text-on-dark);line-height:1.7;max-width:540px;font-weight:400;}
+#s1 .metrics{display:flex;gap:11px;margin-top:28px;}
+.mc{flex:1;background:rgba(255,255,255,0.06);border:1px solid rgba(37,184,90,0.25);border-radius:8px;padding:14px 12px;backdrop-filter:blur(10px);}
+.mc .val{font-size:22px;font-weight:900;color:var(--wheat);display:block;line-height:1;}
+.mc .lbl{font-size:9px;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:1.2px;display:block;margin-top:6px;line-height:1.3;}
+#s1 .s1-right{flex:0.8;display:flex;justify-content:center;align-items:center;}
+#s1 .s1-footer{font-size:9px;font-weight:600;color:var(--text-muted);letter-spacing:2.5px;text-transform:uppercase;border-top:1px solid rgba(37,184,90,0.18);padding-top:14px;margin-top:14px;}
+
+#s2 .inner{height:100%;padding:50px 64px;display:flex;flex-direction:column;position:relative;z-index:2;}
+#s2 .big-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;flex:1;}
+.bigm{background:rgba(255,255,255,0.05);border:1px solid rgba(37,184,90,0.25);border-radius:10px;padding:24px 22px;display:flex;flex-direction:column;justify-content:center;border-left:4px solid var(--green);}
+.bigm:nth-child(even){border-left-color:var(--gold);}
+.bigm .v{font-size:40px;font-weight:900;color:var(--wheat);line-height:1;letter-spacing:-1px;}
+.bigm .l{font-size:11px;font-weight:700;color:var(--green-light);letter-spacing:1.5px;text-transform:uppercase;margin-top:8px;}
+.bigm .d{font-size:11.5px;color:var(--text-on-dark);line-height:1.5;margin-top:10px;}
+#s2 .footnote{font-size:10px;color:var(--text-muted);margin-top:20px;font-style:italic;letter-spacing:0.5px;}
+
+#s3{background:var(--cream);}
+#s3 .inner{height:100%;padding:42px 64px;display:flex;flex-direction:column;}
+#s3 .row{display:flex;gap:30px;flex:1;}
+#s3 .left{flex:1.4;display:flex;flex-direction:column;gap:12px;}
+#s3 .right{flex:1;display:grid;grid-template-rows:repeat(2,1fr);gap:14px;}
+.info-block{background:#fff;border-radius:8px;padding:16px 18px;border-left:4px solid var(--green);box-shadow:0 2px 12px rgba(0,0,0,0.06);}
+.info-block h4{font-size:11px;font-weight:800;color:var(--green-dark);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:6px;}
+.info-block p{font-size:12px;font-weight:500;color:var(--text-dark);line-height:1.6;}
+.kpi-card{background:var(--forest);border-radius:8px;padding:18px 16px;display:flex;flex-direction:column;justify-content:center;box-shadow:0 4px 16px rgba(0,0,0,0.2);}
+.kpi-card .kv{font-size:30px;font-weight:900;color:var(--wheat);line-height:1;}
+.kpi-card .kl{font-size:10px;font-weight:700;color:var(--text-on-dark);text-transform:uppercase;letter-spacing:1.2px;margin-top:8px;}
+.kpi-card .kd{font-size:11px;color:var(--text-muted);margin-top:6px;line-height:1.4;}
+
+#s4 .inner{padding:42px 64px;height:100%;display:flex;flex-direction:column;position:relative;z-index:2;}
+#s4 .row{display:flex;gap:24px;flex:1;}
+#s4 .left{flex:1.1;display:flex;flex-direction:column;gap:12px;}
+#s4 .right{flex:1;display:flex;flex-direction:column;gap:12px;}
+.china-card{background:rgba(201,134,13,0.08);border:1px solid rgba(201,134,13,0.3);border-radius:8px;padding:14px 16px;}
+.china-card h4{font-size:13px;font-weight:800;color:var(--wheat);margin-bottom:6px;}
+.china-card .cn{font-size:10px;color:var(--text-muted);font-weight:600;letter-spacing:1px;margin-bottom:6px;}
+.china-card p{font-size:11.5px;color:var(--text-on-dark);line-height:1.5;}
+.china-stat{background:linear-gradient(135deg,rgba(201,134,13,0.15) 0%,rgba(201,134,13,0.05) 100%);border:1px solid rgba(201,134,13,0.4);border-radius:8px;padding:18px 20px;text-align:center;}
+.china-stat .csv{font-size:34px;font-weight:900;color:var(--wheat);line-height:1;}
+.china-stat .csl{font-size:11px;font-weight:700;color:var(--green-light);text-transform:uppercase;letter-spacing:1.5px;margin-top:8px;}
+
+#s5{background:var(--cream);}
+#s5 .inner{padding:42px 64px;height:100%;display:flex;flex-direction:column;}
+#s5 .moat-row{display:flex;gap:18px;margin-top:14px;flex:1;}
+.moat-flow{flex:1.3;background:#fff;border-radius:10px;padding:22px;box-shadow:0 4px 16px rgba(0,0,0,0.08);display:flex;flex-direction:column;}
+.flow-step{display:flex;align-items:center;gap:14px;padding:10px 0;border-bottom:1px dashed rgba(37,184,90,0.25);}
+.flow-step:last-child{border-bottom:none;}
+.flow-num{width:32px;height:32px;border-radius:50%;background:var(--green);color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;flex-shrink:0;}
+.flow-text{font-size:12px;font-weight:600;color:var(--text-dark);line-height:1.4;}
+.flow-text .acc{color:var(--green-dark);font-weight:800;}
+.precedent{flex:1;background:#fff;border-radius:10px;padding:22px;box-shadow:0 4px 16px rgba(0,0,0,0.08);}
+.precedent h4{font-size:12px;font-weight:800;color:var(--text-dark);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:14px;}
+.prec-item{padding:8px 0;border-bottom:1px solid rgba(0,0,0,0.05);}
+.prec-item:last-child{border-bottom:none;}
+.prec-item .pn{font-size:12px;font-weight:800;color:var(--green-dark);}
+.prec-item .pd{font-size:10.5px;color:var(--text-mid);margin-top:2px;line-height:1.4;}
+
+#s6 .inner{padding:38px 60px;height:100%;display:flex;flex-direction:column;position:relative;z-index:2;}
+#s6 .map-row{display:flex;gap:22px;flex:1;margin-top:8px;}
+.map-canvas{flex:1.2;background:rgba(255,255,255,0.04);border:1px solid rgba(37,184,90,0.25);border-radius:10px;padding:20px;position:relative;display:flex;align-items:center;justify-content:center;}
+.plot-table{flex:1;display:flex;flex-direction:column;gap:8px;}
+.plot-row{background:rgba(255,255,255,0.05);border:1px solid rgba(37,184,90,0.18);border-radius:6px;padding:11px 14px;display:flex;align-items:center;gap:12px;}
+.plot-row.pilot{border:2px solid var(--wheat);background:rgba(201,134,13,0.1);}
+.plot-num{width:30px;height:30px;border-radius:6px;background:var(--green);color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:900;flex-shrink:0;}
+.plot-row.pilot .plot-num{background:var(--wheat);color:var(--forest-deep);}
+.plot-info{flex:1;}
+.plot-cad{font-size:10px;font-weight:700;color:var(--green-light);font-family:'Courier New',monospace;letter-spacing:0.5px;}
+.plot-row.pilot .plot-cad{color:var(--wheat);}
+.plot-fn{font-size:11.5px;font-weight:700;color:#fff;margin-top:2px;}
+.plot-area{font-size:10px;color:var(--text-muted);margin-top:1px;}
+
+#s7 .inner{padding:42px 60px;height:100%;display:flex;flex-direction:column;position:relative;z-index:2;}
+#s7 .energy-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;flex:1;margin-top:6px;}
+.eblock{background:rgba(255,255,255,0.05);border:1px solid rgba(37,184,90,0.25);border-radius:10px;padding:22px;}
+.eblock h4{font-size:13px;font-weight:800;color:#fff;margin-bottom:14px;text-transform:uppercase;letter-spacing:1.5px;}
+.eblock h4 .ic{display:inline-block;width:28px;height:28px;border-radius:50%;background:var(--green);color:#fff;text-align:center;line-height:28px;margin-right:10px;font-size:14px;}
+.erow{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px dashed rgba(37,184,90,0.2);}
+.erow:last-child{border-bottom:none;}
+.erow .lab{font-size:12px;color:var(--text-on-dark);font-weight:500;}
+.erow .v{font-size:14px;font-weight:800;color:var(--wheat);}
+.erow.peak .v{color:var(--green-light);}
+.flag-warn{margin-top:14px;background:rgba(201,134,13,0.1);border-left:4px solid var(--wheat);padding:10px 14px;border-radius:4px;font-size:11px;color:var(--text-on-dark);line-height:1.5;}
+.flag-warn b{color:var(--wheat);}
+
+#s8{background:var(--cream);}
+#s8 .inner{padding:42px 60px;height:100%;display:flex;flex-direction:column;}
+.co2-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;flex:1;margin-top:8px;}
+.co2-card{background:#fff;border-radius:10px;padding:22px;box-shadow:0 4px 16px rgba(0,0,0,0.08);border-top:5px solid var(--green);}
+.co2-card.var-b{border-top-color:var(--gold);}
+.co2-card .var-label{font-size:11px;font-weight:800;color:var(--green-dark);letter-spacing:2px;text-transform:uppercase;}
+.co2-card.var-b .var-label{color:var(--gold-dark);}
+.co2-card h3{font-size:22px;font-weight:900;color:var(--text-dark);margin:6px 0 14px;}
+.co2-spec{display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-bottom:1px dashed rgba(0,0,0,0.08);}
+.co2-spec .l{font-size:11.5px;color:var(--text-mid);font-weight:600;}
+.co2-spec .v{font-size:13px;font-weight:800;color:var(--text-dark);}
+.co2-spec .v.gd{color:var(--green-dark);}
+.co2-spec .v.bd{color:#C0392B;}
+.co2-rec{margin-top:12px;background:rgba(37,184,90,0.08);border:1px solid rgba(37,184,90,0.3);border-radius:6px;padding:10px 14px;font-size:11px;color:var(--text-dark);line-height:1.5;}
+.co2-rec b{color:var(--green-dark);}
+
+#s9 .inner{padding:42px 60px;height:100%;display:flex;flex-direction:column;position:relative;z-index:2;}
+.prod-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;flex:1;margin-top:6px;}
+.prod-card{background:rgba(255,255,255,0.05);border:1px solid rgba(37,184,90,0.25);border-radius:10px;padding:22px;border-top:5px solid var(--green);display:flex;flex-direction:column;}
+.prod-card:nth-child(2){border-top-color:var(--gold);}
+.prod-card:nth-child(3){border-top-color:var(--green-light);}
+.prod-share{font-size:38px;font-weight:900;color:var(--wheat);line-height:1;}
+.prod-name{font-size:17px;font-weight:800;color:#fff;margin-top:8px;}
+.prod-lat{font-size:10px;color:var(--text-muted);font-style:italic;margin-top:2px;}
+.prod-spec{margin-top:14px;}
+.prod-spec-row{display:flex;justify-content:space-between;font-size:11px;padding:6px 0;border-bottom:1px dashed rgba(37,184,90,0.15);}
+.prod-spec-row .l{color:var(--text-on-dark);}
+.prod-spec-row .v{color:var(--green-light);font-weight:800;}
+.prod-bottom{margin-top:auto;padding-top:14px;border-top:1px solid rgba(37,184,90,0.2);}
+.prod-rev{font-size:18px;font-weight:900;color:var(--wheat);}
+.prod-rev-l{font-size:9px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1.2px;margin-top:2px;}
+#s9 .total-bar{margin-top:14px;background:rgba(201,134,13,0.12);border:1px solid rgba(201,134,13,0.4);border-radius:8px;padding:14px 22px;display:flex;justify-content:space-between;align-items:center;}
+.total-bar .tl{font-size:11px;font-weight:700;color:var(--wheat);letter-spacing:1.5px;text-transform:uppercase;}
+.total-bar .tv{font-size:24px;font-weight:900;color:var(--wheat);}
+
+#s10{background:var(--cream);}
+#s10 .inner{padding:42px 60px;height:100%;display:flex;flex-direction:column;}
+.mod-row{display:flex;gap:18px;margin-top:8px;flex:1;}
+.mod-vis{flex:1.2;background:#fff;border-radius:10px;padding:24px;box-shadow:0 4px 16px rgba(0,0,0,0.08);display:flex;flex-direction:column;justify-content:center;align-items:center;}
+.mod-list{flex:1;display:flex;flex-direction:column;gap:10px;}
+.mod-item{background:#fff;border-radius:8px;padding:12px 16px;box-shadow:0 2px 8px rgba(0,0,0,0.05);border-left:4px solid var(--green);}
+.mod-item h5{font-size:11px;font-weight:800;color:var(--green-dark);text-transform:uppercase;letter-spacing:1.2px;margin-bottom:4px;}
+.mod-item p{font-size:11.5px;color:var(--text-dark);line-height:1.5;}
+
+#s11 .inner{padding:38px 60px;height:100%;display:flex;flex-direction:column;position:relative;z-index:2;}
+.site-row{display:flex;gap:20px;margin-top:8px;flex:1;}
+.site-plan{flex:1.3;background:rgba(255,255,255,0.04);border:1px solid rgba(37,184,90,0.25);border-radius:10px;padding:20px;position:relative;display:flex;align-items:center;justify-content:center;}
+.site-meta{flex:1;display:flex;flex-direction:column;gap:10px;}
+.site-meta-item{background:rgba(255,255,255,0.05);border:1px solid rgba(37,184,90,0.18);border-left:3px solid var(--green);border-radius:6px;padding:11px 14px;}
+.site-meta-item:nth-child(even){border-left-color:var(--gold);}
+.site-meta-item h6{font-size:10px;font-weight:800;color:var(--green-light);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:4px;}
+.site-meta-item p{font-size:12px;color:#fff;font-weight:600;line-height:1.4;}
+.site-meta-item p span{color:var(--text-muted);font-weight:500;font-size:11px;}
+
+#s12{background:var(--cream);}
+#s12 .inner{padding:42px 60px;height:100%;display:flex;flex-direction:column;}
+.scope-grid{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:auto auto;gap:14px;flex:1;margin-top:8px;}
+.scope-card{background:#fff;border-radius:10px;padding:18px 20px;box-shadow:0 2px 12px rgba(0,0,0,0.06);border-top:4px solid var(--green);}
+.scope-card.gold{border-top-color:var(--gold);}
+.scope-card .ic{font-size:22px;margin-bottom:8px;}
+.scope-card h4{font-size:13px;font-weight:800;color:var(--text-dark);margin-bottom:6px;}
+.scope-card p{font-size:11px;color:var(--text-mid);line-height:1.5;}
+.scope-card .v{font-size:18px;font-weight:900;color:var(--green-dark);margin-top:8px;}
+.scope-card.gold .v{color:var(--gold-dark);}
+
+#s13 .inner{padding:38px 60px;height:100%;display:flex;flex-direction:column;position:relative;z-index:2;}
+.tech-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;flex:1;margin-top:8px;}
+.tech-item{background:rgba(255,255,255,0.05);border:1px solid rgba(37,184,90,0.2);border-radius:8px;padding:14px 18px;display:flex;gap:14px;align-items:flex-start;}
+.tech-icon{width:36px;height:36px;border-radius:50%;background:rgba(37,184,90,0.2);color:var(--green-light);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;flex-shrink:0;}
+.tech-content h5{font-size:13px;font-weight:800;color:#fff;margin-bottom:3px;}
+.tech-content .vendor{font-size:10px;color:var(--wheat);font-weight:700;letter-spacing:0.5px;}
+.tech-content p{font-size:10.5px;color:var(--text-on-dark);line-height:1.5;margin-top:4px;}
+
+#s14{background:var(--cream);}
+#s14 .inner{padding:42px 60px;height:100%;display:flex;flex-direction:column;}
+.tb-row{display:flex;gap:20px;flex:1;margin-top:8px;}
+.timeline{flex:1.1;background:#fff;border-radius:10px;padding:22px;box-shadow:0 4px 16px rgba(0,0,0,0.08);}
+.timeline h4{font-size:12px;font-weight:800;color:var(--text-dark);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:14px;}
+.tl-phase{display:flex;align-items:center;gap:14px;padding:10px 0;border-bottom:1px dashed rgba(0,0,0,0.08);}
+.tl-phase:last-child{border-bottom:none;}
+.tl-month{font-size:10px;font-weight:800;color:var(--green-dark);background:rgba(37,184,90,0.12);padding:4px 8px;border-radius:4px;flex-shrink:0;width:80px;text-align:center;}
+.tl-content h6{font-size:12px;font-weight:800;color:var(--text-dark);}
+.tl-content p{font-size:10.5px;color:var(--text-mid);line-height:1.4;}
+.budget{flex:1;background:var(--forest);border-radius:10px;padding:22px;color:#fff;box-shadow:0 4px 16px rgba(0,0,0,0.2);}
+.budget h4{font-size:12px;font-weight:800;color:var(--green-light);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:14px;}
+.budget-row{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px dashed rgba(255,255,255,0.1);font-size:11.5px;}
+.budget-row .l{color:var(--text-on-dark);}
+.budget-row .v{color:var(--wheat);font-weight:800;}
+.budget-total{margin-top:12px;background:rgba(201,134,13,0.18);border:1px solid rgba(201,134,13,0.4);border-radius:6px;padding:12px 14px;display:flex;justify-content:space-between;}
+.budget-total .l{font-size:11px;font-weight:800;color:var(--wheat);letter-spacing:1.5px;text-transform:uppercase;}
+.budget-total .v{font-size:22px;font-weight:900;color:var(--wheat);}
+
+#s15 .inner{padding:42px 60px;height:100%;display:flex;flex-direction:column;position:relative;z-index:2;}
+.roadmap-table{margin-top:14px;flex:1;background:rgba(255,255,255,0.04);border:1px solid rgba(37,184,90,0.2);border-radius:10px;padding:18px 20px;display:flex;flex-direction:column;}
+.rm-header,.rm-row{display:grid;grid-template-columns:1.2fr 0.6fr 0.8fr 1fr 1.5fr 1.2fr;gap:12px;padding:10px 0;align-items:center;}
+.rm-header{border-bottom:2px solid var(--green);padding-bottom:12px;margin-bottom:6px;}
+.rm-header div{font-size:10px;font-weight:800;color:var(--green-light);letter-spacing:1.5px;text-transform:uppercase;}
+.rm-row{border-bottom:1px dashed rgba(37,184,90,0.15);}
+.rm-row:last-child{border-bottom:none;}
+.rm-row.pilot{background:rgba(201,134,13,0.08);border-radius:6px;padding:12px 10px;border-bottom:none;margin:4px 0;}
+.rm-cell{font-size:11.5px;color:#fff;font-weight:600;}
+.rm-cell.cad{font-family:'Courier New',monospace;color:var(--green-light);font-size:10px;}
+.rm-cell.year{color:var(--wheat);font-weight:800;}
+.rm-cell.cap{color:var(--wheat);font-weight:800;font-size:13px;}
+.rm-cell.type-a{color:var(--green-light);}
+.rm-cell.type-c{color:var(--wheat-soft);}
+#s15 .pgm-totals{display:flex;gap:14px;margin-top:14px;}
+.pgm-tot{flex:1;background:rgba(201,134,13,0.1);border:1px solid rgba(201,134,13,0.3);border-radius:8px;padding:12px 16px;}
+.pgm-tot .l{font-size:10px;font-weight:700;color:var(--wheat);letter-spacing:1.2px;text-transform:uppercase;}
+.pgm-tot .v{font-size:20px;font-weight:900;color:var(--wheat);margin-top:4px;}
+
+#s16{background:var(--cream);}
+#s16 .inner{padding:42px 60px;height:100%;display:flex;flex-direction:column;}
+.export-row{display:flex;gap:20px;flex:1;margin-top:8px;}
+.route-vis{flex:1;background:var(--forest);border-radius:10px;padding:24px;color:#fff;display:flex;flex-direction:column;justify-content:center;}
+.route-step{display:flex;align-items:center;gap:14px;padding:14px 0;}
+.route-arrow{font-size:20px;color:var(--green-light);text-align:center;margin:-2px 0;}
+.route-pin{width:48px;height:48px;border-radius:8px;background:var(--green);color:#fff;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:900;flex-shrink:0;}
+.route-info h6{font-size:13px;font-weight:800;color:#fff;}
+.route-info p{font-size:11px;color:var(--text-on-dark);margin-top:2px;line-height:1.4;}
+.export-detail{flex:1.1;display:flex;flex-direction:column;gap:12px;}
+.exp-card{background:#fff;border-radius:8px;padding:14px 18px;box-shadow:0 2px 8px rgba(0,0,0,0.06);border-left:4px solid var(--gold);}
+.exp-card h5{font-size:11px;font-weight:800;color:var(--gold-dark);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:5px;}
+.exp-card p{font-size:11.5px;color:var(--text-dark);line-height:1.55;}
+
+#s17 .inner{padding:38px 60px;height:100%;display:flex;flex-direction:column;position:relative;z-index:2;}
+.fm-table{margin-top:8px;flex:1;background:rgba(255,255,255,0.04);border:1px solid rgba(37,184,90,0.2);border-radius:10px;padding:18px 22px;display:flex;flex-direction:column;}
+.fm-header,.fm-row{display:grid;grid-template-columns:0.8fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1.1fr;gap:8px;padding:8px 0;align-items:center;}
+.fm-header{border-bottom:2px solid var(--green);padding-bottom:10px;margin-bottom:4px;}
+.fm-header div{font-size:10px;font-weight:800;color:var(--green-light);letter-spacing:1px;text-transform:uppercase;text-align:center;}
+.fm-header div:first-child{text-align:left;color:var(--wheat);}
+.fm-row{border-bottom:1px dashed rgba(37,184,90,0.12);font-size:11px;color:var(--text-on-dark);text-align:center;font-weight:500;}
+.fm-row:last-child{border-bottom:none;}
+.fm-row .row-label{text-align:left;color:#fff;font-weight:800;font-size:11px;}
+.fm-row .acc{color:var(--wheat);font-weight:800;}
+.fm-row.highlight{background:rgba(201,134,13,0.08);border-radius:4px;}
+#s17 .fm-foot{margin-top:12px;font-size:10px;color:var(--text-muted);font-style:italic;line-height:1.5;}
+
+#s18{background:var(--cream);}
+#s18 .inner{padding:42px 60px;height:100%;display:flex;flex-direction:column;}
+.ret-top{display:flex;gap:14px;margin-top:8px;}
+.ret-card{flex:1;background:var(--forest);border-radius:10px;padding:20px 22px;color:#fff;box-shadow:0 4px 16px rgba(0,0,0,0.2);}
+.ret-card .rl{font-size:11px;font-weight:700;color:var(--green-light);letter-spacing:1.5px;text-transform:uppercase;}
+.ret-card .rv{font-size:36px;font-weight:900;color:var(--wheat);margin-top:6px;line-height:1;}
+.ret-card .rd{font-size:11px;color:var(--text-on-dark);margin-top:8px;line-height:1.4;}
+.sens-row{margin-top:18px;display:flex;gap:18px;flex:1;}
+.sens-card{flex:1;background:#fff;border-radius:10px;padding:18px 20px;box-shadow:0 2px 12px rgba(0,0,0,0.06);}
+.sens-card h5{font-size:11px;font-weight:800;color:var(--text-dark);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:12px;}
+.sens-bar{display:flex;align-items:center;gap:12px;padding:6px 0;}
+.sens-bar .lab{font-size:11px;color:var(--text-mid);width:140px;}
+.sens-bar .vis{flex:1;height:18px;background:rgba(0,0,0,0.05);border-radius:3px;position:relative;overflow:hidden;}
+.sens-bar .vis div{height:100%;border-radius:3px;}
+.sens-bar .v{font-size:11px;font-weight:800;color:var(--text-dark);width:55px;text-align:right;}
+
+#s19 .inner{padding:42px 60px;height:100%;display:flex;flex-direction:column;position:relative;z-index:2;}
+.team-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;flex:1;margin-top:8px;}
+.tm-card{background:rgba(255,255,255,0.05);border:1px solid rgba(37,184,90,0.25);border-radius:10px;padding:18px 20px;display:flex;gap:14px;align-items:flex-start;}
+.tm-card.anchor{border:2px solid var(--wheat);background:rgba(201,134,13,0.08);}
+.tm-card.open{border-style:dashed;background:rgba(255,255,255,0.02);}
+.tm-avatar{width:54px;height:54px;border-radius:8px;background:var(--green);color:#fff;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:900;flex-shrink:0;}
+.tm-card.anchor .tm-avatar{background:var(--wheat);color:var(--forest-deep);}
+.tm-card.open .tm-avatar{background:rgba(255,255,255,0.05);border:1px dashed var(--text-muted);color:var(--text-muted);font-size:18px;}
+.tm-info h5{font-size:14px;font-weight:800;color:#fff;}
+.tm-info .role{font-size:10px;color:var(--green-light);font-weight:700;letter-spacing:1.2px;text-transform:uppercase;margin-top:2px;}
+.tm-card.anchor .tm-info .role{color:var(--wheat);}
+.tm-info p{font-size:11px;color:var(--text-on-dark);line-height:1.5;margin-top:6px;}
+
+#s20{background:var(--cream);}
+#s20 .inner{padding:42px 60px;height:100%;display:flex;flex-direction:column;}
+.me-row{display:flex;gap:24px;flex:1;margin-top:10px;}
+.me-left{flex:1;}
+.me-portrait{background:linear-gradient(135deg,var(--forest) 0%,var(--forest-mid) 100%);border-radius:10px;padding:30px 24px;color:#fff;height:100%;display:flex;flex-direction:column;justify-content:center;text-align:center;box-shadow:0 4px 20px rgba(0,0,0,0.15);}
+.me-portrait .me-emblem{width:80px;height:80px;border-radius:50%;background:var(--wheat);color:var(--forest-deep);margin:0 auto 18px;display:flex;align-items:center;justify-content:center;font-size:34px;font-weight:900;}
+.me-portrait h4{font-size:18px;font-weight:900;color:#fff;}
+.me-portrait .me-cn{font-size:14px;color:var(--wheat);margin-top:4px;font-weight:600;}
+.me-portrait .me-co{font-size:11px;color:var(--text-on-dark);margin-top:14px;line-height:1.5;}
+.me-portrait .me-loc{margin-top:14px;font-size:9.5px;color:var(--green-light);letter-spacing:2px;text-transform:uppercase;}
+.me-right{flex:1.2;display:flex;flex-direction:column;gap:12px;}
+.me-bullet{background:#fff;border-radius:8px;padding:14px 18px;box-shadow:0 2px 10px rgba(0,0,0,0.05);border-left:4px solid var(--gold);}
+.me-bullet h6{font-size:11px;font-weight:800;color:var(--gold-dark);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:5px;}
+.me-bullet p{font-size:11.5px;color:var(--text-dark);line-height:1.5;}
+
+#s21 .inner{padding:42px 60px;height:100%;display:flex;flex-direction:column;position:relative;z-index:2;}
+.risk-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;flex:1;margin-top:8px;}
+.risk-row{background:rgba(255,255,255,0.05);border:1px solid rgba(37,184,90,0.25);border-radius:8px;padding:14px 18px;display:flex;gap:14px;}
+.risk-icon{width:34px;height:34px;border-radius:50%;background:rgba(192,57,43,0.15);color:#E57373;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:900;flex-shrink:0;}
+.risk-content{flex:1;}
+.risk-content .rh{font-size:12px;font-weight:800;color:#fff;}
+.risk-content .rb{font-size:10.5px;color:var(--text-on-dark);margin-top:4px;line-height:1.5;}
+.risk-content .rmit{font-size:10.5px;color:var(--green-light);margin-top:6px;line-height:1.5;font-weight:600;}
+.risk-content .rmit b{color:var(--wheat);}
+
+#s22{background:var(--cream);}
+#s22 .inner{padding:42px 60px;height:100%;display:flex;flex-direction:column;}
+.tranche-row{display:flex;gap:14px;flex:1;margin-top:14px;}
+.tranche{flex:1;background:#fff;border-radius:10px;padding:22px 20px;box-shadow:0 4px 16px rgba(0,0,0,0.08);display:flex;flex-direction:column;border-top:6px solid var(--green);}
+.tranche.a{border-top-color:var(--green-light);}
+.tranche.b{border-top-color:var(--gold);}
+.tranche .tr-tag{font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--green-dark);}
+.tranche.a .tr-tag{color:var(--green-dark);}
+.tranche.b .tr-tag{color:var(--gold-dark);}
+.tranche .tr-amt{font-size:42px;font-weight:900;color:var(--text-dark);line-height:1;margin:8px 0 4px;}
+.tranche .tr-yr{font-size:11px;color:var(--text-mid);font-weight:700;letter-spacing:1.5px;}
+.tranche .tr-uof{margin-top:14px;font-size:11px;color:var(--text-dark);line-height:1.55;}
+.tranche .tr-trig{margin-top:auto;padding-top:14px;border-top:1px dashed rgba(0,0,0,0.1);font-size:10.5px;color:var(--green-dark);font-weight:700;line-height:1.5;}
+.tranche.b .tr-trig{color:var(--gold-dark);}
+#s22 .total-program{margin-top:14px;background:var(--forest);color:#fff;border-radius:8px;padding:14px 24px;display:flex;justify-content:space-between;align-items:center;}
+.total-program .tpl{font-size:12px;font-weight:700;color:var(--green-light);letter-spacing:2px;text-transform:uppercase;}
+.total-program .tpv{font-size:28px;font-weight:900;color:var(--wheat);}
+
+#s23 .inner{padding:42px 60px;height:100%;display:flex;flex-direction:column;position:relative;z-index:2;}
+.ask-hero{background:linear-gradient(135deg,rgba(201,134,13,0.18) 0%,rgba(37,184,90,0.1) 100%);border:2px solid var(--wheat);border-radius:14px;padding:30px 36px;margin-top:8px;text-align:center;}
+.ask-hero .al{font-size:11px;font-weight:800;color:var(--green-light);letter-spacing:3px;text-transform:uppercase;}
+.ask-hero .av{font-size:78px;font-weight:900;color:var(--wheat);line-height:1;margin:6px 0;letter-spacing:-2px;}
+.ask-hero .ad{font-size:14px;color:#fff;font-weight:700;letter-spacing:1.5px;}
+.ask-detail{display:grid;grid-template-columns:1fr 1fr;gap:14px;flex:1;margin-top:18px;}
+.ask-card{background:rgba(255,255,255,0.05);border:1px solid rgba(37,184,90,0.25);border-radius:8px;padding:18px;}
+.ask-card h5{font-size:11px;font-weight:800;color:var(--green-light);letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;}
+.ask-li{font-size:11.5px;color:var(--text-on-dark);line-height:1.6;margin-bottom:6px;display:flex;align-items:flex-start;gap:8px;}
+.ask-li::before{content:"●";color:var(--wheat);flex-shrink:0;}
+
+#s24 .inner{padding:42px 60px;height:100%;display:flex;flex-direction:column;}
+.contact-row{display:flex;gap:30px;flex:1;align-items:center;margin-top:20px;}
+.contact-left{flex:1.1;}
+.contact-left h2{font-size:54px;font-weight:900;color:#fff;line-height:1;letter-spacing:-2px;margin-bottom:10px;}
+.contact-left .sub{font-size:14px;color:var(--green-light);font-weight:600;letter-spacing:2px;text-transform:uppercase;margin-bottom:24px;}
+.contact-left .desc{font-size:13px;color:var(--text-on-dark);line-height:1.7;}
+.contact-right{flex:1;display:flex;flex-direction:column;gap:12px;}
+.contact-card{background:rgba(255,255,255,0.05);border:1px solid rgba(37,184,90,0.3);border-radius:10px;padding:18px 22px;}
+.contact-card h6{font-size:10px;font-weight:800;color:var(--green-light);letter-spacing:2px;text-transform:uppercase;}
+.contact-card .name{font-size:18px;font-weight:800;color:#fff;margin-top:6px;}
+.contact-card .role{font-size:11px;color:var(--wheat);font-weight:600;margin-top:2px;}
+.next-steps{margin-top:14px;background:rgba(201,134,13,0.1);border:1px solid rgba(201,134,13,0.3);border-radius:8px;padding:16px 20px;}
+.ns-flow{display:flex;align-items:center;gap:12px;justify-content:space-between;font-size:10px;font-weight:700;color:var(--wheat);text-transform:uppercase;letter-spacing:1.5px;}
+.ns-flow span:not(.arrow){padding:6px 12px;background:rgba(201,134,13,0.2);border-radius:4px;}
+.arrow{color:var(--green-light);font-size:14px;}
+
+/* Back to main site button */
+.back-to-site{position:fixed;top:20px;left:24px;background:rgba(0,0,0,0.7);color:#fff;font-size:12px;font-weight:600;letter-spacing:1.2px;padding:9px 18px;border-radius:24px;z-index:1001;text-decoration:none;border:1px solid rgba(37,184,90,0.45);transition:all .2s;text-transform:uppercase;}
+.back-to-site:hover{background:rgba(37,184,90,0.2);border-color:var(--green);color:var(--wheat);}
+</style>
+</head>
+<body>
+
+<a class="back-to-site" href="index.html" onclick="if(document.referrer&&document.referrer.indexOf(location.origin)===0){event.preventDefault();history.back();}">← Back to Aslan Kaa's site</a>
+
+<!-- ════════════ SLIDE 1 — COVER ════════════ -->
+<div class="slide-wrapper"><div class="slide dark" id="s1">
+  <div class="grid-over"></div><div class="glow-tl"></div><div class="glow-br"></div>
+  <div class="inner">
+    <div class="row">
+      <div class="left">
+        <div class="tag">Investment Memorandum · 2026–2034</div>
+        <h1 style="font-size:78px;line-height:1;">EAGLE'S<br><span class="acc">NEST</span></h1>
+        <div class="subtitle">World-class agro-industrial cluster · Russia</div>
+        <p class="desc">Free heat &amp; CO₂ from EcoCity waste-to-energy plant → 30 ha of high-tech Venlo Gen 4-5 greenhouses → Russian retail + China export via the Oryol–Manzhouli rail corridor. 105.59 ha across 5 cadastral plots under long-term lease.</p>
+        <div class="metrics">
+          <div class="mc"><span class="val">$253M</span><span class="lbl">Program<br>2026–2034</span></div>
+          <div class="mc"><span class="val">36%</span><span class="lbl">EBITDA margin<br>Year 8</span></div>
+          <div class="mc"><span class="val">22-24%</span><span class="lbl">Project IRR<br>unlevered</span></div>
+          <div class="mc"><span class="val">$66M</span><span class="lbl">Seed Round<br>2026</span></div>
+        </div>
+        <div class="s1-footer">CONFIDENTIAL · ORYOL OBLAST · RUSSIA · 2026</div>
+      </div>
+    </div>
+  </div>
+</div></div>
+
+<!-- ════════════ SLIDE 2 — EXEC SUMMARY ════════════ -->
+<div class="slide-wrapper"><div class="slide dark" id="s2">
+  <div class="grid-over"></div><div class="glow-br"></div>
+  <div class="inner">
+    <div class="sh"><span class="sh-num">01 · EXECUTIVE SUMMARY</span></div>
+    <h2 class="title-d">Six numbers an LP needs to remember</h2>
+    <div class="uline"></div>
+    <div class="big-grid">
+      <div class="bigm">
+        <div class="v">30 ha</div>
+        <div class="l">Net high-tech greenhouse</div>
+        <div class="d">Six 5-ha modules · Venlo Gen 4-5 · LED+HPS hybrid · Priva automation · NL/CN equipment stack.</div>
+      </div>
+      <div class="bigm">
+        <div class="v">$253M</div>
+        <div class="l">Total program CAPEX</div>
+        <div class="d">8 years 2026–2034. Phased Seed/Series A/Series B with milestone gating between rounds.</div>
+      </div>
+      <div class="bigm">
+        <div class="v">$66M</div>
+        <div class="l">Seed round 2026</div>
+        <div class="d">Plot 1 pilot 5 ha + cluster HQ + CO₂ amine plant + 15 MW substation + 6 mo pre-operating capital.</div>
+      </div>
+      <div class="bigm">
+        <div class="v">36%</div>
+        <div class="l">EBITDA margin Year 8</div>
+        <div class="d">$105M revenue, $38M EBITDA in 2034. Project IRR 22–24% unlevered, equity multiple 2.8× over 8 years.</div>
+      </div>
+      <div class="bigm">
+        <div class="v">FREE</div>
+        <div class="l">Heat &amp; CO₂ from MSW plant</div>
+        <div class="d">EcoCity municipal waste incineration plant: 200,000 t/y feedstock, ~80 MWth, ~25-30 kt food-grade CO₂/y after amine capture.</div>
+      </div>
+      <div class="bigm">
+        <div class="v">14 days</div>
+        <div class="l">Rail to Shanghai</div>
+        <div class="d">Plot 5 has direct rail siding (Luzhki-Orlovskie). Container terminal + GACC zone for premium processed exports to China.</div>
+      </div>
+    </div>
+    <div class="footnote">All USD figures at 95 RUB/USD; EUR at 1.08 USD/EUR. Benchmarks: Wageningen UR KWIN-Glastuinbouw 2024, Dalsem/KUBO/Bom Group EU 2025, AVR Rotterdam.</div>
+  </div>
+</div></div>
+
+<!-- ════════════ SLIDE 3 — WHY NOW ════════════ -->
+<div class="slide-wrapper"><div class="slide light" id="s3">
+  <div class="inner">
+    <div class="sh"><span class="sh-num" style="color:var(--green-dark)">02 · WHY NOW</span></div>
+    <h2 class="title-l">Russia structural deficit + China premium demand</h2>
+    <div class="uline"></div>
+    <div class="row">
+      <div class="left">
+        <div class="info-block">
+          <h4>Russian closed-ground produce deficit</h4>
+          <p>Self-sufficiency in greenhouse vegetables: only 65% in 2024 vs national doctrine target of 90%. Cucumber covered, tomato chronically short. Federal subsidies (Decree 1528) plus Industry Cluster status give 30-40% effective CAPEX-cost reduction.</p>
+        </div>
+        <div class="info-block">
+          <h4>Energy moat unique to this site</h4>
+          <p>EcoCity MSW incinerator next to Plot 1 produces excess heat, electricity and CO₂ — three inputs that account for 40-55% of greenhouse OPEX. We turn these waste streams into asset value. Cannot be replicated without a local MSW plant.</p>
+        </div>
+        <div class="info-block">
+          <h4>Russia → China retail premium</h4>
+          <p>Chinese consumers pay 30-50% premium for "Russian natural / non-GMO" food, especially in baby-food and premium households. Hema, Sam's Club, JD.com, Tmall Fresh actively scout for verified-origin imports.</p>
+        </div>
+      </div>
+      <div class="right">
+        <div class="kpi-card">
+          <div class="kv">₽250bn</div>
+          <div class="kl">Russia greenhouse market 2024</div>
+          <div class="kd">2024 size: ₽250bn. 2030 forecast: ₽400+bn. Leaders (ECO-Culture, Magnit greenhouses) are expanding — room for a new player with an energy moat.</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kv">+30-50%</div>
+          <div class="kl">China premium for "Russian natural"</div>
+          <div class="kd">Chinese premium retail (Hema, Yonghui, JD Fresh) accepts and requests Russia origin labels for fresh produce, sauces and IQF.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div></div>
+
+<!-- ════════════ SLIDE 4 — WHY CHINA ════════════ -->
+<div class="slide-wrapper"><div class="slide dark" id="s4">
+  <div class="grid-over"></div><div class="glow-tl"></div>
+  <div class="inner">
+    <div class="sh"><span class="sh-num">03 · WHY CHINA</span></div>
+    <h2 class="title-d">Belt &amp; Road · GACC · the Oryol–Manzhouli rail corridor</h2>
+    <div class="uline"></div>
+    <div class="row">
+      <div class="left">
+        <div class="china-card">
+          <h4>14th Five-Year Plan · Premium food imports</h4>
+          <div class="cn">十四五规划 · 高品质食品进口</div>
+          <p>The PRC 14th Five-Year Plan (2021-2025) and its extension target rising imports of high-quality food. Belt &amp; Road builds the Oryol–Manzhouli infrastructure corridor.</p>
+        </div>
+        <div class="china-card">
+          <h4>GACC export registration</h4>
+          <div class="cn">海关总署 · 出口注册</div>
+          <p>The General Administration of Customs of China (GACC) requires plant registration for food imports. Plot 5 is being prepared as a GACC-zone with bonded customs. Mingkuan Peng (Most Energy, HK) leads the registration process.</p>
+        </div>
+        <div class="china-card">
+          <h4>Most Energy (HK) · China gateway</h4>
+          <div class="cn">中国闸口 · 香港枢纽</div>
+          <p>Mingkuan Peng (Owner, Most Energy Investment Limited) — exclusive partner for Chinese institutional LPs and premium retailers. Hong Kong base = neutral jurisdiction for cross-border deals.</p>
+        </div>
+      </div>
+      <div class="right">
+        <div class="china-card">
+          <h4>Geographical advantage of Oryol</h4>
+          <div class="cn">奥廖尔 · 地理优势</div>
+          <p>Oryol sits at the junction of the M2 «Krym» highway and the R-119, 360 km from Moscow — a natural hub for Russia–China overland trade.</p>
+        </div>
+        <div class="china-card">
+          <h4>Rail corridor Oryol–Manzhouli</h4>
+          <div class="cn">铁路通道 · 奥廖尔–满洲里</div>
+          <p>Luzhki-Orlovskie station adjoins our Plot 5. Route Oryol → Manzhouli → Shanghai/Guangzhou: ~14 days, 2-3× cheaper than air freight. Container terminal in program phase 3.</p>
+        </div>
+        <div class="china-stat">
+          <div class="csv">14 days</div>
+          <div class="csl">Rail Oryol → Shanghai</div>
+        </div>
+        <div class="china-stat">
+          <div class="csv">$20-25M</div>
+          <div class="csl">Year 8 export revenue</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div></div>
+
+<!-- ════════════ SLIDE 5 — THE MOAT ════════════ -->
+<div class="slide-wrapper"><div class="slide light" id="s5">
+  <div class="inner">
+    <div class="sh"><span class="sh-num" style="color:var(--green-dark)">04 · THE MOAT</span></div>
+    <h2 class="title-l">EcoCity MSW plant → free heat + free CO₂ → −40-60% OPEX</h2>
+    <div class="uline"></div>
+    <div class="moat-row">
+      <div class="moat-flow">
+        <h4 style="font-size:12px;font-weight:800;color:var(--text-dark);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:14px;">Energy &amp; CO₂ flow</h4>
+        <div class="flow-step">
+          <div class="flow-num">1</div>
+          <div class="flow-text">EcoCity MSW plant burns <span class="acc">200,000 t/y</span> of municipal waste 50-200 m from Plot 1.</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-num">2</div>
+          <div class="flow-text">Steam → CHP turbine: ~70 MW electrical + ~80 MW thermal. Pre-DD assumption — to be confirmed against EcoCity passport.</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-num">3</div>
+          <div class="flow-text">Flue-gas → <span class="acc">amine CO₂ capture (Pentair Haffmans-class)</span> → 25-30 kt/y food-grade CO₂.</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-num">4</div>
+          <div class="flow-text">Heat to greenhouse heat substation (1500 m³ buffer). CO₂ injected at 800-1200 ppm into greenhouse atmosphere → <span class="acc">+20-30% yield</span>.</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-num">5</div>
+          <div class="flow-text">Power to LED toplighting (18 GWh/y), pumps, climate, processing — at internal CHP tariff, much below retail.</div>
+        </div>
+        <div class="flow-text" style="margin-top:14px;font-size:13px;color:var(--text-dark);font-weight:700;text-align:center;">Result: <span class="acc">−40-60% energy footprint</span> vs traditional gas-fired greenhouses</div>
+      </div>
+      <div class="precedent">
+        <h4>Precedents — proven blueprint</h4>
+        <div class="prec-item">
+          <div class="pn">AVR Rotterdam · Netherlands</div>
+          <div class="pd">60,000 t/y CO₂ from MSW incineration delivered to Westland greenhouses via Pentair amine plant.</div>
+        </div>
+        <div class="prec-item">
+          <div class="pn">Twence Hengelo · Netherlands</div>
+          <div class="pd">MSW thermal energy + CO₂ supplied to local greenhouse cluster.</div>
+        </div>
+        <div class="prec-item">
+          <div class="pn">Mucci Farms · Canada</div>
+          <div class="pd">Dalsem-built 75 ha cluster with co-located CHP for North American premium retail.</div>
+        </div>
+        <div class="prec-item">
+          <div class="pn">Wight Salads · UK</div>
+          <div class="pd">22 ha cluster, top-quartile yield 75-80 kg/m² tomato, retail-grade processing on-site.</div>
+        </div>
+        <div class="prec-item">
+          <div class="pn">Eagle's Nest · Russia</div>
+          <div class="pd"><b>This project</b> — first Russian cluster with all 4 elements: MSW heat + CO₂ + premium processing + China rail corridor.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div></div>
+
+<!-- ════════════ SLIDE 6 — MASTER PLAN ════════════ -->
+<div class="slide-wrapper"><div class="slide dark" id="s6">
+  <div class="grid-over"></div>
+  <div class="inner">
+    <div class="sh"><span class="sh-num">05 · MASTER PLAN</span></div>
+    <h2 class="title-d">105.59 ha · 5 cadastral plots · long-term lease</h2>
+    <div class="uline"></div>
+    <div class="map-row">
+      <div class="map-canvas">
+        <svg viewBox="0 0 400 360" style="width:100%;max-height:100%">
+          <rect x="0" y="0" width="400" height="360" fill="rgba(37,184,90,0.04)" stroke="rgba(37,184,90,0.2)"/>
+          <rect x="40" y="40" width="120" height="100" fill="rgba(201,134,13,0.3)" stroke="rgba(201,134,13,0.8)" stroke-width="2"/>
+          <text x="100" y="90" fill="#E8A820" font-size="14" font-weight="800" text-anchor="middle">PLOT 1</text>
+          <text x="100" y="108" fill="#E8A820" font-size="9" text-anchor="middle">PILOT · MSW</text>
+          <rect x="180" y="40" width="100" height="80" fill="rgba(37,184,90,0.2)" stroke="rgba(37,184,90,0.6)"/>
+          <text x="230" y="78" fill="#4AE080" font-size="13" font-weight="800" text-anchor="middle">PLOT 2</text>
+          <text x="230" y="94" fill="#7A9A84" font-size="8" text-anchor="middle">M2 «Krym» fresh</text>
+          <rect x="180" y="140" width="100" height="80" fill="rgba(37,184,90,0.15)" stroke="rgba(37,184,90,0.5)"/>
+          <text x="230" y="178" fill="#4AE080" font-size="13" font-weight="800" text-anchor="middle">PLOT 3</text>
+          <text x="230" y="194" fill="#7A9A84" font-size="8" text-anchor="middle">Modules 3, 6 fresh</text>
+          <rect x="40" y="170" width="120" height="80" fill="rgba(37,184,90,0.18)" stroke="rgba(37,184,90,0.6)"/>
+          <text x="100" y="208" fill="#4AE080" font-size="13" font-weight="800" text-anchor="middle">PLOT 4</text>
+          <text x="100" y="224" fill="#7A9A84" font-size="8" text-anchor="middle">M4-5 + processing C</text>
+          <rect x="60" y="280" width="280" height="50" fill="rgba(192,57,43,0.2)" stroke="rgba(192,57,43,0.7)"/>
+          <text x="200" y="308" fill="#E57373" font-size="13" font-weight="800" text-anchor="middle">PLOT 5 · RAIL TERMINAL «Luzhki-Orlovskie»</text>
+          <line x1="60" y1="305" x2="340" y2="305" stroke="#E57373" stroke-width="2" stroke-dasharray="6,4"/>
+        </svg>
+      </div>
+      <div class="plot-table">
+        <div class="plot-row pilot">
+          <div class="plot-num">1</div>
+          <div class="plot-info">
+            <div class="plot-cad">57:10:0060101:804</div>
+            <div class="plot-fn">PILOT + CLUSTER CORE</div>
+            <div class="plot-area">Adjacent to EcoCity MSW · ~30 ha allocated</div>
+          </div>
+        </div>
+        <div class="plot-row">
+          <div class="plot-num">2</div>
+          <div class="plot-info">
+            <div class="plot-cad">57:10:0060101:432</div>
+            <div class="plot-fn">M2 «Krym» fresh + retail logistics</div>
+          </div>
+        </div>
+        <div class="plot-row">
+          <div class="plot-num">3</div>
+          <div class="plot-info">
+            <div class="plot-cad">57:10:0060101:433</div>
+            <div class="plot-fn">Modules 3, 6 fresh</div>
+          </div>
+        </div>
+        <div class="plot-row">
+          <div class="plot-num">4</div>
+          <div class="plot-info">
+            <div class="plot-cad">57:10:0000000:27884</div>
+            <div class="plot-fn">Modules 4-5 + processing C</div>
+          </div>
+        </div>
+        <div class="plot-row">
+          <div class="plot-num">5</div>
+          <div class="plot-info">
+            <div class="plot-cad">57:10:0000000:6116</div>
+            <div class="plot-fn">RAIL TERMINAL → CHINA</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div></div>
+
+<!-- ════════════ SLIDE 7 — ENERGY BALANCE ════════════ -->
+<div class="slide-wrapper"><div class="slide dark" id="s7">
+  <div class="grid-over"></div><div class="glow-br"></div>
+  <div class="inner">
+    <div class="sh"><span class="sh-num">06 · ENERGY BALANCE</span></div>
+    <h2 class="title-d">EcoCity supply vs cluster demand at 30 ha</h2>
+    <div class="uline"></div>
+    <div class="energy-grid">
+      <div class="eblock">
+        <h4><span class="ic">⚡</span>EcoCity MSW · supply (assumption)</h4>
+        <div class="erow"><span class="lab">MSW throughput</span><span class="v">200,000 t/y</span></div>
+        <div class="erow"><span class="lab">Thermal capacity (CHP gross)</span><span class="v">~80 MWth</span></div>
+        <div class="erow"><span class="lab">Electrical capacity (CHP)</span><span class="v">70-100 MWe*</span></div>
+        <div class="erow"><span class="lab">CO₂ in flue gas</span><span class="v">160-200 kt/y</span></div>
+        <div class="erow peak"><span class="lab">Recoverable food-grade CO₂</span><span class="v">25-30 kt/y</span></div>
+        <div class="flag-warn"><b>FLAG:</b> declared 70-100 MWe is inconsistent with 200 kt MSW under typical benchmarks (~11-14 MWe). To be confirmed by EcoCity passport (DD).</div>
+      </div>
+      <div class="eblock">
+        <h4><span class="ic" style="background:var(--gold)">🌿</span>Cluster · demand at 30 ha mature</h4>
+        <div class="erow"><span class="lab">Heat (peak winter)</span><span class="v">~70 MWth</span></div>
+        <div class="erow"><span class="lab">Heat (annual avg.)</span><span class="v">~35 MWth</span></div>
+        <div class="erow"><span class="lab">Electrical (LED + climate)</span><span class="v">~28 MWe</span></div>
+        <div class="erow"><span class="lab">CO₂ enrichment 30 ha</span><span class="v">~22 kt/y</span></div>
+        <div class="erow"><span class="lab">Pumps, climate, fertigation, processing</span><span class="v">~10 MWe</span></div>
+        <div class="erow peak"><span class="lab">Match factor (supply/demand)</span><span class="v">≥ 110%</span></div>
+      </div>
+    </div>
+  </div>
+</div></div>
+
+<!-- ════════════ SLIDE 8 — CO2 ════════════ -->
+<div class="slide-wrapper"><div class="slide light" id="s8">
+  <div class="inner">
+    <div class="sh"><span class="sh-num" style="color:var(--green-dark)">07 · CO₂ TREATMENT</span></div>
+    <h2 class="title-l">Two paths · only amine passes DD &amp; GACC</h2>
+    <div class="uline"></div>
+    <div class="co2-grid">
+      <div class="co2-card">
+        <div class="var-label">VARIANT A · RECOMMENDED</div>
+        <h3>Amine capture (Pentair-class)</h3>
+        <div class="co2-spec"><span class="l">Method</span><span class="v gd">MEA / advanced amine</span></div>
+        <div class="co2-spec"><span class="l">Capture efficiency</span><span class="v gd">85-90%</span></div>
+        <div class="co2-spec"><span class="l">CO₂ purity</span><span class="v gd">Food-grade · 99.9%</span></div>
+        <div class="co2-spec"><span class="l">TR CU 021 / GACC compliance</span><span class="v gd">YES</span></div>
+        <div class="co2-spec"><span class="l">Reference</span><span class="v">AVR Rotterdam</span></div>
+        <div class="co2-spec"><span class="l">CAPEX (per ha)</span><span class="v">~$0.49M</span></div>
+        <div class="co2-rec"><b>RECOMMENDATION:</b> Variant A in the main deck — the only path that secures the GACC export certificate and passes Russian DD.</div>
+      </div>
+      <div class="co2-card var-b">
+        <div class="var-label">VARIANT B · COST OPTION</div>
+        <h3>Wet scrubber + filter</h3>
+        <div class="co2-spec"><span class="l">Method</span><span class="v">NaOH wet scrubber</span></div>
+        <div class="co2-spec"><span class="l">Capture efficiency</span><span class="v">50-70%</span></div>
+        <div class="co2-spec"><span class="l">CO₂ purity</span><span class="v bd">Industrial · 95-98%</span></div>
+        <div class="co2-spec"><span class="l">TR CU 021 / GACC compliance</span><span class="v bd">PARTIAL · risk</span></div>
+        <div class="co2-spec"><span class="l">Reference</span><span class="v">Power-plant scale only</span></div>
+        <div class="co2-spec"><span class="l">CAPEX (per ha)</span><span class="v">~$0.19M</span></div>
+        <div class="co2-rec" style="background:rgba(201,134,13,0.08);border-color:rgba(201,134,13,0.3)"><b style="color:var(--gold-dark)">USE CASE:</b> only as a stop-gap during severe seed-stage capital constraints; fully replaced by Variant A at Series A. Not viable for Chinese export.</div>
+      </div>
+    </div>
+  </div>
+</div></div>
+
+<!-- ════════════ SLIDE 9 — PRODUCTS ════════════ -->
+<div class="slide-wrapper"><div class="slide dark" id="s9">
+  <div class="grid-over"></div><div class="glow-tl"></div>
+  <div class="inner">
+    <div class="sh"><span class="sh-num">08 · PRODUCT MIX</span></div>
+    <h2 class="title-d">Three crops · cocktail tomato leads premium economics</h2>
+    <div class="uline"></div>
+    <div class="prod-grid">
+      <div class="prod-card">
+        <div class="prod-share">60%</div>
+        <div class="prod-name">Cocktail / cherry tomato</div>
+        <div class="prod-lat">Solanum lycopersicum · indeterminate</div>
+        <div class="prod-spec">
+          <div class="prod-spec-row"><span class="l">Yield (mature)</span><span class="v">70-80 kg/m²</span></div>
+          <div class="prod-spec-row"><span class="l">Cycle</span><span class="v">11 mo continuous</span></div>
+          <div class="prod-spec-row"><span class="l">Wholesale RU</span><span class="v">₽220-280/kg</span></div>
+          <div class="prod-spec-row"><span class="l">Variants used</span><span class="v">Brioso RZ, Strabena</span></div>
+        </div>
+        <div class="prod-bottom">
+          <div class="prod-rev">$58M</div>
+          <div class="prod-rev-l">Revenue Year 8 · 30 ha</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-share">25%</div>
+        <div class="prod-name">Long English cucumber</div>
+        <div class="prod-lat">Cucumis sativus · seedless</div>
+        <div class="prod-spec">
+          <div class="prod-spec-row"><span class="l">Yield (mature)</span><span class="v">~120 kg/m²</span></div>
+          <div class="prod-spec-row"><span class="l">Cycle</span><span class="v">3 cycles/y</span></div>
+          <div class="prod-spec-row"><span class="l">Wholesale RU</span><span class="v">₽110-160/kg</span></div>
+          <div class="prod-spec-row"><span class="l">Variants used</span><span class="v">Mewa RZ, Khassib F1</span></div>
+        </div>
+        <div class="prod-bottom">
+          <div class="prod-rev">$32M</div>
+          <div class="prod-rev-l">Revenue Year 8 · 30 ha</div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-share">15%</div>
+        <div class="prod-name">Premium herbs &amp; salads</div>
+        <div class="prod-lat">Basil, arugula, lettuce mix</div>
+        <div class="prod-spec">
+          <div class="prod-spec-row"><span class="l">Yield (mature)</span><span class="v">60-80 kg/m²</span></div>
+          <div class="prod-spec-row"><span class="l">Cycle</span><span class="v">DFT/NFT, 25-35 day</span></div>
+          <div class="prod-spec-row"><span class="l">Wholesale RU</span><span class="v">₽350-650/kg</span></div>
+          <div class="prod-spec-row"><span class="l">Variants used</span><span class="v">Salanova, Carmoli</span></div>
+        </div>
+        <div class="prod-bottom">
+          <div class="prod-rev">$15M</div>
+          <div class="prod-rev-l">Revenue Year 8 · 30 ha</div>
+        </div>
+      </div>
+    </div>
+    <div class="total-bar">
+      <div class="tl">Total revenue at full mature 30 ha · Year 8 (2034)</div>
+      <div class="tv">$105M</div>
+    </div>
+  </div>
+</div></div>
+
+<!-- ════════════ SLIDE 10 — MODULAR ARCHITECTURE ════════════ -->
+<div class="slide-wrapper"><div class="slide light" id="s10">
+  <div class="inner">
+    <div class="sh"><span class="sh-num" style="color:var(--green-dark)">09 · MODULAR ARCHITECTURE</span></div>
+    <h2 class="title-l">Six modules × 5 ha · phased build · shared infrastructure</h2>
+    <div class="uline"></div>
+    <div class="mod-row">
+      <div class="mod-vis">
+        <svg viewBox="0 0 400 280" style="width:100%;max-height:100%">
+          <rect x="20" y="20" width="80" height="60" fill="rgba(201,134,13,0.4)" stroke="rgba(201,134,13,1)" stroke-width="2"/>
+          <text x="60" y="48" fill="#9A6508" font-size="14" font-weight="800" text-anchor="middle">M1</text>
+          <text x="60" y="65" fill="#9A6508" font-size="9" text-anchor="middle">Variant B</text>
+          <text x="60" y="76" fill="#9A6508" font-size="8" text-anchor="middle">PILOT</text>
+          <rect x="120" y="20" width="80" height="60" fill="rgba(37,184,90,0.25)" stroke="rgba(37,184,90,0.7)" stroke-width="1.5"/>
+          <text x="160" y="48" fill="#1A8A44" font-size="14" font-weight="800" text-anchor="middle">M2</text>
+          <text x="160" y="65" fill="#1A8A44" font-size="9" text-anchor="middle">Variant A</text>
+          <rect x="220" y="20" width="80" height="60" fill="rgba(37,184,90,0.25)" stroke="rgba(37,184,90,0.7)" stroke-width="1.5"/>
+          <text x="260" y="48" fill="#1A8A44" font-size="14" font-weight="800" text-anchor="middle">M3</text>
+          <text x="260" y="65" fill="#1A8A44" font-size="9" text-anchor="middle">Variant A</text>
+          <rect x="20" y="100" width="80" height="60" fill="rgba(201,134,13,0.25)" stroke="rgba(201,134,13,0.7)" stroke-width="1.5"/>
+          <text x="60" y="128" fill="#9A6508" font-size="14" font-weight="800" text-anchor="middle">M4</text>
+          <text x="60" y="145" fill="#9A6508" font-size="9" text-anchor="middle">Variant C</text>
+          <rect x="120" y="100" width="80" height="60" fill="rgba(201,134,13,0.25)" stroke="rgba(201,134,13,0.7)" stroke-width="1.5"/>
+          <text x="160" y="128" fill="#9A6508" font-size="14" font-weight="800" text-anchor="middle">M5</text>
+          <text x="160" y="145" fill="#9A6508" font-size="9" text-anchor="middle">Variant C</text>
+          <rect x="220" y="100" width="80" height="60" fill="rgba(37,184,90,0.25)" stroke="rgba(37,184,90,0.7)" stroke-width="1.5"/>
+          <text x="260" y="128" fill="#1A8A44" font-size="14" font-weight="800" text-anchor="middle">M6</text>
+          <text x="260" y="145" fill="#1A8A44" font-size="9" text-anchor="middle">Variant A</text>
+          <rect x="20" y="180" width="280" height="80" fill="rgba(15,33,24,0.06)" stroke="rgba(15,33,24,0.3)" stroke-dasharray="4,4"/>
+          <text x="160" y="220" fill="#0F2118" font-size="12" font-weight="700" text-anchor="middle">CLUSTER HQ · CO₂ AMINE PLANT · HEAT HUB</text>
+          <text x="160" y="240" fill="#3A5444" font-size="9" text-anchor="middle">Shared infrastructure built in pilot — sized for full 30 ha</text>
+        </svg>
+      </div>
+      <div class="mod-list">
+        <div class="mod-item">
+          <h5>Module = 5 ha greenhouse + utilities</h5>
+          <p>5 ha = optimum size to qualify as an industrial-cluster module under federal subsidy regulation, while keeping site logistics and crop teams operational.</p>
+        </div>
+        <div class="mod-item">
+          <h5>Pilot M1 sized for the whole cluster</h5>
+          <p>Cluster HQ, CO₂ amine plant, heat hub, substation, processing facility — all built in the pilot, saving 30-40% CAPEX on Modules 2-6.</p>
+        </div>
+        <div class="mod-item">
+          <h5>Variant mix · 4 fresh + 2 premium</h5>
+          <p>4 modules in Variant A (fresh for X5/Magnit/Lenta retail); 2 modules in Variant C (premium processing for China export).</p>
+        </div>
+        <div class="mod-item">
+          <h5>De-risking through phasing</h5>
+          <p>If the market for fresh produce softens, M5 can be re-routed to processing without sunk costs in unsuitable equipment.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div></div>
+
+<!-- ════════════ SLIDE 11 — PILOT SITE ════════════ -->
+<div class="slide-wrapper"><div class="slide dark" id="s11">
+  <div class="grid-over"></div>
+  <div class="inner">
+    <div class="sh"><span class="sh-num">10 · PILOT SITE PLAN</span></div>
+    <h2 class="title-d">Plot 1 · adjacent to EcoCity MSW</h2>
+    <div class="uline"></div>
+    <div class="site-row">
+      <div class="site-plan">
+        <svg viewBox="0 0 400 320" style="width:100%;max-height:100%">
+          <rect x="0" y="0" width="400" height="320" fill="rgba(37,184,90,0.04)" stroke="rgba(37,184,90,0.2)"/>
+          <rect x="20" y="20" width="120" height="80" fill="rgba(192,57,43,0.25)" stroke="rgba(192,57,43,0.8)" stroke-width="2"/>
+          <text x="80" y="55" fill="#E57373" font-size="11" font-weight="800" text-anchor="middle">EcoCity MSW</text>
+          <text x="80" y="72" fill="#E57373" font-size="9" text-anchor="middle">200 kt/y</text>
+          <line x1="140" y1="60" x2="180" y2="160" stroke="#E8A820" stroke-width="3" stroke-dasharray="4,3"/>
+          <text x="158" y="115" fill="#E8A820" font-size="9" font-weight="700" transform="rotate(60,158,115)">Heat + CO₂ pipeline</text>
+          <rect x="180" y="120" width="200" height="80" fill="rgba(37,184,90,0.3)" stroke="rgba(37,184,90,0.9)" stroke-width="2"/>
+          <text x="280" y="155" fill="#4AE080" font-size="14" font-weight="800" text-anchor="middle">GREENHOUSE 5 ha</text>
+          <text x="280" y="175" fill="#4AE080" font-size="9" text-anchor="middle">Venlo Gen 4-5</text>
+          <rect x="180" y="220" width="100" height="60" fill="rgba(201,134,13,0.3)" stroke="rgba(201,134,13,0.8)" stroke-width="1.5"/>
+          <text x="230" y="248" fill="#E8A820" font-size="11" font-weight="800" text-anchor="middle">PROCESSING B</text>
+          <text x="230" y="263" fill="#E8A820" font-size="9" text-anchor="middle">5 000 m²</text>
+          <rect x="290" y="220" width="90" height="60" fill="rgba(255,255,255,0.08)" stroke="rgba(37,184,90,0.5)" stroke-width="1"/>
+          <text x="335" y="248" fill="#B8D4C0" font-size="10" font-weight="700" text-anchor="middle">CLUSTER HQ</text>
+          <text x="335" y="263" fill="#B8D4C0" font-size="8" text-anchor="middle">CO₂ plant</text>
+          <rect x="20" y="220" width="80" height="60" fill="rgba(255,255,255,0.06)" stroke="rgba(37,184,90,0.4)" stroke-width="1" stroke-dasharray="3,3"/>
+          <text x="60" y="248" fill="#7A9A84" font-size="10" font-weight="700" text-anchor="middle">SUBSTATION</text>
+          <text x="60" y="263" fill="#7A9A84" font-size="8" text-anchor="middle">15 MW</text>
+          <rect x="110" y="220" width="60" height="60" fill="rgba(255,255,255,0.04)" stroke="rgba(37,184,90,0.3)" stroke-width="1" stroke-dasharray="3,3"/>
+          <text x="140" y="248" fill="#7A9A84" font-size="9" font-weight="700" text-anchor="middle">DORM</text>
+          <text x="140" y="263" fill="#7A9A84" font-size="8" text-anchor="middle">SHOP</text>
+        </svg>
+      </div>
+      <div class="site-meta">
+        <div class="site-meta-item">
+          <h6>HEAT &amp; CO₂ TIE-IN</h6>
+          <p>~50-200 m from MSW to plot boundary<br><span>minimal losses, low CAPEX (right next door)</span></p>
+        </div>
+        <div class="site-meta-item">
+          <h6>POWER SUPPLY</h6>
+          <p>15 MW pilot capacity · 1st reliability category<br><span>from EcoCity CHP (8-10 RUB/kWh)</span></p>
+        </div>
+        <div class="site-meta-item">
+          <h6>CO₂ AMINE PLANT</h6>
+          <p>Centralised amine/MEA capture<br><span>sized for 30 ha cluster, paid back at pilot stage</span></p>
+        </div>
+        <div class="site-meta-item">
+          <h6>CLUSTER HQ</h6>
+          <p>Operations control, lab, dispatcher, offices<br><span>serves all 6 modules of the future programme</span></p>
+        </div>
+        <div class="site-meta-item">
+          <h6>PROCESSING B</h6>
+          <p>5 000 m² packing &amp; light processing<br><span>retail-ready cocktail tomato + snack range</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div></div>
+
+<!-- ════════════ SLIDE 12 — PILOT SCOPE ════════════ -->
+<div class="slide-wrapper"><div class="slide light" id="s12">
+  <div class="inner">
+    <div class="sh"><span class="sh-num" style="color:var(--green-dark)">11 · PILOT SCOPE</span></div>
+    <h2 class="title-l">What we build in Module 1 (Variant B)</h2>
+    <div class="uline"></div>
+    <p style="font-size:12px;color:var(--text-mid);line-height:1.5;margin-bottom:14px;max-width:900px;">The pilot includes not only the 5 ha greenhouse but <b>cluster-wide infrastructure sized for 30 ha</b> — letting Modules 2-6 be built 30-40% cheaper and securing the unit economics of the entire programme.</p>
+    <div class="scope-grid">
+      <div class="scope-card">
+        <div class="ic">🌿</div>
+        <h4>Greenhouse 5 ha · Venlo Gen 4-5</h4>
+        <p>4 mm diffuse glass, 8 m gutter, 2-layer Svensson screens. LED+HPS at 250 µmol/m²/s. Grodan rockwool hydroponics + DFT/NFT for greens. Full Priva automation.</p>
+        <div class="v">$27.6M</div>
+      </div>
+      <div class="scope-card gold">
+        <div class="ic">📦</div>
+        <h4>Processing Variant B (5 000 m²)</h4>
+        <p>Aweta optical sortation, Multivac MAP packaging, retail-ready clamshells, snack tomato (cherry/cocktail), cold storage delivering 30-50 day shelf life.</p>
+        <div class="v">$19.7M</div>
+      </div>
+      <div class="scope-card">
+        <div class="ic">🏢</div>
+        <h4>Cluster HQ (1 500 m²)</h4>
+        <p>Management offices, control room, dispatcher, QC laboratory. Architectural core of the cluster, serving all 6 modules.</p>
+        <div class="v">$1.2M</div>
+      </div>
+      <div class="scope-card gold">
+        <div class="ic">⚗️</div>
+        <h4>CO₂ amine plant + heat hub</h4>
+        <p>Pentair Haffmans-class. Sized for 30 ha. Pre-DD ready: TR CU 021 + GACC. Heat substation with 1500 m³ buffer for 30 ha.</p>
+        <div class="v">$8.0M</div>
+      </div>
+      <div class="scope-card">
+        <div class="ic">⚡</div>
+        <h4>15 MW substation · 1st category</h4>
+        <p>Redundant dual-feed transformer station. Ready for expansion up to 70 MW as Modules 2-6 come online without service interruption.</p>
+        <div class="v">$3.0M</div>
+      </div>
+      <div class="scope-card gold">
+        <div class="ic">🏘️</div>
+        <h4>Housing, warehouse, utilities</h4>
+        <p>Staff dormitory 1 800 m², warehouse 2 500 m², workshop 1 200 m², roads, fencing, gatehouse, artesian well.</p>
+        <div class="v">$3.5M</div>
+      </div>
+    </div>
+  </div>
+</div></div>
+
+<!-- ════════════ SLIDE 13 — PILOT TECH ════════════ -->
+<div class="slide-wrapper"><div class="slide dark" id="s13">
+  <div class="grid-over"></div><div class="glow-br"></div>
+  <div class="inner">
+    <div class="sh"><span class="sh-num">12 · WORLD-CLASS TECHNOLOGY</span></div>
+    <h2 class="title-d">Equipment stack &amp; certifications</h2>
+    <div class="uline"></div>
+    <div class="tech-grid">
+      <div class="tech-item">
+        <div class="tech-icon">🌡️</div>
+        <div class="tech-content">
+          <h5>Climate computer Priva Connext</h5>
+          <div class="vendor">PRIVA · NL</div>
+          <p>Full automation: ventilation, heating, CO₂, screens, irrigation. One of 3 global standards for high-tech greenhouses.</p>
+        </div>
+      </div>
+      <div class="tech-item">
+        <div class="tech-icon">💡</div>
+        <div class="tech-content">
+          <h5>LED+HPS hybrid 250 µmol/m²/s</h5>
+          <div class="vendor">SIGNIFY · FLUENCE</div>
+          <p>DLI target 25-30 mol/m²/day — mandatory for Oryol's 53° N latitude in winter. 18 GWh/y LED consumption from MSW CHP.</p>
+        </div>
+      </div>
+      <div class="tech-item">
+        <div class="tech-icon">💧</div>
+        <div class="tech-content">
+          <h5>High-pressure fogging Schenker</h5>
+          <div class="vendor">SCHENKER · COOLNET PRO</div>
+          <p>Micro-droplet ≤30 µm fogging for climate control. Drops temperature 4-7 °C in summer with no leaf wetting.</p>
+        </div>
+      </div>
+      <div class="tech-item">
+        <div class="tech-icon">🌱</div>
+        <div class="tech-content">
+          <h5>Hydroponics Grodan + DFT/NFT</h5>
+          <div class="vendor">GRODAN · LOGIQS</div>
+          <p>Rockwool for tomato/cucumber + mobile gully for greens. 95% water recirculation. Fertigation with EC/pH dosing via Priva Nutriflex.</p>
+        </div>
+      </div>
+      <div class="tech-item">
+        <div class="tech-icon">📊</div>
+        <div class="tech-content">
+          <h5>Letsgrow.com data layer</h5>
+          <div class="vendor">LETSGROW · NL</div>
+          <p>Cloud yield analytics, climate analytics, benchmarking against top NL growers. Real-time investor reporting.</p>
+        </div>
+      </div>
+      <div class="tech-item">
+        <div class="tech-icon">📦</div>
+        <div class="tech-content">
+          <h5>Aweta sortation + Multivac MAP</h5>
+          <div class="vendor">AWETA · MULTIVAC</div>
+          <p>Optical sorting by size/colour/defect, retail-ready vacuum/MAP packaging. Wight Salads / Mucci Farms tier.</p>
+        </div>
+      </div>
+      <div class="tech-item">
+        <div class="tech-icon">🛡️</div>
+        <div class="tech-content">
+          <h5>Certifications: GLOBALG.A.P. + GACC</h5>
+          <div class="vendor">GLOBALG.A.P · 海关总署</div>
+          <p>GLOBALG.A.P. for EU/RU retail. GACC registration for Chinese export. TR CU 021/2011 + Rosselkhoznadzor for the Russian market.</p>
+        </div>
+      </div>
+      <div class="tech-item">
+        <div class="tech-icon">⚗️</div>
+        <div class="tech-content">
+          <h5>CO₂ purification Pentair Haffmans</h5>
+          <div class="vendor">PENTAIR · NL</div>
+          <p>Amine/MEA capture from MSW flue gas. Reference AVR Rotterdam (60 kt/y CO₂ to greenhouses). Food-grade, 85-90% efficiency.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div></div>
+
+<!-- ════════════ SLIDE 14 — TIMELINE & BUDGET ════════════ -->
+<div class="slide-wrapper"><div class="slide light" id="s14">
+  <div class="inner">
+    <div class="sh"><span class="sh-num" style="color:var(--green-dark)">13 · PILOT SCHEDULE &amp; BUDGET</span></div>
+    <h2 class="title-l">24-28 months · $66M Seed</h2>
+    <div class="uline"></div>
+    <div class="tb-row">
+      <div class="timeline">
+        <h4>Execution timeline (from Seed close)</h4>
+        <div class="tl-phase">
+          <div class="tl-month">M 1-3</div>
+          <div class="tl-content">
+            <h6>Legal &amp; design</h6>
+            <p>SPV setup, design documentation, EcoCity technical specs, primary approvals</p>
+          </div>
+        </div>
+        <div class="tl-phase">
+          <div class="tl-month">M 4-9</div>
+          <div class="tl-content">
+            <h6>Infrastructure tie-in</h6>
+            <p>Heat pipeline from MSW, 15 MW grid, well, roads, gatehouse, fencing, foundations for HQ &amp; processing</p>
+          </div>
+        </div>
+        <div class="tl-phase">
+          <div class="tl-month">M 10-18</div>
+          <div class="tl-content">
+            <h6>Construction &amp; install</h6>
+            <p>Venlo greenhouse (NL/CN supply 9-12 mo), climate + LED, hydroponics, processing hall, CO₂ amine plant, dorm</p>
+          </div>
+        </div>
+        <div class="tl-phase">
+          <div class="tl-month">M 19-22</div>
+          <div class="tl-content">
+            <h6>Commissioning &amp; first plantation</h6>
+            <p>Climate calibration, hydroponics startup, first tomato/cucumber plantation. Priva-grade staff training in parallel.</p>
+          </div>
+        </div>
+        <div class="tl-phase">
+          <div class="tl-month">M 23-28</div>
+          <div class="tl-content">
+            <h6>First commercial product</h6>
+            <p>Month 24 — first tomato &amp; basil harvest. M26-28 — ramp to 60% mature. Retail contracts signed.</p>
+          </div>
+        </div>
+      </div>
+      <div class="budget">
+        <h4>Seed budget structure · $66M</h4>
+        <div class="budget-row"><span class="l">Greenhouse 5 ha Venlo Gen 4-5</span><span class="v">$27.6M</span></div>
+        <div class="budget-row"><span class="l">Processing Variant B</span><span class="v">$19.7M</span></div>
+        <div class="budget-row"><span class="l">CO₂ amine + heat hub (sized 30 ha)</span><span class="v">$8.0M</span></div>
+        <div class="budget-row"><span class="l">15 MW substation + 1st category</span><span class="v">$3.0M</span></div>
+        <div class="budget-row"><span class="l">Housing + warehouse + utilities</span><span class="v">$3.5M</span></div>
+        <div class="budget-row"><span class="l">Cluster HQ + offices</span><span class="v">$1.2M</span></div>
+        <div class="budget-row"><span class="l">Pre-operating capital (6 mo)</span><span class="v">$2.5M</span></div>
+        <div class="budget-row"><span class="l">Engineering + PM (12%)</span><span class="v">$3.0M</span></div>
+        <div class="budget-total">
+          <div class="l">Total Seed Round</div>
+          <div class="v">$66.3M</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div></div>
+
+<!-- ════════════ SLIDE 15 — PROGRAM ROADMAP ════════════ -->
+<div class="slide-wrapper"><div class="slide dark" id="s15">
+  <div class="grid-over"></div>
+  <div class="inner">
+    <div class="sh"><span class="sh-num">14 · PROGRAMME 30 ha</span></div>
+    <h2 class="title-d">Six modules · 8-year roadmap · $253M</h2>
+    <div class="uline"></div>
+    <div class="roadmap-table">
+      <div class="rm-header">
+        <div>Module</div><div>Plot</div><div>Type</div><div>Launch</div><div>Use of capital</div><div>CAPEX</div>
+      </div>
+      <div class="rm-row pilot">
+        <div class="rm-cell" style="color:var(--wheat)">M1 · PILOT</div>
+        <div class="rm-cell cad" style="color:var(--wheat)">:0060101:804</div>
+        <div class="rm-cell type-c" style="color:var(--wheat-soft)">B (light)</div>
+        <div class="rm-cell year">2026-28</div>
+        <div class="rm-cell">5 ha + cluster HQ + CO₂ amine + processing B</div>
+        <div class="rm-cell cap">$66.3M</div>
+      </div>
+      <div class="rm-row">
+        <div class="rm-cell">M2 · Fresh</div>
+        <div class="rm-cell cad">:0060101:432</div>
+        <div class="rm-cell type-a">A (pack)</div>
+        <div class="rm-cell year">2028-29</div>
+        <div class="rm-cell">5 ha + retail logistics, M2 «Krym»</div>
+        <div class="rm-cell cap">$24M</div>
+      </div>
+      <div class="rm-row">
+        <div class="rm-cell">M3 · Fresh</div>
+        <div class="rm-cell cad">:0060101:432-433</div>
+        <div class="rm-cell type-a">A (pack)</div>
+        <div class="rm-cell year">2029-30</div>
+        <div class="rm-cell">5 ha, shared infra with M2, X5/Magnit contracts</div>
+        <div class="rm-cell cap">$24M</div>
+      </div>
+      <div class="rm-row">
+        <div class="rm-cell">M4 · Premium</div>
+        <div class="rm-cell cad">:0000000:27884</div>
+        <div class="rm-cell type-c">C (full)</div>
+        <div class="rm-cell year">2030-31</div>
+        <div class="rm-cell">5 ha + Variant C (paste, IQF, dried) for China export</div>
+        <div class="rm-cell cap">$52M</div>
+      </div>
+      <div class="rm-row">
+        <div class="rm-cell">M5 · Premium</div>
+        <div class="rm-cell cad">:0000000:27884</div>
+        <div class="rm-cell type-c">C (full)</div>
+        <div class="rm-cell year">2031-32</div>
+        <div class="rm-cell">5 ha, Variant C facility expansion</div>
+        <div class="rm-cell cap">$32M</div>
+      </div>
+      <div class="rm-row">
+        <div class="rm-cell">M6 · Fresh</div>
+        <div class="rm-cell cad">:0060101:433</div>
+        <div class="rm-cell type-a">A (pack)</div>
+        <div class="rm-cell year">2032-33</div>
+        <div class="rm-cell">5 ha, expansion-phase completion</div>
+        <div class="rm-cell cap">$24M</div>
+      </div>
+      <div class="rm-row" style="border-top:1px solid var(--green);padding-top:8px">
+        <div class="rm-cell">⚙️ Rail terminal</div>
+        <div class="rm-cell cad">:0000000:6116</div>
+        <div class="rm-cell type-c">Logistics</div>
+        <div class="rm-cell year">2030-32</div>
+        <div class="rm-cell">Container terminal, GACC zone, China export</div>
+        <div class="rm-cell cap">$10M</div>
+      </div>
+    </div>
+    <div class="pgm-totals">
+      <div class="pgm-tot"><div class="l">Total Greenhouse</div><div class="v">30 ha</div></div>
+      <div class="pgm-tot"><div class="l">Total Modules</div><div class="v">6</div></div>
+      <div class="pgm-tot"><div class="l">Period</div><div class="v">2026-2034</div></div>
+      <div class="pgm-tot"><div class="l">Total Program CAPEX</div><div class="v">$253M</div></div>
+    </div>
+  </div>
+</div></div>
+
+<!-- ════════════ SLIDE 16 — CHINA EXPORT ════════════ -->
+<div class="slide-wrapper"><div class="slide light" id="s16">
+  <div class="inner">
+    <div class="sh"><span class="sh-num" style="color:var(--green-dark)">15 · CHINA EXPORT</span></div>
+    <h2 class="title-l">Plot 5 rail terminal → 14 days to Shanghai</h2>
+    <div class="uline"></div>
+    <div class="export-row">
+      <div class="route-vis">
+        <div class="route-step">
+          <div class="route-pin">🌿</div>
+          <div class="route-info">
+            <h6>Plot 4 · Variant C processing</h6>
+            <p>Tomato paste, IQF frozen mix, sun-dried tomato, aseptic tomato puree</p>
+          </div>
+        </div>
+        <div class="route-arrow">↓</div>
+        <div class="route-step">
+          <div class="route-pin" style="background:var(--gold)">🚂</div>
+          <div class="route-info">
+            <h6>Plot 5 · Rail terminal «Luzhki-Orlovskie»</h6>
+            <p>Container terminal, GACC zone, customs, phyto inspection</p>
+          </div>
+        </div>
+        <div class="route-arrow">↓</div>
+        <div class="route-step">
+          <div class="route-pin" style="background:var(--green-dark)">🛤️</div>
+          <div class="route-info">
+            <h6>Rail corridor Oryol → Manzhouli</h6>
+            <p>Via Moscow-Sukhinichi-Bryansk-Irkutsk-Manzhouli. ~9-11 days to the Chinese border.</p>
+          </div>
+        </div>
+        <div class="route-arrow">↓</div>
+        <div class="route-step">
+          <div class="route-pin" style="background:#C0392B">🇨🇳</div>
+          <div class="route-info">
+            <h6>Shanghai · Guangzhou · Beijing</h6>
+            <p>Premium retail (Hema, Sam's Club), HoReCa, e-commerce (JD.com, Tmall Fresh)</p>
+          </div>
+        </div>
+      </div>
+      <div class="export-detail">
+        <div class="exp-card">
+          <h5>Target product mix</h5>
+          <p>Premium products with long shelf life: tomato paste, IQF mix, dried basil, cherry tomatoes in MAP packaging (45-day shelf). Standalone fresh — only for high-end Hema format.</p>
+        </div>
+        <div class="exp-card">
+          <h5>Edge vs peers</h5>
+          <p>Russian produce in China is associated with natural / GMO-free / clean ecology. Naturalness premium 30-50% over Chinese producers, especially for children-food and premium households.</p>
+        </div>
+        <div class="exp-card">
+          <h5>Most Energy role</h5>
+          <p>Mingkuan Peng (HK) handles distribution: negotiations with Hema/JD/Tmall, GACC certification, brand localisation (中文 packaging), standards translation.</p>
+        </div>
+        <div class="exp-card">
+          <h5>Export volume (Year 8)</h5>
+          <p>~30% of Modules 4-5 (Variant C) output goes to export = ~3-4 thousand tonnes of finished processed produce/year. Revenue $20-25M in the export channel.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div></div>
+
+<!-- ════════════ SLIDE 17 — FINANCIAL ════════════ -->
+<div class="slide-wrapper"><div class="slide dark" id="s17">
+  <div class="grid-over"></div>
+  <div class="inner">
+    <div class="sh"><span class="sh-num">16 · FINANCIAL MODEL 2026-2034</span></div>
+    <h2 class="title-d">Revenue, EBITDA, Cumulative CAPEX</h2>
+    <div class="uline"></div>
+    <div class="fm-table">
+      <div class="fm-header">
+        <div>Year</div><div>2026</div><div>2027</div><div>2028</div><div>2029</div><div>2030</div><div>2031</div><div>2032</div><div>2034</div>
+      </div>
+      <div class="fm-row">
+        <div class="row-label">Mature ha</div>
+        <div>—</div><div>—</div><div>1+ramp</div><div>5</div><div>10</div><div>15</div><div>20</div><div>30</div>
+      </div>
+      <div class="fm-row">
+        <div class="row-label">Cumul. CAPEX, $M</div>
+        <div class="acc">60</div><div class="acc">66</div><div class="acc">90</div><div class="acc">135</div><div class="acc">175</div><div class="acc">215</div><div class="acc">245</div><div class="acc">253</div>
+      </div>
+      <div class="fm-row">
+        <div class="row-label">Revenue, $M</div>
+        <div>—</div><div>1.5</div><div>13</div><div>26</div><div>42</div><div>62</div><div>82</div><div class="acc">105</div>
+      </div>
+      <div class="fm-row highlight">
+        <div class="row-label">EBITDA, $M</div>
+        <div>(1)</div><div>(0.5)</div><div>3</div><div>7</div><div>13</div><div>20</div><div>28</div><div class="acc">38</div>
+      </div>
+      <div class="fm-row">
+        <div class="row-label">EBITDA margin</div>
+        <div>—</div><div>—</div><div>23%</div><div>27%</div><div>31%</div><div>32%</div><div>34%</div><div class="acc">36%</div>
+      </div>
+      <div class="fm-row">
+        <div class="row-label">Free Cash Flow*, $M</div>
+        <div>(60)</div><div>(6)</div><div>(21)</div><div>(38)</div><div>(28)</div><div>(20)</div><div>(2)</div><div class="acc">+30</div>
+      </div>
+      <div class="fm-row">
+        <div class="row-label">Tranche close</div>
+        <div>Seed</div><div></div><div>Series A</div><div></div><div>Series B</div><div></div><div></div><div class="acc">Exit / IPO</div>
+      </div>
+    </div>
+    <div class="fm-foot">* FCF before financing. Assumptions: 75 kg/m² tomato (vs top-tier 90+), wholesale prices without brand premium, OPEX benchmarked vs ECO-Culture/LIPSADO. All figures in USD at 95 RUB/USD; EUR at 1.08 USD/EUR.</div>
+  </div>
+</div></div>
+
+<!-- ════════════ SLIDE 18 — RETURNS ════════════ -->
+<div class="slide-wrapper"><div class="slide light" id="s18">
+  <div class="inner">
+    <div class="sh"><span class="sh-num" style="color:var(--green-dark)">17 · ROI &amp; PAYBACK</span></div>
+    <h2 class="title-l">Project IRR 22-24% · Payback 7-8 years</h2>
+    <div class="uline"></div>
+    <div class="ret-top">
+      <div class="ret-card">
+        <div class="rl">Project IRR (unlevered)</div>
+        <div class="rv">22-24%</div>
+        <div class="rd">Conservative, no leverage. With 60% LTV → equity IRR 30-35%.</div>
+      </div>
+      <div class="ret-card">
+        <div class="rl">Payback Period</div>
+        <div class="rv">7-8 yrs</div>
+        <div class="rd">Year 7 — cumulative EBITDA = total CAPEX. Full payback by 2033-2034.</div>
+      </div>
+      <div class="ret-card">
+        <div class="rl">Equity Multiple (8 yrs)</div>
+        <div class="rv">2.8×</div>
+        <div class="rd">$253M in → $710M cumul. EBITDA + terminal value (10× Year 8 EBITDA).</div>
+      </div>
+      <div class="ret-card">
+        <div class="rl">Terminal Value (2034)</div>
+        <div class="rv">$380M</div>
+        <div class="rd">10× EBITDA multiple — reasonable for an institutional-grade agri asset.</div>
+      </div>
+    </div>
+    <div class="sens-row">
+      <div class="sens-card">
+        <h5>SENSITIVITY · Selling prices</h5>
+        <div class="sens-bar"><span class="lab">−20% to baseline</span><div class="vis"><div style="width:55%;background:#C0392B"></div></div><span class="v">IRR 16%</span></div>
+        <div class="sens-bar"><span class="lab">−10%</span><div class="vis"><div style="width:75%;background:#E8A820"></div></div><span class="v">IRR 19%</span></div>
+        <div class="sens-bar"><span class="lab">Baseline</span><div class="vis"><div style="width:90%;background:#25B85A"></div></div><span class="v">IRR 23%</span></div>
+        <div class="sens-bar"><span class="lab">+10%</span><div class="vis"><div style="width:100%;background:#1A8A44"></div></div><span class="v">IRR 27%</span></div>
+      </div>
+      <div class="sens-card">
+        <h5>SENSITIVITY · Yield</h5>
+        <div class="sens-bar"><span class="lab">−15% (60 kg/m²)</span><div class="vis"><div style="width:60%;background:#C0392B"></div></div><span class="v">IRR 17%</span></div>
+        <div class="sens-bar"><span class="lab">−5% (71 kg/m²)</span><div class="vis"><div style="width:80%;background:#E8A820"></div></div><span class="v">IRR 21%</span></div>
+        <div class="sens-bar"><span class="lab">Baseline 75 kg/m²</span><div class="vis"><div style="width:90%;background:#25B85A"></div></div><span class="v">IRR 23%</span></div>
+        <div class="sens-bar"><span class="lab">Top-tier 90 kg/m²</span><div class="vis"><div style="width:100%;background:#1A8A44"></div></div><span class="v">IRR 28%</span></div>
+      </div>
+    </div>
+  </div>
+</div></div>
+
+<!-- ════════════ SLIDE 19 — TEAM ════════════ -->
+<div class="slide-wrapper"><div class="slide dark" id="s19">
+  <div class="grid-over"></div><div class="glow-tl"></div>
+  <div class="inner">
+    <div class="sh"><span class="sh-num">18 · TEAM &amp; PARTNERS</span></div>
+    <h2 class="title-d">Founder + EcoCity + Most Energy + open positions</h2>
+    <div class="uline"></div>
+    <div class="team-grid">
+      <div class="tm-card">
+        <div class="tm-avatar">AK</div>
+        <div class="tm-info">
+          <h5>Aslan Kaa</h5>
+          <div class="role">FOUNDER · CEO</div>
+          <p>Architect and initiator of the project. Financial modelling, investor relations, China partner negotiation. Track record in cross-border deals.</p>
+        </div>
+      </div>
+      <div class="tm-card anchor">
+        <div class="tm-avatar">PM</div>
+        <div class="tm-info">
+          <h5>Mingkuan Peng (彭明宽)</h5>
+          <div class="role">STRATEGIC PARTNER · CHINA IR · NON-FINANCING</div>
+          <p>Owner, Most Energy Investment Limited (Hong Kong). Exclusive partner for Chinese institutional LPs and importers. HK structure as bridge. Not a project financier.</p>
+        </div>
+      </div>
+      <div class="tm-card">
+        <div class="tm-avatar">EC</div>
+        <div class="tm-info">
+          <h5>JSC «EcoCity» — Oryol MSW plant</h5>
+          <div class="role">OPERATING PARTNER · INFRASTRUCTURE</div>
+          <p>Supplier of heat, CO₂ and electricity. Management and full human/production resource committed. Contract signed; type/terms disclosed at DD.</p>
+        </div>
+      </div>
+      <div class="tm-card open">
+        <div class="tm-avatar">CFO</div>
+        <div class="tm-info">
+          <h5>Chief Financial Officer</h5>
+          <div class="role">OPEN POSITION · CLOSE BY SEED CLOSE</div>
+          <p>International experience, IFRS, China-investor track record. Targeting Big-4 / agri-fund / EBRD background.</p>
+        </div>
+      </div>
+      <div class="tm-card open">
+        <div class="tm-avatar">CGM</div>
+        <div class="tm-info">
+          <h5>Chief Agronomist (Priva-level)</h5>
+          <div class="role">OPEN POSITION · CLOSE BY MONTH 6</div>
+          <p>NL/RU experience in 5+ ha high-tech greenhouses. Priva/Hortimax certified. Salary ₽400-800k/mo + bonus. Targeting LIPSADO, ECO-Culture, or EU returners.</p>
+        </div>
+      </div>
+      <div class="tm-card open">
+        <div class="tm-avatar">DOP</div>
+        <div class="tm-info">
+          <h5>Director of Production</h5>
+          <div class="role">OPEN POSITION · CLOSE BY MONTH 9</div>
+          <p>Russian greenhouse-launch experience, fresh-produce processing background (Multivac/GEA equipment). 12+ years in industry.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div></div>
+
+<!-- ════════════ SLIDE 20 — MOST ENERGY ════════════ -->
+<div class="slide-wrapper"><div class="slide light" id="s20">
+  <div class="inner">
+    <div class="sh"><span class="sh-num" style="color:var(--green-dark)">19 · CHINA GATEWAY PARTNER</span></div>
+    <h2 class="title-l">Most Energy Investment Limited · Hong Kong</h2>
+    <div class="uline"></div>
+    <div class="me-row">
+      <div class="me-left">
+        <div class="me-portrait">
+          <div class="me-emblem">明</div>
+          <h4>Mingkuan Peng (彭明宽)</h4>
+          <div class="me-cn">Owner · Most Energy Investment Limited</div>
+          <div class="me-co">Strategic Partner of Eagle's Nest. Not a financier — exclusive partner for raising Chinese institutional LPs and premium-food importers.</div>
+          <div class="me-loc">HONG KONG · 香港</div>
+        </div>
+      </div>
+      <div class="me-right">
+        <div class="me-bullet">
+          <h6>HK STRUCTURE · INTERNATIONAL-FRIENDLY</h6>
+          <p>Most Energy is registered in Hong Kong — a neutral jurisdiction, well understood by Chinese and European LPs. Simplifies negotiations and reduces country risk.</p>
+        </div>
+        <div class="me-bullet">
+          <h6>BELT &amp; ROAD ALIGNMENT · 一带一路</h6>
+          <p>Eagle's Nest is positioned within BRI logic: Russian agricultural infrastructure → Chinese consumer market. Opens access to BRI-affiliated funds and state soft-power.</p>
+        </div>
+        <div class="me-bullet">
+          <h6>EXCLUSIVE CHINA LP MANDATE</h6>
+          <p>Most Energy holds an exclusive mandate to introduce Chinese investors at Series A and Series B. Performance-based fee, not project financing.</p>
+        </div>
+        <div class="me-bullet">
+          <h6>EXPORT CHANNEL ACCESS</h6>
+          <p>Direct relationships with Chinese importers / distributors / e-commerce platforms (JD, Tmall). Brand localisation, GACC certification.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div></div>
+
+<!-- ════════════ SLIDE 21 — RISK ════════════ -->
+<div class="slide-wrapper"><div class="slide dark" id="s21">
+  <div class="grid-over"></div>
+  <div class="inner">
+    <div class="sh"><span class="sh-num">20 · RISK MITIGATION</span></div>
+    <h2 class="title-d">What we do against DD-failures</h2>
+    <div class="uline"></div>
+    <div class="risk-grid">
+      <div class="risk-row">
+        <div class="risk-icon">!</div>
+        <div class="risk-content">
+          <div class="rh">EcoCity contract — disclosed at DD</div>
+          <div class="rb">Earlier deck did not state the contract type (MOU? firm? take-or-pay?). This was the most material red flag.</div>
+          <div class="rmit"><b>MITIGATION:</b> At NDA stage we provide the full contract text with type, volume, RUB/Gcal tariff, term and take-or-pay clauses.</div>
+        </div>
+      </div>
+      <div class="risk-row">
+        <div class="risk-icon">!</div>
+        <div class="risk-content">
+          <div class="rh">CAPEX honestly benchmarked</div>
+          <div class="rb">Earlier deck: $1M for 30 ha (240× under reality). It killed fundability as a technical pitch.</div>
+          <div class="rmit"><b>MITIGATION:</b> Financial model built on Venlo Gen 4-5 EU 2025 benchmarks: KUBO/Dalsem/Certhon. Wageningen UR KWIN-Glastuinbouw. Russia premium +15-25% included.</div>
+        </div>
+      </div>
+      <div class="risk-row">
+        <div class="risk-icon">!</div>
+        <div class="risk-content">
+          <div class="rh">CO₂ — amine treatment is DD-ready</div>
+          <div class="rb">Earlier deck proposed direct flue-gas injection — guaranteed failure of TR CU 021 + Rosselkhoznadzor.</div>
+          <div class="rmit"><b>MITIGATION:</b> Pentair-class CO₂ amine plant included in Seed CAPEX. AVR Rotterdam reference. TR CU 021 + GACC compliance pathway documented.</div>
+        </div>
+      </div>
+      <div class="risk-row">
+        <div class="risk-icon">!</div>
+        <div class="risk-content">
+          <div class="rh">Timeline 24-28 months (not 12)</div>
+          <div class="rb">Earlier deck claimed 12 months to first harvest — physically impossible (9-14 mo equipment lead time + install + permits).</div>
+          <div class="rmit"><b>MITIGATION:</b> Realistic 24-28 mo schedule. Interim milestones: M9 — infra ready, M18 — greenhouse + LED ready, M22 — first plantation.</div>
+        </div>
+      </div>
+      <div class="risk-row">
+        <div class="risk-icon">!</div>
+        <div class="risk-content">
+          <div class="rh">Team — open positions disclosed</div>
+          <div class="rb">Earlier deck only showed the founder. An institutional LP closes the deck on this slide.</div>
+          <div class="rmit"><b>MITIGATION:</b> Honest disclosure: founder + EcoCity + Most Energy + 3 open positions with closing target 6-9 mo. CFO/Agronomist budgeted in Seed.</div>
+        </div>
+      </div>
+      <div class="risk-row">
+        <div class="risk-icon">!</div>
+        <div class="risk-content">
+          <div class="rh">Phased capital — de-risks each tranche</div>
+          <div class="rb">Earlier deck asked for $35M one-shot — too risky for seed-stage.</div>
+          <div class="rmit"><b>MITIGATION:</b> Seed/A/B tranche structure with milestone gating. Series A does not close until Module 1 hits its EBITDA target. Capital at risk is bounded.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div></div>
+
+<!-- ════════════ SLIDE 22 — TRANCHES ════════════ -->
+<div class="slide-wrapper"><div class="slide light" id="s22">
+  <div class="inner">
+    <div class="sh"><span class="sh-num" style="color:var(--green-dark)">21 · TRANCHE STRUCTURE</span></div>
+    <h2 class="title-l">Phased capital · milestone-gated · investor-friendly</h2>
+    <div class="uline"></div>
+    <div class="tranche-row">
+      <div class="tranche">
+        <div class="tr-tag">SEED · 2026</div>
+        <div class="tr-amt">$66M</div>
+        <div class="tr-yr">2026 close · 24-28 mo execution</div>
+        <div class="tr-uof"><b>Use of funds:</b><br>Plot 1 pilot 5 ha (Variant B)<br>Cluster HQ + CO₂ amine plant<br>15 MW substation<br>Pre-operating capital 6 mo</div>
+        <div class="tr-trig">TRIGGER: ✓ NDA + DD pack<br>✓ EcoCity contract disclosed<br>✓ CFO + Agronomist hired</div>
+      </div>
+      <div class="tranche a">
+        <div class="tr-tag">SERIES A · 2028</div>
+        <div class="tr-amt">$90M</div>
+        <div class="tr-yr">2028 close · Modules 2-3</div>
+        <div class="tr-uof"><b>Use of funds:</b><br>Plots 2-3 Modules 2 + 3 (Variant A)<br>Retail logistics M2 «Krym»<br>X5/Magnit/Lenta contracts<br>Additional working capital</div>
+        <div class="tr-trig">TRIGGER: ✓ Module 1 mature<br>✓ EBITDA Year 1 ≥ 23%<br>✓ Retail contracts signed</div>
+      </div>
+      <div class="tranche b">
+        <div class="tr-tag">SERIES B · 2030</div>
+        <div class="tr-amt">$97M</div>
+        <div class="tr-yr">2030 close · Modules 4-5-6 + rail</div>
+        <div class="tr-uof"><b>Use of funds:</b><br>Plot 4 Modules 4-5 + Variant C<br>Plot 5 rail terminal + GACC<br>Plot 3 Module 6 completion<br>Premium processing for China</div>
+        <div class="tr-trig">TRIGGER: ✓ Modules 2-3 ramp ≥80%<br>✓ GACC registration done<br>✓ Most Energy China LPs onboarded</div>
+      </div>
+    </div>
+    <div class="total-program">
+      <div class="tpl">Total programme · 8 years · 30 ha · 6 modules</div>
+      <div class="tpv">$253M</div>
+    </div>
+  </div>
+</div></div>
+
+<!-- ════════════ SLIDE 23 — THE ASK ════════════ -->
+<div class="slide-wrapper"><div class="slide dark" id="s23">
+  <div class="grid-over"></div><div class="glow-tl"></div><div class="glow-br"></div>
+  <div class="inner">
+    <div class="sh"><span class="sh-num" style="color:var(--wheat)">22 · THE ASK</span></div>
+    <h2 class="title-d">Seed Round 2026</h2>
+    <div class="uline uline-gold"></div>
+    <div class="ask-hero">
+      <div class="al">SEED ROUND · MODULE 1 PILOT</div>
+      <div class="av">$66M</div>
+      <div class="ad">≈ ₽6.3B · 2026 close · 24-28 mo execution</div>
+    </div>
+    <div class="ask-detail">
+      <div class="ask-card">
+        <h5>USE OF FUNDS</h5>
+        <div class="ask-li">Greenhouse 5 ha Venlo Gen 4-5 + LED — $27.6M</div>
+        <div class="ask-li">Variant B processing (5 000 m²) — $19.7M</div>
+        <div class="ask-li">CO₂ amine plant + heat hub (cluster) — $8.0M</div>
+        <div class="ask-li">15 MW substation + 1st category — $3.0M</div>
+        <div class="ask-li">Cluster HQ + housing + utilities — $4.7M</div>
+        <div class="ask-li">Pre-operating + engineering + reserve — $3.0M</div>
+      </div>
+      <div class="ask-card">
+        <h5>KEY MILESTONES</h5>
+        <div class="ask-li">M0 close — all EcoCity tech specs received</div>
+        <div class="ask-li">M9 — infrastructure tied in, foundations done</div>
+        <div class="ask-li">M18 — greenhouse + LED + processing commissioning</div>
+        <div class="ask-li">M22 — first plantation of 3 crops</div>
+        <div class="ask-li">M24 — first harvest, retail contracts</div>
+        <div class="ask-li">M28 — Year-1 ramp 60% mature → Series A trigger</div>
+      </div>
+    </div>
+  </div>
+</div></div>
+
+<!-- ════════════ SLIDE 24 — CONTACT ════════════ -->
+<div class="slide-wrapper"><div class="slide dark" id="s24">
+  <div class="grid-over"></div><div class="glow-br"></div>
+  <div class="inner">
+    <div class="contact-row">
+      <div class="contact-left">
+        <div class="tag tag-gold">LET'S BUILD WORLD-CLASS AGRO IN RUSSIA</div>
+        <h2>LET'S TALK.</h2>
+        <div class="sub">Next steps · Due diligence · Term sheet</div>
+        <div class="desc">Eagle's Nest is the only Russian agro-cluster combining MSW energy, high-tech Venlo greenhouses, and an exclusive China channel through Most Energy. Ready for NDA and due diligence.</div>
+      </div>
+      <div class="contact-right">
+        <div class="contact-card">
+          <h6>FOUNDER · CEO</h6>
+          <div class="name">Aslan Kaa</div>
+          <div class="role">Architect of Eagle's Nest project</div>
+          <div style="margin-top:10px;font-size:11.5px;color:var(--text-on-dark);line-height:1.7;font-weight:500;">
+            <div>📞 +7 (969) 795-55-55</div>
+            <div>📞 +7 (925) 203-77-77</div>
+            <div>🌐 www.aslankaa.com</div>
+            <div>✉️ aslankaa@yandex.ru</div>
+          </div>
+        </div>
+        <div class="contact-card">
+          <h6>CHINA IR PARTNER</h6>
+          <div class="name">Mingkuan Peng (彭明宽)</div>
+          <div class="role">Owner, Most Energy Investment Limited (HK)</div>
+        </div>
+        <div class="next-steps">
+          <div class="ns-flow">
+            <span>NDA</span><span class="arrow">→</span><span>DD PACK</span><span class="arrow">→</span><span>TERM SHEET</span><span class="arrow">→</span><span>CLOSE</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="position:absolute;bottom:20px;left:60px;right:60px;display:flex;justify-content:space-between;font-size:9px;font-weight:600;color:var(--text-muted);letter-spacing:2.5px;text-transform:uppercase;">
+      <span>EAGLE'S NEST · INVESTMENT MEMORANDUM · 2026</span>
+      <span>CONFIDENTIAL · 105.59 HA · ORYOL OBLAST</span>
+    </div>
+  </div>
+</div></div>
+
+<div class="slide-counter">24 slides · v2 EN · 2026-04-29</div>
+
+</body>
+</html>

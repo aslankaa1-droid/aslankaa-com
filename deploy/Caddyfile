@@ -1,0 +1,23 @@
+aslankaa.com, www.aslankaa.com {
+    root * /srv/www
+    file_server
+    encode gzip zstd
+
+    @cacheable {
+        path /images/* /policy-*.html /styles.css
+    }
+    header @cacheable Cache-Control "public, max-age=86400"
+
+    header {
+        X-Content-Type-Options nosniff
+        Referrer-Policy strict-origin-when-cross-origin
+        X-Frame-Options DENY
+    }
+
+    log {
+        output file /var/log/caddy/aslankaa.log {
+            roll_size 50mb
+            roll_keep 10
+        }
+    }
+}

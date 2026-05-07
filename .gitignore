@@ -1,0 +1,21 @@
+# OS / editor junk
+.DS_Store
+Thumbs.db
+desktop.ini
+*~
+*.swp
+.idea/
+.vscode/
+
+# Build artefacts
+node_modules/
+dist/
+.cache/
+
+# Local environment
+.env
+.env.local
+
+# Deploy state (not source)
+deploy/state/
+*.log

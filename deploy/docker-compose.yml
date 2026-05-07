@@ -1,0 +1,18 @@
+services:
+  caddy:
+    image: caddy:2-alpine
+    container_name: aslankaa-caddy
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - /srv/aslankaa/www:/srv/www:ro
+      - caddy-data:/data
+      - caddy-config:/config
+      - ./logs:/var/log/caddy
+
+volumes:
+  caddy-data:
+  caddy-config:
