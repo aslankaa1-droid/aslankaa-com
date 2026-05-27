@@ -1170,6 +1170,60 @@ html {
   color: var(--aslan-bg-dark);
 }
 
+/* ----- 11.b Direct-contact block (replaces form, 152-FZ compliant) ----- */
+.aslan-page .aslan-contact-direct {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  max-width: 560px;
+}
+
+.aslan-page .aslan-contact-direct__lead {
+  font-family: var(--aslan-font-body);
+  font-size: var(--aslan-fs-body);
+  color: var(--aslan-text-light);
+  letter-spacing: 0.03em;
+  margin: 0;
+}
+
+.aslan-page .aslan-contact-direct__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.aslan-page .aslan-contact-direct__link {
+  display: inline-block;
+  padding: 14px 24px;
+  border: 1px solid var(--aslan-rule);
+  color: var(--aslan-text-light);
+  text-decoration: none;
+  font-family: var(--aslan-font-body);
+  font-size: var(--aslan-fs-body);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.aslan-page .aslan-contact-direct__link:hover,
+.aslan-page .aslan-contact-direct__link:focus {
+  background: var(--aslan-text-light);
+  color: var(--aslan-bg-dark);
+  border-color: var(--aslan-text-light);
+}
+
+.aslan-page .aslan-contact-direct__notice {
+  font-family: var(--aslan-font-body);
+  font-size: var(--aslan-fs-micro);
+  line-height: 1.6;
+  color: var(--aslan-accent-grey);
+  margin: 6px 0 0;
+  letter-spacing: 0.02em;
+}
+
 
 /* ----- 12. Footer ----- */
 .aslan-page .aslan-footer {
