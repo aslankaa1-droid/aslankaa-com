@@ -9,8 +9,14 @@
   --aslan-text-light: #ffffff;
   --aslan-accent-grey: #c8c6c6;
   --aslan-rule: rgba(255, 255, 255, 0.12);
+  --aslan-rule-strong: rgba(255, 255, 255, 0.40);
+  --aslan-tint-hover: rgba(255, 255, 255, 0.08);
   --aslan-overlay-soft: rgba(10, 10, 10, 0.82);
+  --aslan-overlay-mid: rgba(10, 10, 10, 0.55);
   --aslan-overlay-strong: rgba(10, 10, 10, 0.92);
+  --aslan-hero-grad-1: #2a2a2a;
+  --aslan-hero-grad-2: #181818;
+  --aslan-hero-grad-3: #0a0a0a;
 
   --aslan-font-head: 'Cormorant Garamond', 'Times New Roman', serif;
   --aslan-font-body: 'Open Sans', Arial, sans-serif;
@@ -248,7 +254,7 @@ html {
 
 .aslan-page .aslan-langswitcher__current {
   background: none;
-  border: 1px solid rgba(255, 255, 255, 0.4);
+  border: 1px solid var(--aslan-rule-strong);
   border-radius: 999px;
   width: 44px;
   height: 44px;
@@ -278,7 +284,7 @@ html {
   gap: 8px;
   padding: 14px 14px;
   background: var(--aslan-overlay-strong);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  border: 1px solid var(--aslan-rule);
   border-radius: 24px;
   min-width: 44px;
   align-items: center;
@@ -356,7 +362,7 @@ html {
   gap: 0;
   padding: 6px 18px;
   background: var(--aslan-overlay-strong);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  border: 1px solid var(--aslan-rule);
   border-radius: 16px;
   min-width: 180px;
   opacity: 0;
@@ -374,7 +380,7 @@ html {
 }
 
 .aslan-page .aslan-topbar__menu-list li {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+  border-bottom: 1px solid var(--aslan-rule);
 }
 
 .aslan-page .aslan-topbar__menu-list li:last-child {
@@ -441,9 +447,9 @@ html {
   background:
     radial-gradient(
       ellipse 60% 70% at 75% 50%,
-      #2a2a2a 0%,
-      #181818 45%,
-      #0a0a0a 80%
+      var(--aslan-hero-grad-1) 0%,
+      var(--aslan-hero-grad-2) 45%,
+      var(--aslan-hero-grad-3) 80%
     ),
     var(--aslan-bg-dark);
   position: relative;
@@ -550,7 +556,7 @@ html {
   align-items: baseline;
   gap: 32px;
   padding: 14px 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+  border-bottom: 1px solid var(--aslan-rule);
 }
 
 .aslan-page .aslan-hero__index-num {
@@ -1276,8 +1282,14 @@ html[data-theme="light"] .aslan-page {
   --aslan-text-light: #1a1612;
   --aslan-accent-grey: #5a564f;
   --aslan-rule: rgba(0, 0, 0, 0.14);
-  --aslan-overlay-soft: rgba(245, 241, 234, 0.86);
-  --aslan-overlay-strong: rgba(245, 241, 234, 0.94);
+  --aslan-rule-strong: rgba(0, 0, 0, 0.32);
+  --aslan-tint-hover: rgba(0, 0, 0, 0.06);
+  --aslan-overlay-soft: rgba(245, 241, 234, 0.88);
+  --aslan-overlay-mid: rgba(245, 241, 234, 0.66);
+  --aslan-overlay-strong: rgba(245, 241, 234, 0.96);
+  --aslan-hero-grad-1: #ffffff;
+  --aslan-hero-grad-2: #f0ece4;
+  --aslan-hero-grad-3: #f5f1ea;
 }
 
 html[data-theme="sepia"] .aslan-page {
@@ -1285,8 +1297,14 @@ html[data-theme="sepia"] .aslan-page {
   --aslan-text-light: #3a2e1e;
   --aslan-accent-grey: #6b5840;
   --aslan-rule: rgba(58, 46, 30, 0.18);
+  --aslan-rule-strong: rgba(58, 46, 30, 0.36);
+  --aslan-tint-hover: rgba(58, 46, 30, 0.08);
   --aslan-overlay-soft: rgba(239, 228, 207, 0.88);
+  --aslan-overlay-mid: rgba(239, 228, 207, 0.66);
   --aslan-overlay-strong: rgba(239, 228, 207, 0.95);
+  --aslan-hero-grad-1: #fbf2dd;
+  --aslan-hero-grad-2: #f1e5ce;
+  --aslan-hero-grad-3: #efe4cf;
 }
 
 /* Sticky bottom bar — Соглашение по центру (всегда видно) */
@@ -1400,9 +1418,9 @@ html[data-theme="sepia"] .aslan-page {
   align-items: center;
   gap: 10px;
   padding: 10px 22px;
-  border: 1px solid rgba(255, 255, 255, 0.4);
+  border: 1px solid var(--aslan-rule-strong);
   border-radius: 999px;
-  background-color: rgba(10, 10, 10, 0.55);
+  background-color: var(--aslan-overlay-mid);
   -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
   font-family: var(--aslan-font-body);
@@ -1416,7 +1434,7 @@ html[data-theme="sepia"] .aslan-page {
 
 .aslan-page .aslan-pagenav__link:hover {
   border-color: var(--aslan-text-light);
-  background-color: rgba(255, 255, 255, 0.08);
+  background-color: var(--aslan-tint-hover);
   opacity: 1;
 }
 
@@ -1769,14 +1787,16 @@ html[data-theme="sepia"] .aslan-page {
   color: inherit;
   font-weight: 700;
   text-decoration: underline;
-  text-decoration-color: rgba(255, 255, 255, 0.6);
+  text-decoration-color: currentColor;
+  text-decoration-skip-ink: none;
   text-underline-offset: 3px;
   text-decoration-thickness: 1.5px;
-  transition: text-decoration-color 0.2s ease, color 0.2s ease;
+  opacity: 0.75;
+  transition: opacity 0.2s ease, color 0.2s ease;
 }
 
 .aslan-inline-link:hover,
 .aslan-inline-link:focus {
-  color: var(--aslan-text-light, #fff);
-  text-decoration-color: rgba(255, 255, 255, 1);
+  color: var(--aslan-text-light);
+  opacity: 1;
 }
