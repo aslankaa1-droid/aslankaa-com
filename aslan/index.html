@@ -215,9 +215,9 @@ footer a:hover{color:var(--gold)}
       <div class="h">9 собственных доменов + 3 поддомена aslankaa.com + 1 подпапка + 1 GH-Pages</div>
     </div>
     <div class="stat">
-      <div class="v">13</div>
+      <div class="v">14</div>
       <div class="k">Под HTTPS</div>
-      <div class="h">SSL Let's Encrypt активен везде, кроме stampscaner.com (в очереди)</div>
+      <div class="h">SSL Let's Encrypt активен везде</div>
     </div>
     <div class="stat">
       <div class="v">≈ 145</div>
@@ -234,7 +234,7 @@ footer a:hover{color:var(--gold)}
 
 <div class="verified-banner">
   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>
-  <span>Базовая проверка curl-запросами 31.05.2026 · все 14 проектов в сети (stampscaner.com — пока HTTP, SSL в очереди)</span>
+  <span>Базовая проверка curl-запросами 31.05.2026 · все 14 проектов в сети, все под HTTPS</span>
   <span style="margin-left:auto;color:var(--ink-3);font-size:11.5px" id="last-check"></span>
   <button id="refresh-btn" title="Перепроверить все 14 доменов прямо сейчас (no-cors fetch)">
     <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 0 1 15-6.7L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-15 6.7L3 16"/><path d="M3 21v-5h5"/></svg>
@@ -276,7 +276,7 @@ footer a:hover{color:var(--gold)}
 </section>
 
 <footer>
-  <div>© Aslan Kaa · Center Group Company · Сформировано 2026-05-28 · Обновлено 2026-05-31 (+ StampScaner, + Фонд Синтем)</div>
+  <div>© Aslan Kaa · Center Group Company · Сформировано 2026-05-28 · Обновлено 2026-05-31 (+ StampScaner, + Фонд Синтем · SSL stampscaner.com)</div>
   <div class="links">
     <a href="mailto:aslankaa@yandex.ru">aslankaa@yandex.ru</a>
     <a href="tel:+79697955555">+7 (969) 795-55-55</a>
@@ -563,21 +563,21 @@ const PROJECTS = [
     icon: "✉",
     cat: ["business", "ai"],
     date: "2026-05-29",
-    url: "http://stampscaner.com",
+    url: "https://stampscaner.com",
     status: "live",
-    statusLabel: "Live · HTTP (SSL в очереди)",
+    statusLabel: "Live · HTTPS",
     desc: "Премиум-сервис цифровой верификации почтовых марок: AI-агент Postman, цифровой сертификат подписанный Ed25519-ключом со страховкой $1 000, маркетплейс с эскроу. Премиум-позиционирование: фокус на историческом корпусе 1857–2001 + русско-арабский рынок, не конкурируем с UPU AI-app. Лендинг на 3 языках (RU/EN/AR с RTL), 3 темы (Light/Sepia/Dark, Dark — auto), USD/RUB toggle тарифов. Сопутствующее: Flutter-приложение iOS+Android в работе, backend Worker для Claude Vision готов.",
     volume: "Лендинг + 7 публичных страниц/папок · 3 языка (RU/EN/AR) · 3 темы · USD/RUB toggle",
     sections: ["Hero", "Услуги", "Postman (AI-агент)", "Сертификат + страховка $1000", "Тарифы (USD/RUB)", "Доверие", "Об основателе", "Privacy / Terms (RU+EN)", "install-android", "app/", "cert/ (реестр)"],
     docs: [
-      { name: "index.html (RU/EN/AR + 3 темы)", url: "http://stampscaner.com/" },
-      { name: "privacy.html (RU)", url: "http://stampscaner.com/privacy.html" },
-      { name: "privacy-en.html (EN)", url: "http://stampscaner.com/privacy-en.html" },
-      { name: "terms.html (RU)", url: "http://stampscaner.com/terms.html" },
-      { name: "terms-en.html (EN)", url: "http://stampscaner.com/terms-en.html" },
-      { name: "install-android.html", url: "http://stampscaner.com/install-android.html" },
-      { name: "app/", url: "http://stampscaner.com/app/" },
-      { name: "cert/ — реестр сертификатов", url: "http://stampscaner.com/cert/" }
+      { name: "index.html (RU/EN/AR + 3 темы)", url: "https://stampscaner.com/" },
+      { name: "privacy.html (RU)", url: "https://stampscaner.com/privacy.html" },
+      { name: "privacy-en.html (EN)", url: "https://stampscaner.com/privacy-en.html" },
+      { name: "terms.html (RU)", url: "https://stampscaner.com/terms.html" },
+      { name: "terms-en.html (EN)", url: "https://stampscaner.com/terms-en.html" },
+      { name: "install-android.html", url: "https://stampscaner.com/install-android.html" },
+      { name: "app/", url: "https://stampscaner.com/app/" },
+      { name: "cert/ — реестр сертификатов", url: "https://stampscaner.com/cert/" }
     ]
   },
   {
