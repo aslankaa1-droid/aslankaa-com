@@ -1,0 +1,731 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Публикации Проектов Аслана · Premium Dashboard</title>
+<meta name="description" content="Каталог проектов Аслана Каа, опубликованных в интернете. Каждый адрес и каждая ссылка проверена 28 мая 2026.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg-0:#0a0d12;--bg-1:#10141b;--bg-2:#171c25;--bg-3:#1f2530;
+  --line:#2a3140;--line-2:#3a4256;
+  --ink:#e8ecf3;--ink-2:#aab2c2;--ink-3:#6c7588;
+  --gold:#d4a64a;--gold-2:#f5cb6d;--gold-soft:rgba(212,166,74,.16);
+  --green:#54c08c;--amber:#e9b14a;--red:#e26370;--blue:#7aa8e0;
+  --shadow:0 18px 60px -22px rgba(0,0,0,.65);
+  --shadow-card:0 8px 28px -12px rgba(0,0,0,.55);
+  --radius:14px;--radius-lg:22px;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--bg-0);color:var(--ink);font-family:"Manrope",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body{
+  background:
+    radial-gradient(1200px 700px at 85% -10%, rgba(212,166,74,.12), transparent 70%),
+    radial-gradient(900px 600px at -10% 110%, rgba(122,168,224,.08), transparent 70%),
+    linear-gradient(180deg, #0a0d12 0%, #0d1118 100%);
+  min-height:100vh;
+}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit}
+
+.topbar{
+  position:sticky;top:0;z-index:50;
+  display:flex;align-items:center;justify-content:space-between;
+  gap:20px;padding:14px 36px;
+  backdrop-filter:blur(14px) saturate(140%);-webkit-backdrop-filter:blur(14px) saturate(140%);
+  background:rgba(10,13,18,.72);border-bottom:1px solid var(--line);
+}
+.brand{display:flex;align-items:center;gap:14px;font-family:"Cormorant Garamond",serif;font-weight:600;font-size:22px;letter-spacing:.4px}
+.brand .mark{
+  width:38px;height:38px;border-radius:10px;
+  background:linear-gradient(135deg, var(--gold) 0%, #a87a26 100%);
+  display:grid;place-items:center;color:#16110a;font-weight:800;font-family:"Manrope",sans-serif;font-size:16px;
+  box-shadow:0 4px 18px -4px rgba(212,166,74,.5);
+}
+.brand .brand-title{display:flex;flex-direction:column;line-height:1.1}
+.brand .brand-sub{font-size:11px;font-family:"Manrope",sans-serif;color:var(--ink-3);letter-spacing:1.6px;text-transform:uppercase;font-weight:500}
+.top-meta{display:flex;align-items:center;gap:22px;font-size:13px;color:var(--ink-2)}
+.top-meta .dot{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 0 4px rgba(84,192,140,.18)}
+.clock{font-family:"JetBrains Mono",monospace;font-size:13px;color:var(--ink-2)}
+
+.hero{max-width:1320px;margin:0 auto;padding:64px 36px 28px}
+.hero .eyebrow{
+  display:inline-flex;align-items:center;gap:10px;padding:8px 14px;border-radius:999px;
+  background:var(--gold-soft);border:1px solid rgba(212,166,74,.36);
+  color:var(--gold-2);font-size:12px;font-weight:600;letter-spacing:1.8px;text-transform:uppercase;
+}
+.hero h1{font-family:"Cormorant Garamond",serif;font-weight:600;font-size:clamp(40px,5.4vw,68px);line-height:1.05;margin:18px 0 14px;letter-spacing:-.5px}
+.hero h1 .accent{color:var(--gold)}
+.hero p.lead{font-size:18px;color:var(--ink-2);max-width:780px;line-height:1.55;margin:0 0 28px}
+
+.stat-row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;margin-top:36px}
+.stat{
+  background:linear-gradient(180deg, var(--bg-2) 0%, var(--bg-1) 100%);
+  border:1px solid var(--line);border-radius:var(--radius);padding:22px 22px 20px;box-shadow:var(--shadow-card);
+}
+.stat .v{font-family:"Cormorant Garamond",serif;font-size:42px;font-weight:600;color:var(--gold);line-height:1}
+.stat .k{margin-top:10px;font-size:12px;color:var(--ink-3);letter-spacing:1.4px;text-transform:uppercase;font-weight:600}
+.stat .h{font-size:13px;color:var(--ink-2);margin-top:6px}
+
+.verified-banner{
+  max-width:1320px;margin:24px auto 0;padding:14px 36px 0;
+  display:flex;align-items:center;gap:10px;color:var(--ink-3);font-size:12.5px;
+  flex-wrap:wrap;
+}
+.verified-banner > svg:first-child{color:var(--green)}
+#refresh-btn{
+  display:inline-flex;align-items:center;gap:7px;padding:8px 14px;
+  background:linear-gradient(135deg, var(--gold) 0%, #b88830 100%);
+  color:#16110a;font-weight:700;font-size:12px;border:none;border-radius:8px;
+  cursor:pointer;transition:transform .15s, box-shadow .15s;
+  box-shadow:0 4px 16px -6px rgba(212,166,74,.5);
+}
+#refresh-btn:hover{transform:translateY(-1px);box-shadow:0 8px 24px -8px rgba(212,166,74,.7)}
+#refresh-btn:disabled{opacity:.6;cursor:wait;transform:none}
+#refresh-btn svg{transition:transform .4s}
+#refresh-btn.spinning svg{animation:spin 1s linear infinite}
+@keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+
+.status.checking{background:rgba(122,168,224,.14);color:var(--blue);border:1px solid rgba(122,168,224,.35)}
+.status.checking .pulse{animation:pulse 0.7s infinite}
+.status.dead{background:rgba(226,99,112,.14);color:var(--red);border:1px solid rgba(226,99,112,.35)}
+
+.toolbar{
+  max-width:1320px;margin:48px auto 18px;padding:0 36px;
+  display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;
+}
+.filters{display:flex;gap:8px;flex-wrap:wrap}
+.chip{padding:9px 16px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--ink-2);font-size:13px;font-weight:500;cursor:pointer;transition:all .18s ease}
+.chip:hover{border-color:var(--line-2);color:var(--ink)}
+.chip.active{background:var(--gold);color:#16110a;border-color:var(--gold);font-weight:700;box-shadow:0 6px 22px -10px rgba(212,166,74,.6)}
+.view-toggle{display:flex;background:var(--bg-2);border:1px solid var(--line);border-radius:10px;padding:4px}
+.view-toggle button{background:transparent;color:var(--ink-3);border:none;padding:7px 14px;border-radius:7px;cursor:pointer;font-size:13px;font-weight:500;display:flex;align-items:center;gap:6px}
+.view-toggle button.active{background:var(--bg-3);color:var(--ink)}
+.search{flex:1;max-width:340px;position:relative}
+.search input{width:100%;padding:11px 14px 11px 38px;border-radius:10px;background:var(--bg-2);border:1px solid var(--line);color:var(--ink);font-size:13px;font-family:inherit;outline:none}
+.search input:focus{border-color:var(--gold)}
+.search svg{position:absolute;left:13px;top:50%;transform:translateY(-50%);color:var(--ink-3)}
+
+.grid{max-width:1320px;margin:0 auto;padding:8px 36px 80px;display:grid;grid-template-columns:repeat(auto-fill,minmax(380px,1fr));gap:22px}
+.card{
+  position:relative;background:linear-gradient(180deg, var(--bg-2) 0%, var(--bg-1) 100%);
+  border:1px solid var(--line);border-radius:var(--radius-lg);padding:26px 26px 22px;box-shadow:var(--shadow-card);
+  transition:transform .25s ease, border-color .25s ease, box-shadow .25s ease;display:flex;flex-direction:column;
+}
+.card:hover{transform:translateY(-3px);border-color:var(--line-2);box-shadow:var(--shadow)}
+.card.offline{opacity:.62}
+.card.offline:hover{opacity:.85}
+.card .top{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin-bottom:14px}
+.card .icon{width:46px;height:46px;border-radius:12px;background:linear-gradient(135deg, rgba(212,166,74,.18), rgba(212,166,74,.06));border:1px solid rgba(212,166,74,.32);display:grid;place-items:center;font-size:22px}
+.status{display:inline-flex;align-items:center;gap:6px;font-size:11px;letter-spacing:1.2px;text-transform:uppercase;font-weight:700;padding:5px 10px;border-radius:999px}
+.status.live{background:rgba(84,192,140,.14);color:var(--green);border:1px solid rgba(84,192,140,.35)}
+.status.private{background:rgba(122,168,224,.14);color:var(--blue);border:1px solid rgba(122,168,224,.35)}
+.status.app{background:rgba(212,166,74,.14);color:var(--gold-2);border:1px solid rgba(212,166,74,.35)}
+.status.offline{background:rgba(226,99,112,.14);color:var(--red);border:1px solid rgba(226,99,112,.35)}
+.status .pulse{width:6px;height:6px;border-radius:50%;background:currentColor}
+.status.live .pulse{animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+
+.card h3{font-family:"Cormorant Garamond",serif;font-weight:600;font-size:24px;margin:0 0 6px;line-height:1.18}
+.card .url{font-family:"JetBrains Mono",monospace;font-size:13px;color:var(--gold);display:inline-flex;align-items:center;gap:6px;margin-bottom:14px}
+.card .desc{color:var(--ink-2);font-size:14px;line-height:1.55;margin:0 0 16px}
+.meta-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px 16px;padding:14px 0;margin:0 0 14px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.meta-grid .k{font-size:10px;text-transform:uppercase;letter-spacing:1.4px;color:var(--ink-3);font-weight:600}
+.meta-grid .v{font-size:13px;color:var(--ink);font-weight:500;margin-top:2px}
+.sections{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 18px}
+.sections .tag{font-size:11px;padding:4px 9px;background:var(--bg-3);border:1px solid var(--line);border-radius:6px;color:var(--ink-2)}
+.docs{margin:0 0 18px}
+.docs .docs-title{font-size:10px;letter-spacing:1.6px;text-transform:uppercase;color:var(--ink-3);font-weight:600;margin-bottom:8px}
+.docs ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:4px;max-height:200px;overflow-y:auto}
+.docs ul::-webkit-scrollbar{width:5px}
+.docs ul::-webkit-scrollbar-thumb{background:var(--line-2);border-radius:4px}
+.docs li{font-size:12.5px;color:var(--ink-2);font-family:"JetBrains Mono",monospace;padding:4px 8px;background:rgba(255,255,255,.02);border-radius:5px;border-left:2px solid var(--gold)}
+.docs li.dead{border-left-color:var(--red);opacity:.55;text-decoration:line-through}
+.docs li a{color:var(--ink-2)}
+.docs li a:hover{color:var(--gold)}
+.actions{margin-top:auto;display:flex;gap:8px}
+.btn{flex:1;padding:11px 14px;border-radius:10px;border:1px solid var(--line);background:var(--bg-3);color:var(--ink);text-align:center;font-size:13px;font-weight:600;cursor:pointer;transition:all .18s ease;display:inline-flex;align-items:center;justify-content:center;gap:6px}
+.btn:hover{border-color:var(--gold);color:var(--gold)}
+.btn.primary{background:linear-gradient(135deg, var(--gold), #b88830);color:#16110a;border-color:transparent;font-weight:700}
+.btn.primary:hover{transform:translateY(-1px);box-shadow:0 8px 24px -8px rgba(212,166,74,.5);color:#16110a}
+.btn.disabled{opacity:.4;cursor:not-allowed;pointer-events:none}
+
+.table-wrap{max-width:1320px;margin:0 auto;padding:8px 36px 80px;display:none}
+.table-wrap.show{display:block}
+.grid.hide{display:none}
+table{width:100%;border-collapse:separate;border-spacing:0;background:var(--bg-1);border:1px solid var(--line);border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-card)}
+th,td{padding:14px 16px;text-align:left;font-size:13px;border-bottom:1px solid var(--line);vertical-align:top}
+th{background:var(--bg-2);color:var(--ink-3);font-size:11px;text-transform:uppercase;letter-spacing:1.4px;font-weight:600;border-bottom:1px solid var(--line-2)}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover{background:rgba(255,255,255,.02)}
+tbody tr.offline{opacity:.5}
+td .url{font-family:"JetBrains Mono",monospace;color:var(--gold);font-size:12.5px}
+td.proj{font-weight:600;color:var(--ink)}
+td .secs{display:flex;flex-wrap:wrap;gap:4px}
+td .secs .tag{font-size:10.5px;padding:2px 7px;background:var(--bg-3);border-radius:4px;color:var(--ink-2)}
+td .vol{color:var(--ink-2);font-size:12.5px}
+
+footer{
+  max-width:1320px;margin:0 auto;padding:32px 36px 56px;border-top:1px solid var(--line);
+  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;color:var(--ink-3);font-size:12px;
+}
+footer .links{display:flex;gap:18px}
+footer a:hover{color:var(--gold)}
+
+@media (max-width: 820px){
+  .topbar{padding:12px 18px}
+  .top-meta .clock{display:none}
+  .hero{padding:40px 18px 20px}
+  .stat-row{grid-template-columns:repeat(2,1fr)}
+  .toolbar{padding:0 18px;flex-direction:column;align-items:stretch}
+  .grid,.table-wrap{padding:8px 18px 60px}
+  .table-wrap{overflow-x:auto}
+  table{min-width:880px}
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <div class="mark">A</div>
+    <div class="brand-title">
+      <span>Aslan Kaa</span>
+      <span class="brand-sub">Публикации проектов</span>
+    </div>
+  </div>
+  <div class="top-meta">
+    <span><span class="dot"></span> <span id="live-count">12</span> из <span id="total-count">12</span> доменов в сети</span>
+    <span class="clock" id="clock">—</span>
+  </div>
+</header>
+
+<section class="hero">
+  <span class="eyebrow">● Premium Dashboard · Каталог онлайн-присутствия</span>
+  <h1>Все проекты Аслана,<br><span class="accent">опубликованные в интернете.</span></h1>
+  <p class="lead">Каталог 10 доменов и поддоменов с описанием каждого проекта, реальными разделами, списком опубликованных документов и прямыми ссылками. Каждый адрес и каждая ссылка проверены вживую 28 мая 2026 — мёртвые помечены отдельно.</p>
+
+  <div class="stat-row">
+    <div class="stat">
+      <div class="v">12</div>
+      <div class="k">Живых проектов</div>
+      <div class="h">8 собственных доменов + 3 поддомена aslankaa.com + 1 подпапка</div>
+    </div>
+    <div class="stat">
+      <div class="v">12</div>
+      <div class="k">Под HTTPS</div>
+      <div class="h">SSL Let's Encrypt активен везде</div>
+    </div>
+    <div class="stat">
+      <div class="v">≈ 135</div>
+      <div class="k">Опубликованных страниц</div>
+      <div class="h">+ десятки скачиваемых PDF/DOCX/PPTX</div>
+    </div>
+    <div class="stat">
+      <div class="v">26</div>
+      <div class="k">Дней онлайн</div>
+      <div class="h">Первый деплой 03.05.2026 (grandhubai)</div>
+    </div>
+  </div>
+</section>
+
+<div class="verified-banner">
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>
+  <span>Базовая проверка curl-запросами 28.05.2026 · все 12 проектов в сети</span>
+  <span style="margin-left:auto;color:var(--ink-3);font-size:11.5px" id="last-check"></span>
+  <button id="refresh-btn" title="Перепроверить все 12 доменов прямо сейчас (no-cors fetch)">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 0 1 15-6.7L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-15 6.7L3 16"/><path d="M3 21v-5h5"/></svg>
+    <span>Обновить статусы</span>
+  </button>
+</div>
+
+<div class="toolbar">
+  <div class="filters" id="filters">
+    <button class="chip active" data-f="all">Все</button>
+    <button class="chip" data-f="visit">Визитка</button>
+    <button class="chip" data-f="business">Бизнес-проекты</button>
+    <button class="chip" data-f="finance">Финансовые</button>
+    <button class="chip" data-f="realestate">Недвижимость</button>
+    <button class="chip" data-f="ai">AI-платформы</button>
+    <button class="chip" data-f="private">Приватные</button>
+  </div>
+  <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+    <div class="search">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      <input id="search" type="text" placeholder="Поиск по проекту, домену или разделу…">
+    </div>
+    <div class="view-toggle">
+      <button id="btn-grid" class="active">▦ Карточки</button>
+      <button id="btn-table">≡ Таблица</button>
+    </div>
+  </div>
+</div>
+
+<main class="grid" id="grid"></main>
+
+<section class="table-wrap" id="tablewrap">
+  <table>
+    <thead>
+      <tr><th>Проект</th><th>Адрес</th><th>Дата</th><th>Объём</th><th>Разделы</th><th>Статус</th></tr>
+    </thead>
+    <tbody id="tbody"></tbody>
+  </table>
+</section>
+
+<footer>
+  <div>© Aslan Kaa · Center Group Company · Сформировано 2026-05-28</div>
+  <div class="links">
+    <a href="mailto:aslankaa@yandex.ru">aslankaa@yandex.ru</a>
+    <a href="tel:+79697955555">+7 (969) 795-55-55</a>
+    <a href="https://aslankaa.com" target="_blank">aslankaa.com</a>
+  </div>
+</footer>
+
+<script>
+const PROJECTS = [
+  {
+    domain: "aslankaa.com",
+    project: "Сайт-визитка Аслана Кагирова",
+    icon: "◈",
+    cat: ["visit"],
+    date: "2026-05-27",
+    url: "https://aslankaa.com",
+    status: "live",
+    statusLabel: "Live · HTTPS",
+    desc: "Самописная визитка на 4 языках (RU/EN/FR/AR). Внутрь встроены 4 проекта-подпапки: «Эволюция / SVPC K-2», АПК «Орлиное гнездо», полное зеркало «Платформы Ноев Ковчег» (31 артефакт под PIN) и экспресс-DD «Карелия Золото · Леппясюрский». 152-ФЗ-совместимый блок прямых контактов (mailto / tel / Telegram / WhatsApp), без форм.",
+    volume: "10 верхнеуровневых страниц + 4 проекта-подпапки (с десятками артефактов внутри) · 4 языка · ≈ 33 КБ главная",
+    sections: ["Главная RU/EN/FR/AR", "Соглашение об использовании × 4 яз.", "АПК «Орлиное гнездо» RU + EN", "Эволюция / SVPC K-2", "Ноев Ковчег (PIN, 31 артефакт)", "Карелия Золото DD"],
+    docs: [
+      { name: "index.html (RU)", url: "https://aslankaa.com/" },
+      { name: "en.html — English", url: "https://aslankaa.com/en.html" },
+      { name: "fr.html — Français", url: "https://aslankaa.com/fr.html" },
+      { name: "ar.html — العربية (RTL)", url: "https://aslankaa.com/ar.html" },
+      { name: "policy-ru.html / -en / -fr / -ar", url: "https://aslankaa.com/policy-ru.html" },
+      { name: "apk-orel.html", url: "https://aslankaa.com/apk-orel.html" },
+      { name: "apk-eagles-nest-en.html", url: "https://aslankaa.com/apk-eagles-nest-en.html" },
+      { name: "evolution/ (HTML + PDF RU/EN)", url: "https://aslankaa.com/evolution/" },
+      { name: "noah-ark/ (PIN, 31 артефакт — зеркало noahsark.su)", url: "https://aslankaa.com/noah-ark/" },
+      { name: "kau/ (Карелия Золото DD, см. отдельную карточку)", url: "https://aslankaa.com/kau/" }
+    ]
+  },
+  {
+    domain: "noahsark.su",
+    project: "Платформа «Ноев Ковчег» · приватный хаб",
+    icon: "⚓",
+    cat: ["business", "finance", "private"],
+    date: "2026-05-29",
+    url: "https://noahsark.su",
+    status: "private",
+    statusLabel: "Live · PIN-gate (5 PIN)",
+    desc: "Армянская IT-платформа для использования цифровых активов в финансовом секторе. ECHELON pre-money EV €18M (Base, диапазон €10.5–34M), Hollister-revised €13M. С 29.05.2026 01:41 МСК закрыт 6-значным PIN-overlay (5 валидных PIN, SHA-256 через Web Crypto, сессия 30 дней в localStorage). Полный investor-package: 31 артефакт на hub'е (pitch, onepager, презентации RU/EN, прототипы RU/EN, 4 оценки ECHELON на RU/EN/FR/AR, 8 аудит-файлов, 10 проектных документов, 2 файла мобильного приложения). Зеркало aslankaa.com/noah-ark/ синхронно.",
+    volume: "31 артефакт · hub 31 КБ · 4 языка оценки · защита PIN · зеркало на aslankaa.com/noah-ark/",
+    sections: ["Hub (PIN-gate)", "pitch + onepager", "Большая презентация RU + EN", "HTML-прототип RU + EN", "valuation/ — оценка ECHELON RU/EN/FR/AR", "audit/ — 8 файлов (свод + 7 контуров)", "docs/ — 10 проектных документов (A–E1)", "mobile/ — приложение + PWA"],
+    docs: [
+      { name: "index.html — главный хаб (PIN)", url: "https://noahsark.su/" },
+      { name: "pitch.html", url: "https://noahsark.su/pitch.html" },
+      { name: "onepager.html", url: "https://noahsark.su/onepager.html" },
+      { name: "F_Большая_презентация_Ноев_Ковчег.html", url: "https://noahsark.su/F_Большая_презентация_Ноев_Ковчег.html" },
+      { name: "F_Big_Presentation_Noahs_Ark_EN.html", url: "https://noahsark.su/F_Big_Presentation_Noahs_Ark_EN.html" },
+      { name: "B_HTML_прототип_Ноев_Ковчег.html", url: "https://noahsark.su/B_HTML_прототип_Ноев_Ковчег.html" },
+      { name: "B_HTML_Prototype_Noahs_Ark_EN.html", url: "https://noahsark.su/B_HTML_Prototype_Noahs_Ark_EN.html" },
+      { name: "valuation/Оценка_Ноев_Ковчег_RU.html", url: "https://noahsark.su/valuation/Оценка_Ноев_Ковчег_2026-05-11_RU.html" },
+      { name: "valuation/Valuation_Report_Noahs_Ark_EN.html", url: "https://noahsark.su/valuation/Valuation_Report_Noahs_Ark_2026-05-11_EN.html" },
+      { name: "valuation/Rapport_Evaluation_Arche_Noe_FR.html", url: "https://noahsark.su/valuation/Rapport_Evaluation_Arche_Noe_2026-05-11_FR.html" },
+      { name: "valuation/Taqrir_Taqyim_Safinat_Nuh_AR.html", url: "https://noahsark.su/valuation/Taqrir_Taqyim_Safinat_Nuh_2026-05-11_AR.html" },
+      { name: "audit/AUDIT_СВОДНЫЙ.html", url: "https://noahsark.su/audit/AUDIT_СВОДНЫЙ.html" },
+      { name: "audit/ × 7 (Antiplagiat, Economics, Finance, Legal, Technology, Strategy, AI_Traces)", url: "https://noahsark.su/audit/AUDIT_1_Antiplagiat.html" },
+      { name: "docs/A_Концепт.html", url: "https://noahsark.su/docs/A_Концепт.html" },
+      { name: "docs/B_Декларация.html", url: "https://noahsark.su/docs/B_Декларация.html" },
+      { name: "docs/C_Пояснительная_записка.html", url: "https://noahsark.su/docs/C_Пояснительная_записка.html" },
+      { name: "docs/C_Техническая_архитектура.html", url: "https://noahsark.su/docs/C_Техническая_архитектура.html" },
+      { name: "docs/D1_Whitepaper.html", url: "https://noahsark.su/docs/D1_Whitepaper.html" },
+      { name: "docs/D2_Устав_СП.html", url: "https://noahsark.su/docs/D2_Устав_СП.html" },
+      { name: "docs/D3_Постановление.html", url: "https://noahsark.su/docs/D3_Постановление.html" },
+      { name: "docs/D4_Поправки.html", url: "https://noahsark.su/docs/D4_Поправки.html" },
+      { name: "docs/D5_IP_Стратегия.html", url: "https://noahsark.su/docs/D5_IP_Стратегия.html" },
+      { name: "docs/E1_Финансовая_модель.html", url: "https://noahsark.su/docs/E1_Финансовая_модель.html" },
+      { name: "mobile/index.html", url: "https://noahsark.su/mobile/index.html" },
+      { name: "mobile/pwa/index.html (94 КБ PWA)", url: "https://noahsark.su/mobile/pwa/index.html" }
+    ]
+  },
+  {
+    domain: "sintem.app",
+    project: "SINTEM · AI-помощники для маркетплейсов",
+    icon: "✦",
+    cat: ["business", "ai"],
+    date: "2026-05-28",
+    url: "https://sintem.app",
+    status: "live",
+    statusLabel: "Live · HTTPS",
+    desc: "B2B-сервис AI-помощников для продавцов Ozon и Wildberries: карточка-доктор, ответ на отзывы, скаут конкурентов, ABC-XYZ, юнит-экономика. Один бот @sintem_ai_bot, ₽1 500/мес, первый результат за 30 секунд. Backend на Cloudflare Workers.",
+    volume: "5 публичных страниц · только RU (EN/FR/AR подготовлены, скрыты гвардом PUBLIC_LANGS=['ru'])",
+    sections: ["Лендинг", "Бренд-описание", "Стайл-гайд", "Privacy 152-ФЗ", "Terms · оферта"],
+    docs: [
+      { name: "index.html — главная", url: "https://sintem.app/" },
+      { name: "brand-description.html", url: "https://sintem.app/brand-description.html" },
+      { name: "style-guide.html", url: "https://sintem.app/style-guide.html" },
+      { name: "privacy.html", url: "https://sintem.app/privacy.html" },
+      { name: "terms.html", url: "https://sintem.app/terms.html" }
+    ]
+  },
+  {
+    domain: "gccenter.ru",
+    project: "Большевицкий Бор · коттеджный посёлок",
+    icon: "▲",
+    cat: ["realestate"],
+    date: "2026-05-26",
+    url: "https://gccenter.ru",
+    status: "live",
+    statusLabel: "Live · HTTPS",
+    desc: "Лендинг коттеджного посёлка «Большевицкий Бор» в Смоленской области, деревня Большевицы в излучине Угры. Участок 16,19 га. Развёрнут на корпоративном домене ГК «Центр».",
+    volume: "1 страница · ≈ 74 КБ · премиум-лендинг",
+    sections: ["Hero — название и локация", "О деревне", "Условия участков", "Контакты"],
+    docs: [
+      { name: "index.html", url: "https://gccenter.ru/" }
+    ]
+  },
+  {
+    domain: "dpfsd.ru",
+    project: "ЦПФСР.РФ · Цифровая Платформа Финансирования Социального Развития",
+    icon: "🔒",
+    cat: ["finance", "private"],
+    date: "2026-05-26",
+    url: "https://dpfsd.ru",
+    status: "private",
+    statusLabel: "Live · PIN доступ",
+    desc: "Премиум-перекомплектовка проекта после Горизонта-III. Защищена 6-значным PIN-overlay (по умолчанию 654321, сессия 30 дней). Дизайн-система + 3 темы + i18n. Смена PIN через formsubmit.co (без backend) на aslankaa@yandex.ru.",
+    volume: "236+ HTML файлов · i18n hreflang: ru / en / ar / x-default",
+    sections: ["Главная (17 блоков, защищённая PIN)", "site-map.html", "Документы 01–17 (внутри · через i18n)", "Бренд-бук с логотипом «Р»", "14_Аудит (сводный)"],
+    docs: [
+      { name: "index.html (PIN: 654321)", url: "https://dpfsd.ru/" },
+      { name: "site-map.html", url: "https://dpfsd.ru/site-map.html" },
+      { name: "_design-system/i18n.js (RU/EN/AR)", url: "https://dpfsd.ru/_design-system/i18n.js" }
+    ]
+  },
+  {
+    domain: "grandhubai.com",
+    project: "GrandHubAi · Multi-Agent AI Platform",
+    icon: "⬢",
+    cat: ["ai", "business"],
+    date: "2026-05-03",
+    url: "https://grandhubai.com",
+    status: "app",
+    statusLabel: "Live · веб-приложение",
+    desc: "Мульти-агентная ИИ-платформа на 240+ профессиональных промптов. Provider-agnostic. Работает на любом устройстве. Не лендинг — полноценное веб-приложение (требует подключения собственного Groq API key). Версия v1.6.1 с тарифной сеткой и платёжными провайдерами NowPayments + CryptoCloud.",
+    volume: "≈ 114 КБ SPA · 240+ агентов · 5 тарифов",
+    sections: ["Single-Page приложение", "Каталог 240+ агентов", "Подключение Groq API key", "Биллинг (NowPayments / CryptoCloud)"],
+    docs: [
+      { name: "index — приложение", url: "https://grandhubai.com/" },
+      { name: "manifest.json (PWA)", url: "https://grandhubai.com/manifest.json" }
+    ]
+  },
+  {
+    domain: "chapan.market",
+    project: "Чапан · сеть супермаркетов халяль",
+    icon: "★",
+    cat: ["business", "realestate"],
+    date: "2026-05-27",
+    url: "https://chapan.market",
+    status: "live",
+    statusLabel: "Live · HTTPS",
+    desc: "Премиум-сеть супермаркетов халяль в РФ под историческим брендом «Чапан». Корень — language picker на 4 языка, контент в 4 подсайтах. v3 после двух раундов независимого аудита 6 экспертов. Гибридный формат: 1 флагман 300 м² + 5 компактных 200 м² + цех на Y2. Двойная сертификация СМР + ДУМ Татарстана. Series A ₽400M → Series B ₽1,2 млрд. Переехал на собственный домен 27.05.2026 (зеркало chapan.aslankaa.com ещё живо).",
+    volume: "1 language-picker + 4 подсайта × 7 страниц = 29 страниц · 69 файлов",
+    sections: ["Главная (выбор языка)", "RU: главная, бренд, формат, локации, партнёры, команда, контакты", "EN / FR / AR — те же 7 страниц"],
+    docs: [
+      { name: "index.html — picker языков", url: "https://chapan.market/" },
+      { name: "ru/ — «Чапан · сеть супермаркетов халяль»", url: "https://chapan.market/ru/" },
+      { name: "en/ — Chapan · halal supermarket chain", url: "https://chapan.market/en/" },
+      { name: "fr/ — Chapan · chaîne de supermarchés halal", url: "https://chapan.market/fr/" },
+      { name: "ar/ — تشابان · سلسلة سوبرماركت حلال", url: "https://chapan.market/ar/" },
+      { name: "(зеркало) chapan.aslankaa.com", url: "https://chapan.aslankaa.com/" }
+    ]
+  },
+  {
+    domain: "inertum.tech",
+    project: "INERTUM · Системы инертного хранения",
+    icon: "◆",
+    cat: ["business"],
+    date: "2026-05-20",
+    url: "https://inertum.tech",
+    status: "live",
+    statusLabel: "Live · HTTPS",
+    desc: "Промышленные капсулы и музейные камеры с инертной газовой средой (Ar/N₂) и пассивным оптическим контролем кислорода. 50 лет защиты без обслуживания. Pre-Seed · Patent Pending. Свободная ниша подтверждена 4 экспертами.",
+    volume: "2 языка (RU + EN) · hub + 9 публичных документов + CAD-альбом + md-viewer",
+    sections: ["Лендинг RU + EN", "hub.html — навигация", "9 документов в /public/", "Конструкторская документация v2 в /docs/cad-v2/", "MD-viewer для emails / financials"],
+    docs: [
+      { name: "index.html (RU)", url: "https://inertum.tech/" },
+      { name: "en/index.html (EN)", url: "https://inertum.tech/en/index.html" },
+      { name: "hub.html", url: "https://inertum.tech/hub.html" },
+      { name: "public/INERTUM-pitch-v2.html", url: "https://inertum.tech/public/INERTUM-pitch-v2.html" },
+      { name: "public/INERTUM-FAQ-investors.html", url: "https://inertum.tech/public/INERTUM-FAQ-investors.html" },
+      { name: "public/INERTUM-financials.html", url: "https://inertum.tech/public/INERTUM-financials.html" },
+      { name: "public/INERTUM-NDA.html", url: "https://inertum.tech/public/INERTUM-NDA.html" },
+      { name: "public/INERTUM-term-sheet.html", url: "https://inertum.tech/public/INERTUM-term-sheet.html" },
+      { name: "public/INERTUM-onepager.pdf", url: "https://inertum.tech/public/INERTUM-onepager.pdf" },
+      { name: "public/INERTUM-glossary.html", url: "https://inertum.tech/public/INERTUM-glossary.html" },
+      { name: "public/INERTUM-sales-scripts.html", url: "https://inertum.tech/public/INERTUM-sales-scripts.html" },
+      { name: "public/INERTUM-collector-brochure.html", url: "https://inertum.tech/public/INERTUM-collector-brochure.html" },
+      { name: "public/INERTUM-small-format-collectors.html", url: "https://inertum.tech/public/INERTUM-small-format-collectors.html" },
+      { name: "public/INERTUM-gov-tenders.html", url: "https://inertum.tech/public/INERTUM-gov-tenders.html" },
+      { name: "docs/cad-v2/index.html", url: "https://inertum.tech/docs/cad-v2/index.html" },
+      { name: "docs/md-viewer.html", url: "https://inertum.tech/docs/md-viewer.html" },
+      { name: "sitemap.xml", url: "https://inertum.tech/sitemap.xml" }
+    ]
+  },
+  {
+    domain: "zs.aslankaa.com",
+    project: "Земельный Сервис · защита земли от изъятия",
+    icon: "▣",
+    cat: ["realestate", "business"],
+    date: "2026-05-11",
+    url: "https://zs.aslankaa.com",
+    status: "live",
+    statusLabel: "Live · HTTPS",
+    desc: "Сервис для владельцев земли с проблемами. Первый продукт «B-3 Спасение от изъятия» по 101-ФЗ. Тарифы: Диагностика бесплатно / Pre-litigation 50–80K / Полное представительство 150–300K. SLA 24 часа. 3 региона на старте. Полная переработка v2.0 по экспертизе 10 экспертов.",
+    volume: "8 страниц RU + 3 legal + 3 языковых подсайта (en/fr/ar) ≈ 14+ страниц",
+    sections: ["Главная RU", "About · Услуги · Как работает · Для инвесторов · Регионы · Контакты · Прототип", "Legal: оферта, policy ПД, соглашение ПЭП", "EN / FR / AR подсайты"],
+    docs: [
+      { name: "index.html — главная RU", url: "https://zs.aslankaa.com/" },
+      { name: "about.html · services.html · how-it-works.html", url: "https://zs.aslankaa.com/about.html" },
+      { name: "for-investors.html · regions.html · contacts.html", url: "https://zs.aslankaa.com/for-investors.html" },
+      { name: "prototype.html — кликабельный прототип", url: "https://zs.aslankaa.com/prototype.html" },
+      { name: "legal/oferta.html · policy-pd.html · agreement-pep.html", url: "https://zs.aslankaa.com/legal/oferta.html" },
+      { name: "en/index.html · fr/index.html · ar/index.html", url: "https://zs.aslankaa.com/en/index.html" },
+      { name: "manifest.json (PWA)", url: "https://zs.aslankaa.com/manifest.json" }
+    ]
+  },
+  {
+    domain: "fabian.aslankaa.com",
+    project: "FABIAN · Premium Water for HoReCa",
+    icon: "💧",
+    cat: ["business"],
+    date: "2026-05-11",
+    url: "https://fabian.aslankaa.com",
+    status: "live",
+    statusLabel: "Live · HTTPS",
+    desc: "Премиальная негазированная вода в стекле для отелей, ресторанов и кафе СНГ. Кавказ. Стекло. Пауза. ТЗ ГК «Центр» №648525 истекает 24.04.2027. Стратегия гибрид: прямой пилот МСК+СПб → розлив-франшиза. Сайт служит инвестиционным портфолио — лендинг + 7 скачиваемых документов (Brand Valuation × 4 формата + Investment Memorandum × 3 формата).",
+    volume: "1 лендинг (~25 КБ, 9 секций) + 7 документов в /downloads/ (Brand Valuation, Investment Memorandum)",
+    sections: ["Hero", "About", "Product", "Market", "Strategy", "Investors", "Partners", "Contact", "Privacy"],
+    docs: [
+      { name: "index.html — лендинг", url: "https://fabian.aslankaa.com/" },
+      { name: "Brand_Valuation_FABIAN.pdf (949 КБ)", url: "https://fabian.aslankaa.com/downloads/Brand_Valuation_FABIAN.pdf" },
+      { name: "Brand_Valuation_FABIAN.docx", url: "https://fabian.aslankaa.com/downloads/Brand_Valuation_FABIAN.docx" },
+      { name: "Brand_Valuation_FABIAN.html", url: "https://fabian.aslankaa.com/downloads/Brand_Valuation_FABIAN.html" },
+      { name: "Brand_Valuation_FABIAN.pptx", url: "https://fabian.aslankaa.com/downloads/Brand_Valuation_FABIAN.pptx" },
+      { name: "Investment_Memorandum_FABIAN.pdf (644 КБ)", url: "https://fabian.aslankaa.com/downloads/Investment_Memorandum_FABIAN.pdf" },
+      { name: "Investment_Memorandum_FABIAN.docx", url: "https://fabian.aslankaa.com/downloads/Investment_Memorandum_FABIAN.docx" },
+      { name: "Investment_Memorandum_FABIAN.html", url: "https://fabian.aslankaa.com/downloads/Investment_Memorandum_FABIAN.html" }
+    ]
+  },
+  {
+    domain: "intercom.aslankaa.com",
+    project: "ИНТЕРКОМ · DD-меморандум Оренбург",
+    icon: "⬢",
+    cat: ["finance"],
+    date: "2026-05-17",
+    url: "https://intercom.aslankaa.com",
+    status: "live",
+    statusLabel: "Live · HTTPS",
+    desc: "Полный DD-меморандум v1.1 по пакету 3 нефтегазовых активов за €77 млн (Архангеловское м/р + ППиОН «Синергия» + НПЗ Переволоцкий, Оренбургская обл.). Версия v1.1 — с переориентацией на КНР-инвестора Beijing Chenchu. Подготовил Аслан Каа для Кагирова А.-Х. А. Справедливая цена: РФ-стратег €61–79 млн / нерезидент с санкционным дисконтом €31–40 млн.",
+    volume: "1 одностраничный отчёт ~164 КБ + MD + PDF v2 · 16+ крупных секций / ~50 #-anchor разделов",
+    sections: ["Что изменилось v1.1", "Резюме", "Допущения", "Self-review", "Carta участников (КНР)", "Сценарии сделки Beijing Chenchu", "ООО Интерком", "Юр.идентификация", "Капитал и финсостояние", "Две оценки Пачоли", "Горизонт + CapEx", "Резервуарный парк"],
+    docs: [
+      { name: "index — отчёт v1.1 (164 КБ)", url: "https://intercom.aslankaa.com/" },
+      { name: "Отчёт_ИНТЕРКОМ_v2.pdf", url: "https://intercom.aslankaa.com/Отчёт_ИНТЕРКОМ_v2.pdf" },
+      { name: "Отчёт_по_проекту_ИНТЕРКОМ_2026-05-16.md", url: "https://intercom.aslankaa.com/Отчёт_по_проекту_ИНТЕРКОМ_2026-05-16.md" }
+    ]
+  },
+  {
+    domain: "aslankaa.com/kau",
+    project: "Карелия Золото · Экспресс DD Леппясюрский",
+    icon: "◉",
+    cat: ["finance"],
+    date: "2026-05-17",
+    url: "https://aslankaa.com/kau/",
+    status: "live",
+    statusLabel: "Live · подпапка aslankaa.com",
+    desc: "Экспресс Due-Diligence для покупки ООО «КАРЕЛДРАГМЕТ» (лицензия ПТЗ 011986 БП, Au рудное, Карелия). Полный CP-отчёт в одном HTML на 128 КБ с навигацией по ~50 разделам. Перенесён с самостоятельного поддомена kareliya-au.aslankaa.com (удалён из DNS) в подпапку основного сайта-визитки aslankaa.com/kau/. Заказчик — Center Group Company.",
+    volume: "1 HTML-отчёт ≈ 128 КБ + MD-источник + PDF · 12 крупных секций / ~50 #-anchor разделов",
+    sections: ["Executive Summary", "Описание актива и юрисдикция", "Геология (cross-walk НАЭН↔ГКЗ↔JORC)", "Ресурсы и запасы P3", "Способ добычи", "Финансы и стоимость", "Бенчмарки (Suurikuusikko/Kittilä)", "Risk flags", "Decision", "Data Gaps", "Приложения", "Self-review CP"],
+    docs: [
+      { name: "index.html — отчёт (128 КБ)", url: "https://aslankaa.com/kau/" },
+      { name: "Отчёт_по_проекту_Карелия_Золото_2026-05-16.md", url: "https://aslankaa.com/kau/Отчёт_по_проекту_Карелия_Золото_2026-05-16.md" },
+      { name: "Отчёт_по_проекту_Карелия_Золото_2026-05-16.pdf", url: "https://aslankaa.com/kau/Отчёт_по_проекту_Карелия_Золото_2026-05-16.pdf" },
+      { name: "report_screen.css", url: "https://aslankaa.com/kau/report_screen.css" }
+    ]
+  }
+];
+
+const grid = document.getElementById("grid");
+const tbody = document.getElementById("tbody");
+
+function render(items){
+  grid.innerHTML = items.map(p=>{
+    const cardCls = "card" + (p.status==="offline"?" offline":"");
+    const docsHtml = p.docs.map(d=>{
+      const cls = d.dead?" class=\"dead\"":"";
+      return `<li${cls}>${d.dead?d.name:`<a href="${d.url}" target="_blank">${d.name}</a>`}</li>`;
+    }).join("");
+    const visitBtn = p.status==="offline"
+      ? `<span class="btn disabled">Сайт недоступен</span>`
+      : `<a class="btn primary" href="${p.url}" target="_blank">Открыть сайт →</a>`;
+    return `
+    <article class="${cardCls}" data-cat="${p.cat.join(' ')}">
+      <div class="top">
+        <div style="display:flex;align-items:center;gap:14px">
+          <div class="icon">${p.icon}</div>
+          <span class="status ${p.status}"><span class="pulse"></span>${p.statusLabel}</span>
+        </div>
+        <span style="color:var(--ink-3);font-size:11px;font-family:'JetBrains Mono',monospace">${p.date}</span>
+      </div>
+      <h3>${p.project}</h3>
+      <a href="${p.url}" target="_blank" class="url">↗ ${p.domain}</a>
+      <p class="desc">${p.desc}</p>
+      <div class="meta-grid">
+        <div><div class="k">Объём</div><div class="v">${p.volume}</div></div>
+        <div><div class="k">Опубликован</div><div class="v">${p.date}</div></div>
+      </div>
+      <div class="sections">${p.sections.map(s=>`<span class="tag">${s}</span>`).join("")}</div>
+      <div class="docs">
+        <div class="docs-title">Документы и ссылки (${p.docs.length})</div>
+        <ul>${docsHtml}</ul>
+      </div>
+      <div class="actions">
+        ${visitBtn}
+        <a class="btn" href="./${p.domain}/" target="_blank">Папка проекта</a>
+      </div>
+    </article>`;
+  }).join("");
+
+  tbody.innerHTML = items.map(p=>`
+    <tr data-cat="${p.cat.join(' ')}" class="${p.status==='offline'?'offline':''}">
+      <td class="proj">${p.icon}&nbsp;&nbsp;${p.project}</td>
+      <td><a class="url" href="${p.url}" target="_blank">${p.domain}</a></td>
+      <td style="white-space:nowrap;color:var(--ink-2)">${p.date}</td>
+      <td><span class="vol">${p.volume}</span></td>
+      <td><div class="secs">${p.sections.map(s=>`<span class="tag">${s}</span>`).join("")}</div></td>
+      <td><span class="status ${p.status}"><span class="pulse"></span>${p.statusLabel}</span></td>
+    </tr>
+  `).join("");
+}
+render(PROJECTS);
+
+let activeFilter = "all";
+let activeQuery = "";
+function applyFilter(){
+  const q = activeQuery.toLowerCase().trim();
+  const filtered = PROJECTS.filter(p=>{
+    const matchCat = activeFilter==="all" || p.cat.includes(activeFilter);
+    const matchQ = !q || (p.project+" "+p.domain+" "+p.desc+" "+p.sections.join(" ")).toLowerCase().includes(q);
+    return matchCat && matchQ;
+  });
+  render(filtered);
+}
+document.getElementById("filters").addEventListener("click", e=>{
+  const b = e.target.closest(".chip"); if(!b) return;
+  document.querySelectorAll("#filters .chip").forEach(x=>x.classList.remove("active"));
+  b.classList.add("active");
+  activeFilter = b.dataset.f;
+  applyFilter();
+});
+document.getElementById("search").addEventListener("input", e=>{
+  activeQuery = e.target.value;
+  applyFilter();
+});
+
+const bg = document.getElementById("btn-grid");
+const bt = document.getElementById("btn-table");
+const tw = document.getElementById("tablewrap");
+bg.addEventListener("click", ()=>{ bg.classList.add("active"); bt.classList.remove("active"); grid.classList.remove("hide"); tw.classList.remove("show"); });
+bt.addEventListener("click", ()=>{ bt.classList.add("active"); bg.classList.remove("active"); grid.classList.add("hide"); tw.classList.add("show"); });
+
+function tick(){
+  const d = new Date();
+  const pad = n=>String(n).padStart(2,"0");
+  document.getElementById("clock").textContent =
+    `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())} · ${pad(d.getHours())}:${pad(d.getMinutes())}:${pad(d.getSeconds())} MSK`;
+}
+tick(); setInterval(tick,1000);
+
+/* ── Live status refresh ────────────────────────── */
+async function pingUrl(url, timeoutMs = 8000){
+  // no-cors fetch: opaque response, can't read status code.
+  // Resolves если соединение установилось (включая PIN-overlay HTML 200),
+  // rejects (TypeError) если DNS-fail / network-fail / timeout.
+  const ctrl = new AbortController();
+  const t = setTimeout(()=>ctrl.abort(), timeoutMs);
+  try {
+    await fetch(url, { mode: "no-cors", method: "GET", signal: ctrl.signal, cache: "no-store" });
+    return true;
+  } catch (e) {
+    return false;
+  } finally {
+    clearTimeout(t);
+  }
+}
+
+async function refreshAllStatuses(){
+  const btn = document.getElementById("refresh-btn");
+  const lastCheck = document.getElementById("last-check");
+  if (btn.disabled) return;
+  btn.disabled = true;
+  btn.classList.add("spinning");
+  btn.querySelector("span").textContent = "Проверяю…";
+
+  // Помечаем все карточки как "checking"
+  document.querySelectorAll(".card .status, tbody tr .status").forEach(el=>{
+    const card = el.closest(".card, tr");
+    const dom = card?.querySelector(".url")?.textContent?.replace(/^↗\s*/, "").trim();
+    if (!dom) return;
+    el.dataset.original = el.outerHTML;
+    el.className = "status checking";
+    el.innerHTML = '<span class="pulse"></span>Проверка…';
+  });
+
+  // Параллельный ping всех проектов
+  const results = await Promise.all(PROJECTS.map(async p=>{
+    const url = p.url.startsWith("http") ? p.url : `https://${p.domain}`;
+    const alive = await pingUrl(url);
+    return { domain: p.domain, alive, originalStatus: p.status, originalLabel: p.statusLabel };
+  }));
+
+  // Обновляем UI
+  let liveCount = 0;
+  results.forEach(r=>{
+    // Найти все элементы статуса для этого домена (card + table row)
+    document.querySelectorAll(".card, tbody tr").forEach(node=>{
+      const dom = node.querySelector(".url")?.textContent?.replace(/^↗\s*/, "").trim();
+      if (dom !== r.domain) return;
+      const el = node.querySelector(".status");
+      if (!el) return;
+      if (r.alive){
+        liveCount++;
+        // Восстанавливаем оригинальный статус (live/private/app) — соединение есть
+        el.className = `status ${r.originalStatus}`;
+        el.innerHTML = `<span class="pulse"></span>${r.originalLabel}`;
+      } else {
+        el.className = "status dead";
+        el.innerHTML = '<span class="pulse"></span>Offline · нет ответа';
+      }
+    });
+  });
+  // Делим liveCount пополам (т.к. карточка + строка таблицы для каждого проекта)
+  liveCount = Math.round(liveCount / 2);
+
+  document.getElementById("live-count").textContent = liveCount;
+  const d = new Date();
+  const pad = n=>String(n).padStart(2,"0");
+  lastCheck.textContent = `Последняя проверка: ${pad(d.getHours())}:${pad(d.getMinutes())}:${pad(d.getSeconds())}`;
+
+  btn.disabled = false;
+  btn.classList.remove("spinning");
+  btn.querySelector("span").textContent = "Обновить статусы";
+}
+
+document.getElementById("refresh-btn").addEventListener("click", refreshAllStatuses);
+</script>
+</body>
+</html>
