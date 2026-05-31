@@ -1268,18 +1268,6 @@ html {
   letter-spacing: 0.04em;
 }
 
-.aslan-page .aslan-footer__policy {
-  text-align: center;
-  padding-top: 24px;
-  border-top: 1px solid var(--aslan-rule);
-}
-
-.aslan-page .aslan-footer__policy-link {
-  font-size: var(--aslan-fs-micro);
-  font-weight: 400;
-  color: var(--aslan-accent-grey);
-}
-
 /* Sticky bottom bar — Соглашение об использовании сайта (всегда видно) */
 .aslan-page .aslan-stickybar {
   position: fixed;
@@ -1287,38 +1275,39 @@ html {
   left: 0;
   right: 0;
   z-index: 40;
-  padding: 10px 16px;
+  padding: 14px 16px;
   text-align: center;
-  background: rgba(0, 0, 0, 0.78);
+  background: rgba(0, 0, 0, 0.82);
   -webkit-backdrop-filter: blur(10px) saturate(140%);
   backdrop-filter: blur(10px) saturate(140%);
   border-top: 1px solid var(--aslan-rule);
 }
 
 .aslan-page .aslan-stickybar__link {
-  font-size: var(--aslan-fs-micro);
-  font-weight: 400;
-  letter-spacing: 0.04em;
-  color: var(--aslan-accent-grey);
+  font-size: var(--aslan-fs-body);
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  color: var(--aslan-text-light);
   text-decoration: none;
-  transition: color 200ms ease;
+  transition: color 200ms ease, opacity 200ms ease;
+  opacity: 0.92;
 }
 
 .aslan-page .aslan-stickybar__link:hover,
 .aslan-page .aslan-stickybar__link:focus-visible {
-  color: var(--aslan-text-light);
+  opacity: 1;
   text-decoration: underline;
 }
 
-/* Защита от перекрытия sticky-баром */
-.aslan-page {
-  padding-bottom: 44px;
+/* Защита от перекрытия sticky-баром (только на страницах со sticky) */
+.aslan-page:has(.aslan-stickybar) {
+  padding-bottom: 60px;
 }
 
 /* Page navigation (back / next) — fixed bottom-right, выше sticky-бара */
 .aslan-page .aslan-pagenav {
   position: fixed;
-  bottom: 64px;
+  bottom: 80px;
   right: 24px;
   z-index: 50;
   display: flex;
@@ -1354,28 +1343,6 @@ html {
   font-size: 16px;
   line-height: 1;
   display: inline-block;
-}
-
-.aslan-page .aslan-pagenav-policy {
-  position: fixed;
-  bottom: 120px;
-  right: 24px;
-  z-index: 50;
-  font-size: var(--aslan-fs-micro);
-  font-weight: 500;
-  letter-spacing: 0.04em;
-  color: var(--aslan-accent-grey);
-  text-decoration: none;
-  padding: 6px 4px;
-  opacity: 0.75;
-  transition: opacity 200ms ease, color 200ms ease;
-}
-
-.aslan-page .aslan-pagenav-policy:hover,
-.aslan-page .aslan-pagenav-policy:focus-visible {
-  opacity: 1;
-  color: var(--aslan-text-light);
-  text-decoration: underline;
 }
 
 /* ----- 12.5 Tablet/narrow desktop responsive (max-width: 768px) -----
