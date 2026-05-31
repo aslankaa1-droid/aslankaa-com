@@ -1321,6 +1321,27 @@ html {
   display: inline-block;
 }
 
+.aslan-page .aslan-pagenav-policy {
+  position: fixed;
+  bottom: 80px;
+  right: 24px;
+  z-index: 50;
+  font-size: var(--aslan-fs-micro);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--aslan-accent-grey);
+  text-decoration: none;
+  padding: 6px 4px;
+  opacity: 0.75;
+  transition: opacity 200ms ease, color 200ms ease;
+}
+
+.aslan-page .aslan-pagenav-policy:hover,
+.aslan-page .aslan-pagenav-policy:focus-visible {
+  opacity: 1;
+  color: var(--aslan-text-light);
+  text-decoration: underline;
+}
 
 /* ----- 12.5 Tablet/narrow desktop responsive (max-width: 768px) -----
    At narrow viewports, hero stacks: photo on top, text below, mirrors
