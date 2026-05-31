@@ -1280,10 +1280,45 @@ html {
   color: var(--aslan-accent-grey);
 }
 
-/* Page navigation (back / next) — fixed bottom-right */
+/* Sticky bottom bar — Соглашение об использовании сайта (всегда видно) */
+.aslan-page .aslan-stickybar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 40;
+  padding: 10px 16px;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.78);
+  -webkit-backdrop-filter: blur(10px) saturate(140%);
+  backdrop-filter: blur(10px) saturate(140%);
+  border-top: 1px solid var(--aslan-rule);
+}
+
+.aslan-page .aslan-stickybar__link {
+  font-size: var(--aslan-fs-micro);
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  color: var(--aslan-accent-grey);
+  text-decoration: none;
+  transition: color 200ms ease;
+}
+
+.aslan-page .aslan-stickybar__link:hover,
+.aslan-page .aslan-stickybar__link:focus-visible {
+  color: var(--aslan-text-light);
+  text-decoration: underline;
+}
+
+/* Защита от перекрытия sticky-баром */
+.aslan-page {
+  padding-bottom: 44px;
+}
+
+/* Page navigation (back / next) — fixed bottom-right, выше sticky-бара */
 .aslan-page .aslan-pagenav {
   position: fixed;
-  bottom: 24px;
+  bottom: 64px;
   right: 24px;
   z-index: 50;
   display: flex;
@@ -1323,7 +1358,7 @@ html {
 
 .aslan-page .aslan-pagenav-policy {
   position: fixed;
-  bottom: 80px;
+  bottom: 120px;
   right: 24px;
   z-index: 50;
   font-size: var(--aslan-fs-micro);
