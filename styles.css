@@ -9,6 +9,8 @@
   --aslan-text-light: #ffffff;
   --aslan-accent-grey: #c8c6c6;
   --aslan-rule: rgba(255, 255, 255, 0.12);
+  --aslan-overlay-soft: rgba(10, 10, 10, 0.82);
+  --aslan-overlay-strong: rgba(10, 10, 10, 0.92);
 
   --aslan-font-head: 'Cormorant Garamond', 'Times New Roman', serif;
   --aslan-font-body: 'Open Sans', Arial, sans-serif;
@@ -171,7 +173,7 @@ html {
   top: 0;
   left: 0;
   right: 0;
-  background: rgba(10, 10, 10, 0.82);
+  background: var(--aslan-overlay-soft);
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   padding: 22px 0;
@@ -275,7 +277,7 @@ html {
   flex-direction: column;
   gap: 8px;
   padding: 14px 14px;
-  background: rgba(10, 10, 10, 0.92);
+  background: var(--aslan-overlay-strong);
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 24px;
   min-width: 44px;
@@ -353,7 +355,7 @@ html {
   flex-direction: column;
   gap: 0;
   padding: 6px 18px;
-  background: rgba(10, 10, 10, 0.92);
+  background: var(--aslan-overlay-strong);
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 16px;
   min-width: 180px;
@@ -1268,28 +1270,91 @@ html {
   letter-spacing: 0.04em;
 }
 
-/* Sticky bottom bar — Соглашение об использовании сайта (всегда видно) */
+/* ----- Themes (Dark default, Light, Sepia) ----- */
+html[data-theme="light"] .aslan-page {
+  --aslan-bg-dark: #f5f1ea;
+  --aslan-text-light: #1a1612;
+  --aslan-accent-grey: #5a564f;
+  --aslan-rule: rgba(0, 0, 0, 0.14);
+  --aslan-overlay-soft: rgba(245, 241, 234, 0.86);
+  --aslan-overlay-strong: rgba(245, 241, 234, 0.94);
+}
+
+html[data-theme="sepia"] .aslan-page {
+  --aslan-bg-dark: #efe4cf;
+  --aslan-text-light: #3a2e1e;
+  --aslan-accent-grey: #6b5840;
+  --aslan-rule: rgba(58, 46, 30, 0.18);
+  --aslan-overlay-soft: rgba(239, 228, 207, 0.88);
+  --aslan-overlay-strong: rgba(239, 228, 207, 0.95);
+}
+
+/* Sticky bottom bar — темы слева, Соглашение по центру (всегда видно) */
 .aslan-page .aslan-stickybar {
   position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
   z-index: 40;
-  padding: 14px 16px;
-  text-align: center;
-  background: rgba(0, 0, 0, 0.82);
+  padding: 12px 20px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 16px;
+  background: var(--aslan-overlay-soft);
   -webkit-backdrop-filter: blur(10px) saturate(140%);
   backdrop-filter: blur(10px) saturate(140%);
   border-top: 1px solid var(--aslan-rule);
 }
 
+.aslan-page .aslan-stickybar__themes {
+  justify-self: start;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.aslan-page .aslan-stickybar__theme {
+  width: 34px;
+  height: 34px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 1px solid var(--aslan-rule);
+  border-radius: 50%;
+  color: var(--aslan-accent-grey);
+  cursor: pointer;
+  padding: 0;
+  transition: color 200ms ease, border-color 200ms ease, background-color 200ms ease;
+}
+
+.aslan-page .aslan-stickybar__theme:hover,
+.aslan-page .aslan-stickybar__theme:focus-visible {
+  color: var(--aslan-text-light);
+  border-color: var(--aslan-text-light);
+}
+
+.aslan-page .aslan-stickybar__theme[aria-pressed="true"] {
+  background: var(--aslan-text-light);
+  color: var(--aslan-bg-dark);
+  border-color: var(--aslan-text-light);
+}
+
+.aslan-page .aslan-stickybar__theme svg {
+  width: 16px;
+  height: 16px;
+  display: block;
+}
+
 .aslan-page .aslan-stickybar__link {
+  justify-self: center;
   font-size: var(--aslan-fs-body);
   font-weight: 500;
   letter-spacing: 0.05em;
   color: var(--aslan-text-light);
   text-decoration: none;
-  transition: color 200ms ease, opacity 200ms ease;
+  transition: opacity 200ms ease;
   opacity: 0.92;
 }
 
@@ -1297,6 +1362,22 @@ html {
 .aslan-page .aslan-stickybar__link:focus-visible {
   opacity: 1;
   text-decoration: underline;
+}
+
+@media (max-width: 640px) {
+  .aslan-page .aslan-stickybar {
+    grid-template-columns: auto 1fr;
+    padding: 10px 14px;
+    gap: 10px;
+  }
+  .aslan-page .aslan-stickybar__themes { gap: 6px; }
+  .aslan-page .aslan-stickybar__theme { width: 30px; height: 30px; }
+  .aslan-page .aslan-stickybar__theme svg { width: 14px; height: 14px; }
+  .aslan-page .aslan-stickybar__link {
+    justify-self: end;
+    text-align: right;
+    font-size: var(--aslan-fs-micro);
+  }
 }
 
 /* Защита от перекрытия sticky-баром (только на страницах со sticky) */

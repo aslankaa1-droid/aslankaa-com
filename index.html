@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>(function(){try{var t=localStorage.getItem('aslankaa-theme')||'dark';if(t!=='dark'&&t!=='light'&&t!=='sepia')t='dark';document.documentElement.setAttribute('data-theme',t);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
   <title>Кагиров Абдул-Хаким Ахмадович</title>
   <meta name="description" content="Сайт-визитка Аслана Кагирова">
   <link rel="canonical" href="https://aslankaa.com/">
@@ -370,6 +371,17 @@
   </footer>
 
   <div class="aslan-stickybar">
+    <div class="aslan-stickybar__themes" role="group" aria-label="Тема оформления">
+      <button type="button" class="aslan-stickybar__theme" data-set-theme="dark" aria-label="Тёмная тема" title="Тёмная">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      <button type="button" class="aslan-stickybar__theme" data-set-theme="light" aria-label="Светлая тема" title="Светлая">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+      </button>
+      <button type="button" class="aslan-stickybar__theme" data-set-theme="sepia" aria-label="Сепия" title="Сепия">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h12a4 4 0 0 1 4 4v12H8a4 4 0 0 1-4-4V4z"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>
+      </button>
+    </div>
     <a href="policy-ru.html" class="aslan-stickybar__link">Соглашение об использовании сайта</a>
   </div>
 
@@ -484,6 +496,8 @@
       });
     })();
   </script>
+
+  <script src="theme-switch.js" defer></script>
 
 </body>
 </html>
