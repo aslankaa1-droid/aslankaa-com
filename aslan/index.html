@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Публикации Проектов Аслана · Premium Dashboard</title>
-<meta name="description" content="Каталог проектов Аслана Каа, опубликованных в интернете. Каждый адрес и каждая ссылка проверена 28 мая 2026.">
+<meta name="description" content="Каталог проектов Аслана Каа, опубликованных в интернете. Каждый адрес и каждая ссылка проверена 31 мая 2026.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -198,7 +198,7 @@ footer a:hover{color:var(--gold)}
     </div>
   </div>
   <div class="top-meta">
-    <span><span class="dot"></span> <span id="live-count">12</span> из <span id="total-count">12</span> доменов в сети</span>
+    <span><span class="dot"></span> <span id="live-count">14</span> из <span id="total-count">14</span> доменов в сети</span>
     <span class="clock" id="clock">—</span>
   </div>
 </header>
@@ -206,26 +206,26 @@ footer a:hover{color:var(--gold)}
 <section class="hero">
   <span class="eyebrow">● Premium Dashboard · Каталог онлайн-присутствия</span>
   <h1>Все проекты Аслана,<br><span class="accent">опубликованные в интернете.</span></h1>
-  <p class="lead">Каталог 10 доменов и поддоменов с описанием каждого проекта, реальными разделами, списком опубликованных документов и прямыми ссылками. Каждый адрес и каждая ссылка проверены вживую 28 мая 2026 — мёртвые помечены отдельно.</p>
+  <p class="lead">Каталог 12 доменов, поддоменов и публичных gh-pages-витрин с описанием каждого проекта, реальными разделами, списком опубликованных документов и прямыми ссылками. Каждый адрес и каждая ссылка проверены вживую 31 мая 2026 — мёртвые помечены отдельно.</p>
 
   <div class="stat-row">
     <div class="stat">
-      <div class="v">12</div>
+      <div class="v">14</div>
       <div class="k">Живых проектов</div>
-      <div class="h">8 собственных доменов + 3 поддомена aslankaa.com + 1 подпапка</div>
+      <div class="h">9 собственных доменов + 3 поддомена aslankaa.com + 1 подпапка + 1 GH-Pages</div>
     </div>
     <div class="stat">
-      <div class="v">12</div>
+      <div class="v">13</div>
       <div class="k">Под HTTPS</div>
-      <div class="h">SSL Let's Encrypt активен везде</div>
+      <div class="h">SSL Let's Encrypt активен везде, кроме stampscaner.com (в очереди)</div>
     </div>
     <div class="stat">
-      <div class="v">≈ 135</div>
+      <div class="v">≈ 145</div>
       <div class="k">Опубликованных страниц</div>
       <div class="h">+ десятки скачиваемых PDF/DOCX/PPTX</div>
     </div>
     <div class="stat">
-      <div class="v">26</div>
+      <div class="v">29</div>
       <div class="k">Дней онлайн</div>
       <div class="h">Первый деплой 03.05.2026 (grandhubai)</div>
     </div>
@@ -234,9 +234,9 @@ footer a:hover{color:var(--gold)}
 
 <div class="verified-banner">
   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>
-  <span>Базовая проверка curl-запросами 28.05.2026 · все 12 проектов в сети</span>
+  <span>Базовая проверка curl-запросами 31.05.2026 · все 14 проектов в сети (stampscaner.com — пока HTTP, SSL в очереди)</span>
   <span style="margin-left:auto;color:var(--ink-3);font-size:11.5px" id="last-check"></span>
-  <button id="refresh-btn" title="Перепроверить все 12 доменов прямо сейчас (no-cors fetch)">
+  <button id="refresh-btn" title="Перепроверить все 14 доменов прямо сейчас (no-cors fetch)">
     <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 0 1 15-6.7L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-15 6.7L3 16"/><path d="M3 21v-5h5"/></svg>
     <span>Обновить статусы</span>
   </button>
@@ -276,7 +276,7 @@ footer a:hover{color:var(--gold)}
 </section>
 
 <footer>
-  <div>© Aslan Kaa · Center Group Company · Сформировано 2026-05-28</div>
+  <div>© Aslan Kaa · Center Group Company · Сформировано 2026-05-28 · Обновлено 2026-05-31 (+ StampScaner, + Фонд Синтем)</div>
   <div class="links">
     <a href="mailto:aslankaa@yandex.ru">aslankaa@yandex.ru</a>
     <a href="tel:+79697955555">+7 (969) 795-55-55</a>
@@ -556,6 +556,49 @@ const PROJECTS = [
       { name: "Отчёт_по_проекту_Карелия_Золото_2026-05-16.pdf", url: "https://aslankaa.com/kau/Отчёт_по_проекту_Карелия_Золото_2026-05-16.pdf" },
       { name: "report_screen.css", url: "https://aslankaa.com/kau/report_screen.css" }
     ]
+  },
+  {
+    domain: "stampscaner.com",
+    project: "StampScaner · Цифровая верификация филателии",
+    icon: "✉",
+    cat: ["business", "ai"],
+    date: "2026-05-29",
+    url: "http://stampscaner.com",
+    status: "live",
+    statusLabel: "Live · HTTP (SSL в очереди)",
+    desc: "Премиум-сервис цифровой верификации почтовых марок: AI-агент Postman, цифровой сертификат подписанный Ed25519-ключом со страховкой $1 000, маркетплейс с эскроу. Премиум-позиционирование: фокус на историческом корпусе 1857–2001 + русско-арабский рынок, не конкурируем с UPU AI-app. Лендинг на 3 языках (RU/EN/AR с RTL), 3 темы (Light/Sepia/Dark, Dark — auto), USD/RUB toggle тарифов. Сопутствующее: Flutter-приложение iOS+Android в работе, backend Worker для Claude Vision готов.",
+    volume: "Лендинг + 7 публичных страниц/папок · 3 языка (RU/EN/AR) · 3 темы · USD/RUB toggle",
+    sections: ["Hero", "Услуги", "Postman (AI-агент)", "Сертификат + страховка $1000", "Тарифы (USD/RUB)", "Доверие", "Об основателе", "Privacy / Terms (RU+EN)", "install-android", "app/", "cert/ (реестр)"],
+    docs: [
+      { name: "index.html (RU/EN/AR + 3 темы)", url: "http://stampscaner.com/" },
+      { name: "privacy.html (RU)", url: "http://stampscaner.com/privacy.html" },
+      { name: "privacy-en.html (EN)", url: "http://stampscaner.com/privacy-en.html" },
+      { name: "terms.html (RU)", url: "http://stampscaner.com/terms.html" },
+      { name: "terms-en.html (EN)", url: "http://stampscaner.com/terms-en.html" },
+      { name: "install-android.html", url: "http://stampscaner.com/install-android.html" },
+      { name: "app/", url: "http://stampscaner.com/app/" },
+      { name: "cert/ — реестр сертификатов", url: "http://stampscaner.com/cert/" }
+    ]
+  },
+  {
+    domain: "aslankaa1-droid.github.io/sintem-fond",
+    folder: "sintem-fond",
+    project: "Фонд Синтем · благотворительная платформа (Demo)",
+    icon: "✚",
+    cat: ["business", "finance"],
+    date: "2026-05-29",
+    url: "https://aslankaa1-droid.github.io/sintem-fond/",
+    status: "app",
+    statusLabel: "Demo · GH Pages",
+    desc: "MVP благотворительной платформы АНО «Фонд Синтем» — связка фондов, больниц и пациентов. Клон+wedge модели tooba.com (АНО «Туба», 126+ фондов, 4.97 млрд ₽ оборота). РФ-фокус, отдельный сегмент пациентов после отказа ОМС. СБП-платежи прямо на сайте, авто-2-НДФЛ. Sticky-баннер «демо в стадии регистрации» по всему сайту. Полный пакет 8 этапов закрыт 2026-05-29 (snapshot + ТЗ + дизайн + MVP + юр.пакет + мобильное + деплой + демо-сайт). Custom domain пока не привязан — ждёт регистрации АНО.",
+    volume: "SPA Vite + TypeScript · PWA-ready (manifest + sw.js + workbox) · адаптив desktop/tablet/mobile",
+    sections: ["SPA index.html", "Sticky-баннер демо", "Каталог фондов/больниц", "Пациенты — отказ ОМС wedge", "СБП-оплата (заглушка)", "Авто-2-НДФЛ (заглушка)", "PWA manifest + service worker"],
+    docs: [
+      { name: "index.html — SPA", url: "https://aslankaa1-droid.github.io/sintem-fond/" },
+      { name: "manifest.webmanifest", url: "https://aslankaa1-droid.github.io/sintem-fond/manifest.webmanifest" },
+      { name: "sw.js — service worker", url: "https://aslankaa1-droid.github.io/sintem-fond/sw.js" },
+      { name: "favicon.svg", url: "https://aslankaa1-droid.github.io/sintem-fond/favicon.svg" }
+    ]
   }
 ];
 
@@ -595,7 +638,7 @@ function render(items){
       </div>
       <div class="actions">
         ${visitBtn}
-        <a class="btn" href="./${p.domain}/" target="_blank">Папка проекта</a>
+        <a class="btn" href="./${p.folder || p.domain}/" target="_blank">Папка проекта</a>
       </div>
     </article>`;
   }).join("");
