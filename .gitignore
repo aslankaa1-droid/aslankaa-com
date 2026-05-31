@@ -19,3 +19,4 @@ dist/
 # Deploy state (not source)
 deploy/state/
 *.log
+.gstack/
