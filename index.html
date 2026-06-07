@@ -502,6 +502,30 @@
     })();
   </script>
 
+  <script>
+    /* Центрирование плавающего логотипа PROFFI SQUAD по центру над навигацией «Обратно/Далее» */
+    (function () {
+      function placePsLogo() {
+        var nav = document.querySelector('.aslan-pagenav');
+        var logo = document.querySelector('.aslan-pslogo');
+        if (!nav || !logo) return;
+        var n = nav.getBoundingClientRect();
+        var l = logo.getBoundingClientRect();
+        var centerX = n.left + n.width / 2;
+        var left = Math.round(centerX - l.width / 2);
+        left = Math.max(8, Math.min(left, window.innerWidth - l.width - 8));
+        logo.style.left = left + 'px';
+        logo.style.right = 'auto';
+      }
+      document.addEventListener('DOMContentLoaded', placePsLogo);
+      window.addEventListener('load', placePsLogo);
+      window.addEventListener('resize', placePsLogo);
+      window.addEventListener('orientationchange', placePsLogo);
+      setTimeout(placePsLogo, 300);
+      setTimeout(placePsLogo, 1200);
+    })();
+  </script>
+
   <script src="theme-switch.js" defer></script>
 
 </body>
