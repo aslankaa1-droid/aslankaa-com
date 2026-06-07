@@ -1450,6 +1450,41 @@ html[data-theme="sepia"] .aslan-page {
   display: inline-block;
 }
 
+/* PROFFI SQUAD floating logo — bottom-right, above the Обратно/Далее nav */
+.aslan-page .aslan-pslogo {
+  position: fixed;
+  right: 24px;
+  bottom: 134px;
+  z-index: 51;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #1A1D24;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 14px;
+  padding: 12px 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.aslan-page .aslan-pslogo img {
+  height: 26px;
+  display: block;
+}
+.aslan-page .aslan-pslogo:hover {
+  transform: translateY(-3px);
+  border-color: #E30513;
+  box-shadow: 0 14px 36px rgba(227, 5, 19, 0.28);
+}
+@media (max-width: 560px) {
+  .aslan-page .aslan-pslogo {
+    right: 14px;
+    bottom: 128px;
+    padding: 9px 12px;
+    border-radius: 12px;
+  }
+  .aslan-page .aslan-pslogo img { height: 22px; }
+}
+
 /* ----- 12.5 Tablet/narrow desktop responsive (max-width: 768px) -----
    At narrow viewports, hero stacks: photo on top, text below, mirrors
    the responsive behaviour of the live aslankaa.com. */

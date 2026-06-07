@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="dark" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PROFFI SQUAD — Команда профессионалов</title>
+<meta name="description" content="Экспертно-консалтинговое бюро: Due Diligence, оценка активов, аудит инвестпроектов, ТЭО, сопровождение сделок. Отчёты уровня CP/QP по международным стандартам.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,500;0,700;0,800;0,900;1,800&family=Inter:wght@400;500;600;700&family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --red:#E30513; --red-deep:#B00410;
+  --bg:#101216; --bg-2:#161A20; --panel:#1B2027; --panel-2:#21272F;
+  --line:#2A313B; --text:#EDEFF2; --muted:#9AA3AF; --chip:#13161B;
+  --accent:var(--red); --shadow:0 24px 60px -24px rgba(0,0,0,.65);
+  --maxw:1180px;
+}
+html[data-theme="light"]{
+  --bg:#F4F5F7; --bg-2:#FFFFFF; --panel:#FFFFFF; --panel-2:#F7F8FA;
+  --line:#E3E6EB; --text:#161A20; --muted:#5B636E; --chip:#161A20;
+  --shadow:0 24px 60px -28px rgba(20,30,50,.22);
+}
+html[data-theme="sepia"]{
+  --bg:#EFE7DA; --bg-2:#F6F0E6; --panel:#F8F3EA; --panel-2:#F1E9DA;
+  --line:#DFD2BC; --text:#2C2419; --muted:#6E6452; --chip:#2C2419;
+  --shadow:0 24px 60px -28px rgba(90,70,40,.25);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);
+  line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+  transition:background .35s ease,color .35s ease;
+}
+html[dir="rtl"] body{font-family:'Cairo','Inter',sans-serif}
+h1,h2,h3,.display{font-family:'Archivo','Inter',sans-serif;font-weight:800;line-height:1.04;letter-spacing:-.01em}
+html[dir="rtl"] h1,html[dir="rtl"] h2,html[dir="rtl"] h3,html[dir="rtl"] .display{font-family:'Cairo',sans-serif;font-weight:900}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:'Archivo',sans-serif;
+  font-weight:700;text-transform:uppercase;letter-spacing:.22em;font-size:12px;color:var(--accent)}
+.eyebrow::before{content:"";width:30px;height:2px;background:var(--accent)}
+html[dir="rtl"] .eyebrow{letter-spacing:0}
+
+/* ---------- HEADER ---------- */
+header{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 86%,transparent);
+  backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:70px;gap:18px}
+.brand{display:flex;align-items:center;gap:12px}
+.brand .chip{background:var(--chip);border-radius:9px;padding:9px 12px;display:flex;align-items:center}
+.brand .chip img{height:22px;display:block}
+.brand .name{font-family:'Archivo',sans-serif;font-weight:900;font-style:italic;font-size:17px;
+  letter-spacing:.02em;text-transform:uppercase}
+.brand .name b{color:var(--red)}
+.menu{display:flex;gap:26px;align-items:center}
+.menu a{font-size:14px;font-weight:500;color:var(--muted);transition:color .2s}
+.menu a:hover{color:var(--text)}
+.tools{display:flex;align-items:center;gap:10px}
+.langs{display:flex;background:var(--panel);border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.langs button{background:none;border:0;color:var(--muted);font:600 12px 'Inter';padding:7px 9px;cursor:pointer;transition:.2s}
+.langs button.active{background:var(--red);color:#fff}
+.burger{display:none;background:var(--panel);border:1px solid var(--line);border-radius:8px;
+  width:40px;height:38px;cursor:pointer;color:var(--text);font-size:18px}
+
+/* ---------- HERO ---------- */
+.hero{position:relative;padding:74px 0 64px;overflow:hidden}
+.hero::after{content:"";position:absolute;top:-120px;inset-inline-end:-160px;width:520px;height:520px;
+  background:radial-gradient(circle,color-mix(in srgb,var(--red) 26%,transparent),transparent 62%);
+  filter:blur(10px);z-index:0;pointer-events:none}
+.hero .wrap{position:relative;z-index:1;display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center}
+.hero h1{font-size:clamp(40px,6vw,72px);margin:18px 0 14px;text-transform:uppercase}
+.hero h1 .slash{color:var(--red)}
+.hero .lead{font-size:18px;color:var(--muted);max-width:46ch;margin-bottom:30px}
+.cta{display:flex;gap:14px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:10px;font-weight:700;font-size:15px;
+  padding:14px 24px;border-radius:10px;cursor:pointer;border:1px solid transparent;transition:.2s;font-family:'Inter'}
+.btn-primary{background:var(--red);color:#fff}
+.btn-primary:hover{background:var(--red-deep);transform:translateY(-2px)}
+.btn-ghost{background:transparent;border-color:var(--line);color:var(--text)}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
+.hero-card{position:relative;background:linear-gradient(160deg,var(--chip),#0c0e12);
+  border-radius:18px;padding:40px 34px;box-shadow:var(--shadow);overflow:hidden;
+  border:1px solid rgba(255,255,255,.05)}
+.hero-card::before{content:"";position:absolute;inset-inline-start:0;top:0;bottom:0;width:5px;background:var(--red)}
+.hero-card img.logo{width:min(280px,80%);display:block;margin-bottom:26px}
+.hero-card .tag{color:#cfd4db;font-size:14px;line-height:1.7}
+.hero-card .stats{display:flex;gap:26px;margin-top:26px;flex-wrap:wrap}
+.hero-card .stats div{display:flex;flex-direction:column}
+.hero-card .stats b{font-family:'Archivo';font-size:26px;color:#fff;line-height:1}
+.hero-card .stats span{font-size:12px;color:#8b929c;margin-top:4px}
+
+/* ---------- SECTION ---------- */
+section{padding:72px 0;position:relative}
+.sec-head{max-width:640px;margin-bottom:42px}
+.sec-head h2{font-size:clamp(28px,4vw,40px);margin:14px 0 12px;text-transform:uppercase}
+.sec-head p{color:var(--muted);font-size:16px}
+.alt{background:var(--bg-2);border-block:1px solid var(--line)}
+
+/* services */
+.grid{display:grid;gap:18px}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g4{grid-template-columns:repeat(4,1fr)}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:26px;
+  transition:.25s;position:relative;overflow:hidden}
+.card:hover{transform:translateY(-4px);border-color:color-mix(in srgb,var(--red) 50%,var(--line))}
+.card .ic{width:46px;height:46px;border-radius:11px;background:color-mix(in srgb,var(--red) 14%,transparent);
+  display:flex;align-items:center;justify-content:center;margin-bottom:18px}
+.card .ic svg{width:24px;height:24px;stroke:var(--red);fill:none;stroke-width:1.9}
+.card h3{font-size:18px;margin-bottom:8px}
+.card p{font-size:14.5px;color:var(--muted)}
+.card .no{position:absolute;inset-inline-end:18px;top:14px;font-family:'Archivo';font-weight:900;
+  font-size:34px;color:var(--line)}
+.card.wide{grid-column:1 / -1;display:flex;align-items:center;gap:26px;
+  border-color:color-mix(in srgb,var(--red) 42%,var(--line))}
+.card.wide .ic{margin-bottom:0;flex-shrink:0;width:54px;height:54px}
+.card.wide .ic svg{width:28px;height:28px}
+.card.wide .wtext{flex:1}
+.card.wide h3{margin-bottom:6px}
+.card.wide p{max-width:80ch}
+@media(max-width:920px){.card.wide{flex-direction:column;align-items:flex-start;gap:14px}}
+
+/* standards */
+.badges{display:flex;flex-wrap:wrap;gap:12px}
+.badge{display:flex;align-items:center;gap:10px;background:var(--panel);border:1px solid var(--line);
+  border-radius:10px;padding:13px 18px;font-weight:600;font-size:14px}
+.badge i{width:8px;height:8px;border-radius:50%;background:var(--red);display:inline-block}
+
+/* cases */
+.case{background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden;transition:.25s}
+.case:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.case .top{height:6px;background:linear-gradient(90deg,var(--red),transparent)}
+.case .body{padding:24px}
+.case .sector{font-family:'Archivo';text-transform:uppercase;letter-spacing:.14em;font-size:11px;
+  color:var(--red);font-weight:700;margin-bottom:10px}
+.case h3{font-size:18px;margin-bottom:8px}
+.case p{font-size:14px;color:var(--muted)}
+
+/* experts */
+.experts{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.expert{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:30px 24px;text-align:center}
+.expert .ava{width:96px;height:96px;border-radius:50%;margin:0 auto 18px;border:3px solid var(--red);
+  background:var(--panel-2);display:flex;align-items:center;justify-content:center;
+  font-family:'Archivo';font-weight:900;font-size:30px;color:var(--red)}
+.expert h3{font-size:18px;margin-bottom:4px}
+.expert .role{color:var(--red);font-size:13px;font-weight:600;margin-bottom:12px}
+.expert p{font-size:14px;color:var(--muted)}
+
+/* process */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;counter-reset:s}
+.step{position:relative;padding:28px 22px;background:var(--panel);border:1px solid var(--line);border-radius:14px}
+.step .n{font-family:'Archivo';font-weight:900;font-size:42px;color:color-mix(in srgb,var(--red) 30%,var(--line));line-height:1}
+.step h3{font-size:16px;margin:10px 0 8px}
+.step p{font-size:13.5px;color:var(--muted)}
+
+/* contacts */
+.contact-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:30px;align-items:start}
+.contact-card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:34px}
+.c-row{display:flex;align-items:center;gap:16px;padding:16px 0;border-bottom:1px solid var(--line)}
+.c-row:last-child{border:0}
+.c-row .ci{width:42px;height:42px;border-radius:10px;background:color-mix(in srgb,var(--red) 14%,transparent);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.c-row .ci svg{width:20px;height:20px;stroke:var(--red);fill:none;stroke-width:1.9}
+.c-row small{display:block;color:var(--muted);font-size:12px;margin-bottom:2px}
+.c-row a,.c-row span{font-weight:600;font-size:15.5px}
+.disclaimer{background:var(--panel-2);border:1px dashed var(--line);border-radius:12px;padding:20px;
+  font-size:13px;color:var(--muted);line-height:1.7}
+
+/* footer */
+footer{background:var(--chip);color:#cfd4db;padding:48px 0 28px;margin-top:20px}
+html[data-theme="light"] footer,html[data-theme="sepia"] footer{color:#cdd2d9}
+.foot-top{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:center;
+  padding-bottom:24px;border-bottom:1px solid rgba(255,255,255,.1)}
+.foot-top img{height:30px}
+.foot-bottom{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
+  padding-top:20px;font-size:13px;color:#9aa3af}
+.foot-bottom a{color:#cfd4db}
+
+/* theme switch */
+.theme-switch{position:fixed;inset-inline-start:18px;bottom:18px;z-index:60;display:flex;gap:6px;
+  background:var(--panel);border:1px solid var(--line);border-radius:30px;padding:6px;box-shadow:var(--shadow)}
+.theme-switch button{width:34px;height:34px;border-radius:50%;border:0;cursor:pointer;font-size:15px;
+  background:transparent;transition:.2s;display:flex;align-items:center;justify-content:center}
+.theme-switch button.active{background:var(--red)}
+
+@media(max-width:920px){
+  .hero .wrap{grid-template-columns:1fr;gap:32px}
+  .g3,.g4,.experts,.steps,.contact-grid{grid-template-columns:1fr 1fr}
+  .menu{display:none}
+  .burger{display:block}
+  .menu.open{display:flex;position:absolute;top:70px;inset-inline-start:0;right:0;flex-direction:column;
+    background:var(--bg-2);border-bottom:1px solid var(--line);padding:18px 24px;gap:16px}
+}
+@media(max-width:560px){
+  .g3,.g4,.experts,.steps,.contact-grid{grid-template-columns:1fr}
+  .brand .name{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="wrap nav">
+    <div class="brand">
+      <span class="chip"><img src="assets/logo_redwhite.svg" alt="PROFFI SQUAD"></span>
+      <span class="name">PROFFI<b>·</b>SQUAD</span>
+    </div>
+    <nav class="menu" id="menu">
+      <a href="#services" data-i18n="nav.services">Услуги</a>
+      <a href="#standards" data-i18n="nav.standards">Стандарты</a>
+      <a href="#cases" data-i18n="nav.cases">Кейсы</a>
+      <a href="#experts" data-i18n="nav.experts">Эксперты</a>
+      <a href="#process" data-i18n="nav.process">Процесс</a>
+      <a href="#contacts" data-i18n="nav.contacts">Контакты</a>
+    </nav>
+    <div class="tools">
+      <div class="langs" id="langs">
+        <button data-lang="ru" class="active">RU</button>
+        <button data-lang="en">EN</button>
+        <button data-lang="fr">FR</button>
+        <button data-lang="ar">AR</button>
+      </div>
+      <button class="burger" id="burger" aria-label="menu">☰</button>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow" data-i18n="hero.eyebrow">Экспертно-консалтинговое бюро</span>
+      <h1 data-i18n="hero.title">Команда <span class="slash">профессионалов</span></h1>
+      <p class="lead" data-i18n="hero.lead">Независимая экспертиза активов и инвестиционных проектов: due diligence, оценка, ТЭО и сопровождение сделок. Отчёты уровня Competent / Qualified Person по международным стандартам.</p>
+      <div class="cta">
+        <a class="btn btn-primary" href="mailto:aslankaa@yandex.ru?subject=PROFFI%20SQUAD%20%E2%80%94%20%D0%B7%D0%B0%D0%BF%D1%80%D0%BE%D1%81" data-i18n="hero.cta1">Обсудить задачу</a>
+        <a class="btn btn-ghost" href="https://t.me/aslan_kaa" target="_blank" rel="noopener" data-i18n="hero.cta2">Telegram</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <img class="logo" src="assets/logo_redwhite.svg" alt="PROFFI SQUAD">
+      <p class="tag" data-i18n="hero.cardtag">Команда экспертов с практикой в золотодобыче, нефтегазе, промышленности и цифровых активах. Работаем по JORC, NI 43-101, SAMREC, ГКЗ и VALMIN.</p>
+      <div class="stats">
+        <div><b>CP/QP</b><span data-i18n="hero.s1">уровень отчётов</span></div>
+        <div><b>360°</b><span data-i18n="hero.s2">сквозная экспертиза</span></div>
+        <div><b>4</b><span data-i18n="hero.s3">языка сопровождения</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow" data-i18n="services.eyebrow">Услуги</span>
+      <h2 data-i18n="services.title">Полный цикл экспертизы</h2>
+      <p data-i18n="services.sub">От экспресс-скрининга актива до банкуемого отчёта и закрытия сделки.</p>
+    </div>
+    <div class="grid g3">
+      <div class="card"><span class="no">01</span>
+        <div class="ic"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M16 16l5 5"/></svg></div>
+        <h3 data-i18n="srv.1.t">Due Diligence</h3>
+        <p data-i18n="srv.1.d">Технический, юридический и финансовый аудит актива. Проверка первоисточников, выявление красных флагов до сделки.</p>
+      </div>
+      <div class="card"><span class="no">02</span>
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M4 19V9m5 10V5m5 14v-7m5 7V8"/></svg></div>
+        <h3 data-i18n="srv.2.t">Оценка активов</h3>
+        <p data-i18n="srv.2.d">Независимая оценка месторождений, предприятий и нематериальных активов. Триангуляция методов, обоснованный диапазон стоимости.</p>
+      </div>
+      <div class="card"><span class="no">03</span>
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M9 11l3 3 8-8"/><path d="M21 12v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h11"/></svg></div>
+        <h3 data-i18n="srv.3.t">Аудит инвестпроектов</h3>
+        <p data-i18n="srv.3.d">Проверка инвестиционных предложений и финансовых моделей: допущения, риски, реалистичность CapEx/OpEx и сроков.</p>
+      </div>
+      <div class="card"><span class="no">04</span>
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M6 2h9l5 5v15H6z"/><path d="M14 2v6h6M9 13h6M9 17h6"/></svg></div>
+        <h3 data-i18n="srv.4.t">ТЭО / Bankable FS</h3>
+        <p data-i18n="srv.4.d">Подготовка и экспертиза технико-экономических обоснований уровня предварительного и банкуемого ТЭО для финансирования.</p>
+      </div>
+      <div class="card"><span class="no">05</span>
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M16 3h5v5M21 3l-7 7M8 21H3v-5M3 21l7-7"/></svg></div>
+        <h3 data-i18n="srv.5.t">Сопровождение сделок</h3>
+        <p data-i18n="srv.5.d">Структурирование M&A, подготовка data room, поддержка переговоров и сопровождение до закрытия сделки.</p>
+      </div>
+      <div class="card"><span class="no">06</span>
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6z"/><path d="M9 12l2 2 4-4"/></svg></div>
+        <h3 data-i18n="srv.6.t">Экспертиза по стандартам</h3>
+        <p data-i18n="srv.6.d">Заключения уровня Competent / Qualified Person по JORC, NI 43-101, SAMREC, NAEN и требованиям ГКЗ.</p>
+      </div>
+      <div class="card wide"><span class="no">07</span>
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 3l2.5 5 5.5.8-4 3.9.9 5.5L12 21l-4.9 2.6.9-5.5-4-3.9 5.5-.8z"/></svg></div>
+        <div class="wtext">
+          <h3 data-i18n="srv.7.t">Оценка интеллектуальной собственности</h3>
+          <p data-i18n="srv.7.d">Независимая оценка НМА — патенты, бренд, ПО, ноу-хау — по IVS 210 и ISO 10668. Методы освобождения от роялти, MPEEM и затратный.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STANDARDS -->
+<section id="standards" class="alt">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow" data-i18n="standards.eyebrow">Методология</span>
+      <h2 data-i18n="standards.title">Работаем по международным стандартам</h2>
+      <p data-i18n="standards.sub">Каждое заключение опирается на признанные кодексы отчётности и оценки.</p>
+    </div>
+    <div class="badges">
+      <span class="badge"><i></i>JORC</span>
+      <span class="badge"><i></i>NI 43-101</span>
+      <span class="badge"><i></i>SAMREC</span>
+      <span class="badge"><i></i>PERC</span>
+      <span class="badge"><i></i>NAEN / ГКЗ</span>
+      <span class="badge"><i></i>VALMIN</span>
+      <span class="badge"><i></i>CIMVAL</span>
+      <span class="badge"><i></i>IVS 210</span>
+      <span class="badge"><i></i>ISO 10668</span>
+      <span class="badge"><i></i>ICMM</span>
+      <span class="badge"><i></i>GISTM</span>
+    </div>
+  </div>
+</section>
+
+<!-- CASES -->
+<section id="cases">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow" data-i18n="cases.eyebrow">Дайджест практики</span>
+      <h2 data-i18n="cases.title">Направления экспертизы</h2>
+      <p data-i18n="cases.sub">Обобщённые направления работ. Детали конкретных мандатов — под NDA.</p>
+    </div>
+    <div class="grid g4">
+      <div class="case"><div class="top"></div><div class="body">
+        <div class="sector" data-i18n="case.1.s">Золотодобыча</div>
+        <h3 data-i18n="case.1.t">DD рудного актива</h3>
+        <p data-i18n="case.1.d">Сверка запасов с госэкспертизой, проверка лицензии и ресурсной модели, обоснованный диапазон справедливой стоимости.</p>
+      </div></div>
+      <div class="case"><div class="top"></div><div class="body">
+        <div class="sector" data-i18n="case.2.s">Нефтегаз</div>
+        <h3 data-i18n="case.2.t">Оценка пакета активов</h3>
+        <p data-i18n="case.2.d">Аудит пакета месторождений и переработки, анализ красных флагов первоисточников, диапазон цены под покупателя.</p>
+      </div></div>
+      <div class="case"><div class="top"></div><div class="body">
+        <div class="sector" data-i18n="case.3.s">Цифровые активы</div>
+        <h3 data-i18n="case.3.t">Оценка платформы</h3>
+        <p data-i18n="case.3.d">Pre-money оценка технологической платформы, проверка финмодели и допущений роста, диапазон для переговоров.</p>
+      </div></div>
+      <div class="case"><div class="top"></div><div class="body">
+        <div class="sector" data-i18n="case.4.s">Промышленность · АПК</div>
+        <h3 data-i18n="case.4.t">Экспертиза проекта</h3>
+        <p data-i18n="case.4.d">Технико-экономическая экспертиза инвестпрограммы, проверка CapEx и сроков, подготовка материалов для инвестора.</p>
+      </div></div>
+    </div>
+    <div style="text-align:center;margin-top:34px">
+      <a class="btn btn-primary" href="digest/index.html" data-i18n="cases.cta">Открыть дайджест кейсов</a>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERTS -->
+<section id="experts" class="alt">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow" data-i18n="experts.eyebrow">Команда</span>
+      <h2 data-i18n="experts.title">Эксперты бюро</h2>
+      <p data-i18n="experts.sub">Каждый мандат ведёт профильный специалист с подтверждённой практикой.</p>
+    </div>
+    <div class="experts">
+      <div class="expert">
+        <div class="ava">АК</div>
+        <h3>Аслан Каа</h3>
+        <div class="role" data-i18n="exp.1.r">Управляющий партнёр</div>
+        <p data-i18n="exp.1.d">Руководство экспертизой и сопровождением сделок. Практика в добывающих, промышленных и цифровых активах.</p>
+      </div>
+      <div class="expert">
+        <div class="ava">CP</div>
+        <h3 data-i18n="exp.2.n">Геолог-эксперт</h3>
+        <div class="role" data-i18n="exp.2.r">Competent Person</div>
+        <p data-i18n="exp.2.d">Ресурсные модели, аудит запасов, заключения по JORC / NI 43-101 / SAMREC и требованиям ГКЗ.</p>
+      </div>
+      <div class="expert">
+        <div class="ava">₽</div>
+        <h3 data-i18n="exp.3.n">Финансовый аналитик</h3>
+        <div class="role" data-i18n="exp.3.r">Оценщик активов</div>
+        <p data-i18n="exp.3.d">Финансовое моделирование, оценка по DCF и рыночным мультипликаторам, обоснование диапазона стоимости.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow" data-i18n="process.eyebrow">Как мы работаем</span>
+      <h2 data-i18n="process.title">Прозрачный процесс</h2>
+      <p data-i18n="process.sub">От первого контакта до отчёта — понятные этапы и фиксированные результаты.</p>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="n">1</div><h3 data-i18n="step.1.t">Запрос и NDA</h3><p data-i18n="step.1.d">Обсуждаем задачу, подписываем соглашение о конфиденциальности, согласуем объём.</p></div>
+      <div class="step"><div class="n">2</div><h3 data-i18n="step.2.t">Экспресс-скрининг</h3><p data-i18n="step.2.d">Быстрая оценка актива и ключевых рисков, решение «идти / не идти».</p></div>
+      <div class="step"><div class="n">3</div><h3 data-i18n="step.3.t">Глубокий due diligence</h3><p data-i18n="step.3.d">Документарная и полевая проверка, сверка с первоисточниками и госэкспертизой.</p></div>
+      <div class="step"><div class="n">4</div><h3 data-i18n="step.4.t">Отчёт и сопровождение</h3><p data-i18n="step.4.d">Заключение уровня CP/QP, диапазон стоимости и поддержка переговоров до сделки.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTS -->
+<section id="contacts" class="alt">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow" data-i18n="contacts.eyebrow">Контакты</span>
+      <h2 data-i18n="contacts.title">Обсудим вашу задачу</h2>
+      <p data-i18n="contacts.sub">Напишите или позвоните — ответим в течение рабочего дня.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-card">
+        <div class="c-row"><div class="ci"><svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M4 6l8 6 8-6"/></svg></div>
+          <div><small data-i18n="c.email">Эл. почта</small><a href="mailto:aslankaa@yandex.ru">aslankaa@yandex.ru</a></div></div>
+        <div class="c-row"><div class="ci"><svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-3 2a12 12 0 0 0 5 5l2-3 5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg></div>
+          <div><small data-i18n="c.phone">Телефон</small><a href="tel:+79697955555">+7 (969) 795-55-55</a> · <a href="tel:+79252037777">+7 (925) 203-77-77</a></div></div>
+        <div class="c-row"><div class="ci"><svg viewBox="0 0 24 24"><path d="M21 5L2 12l6 2 2 6 3-4 5 4z"/></svg></div>
+          <div><small>Telegram</small><a href="https://t.me/aslan_kaa" target="_blank" rel="noopener">@aslan_kaa</a></div></div>
+        <div class="c-row"><div class="ci"><svg viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-3.5-6.6L20 4l-1.3 3.5A8 8 0 0 1 20 12z"/><path d="M8 10c0 4 2 6 6 6"/></svg></div>
+          <div><small>WhatsApp</small><a href="https://wa.me/79697955555" target="_blank" rel="noopener">+7 (969) 795-55-55</a></div></div>
+      </div>
+      <div class="disclaimer" data-i18n="contacts.disclaimer">
+        Сайт носит информационный характер и не содержит онлайн-форм сбора персональных данных. Для обращения используйте указанные почту, телефон или мессенджеры. Материалы не являются публичной офертой и инвестиционной рекомендацией.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <img src="assets/logo_redwhite.svg" alt="PROFFI SQUAD">
+      <span data-i18n="footer.tagline">Команда профессионалов · независимая экспертиза активов и сделок</span>
+    </div>
+    <div class="foot-bottom">
+      <span>© <span id="year"></span> PROFFI SQUAD · <span data-i18n="footer.person">Кагиров Абдул-Хаким Ахмадович</span></span>
+      <span data-i18n="footer.disclaimer">Информация на сайте не является офертой или инвестиционной рекомендацией.</span>
+    </div>
+  </div>
+</footer>
+
+<!-- THEME SWITCH -->
+<div class="theme-switch" id="themeSwitch">
+  <button data-theme-btn="dark" class="active" title="Dark">🌑</button>
+  <button data-theme-btn="light" title="Light">☀️</button>
+  <button data-theme-btn="sepia" title="Sepia">📜</button>
+</div>
+
+<script>
+const I18N = {
+ ru:{
+  "nav.services":"Услуги","nav.standards":"Стандарты","nav.cases":"Кейсы","nav.experts":"Эксперты","nav.process":"Процесс","nav.contacts":"Контакты",
+  "hero.eyebrow":"Экспертно-консалтинговое бюро","hero.title":"Команда <span class='slash'>профессионалов</span>",
+  "hero.lead":"Независимая экспертиза активов и инвестиционных проектов: due diligence, оценка, ТЭО и сопровождение сделок. Отчёты уровня Competent / Qualified Person по международным стандартам.",
+  "hero.cta1":"Обсудить задачу","hero.cta2":"Telegram",
+  "hero.cardtag":"Команда экспертов с практикой в золотодобыче, нефтегазе, промышленности и цифровых активах. Работаем по JORC, NI 43-101, SAMREC, ГКЗ и VALMIN.",
+  "hero.s1":"уровень отчётов","hero.s2":"сквозная экспертиза","hero.s3":"языка сопровождения",
+  "services.eyebrow":"Услуги","services.title":"Полный цикл экспертизы","services.sub":"От экспресс-скрининга актива до банкуемого отчёта и закрытия сделки.",
+  "srv.1.t":"Due Diligence","srv.1.d":"Технический, юридический и финансовый аудит актива. Проверка первоисточников, выявление красных флагов до сделки.",
+  "srv.2.t":"Оценка активов","srv.2.d":"Независимая оценка месторождений, предприятий и нематериальных активов. Триангуляция методов, обоснованный диапазон стоимости.",
+  "srv.3.t":"Аудит инвестпроектов","srv.3.d":"Проверка инвестиционных предложений и финансовых моделей: допущения, риски, реалистичность CapEx/OpEx и сроков.",
+  "srv.4.t":"ТЭО / Bankable FS","srv.4.d":"Подготовка и экспертиза технико-экономических обоснований уровня предварительного и банкуемого ТЭО для финансирования.",
+  "srv.5.t":"Сопровождение сделок","srv.5.d":"Структурирование M&A, подготовка data room, поддержка переговоров и сопровождение до закрытия сделки.",
+  "srv.6.t":"Экспертиза по стандартам","srv.6.d":"Заключения уровня Competent / Qualified Person по JORC, NI 43-101, SAMREC, NAEN и требованиям ГКЗ.",
+  "srv.7.t":"Оценка интеллектуальной собственности","srv.7.d":"Независимая оценка НМА — патенты, бренд, ПО, ноу-хау — по IVS 210 и ISO 10668. Методы освобождения от роялти, MPEEM и затратный.",
+  "standards.eyebrow":"Методология","standards.title":"Работаем по международным стандартам","standards.sub":"Каждое заключение опирается на признанные кодексы отчётности и оценки.",
+  "cases.eyebrow":"Дайджест практики","cases.title":"Направления экспертизы","cases.sub":"Обобщённые направления работ. Детали конкретных мандатов — под NDA.",
+  "case.1.s":"Золотодобыча","case.1.t":"DD рудного актива","case.1.d":"Сверка запасов с госэкспертизой, проверка лицензии и ресурсной модели, обоснованный диапазон справедливой стоимости.",
+  "case.2.s":"Нефтегаз","case.2.t":"Оценка пакета активов","case.2.d":"Аудит пакета месторождений и переработки, анализ красных флагов первоисточников, диапазон цены под покупателя.",
+  "case.3.s":"Цифровые активы","case.3.t":"Оценка платформы","case.3.d":"Pre-money оценка технологической платформы, проверка финмодели и допущений роста, диапазон для переговоров.",
+  "case.4.s":"Промышленность · АПК","case.4.t":"Экспертиза проекта","case.4.d":"Технико-экономическая экспертиза инвестпрограммы, проверка CapEx и сроков, подготовка материалов для инвестора.",
+  "cases.cta":"Открыть дайджест кейсов",
+  "experts.eyebrow":"Команда","experts.title":"Эксперты бюро","experts.sub":"Каждый мандат ведёт профильный специалист с подтверждённой практикой.",
+  "exp.1.r":"Управляющий партнёр","exp.1.d":"Руководство экспертизой и сопровождением сделок. Практика в добывающих, промышленных и цифровых активах.",
+  "exp.2.n":"Геолог-эксперт","exp.2.r":"Competent Person","exp.2.d":"Ресурсные модели, аудит запасов, заключения по JORC / NI 43-101 / SAMREC и требованиям ГКЗ.",
+  "exp.3.n":"Финансовый аналитик","exp.3.r":"Оценщик активов","exp.3.d":"Финансовое моделирование, оценка по DCF и рыночным мультипликаторам, обоснование диапазона стоимости.",
+  "process.eyebrow":"Как мы работаем","process.title":"Прозрачный процесс","process.sub":"От первого контакта до отчёта — понятные этапы и фиксированные результаты.",
+  "step.1.t":"Запрос и NDA","step.1.d":"Обсуждаем задачу, подписываем соглашение о конфиденциальности, согласуем объём.",
+  "step.2.t":"Экспресс-скрининг","step.2.d":"Быстрая оценка актива и ключевых рисков, решение «идти / не идти».",
+  "step.3.t":"Глубокий due diligence","step.3.d":"Документарная и полевая проверка, сверка с первоисточниками и госэкспертизой.",
+  "step.4.t":"Отчёт и сопровождение","step.4.d":"Заключение уровня CP/QP, диапазон стоимости и поддержка переговоров до сделки.",
+  "contacts.eyebrow":"Контакты","contacts.title":"Обсудим вашу задачу","contacts.sub":"Напишите или позвоните — ответим в течение рабочего дня.",
+  "c.email":"Эл. почта","c.phone":"Телефон",
+  "contacts.disclaimer":"Сайт носит информационный характер и не содержит онлайн-форм сбора персональных данных. Для обращения используйте указанные почту, телефон или мессенджеры. Материалы не являются публичной офертой и инвестиционной рекомендацией.",
+  "footer.tagline":"Команда профессионалов · независимая экспертиза активов и сделок",
+  "footer.person":"Кагиров Абдул-Хаким Ахмадович","footer.disclaimer":"Информация на сайте не является офертой или инвестиционной рекомендацией."
+ },
+ en:{
+  "nav.services":"Services","nav.standards":"Standards","nav.cases":"Cases","nav.experts":"Experts","nav.process":"Process","nav.contacts":"Contacts",
+  "hero.eyebrow":"Expert advisory bureau","hero.title":"A squad of <span class='slash'>professionals</span>",
+  "hero.lead":"Independent expertise on assets and investment projects: due diligence, valuation, feasibility studies and deal support. Competent / Qualified Person grade reports to international standards.",
+  "hero.cta1":"Discuss your case","hero.cta2":"Telegram",
+  "hero.cardtag":"A team of experts with a track record in gold mining, oil & gas, industry and digital assets. We work to JORC, NI 43-101, SAMREC, GKZ and VALMIN.",
+  "hero.s1":"reporting grade","hero.s2":"end-to-end expertise","hero.s3":"languages supported",
+  "services.eyebrow":"Services","services.title":"The full expertise cycle","services.sub":"From a rapid asset screen to a bankable report and deal closing.",
+  "srv.1.t":"Due Diligence","srv.1.d":"Technical, legal and financial audit of the asset. Source verification and red-flag detection before the deal.",
+  "srv.2.t":"Asset valuation","srv.2.d":"Independent valuation of deposits, enterprises and intangible assets. Triangulated methods and a reasoned value range.",
+  "srv.3.t":"Investment audit","srv.3.d":"Review of investment proposals and financial models: assumptions, risks, realism of CapEx/OpEx and schedules.",
+  "srv.4.t":"Feasibility / Bankable FS","srv.4.d":"Preparation and review of pre-feasibility and bankable feasibility studies for financing.",
+  "srv.5.t":"Deal support","srv.5.d":"M&A structuring, data-room preparation, negotiation support and assistance through to closing.",
+  "srv.6.t":"Standards-based opinions","srv.6.d":"Competent / Qualified Person opinions under JORC, NI 43-101, SAMREC, NAEN and GKZ requirements.",
+  "srv.7.t":"Intellectual-property valuation","srv.7.d":"Independent valuation of intangibles — patents, brand, software, know-how — under IVS 210 and ISO 10668. Relief-from-royalty, MPEEM and cost methods.",
+  "standards.eyebrow":"Methodology","standards.title":"We work to international standards","standards.sub":"Every opinion rests on recognised reporting and valuation codes.",
+  "cases.eyebrow":"Practice digest","cases.title":"Areas of expertise","cases.sub":"Generalised areas of work. Specific mandate details are under NDA.",
+  "case.1.s":"Gold mining","case.1.t":"Ore asset DD","case.1.d":"Reserve reconciliation against state expertise, licence and resource-model checks, a reasoned fair-value range.",
+  "case.2.s":"Oil & gas","case.2.t":"Asset package valuation","case.2.d":"Audit of a field and processing package, source red-flag analysis, a buyer-specific price range.",
+  "case.3.s":"Digital assets","case.3.t":"Platform valuation","case.3.d":"Pre-money valuation of a technology platform, model and growth-assumption checks, a negotiation range.",
+  "case.4.s":"Industry · Agri","case.4.t":"Project review","case.4.d":"Techno-economic review of an investment programme, CapEx and schedule checks, investor-ready materials.",
+  "cases.cta":"Open the case digest",
+  "experts.eyebrow":"Team","experts.title":"Bureau experts","experts.sub":"Every mandate is led by a domain specialist with a proven track record.",
+  "exp.1.r":"Managing Partner","exp.1.d":"Leads expertise and deal support. Track record across mining, industrial and digital assets.",
+  "exp.2.n":"Geologist-expert","exp.2.r":"Competent Person","exp.2.d":"Resource models, reserve audits, opinions under JORC / NI 43-101 / SAMREC and GKZ requirements.",
+  "exp.3.n":"Financial analyst","exp.3.r":"Asset valuer","exp.3.d":"Financial modelling, DCF and market-multiple valuation, reasoned value-range support.",
+  "process.eyebrow":"How we work","process.title":"A transparent process","process.sub":"From first contact to the report — clear stages and fixed deliverables.",
+  "step.1.t":"Request & NDA","step.1.d":"We discuss the case, sign a confidentiality agreement and agree the scope.",
+  "step.2.t":"Rapid screen","step.2.d":"A quick read of the asset and key risks, with a go / no-go decision.",
+  "step.3.t":"Deep due diligence","step.3.d":"Desktop and field verification, reconciled against sources and state expertise.",
+  "step.4.t":"Report & support","step.4.d":"A CP/QP-grade opinion, a value range and negotiation support through to the deal.",
+  "contacts.eyebrow":"Contacts","contacts.title":"Let's discuss your case","contacts.sub":"Write or call — we reply within one business day.",
+  "c.email":"E-mail","c.phone":"Phone",
+  "contacts.disclaimer":"This site is informational and contains no online personal-data collection forms. Please use the e-mail, phone or messengers above. Materials are not a public offer or investment advice.",
+  "footer.tagline":"A squad of professionals · independent expertise on assets and deals",
+  "footer.person":"Abdul-Khakim A. Kagirov","footer.disclaimer":"Information on this site is not an offer or investment advice."
+ },
+ fr:{
+  "nav.services":"Services","nav.standards":"Normes","nav.cases":"Cas","nav.experts":"Experts","nav.process":"Processus","nav.contacts":"Contacts",
+  "hero.eyebrow":"Cabinet de conseil d'experts","hero.title":"Une équipe de <span class='slash'>professionnels</span>",
+  "hero.lead":"Expertise indépendante d'actifs et de projets d'investissement : due diligence, évaluation, études de faisabilité et accompagnement des transactions. Rapports de niveau Competent / Qualified Person aux normes internationales.",
+  "hero.cta1":"Discuter de votre projet","hero.cta2":"Telegram",
+  "hero.cardtag":"Une équipe d'experts expérimentés dans l'or, le pétrole et gaz, l'industrie et les actifs numériques. Nous travaillons selon JORC, NI 43-101, SAMREC, GKZ et VALMIN.",
+  "hero.s1":"niveau des rapports","hero.s2":"expertise de bout en bout","hero.s3":"langues d'accompagnement",
+  "services.eyebrow":"Services","services.title":"Le cycle complet d'expertise","services.sub":"Du screening rapide d'un actif au rapport bancable et à la clôture de l'opération.",
+  "srv.1.t":"Due Diligence","srv.1.d":"Audit technique, juridique et financier de l'actif. Vérification des sources et détection des signaux d'alerte avant l'opération.",
+  "srv.2.t":"Évaluation d'actifs","srv.2.d":"Évaluation indépendante de gisements, d'entreprises et d'actifs incorporels. Triangulation des méthodes et fourchette de valeur motivée.",
+  "srv.3.t":"Audit d'investissement","srv.3.d":"Examen des propositions d'investissement et des modèles financiers : hypothèses, risques, réalisme du CapEx/OpEx et des délais.",
+  "srv.4.t":"Faisabilité / FS bancable","srv.4.d":"Préparation et examen d'études de préfaisabilité et de faisabilité bancable en vue d'un financement.",
+  "srv.5.t":"Accompagnement des transactions","srv.5.d":"Structuration M&A, préparation de la data room, soutien aux négociations jusqu'à la clôture.",
+  "srv.6.t":"Avis selon les normes","srv.6.d":"Avis de Competent / Qualified Person selon JORC, NI 43-101, SAMREC, NAEN et les exigences GKZ.",
+  "srv.7.t":"Évaluation de la propriété intellectuelle","srv.7.d":"Évaluation indépendante des incorporels — brevets, marque, logiciels, savoir-faire — selon IVS 210 et ISO 10668. Méthodes des redevances, MPEEM et coût.",
+  "standards.eyebrow":"Méthodologie","standards.title":"Nous travaillons selon les normes internationales","standards.sub":"Chaque avis repose sur des codes reconnus de reporting et d'évaluation.",
+  "cases.eyebrow":"Digest de la pratique","cases.title":"Domaines d'expertise","cases.sub":"Domaines de travail généralisés. Les détails des mandats sont sous NDA.",
+  "case.1.s":"Mines d'or","case.1.t":"DD d'un actif minier","case.1.d":"Réconciliation des réserves avec l'expertise d'État, contrôle de la licence et du modèle de ressources, fourchette de juste valeur motivée.",
+  "case.2.s":"Pétrole & gaz","case.2.t":"Évaluation d'un portefeuille","case.2.d":"Audit d'un portefeuille de champs et de traitement, analyse des signaux d'alerte, fourchette de prix selon l'acquéreur.",
+  "case.3.s":"Actifs numériques","case.3.t":"Évaluation d'une plateforme","case.3.d":"Évaluation pre-money d'une plateforme technologique, contrôle du modèle et des hypothèses de croissance, fourchette de négociation.",
+  "case.4.s":"Industrie · Agro","case.4.t":"Examen de projet","case.4.d":"Examen technico-économique d'un programme d'investissement, contrôle du CapEx et des délais, dossier pour l'investisseur.",
+  "cases.cta":"Ouvrir le digest de cas",
+  "experts.eyebrow":"Équipe","experts.title":"Les experts du cabinet","experts.sub":"Chaque mandat est dirigé par un spécialiste du domaine au parcours éprouvé.",
+  "exp.1.r":"Associé gérant","exp.1.d":"Direction de l'expertise et de l'accompagnement des transactions. Parcours dans les actifs miniers, industriels et numériques.",
+  "exp.2.n":"Géologue-expert","exp.2.r":"Competent Person","exp.2.d":"Modèles de ressources, audits de réserves, avis selon JORC / NI 43-101 / SAMREC et exigences GKZ.",
+  "exp.3.n":"Analyste financier","exp.3.r":"Évaluateur d'actifs","exp.3.d":"Modélisation financière, évaluation par DCF et multiples de marché, fourchette de valeur motivée.",
+  "process.eyebrow":"Notre méthode","process.title":"Un processus transparent","process.sub":"Du premier contact au rapport — des étapes claires et des livrables fixes.",
+  "step.1.t":"Demande & NDA","step.1.d":"Nous discutons du dossier, signons un accord de confidentialité et fixons le périmètre.",
+  "step.2.t":"Screening rapide","step.2.d":"Une lecture rapide de l'actif et des risques clés, avec une décision go / no-go.",
+  "step.3.t":"Due diligence approfondie","step.3.d":"Vérification documentaire et de terrain, réconciliée avec les sources et l'expertise d'État.",
+  "step.4.t":"Rapport & accompagnement","step.4.d":"Un avis de niveau CP/QP, une fourchette de valeur et un soutien aux négociations jusqu'à l'opération.",
+  "contacts.eyebrow":"Contacts","contacts.title":"Discutons de votre projet","contacts.sub":"Écrivez ou appelez — nous répondons sous un jour ouvré.",
+  "c.email":"E-mail","c.phone":"Téléphone",
+  "contacts.disclaimer":"Ce site est informatif et ne contient aucun formulaire de collecte de données personnelles en ligne. Veuillez utiliser l'e-mail, le téléphone ou les messageries ci-dessus. Les contenus ne constituent pas une offre publique ni un conseil en investissement.",
+  "footer.tagline":"Une équipe de professionnels · expertise indépendante d'actifs et de transactions",
+  "footer.person":"Abdoul-Khakim A. Kagirov","footer.disclaimer":"Les informations de ce site ne constituent pas une offre ni un conseil en investissement."
+ },
+ ar:{
+  "nav.services":"الخدمات","nav.standards":"المعايير","nav.cases":"الحالات","nav.experts":"الخبراء","nav.process":"المنهجية","nav.contacts":"التواصل",
+  "hero.eyebrow":"مكتب استشارات الخبراء","hero.title":"فريق من <span class='slash'>المحترفين</span>",
+  "hero.lead":"خبرة مستقلة في الأصول والمشاريع الاستثمارية: العناية الواجبة، التقييم، دراسات الجدوى ومرافقة الصفقات. تقارير بمستوى الشخص الكفؤ / المؤهل وفق المعايير الدولية.",
+  "hero.cta1":"ناقش مشروعك","hero.cta2":"تيليجرام",
+  "hero.cardtag":"فريق من الخبراء بخبرة في تعدين الذهب والنفط والغاز والصناعة والأصول الرقمية. نعمل وفق JORC وNI 43-101 وSAMREC وGKZ وVALMIN.",
+  "hero.s1":"مستوى التقارير","hero.s2":"خبرة شاملة","hero.s3":"لغات للمرافقة",
+  "services.eyebrow":"الخدمات","services.title":"دورة الخبرة الكاملة","services.sub":"من الفحص السريع للأصل إلى تقرير قابل للتمويل وإغلاق الصفقة.",
+  "srv.1.t":"العناية الواجبة","srv.1.d":"تدقيق فني وقانوني ومالي للأصل. التحقق من المصادر ورصد المخاطر قبل الصفقة.",
+  "srv.2.t":"تقييم الأصول","srv.2.d":"تقييم مستقل للرواسب والمنشآت والأصول غير الملموسة. تثليث المنهجيات ونطاق قيمة مُبرَّر.",
+  "srv.3.t":"تدقيق المشاريع الاستثمارية","srv.3.d":"مراجعة المقترحات الاستثمارية والنماذج المالية: الفرضيات والمخاطر وواقعية التكاليف والجداول.",
+  "srv.4.t":"دراسة الجدوى / FS قابلة للتمويل","srv.4.d":"إعداد ومراجعة دراسات الجدوى الأولية والقابلة للتمويل لأغراض التمويل.",
+  "srv.5.t":"مرافقة الصفقات","srv.5.d":"هيكلة الاندماج والاستحواذ، تجهيز غرفة البيانات، دعم المفاوضات حتى الإغلاق.",
+  "srv.6.t":"رأي وفق المعايير","srv.6.d":"آراء الشخص الكفؤ / المؤهل وفق JORC وNI 43-101 وSAMREC وNAEN ومتطلبات GKZ.",
+  "srv.7.t":"تقييم الملكية الفكرية","srv.7.d":"تقييم مستقل للأصول غير الملموسة — براءات، علامة، برمجيات، معرفة فنية — وفق IVS 210 وISO 10668. طرق الإعفاء من الإتاوة وMPEEM والتكلفة.",
+  "standards.eyebrow":"المنهجية","standards.title":"نعمل وفق المعايير الدولية","standards.sub":"يستند كل رأي إلى مدونات معترف بها لإعداد التقارير والتقييم.",
+  "cases.eyebrow":"خلاصة الممارسة","cases.title":"مجالات الخبرة","cases.sub":"مجالات عمل عامة. تفاصيل التكليفات المحددة خاضعة لاتفاقية سرية.",
+  "case.1.s":"تعدين الذهب","case.1.t":"عناية واجبة لأصل خام","case.1.d":"مطابقة الاحتياطيات مع الخبرة الحكومية، فحص الرخصة ونموذج الموارد، نطاق قيمة عادلة مُبرَّر.",
+  "case.2.s":"النفط والغاز","case.2.t":"تقييم حزمة أصول","case.2.d":"تدقيق حزمة حقول ومعالجة، تحليل إشارات الخطر في المصادر، نطاق سعر حسب المشتري.",
+  "case.3.s":"الأصول الرقمية","case.3.t":"تقييم منصة","case.3.d":"تقييم ما قبل التمويل لمنصة تقنية، فحص النموذج وفرضيات النمو، نطاق للتفاوض.",
+  "case.4.s":"الصناعة · الزراعة","case.4.t":"مراجعة مشروع","case.4.d":"مراجعة فنية واقتصادية لبرنامج استثماري، فحص التكاليف والجداول، مواد جاهزة للمستثمر.",
+  "cases.cta":"افتح نشرة الحالات",
+  "experts.eyebrow":"الفريق","experts.title":"خبراء المكتب","experts.sub":"يقود كل تكليف أخصائي في المجال بسجل مثبت.",
+  "exp.1.r":"الشريك الإداري","exp.1.d":"قيادة الخبرة ومرافقة الصفقات. سجل في الأصول التعدينية والصناعية والرقمية.",
+  "exp.2.n":"جيولوجي خبير","exp.2.r":"شخص كفؤ","exp.2.d":"نماذج الموارد، تدقيق الاحتياطيات، آراء وفق JORC / NI 43-101 / SAMREC ومتطلبات GKZ.",
+  "exp.3.n":"محلل مالي","exp.3.r":"مُقيّم أصول","exp.3.d":"النمذجة المالية، التقييم بالتدفقات المخصومة ومضاعفات السوق، نطاق قيمة مُبرَّر.",
+  "process.eyebrow":"كيف نعمل","process.title":"منهجية شفافة","process.sub":"من أول تواصل إلى التقرير — مراحل واضحة ومخرجات محددة.",
+  "step.1.t":"الطلب واتفاقية السرية","step.1.d":"نناقش المهمة، نوقّع اتفاقية سرية، ونتفق على النطاق.",
+  "step.2.t":"فحص سريع","step.2.d":"قراءة سريعة للأصل والمخاطر الرئيسية، مع قرار المضي / التوقف.",
+  "step.3.t":"عناية واجبة معمّقة","step.3.d":"تحقق مكتبي وميداني، مطابَق مع المصادر والخبرة الحكومية.",
+  "step.4.t":"التقرير والمرافقة","step.4.d":"رأي بمستوى CP/QP، نطاق قيمة ودعم المفاوضات حتى الصفقة.",
+  "contacts.eyebrow":"التواصل","contacts.title":"لنناقش مشروعك","contacts.sub":"اكتب أو اتصل — نرد خلال يوم عمل واحد.",
+  "c.email":"البريد الإلكتروني","c.phone":"الهاتف",
+  "contacts.disclaimer":"هذا الموقع للأغراض الإعلامية ولا يحتوي على نماذج لجمع البيانات الشخصية عبر الإنترنت. يُرجى استخدام البريد أو الهاتف أو تطبيقات المراسلة أعلاه. المحتوى ليس عرضاً عاماً ولا توصية استثمارية.",
+  "footer.tagline":"فريق من المحترفين · خبرة مستقلة في الأصول والصفقات",
+  "footer.person":"عبد الحكيم أ. كاجيروف","footer.disclaimer":"المعلومات في هذا الموقع ليست عرضاً ولا توصية استثمارية."
+ }
+};
+const RTL = new Set(["ar"]);
+function applyLang(lang){
+  const dict=I18N[lang]||I18N.ru;
+  document.documentElement.lang=lang;
+  document.documentElement.dir=RTL.has(lang)?"rtl":"ltr";
+  document.querySelectorAll("[data-i18n]").forEach(el=>{
+    const k=el.getAttribute("data-i18n");
+    if(dict[k]!==undefined) el.innerHTML=dict[k];
+  });
+  document.querySelectorAll("#langs button").forEach(b=>b.classList.toggle("active",b.dataset.lang===lang));
+  try{localStorage.setItem("ps_lang",lang);}catch(e){}
+}
+function applyTheme(t){
+  document.documentElement.setAttribute("data-theme",t);
+  document.querySelectorAll("#themeSwitch button").forEach(b=>b.classList.toggle("active",b.dataset.themeBtn===t));
+  try{localStorage.setItem("ps_theme",t);}catch(e){}
+}
+document.getElementById("langs").addEventListener("click",e=>{if(e.target.dataset.lang)applyLang(e.target.dataset.lang);});
+document.getElementById("themeSwitch").addEventListener("click",e=>{const b=e.target.closest("button");if(b)applyTheme(b.dataset.themeBtn);});
+document.getElementById("burger").addEventListener("click",()=>document.getElementById("menu").classList.toggle("open"));
+document.querySelectorAll("#menu a").forEach(a=>a.addEventListener("click",()=>document.getElementById("menu").classList.remove("open")));
+document.getElementById("year").textContent=new Date().getFullYear();
+(function init(){
+  let l="ru",t="dark";
+  try{l=localStorage.getItem("ps_lang")||"ru";t=localStorage.getItem("ps_theme")||"dark";}catch(e){}
+  applyTheme(t);applyLang(l);
+})();
+</script>
+</body>
+</html>

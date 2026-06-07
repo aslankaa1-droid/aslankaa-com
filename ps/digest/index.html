@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="ru" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PROFFI SQUAD — Дайджест кейсов</title>
+<meta name="description" content="Дайджест кейсов экспертно-консалтингового бюро PROFFI SQUAD: новости рынка, обезличенные кейсы Due Diligence и оценки активов, оценка интеллектуальной собственности по международным стандартам.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,600;0,700;0,800;0,900;1,800;1,900&family=Inter:wght@400;500;600;700&family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --red:#E30513; --red-deep:#B00410; --graphite:#1A1D24; --ink:#23272F;
+  --paper:#FFFFFF; --paper-2:#F5F6F8; --line:#E4E7EC; --muted:#697078;
+  --gold:#C8912A;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',system-ui,sans-serif;background:#3a3d44;color:var(--ink);line-height:1.6;
+  -webkit-font-smoothing:antialiased}
+html[dir="rtl"] body{font-family:'Cairo','Inter',sans-serif}
+h1,h2,h3,h4,.dsp{font-family:'Archivo',sans-serif;font-weight:800;line-height:1.05;letter-spacing:-.01em}
+html[dir="rtl"] h1,html[dir="rtl"] h2,html[dir="rtl"] h3,html[dir="rtl"] h4,html[dir="rtl"] .dsp{font-family:'Cairo',sans-serif;font-weight:900}
+a{color:inherit;text-decoration:none}
+
+/* toolbar (screen only) */
+.toolbar{position:fixed;top:14px;inset-inline-end:14px;z-index:100;display:flex;gap:8px;align-items:center;
+  background:var(--graphite);padding:8px;border-radius:10px;box-shadow:0 10px 30px rgba(0,0,0,.35)}
+.toolbar .langs{display:flex;border:1px solid #333a45;border-radius:7px;overflow:hidden}
+.toolbar .langs button{background:none;border:0;color:#aeb6c0;font:600 12px 'Inter';padding:6px 9px;cursor:pointer}
+.toolbar .langs button.active{background:var(--red);color:#fff}
+.toolbar .pbtn{background:var(--red);border:0;color:#fff;font:600 12px 'Inter';padding:7px 12px;border-radius:7px;cursor:pointer}
+
+/* page */
+.book{max-width:820px;margin:0 auto;padding:30px 16px 60px}
+.page{background:var(--paper);width:100%;aspect-ratio:1/1.414;margin:0 auto 26px;position:relative;
+  overflow:hidden;box-shadow:0 18px 50px rgba(0,0,0,.4);display:flex;flex-direction:column}
+.pad{padding:54px 56px;flex:1;display:flex;flex-direction:column}
+html[dir="rtl"] .pad{direction:rtl}
+
+/* running header / footer */
+.rh{position:absolute;top:0;inset-inline-start:0;right:0;height:34px;display:flex;align-items:center;
+  justify-content:space-between;padding:0 56px;font-family:'Archivo';font-size:9px;letter-spacing:.18em;
+  text-transform:uppercase;color:#aab0b8}
+.rh b{color:var(--red)}
+.rf{position:absolute;bottom:0;inset-inline-start:0;right:0;height:40px;display:flex;align-items:center;
+  justify-content:space-between;padding:0 56px;font-size:10px;color:var(--muted);border-top:1px solid var(--line)}
+.pageno{width:26px;height:26px;border-radius:50%;background:var(--red);color:#fff;font-family:'Archivo';
+  font-weight:900;font-size:12px;display:flex;align-items:center;justify-content:center}
+
+/* round tab */
+.tab{display:inline-flex;align-items:center;justify-content:center;background:var(--red);color:#fff;
+  font-family:'Archivo';font-weight:800;text-transform:uppercase;letter-spacing:.16em;font-size:12px;
+  padding:9px 22px;border-radius:0 0 22px 22px;position:absolute;top:0;inset-inline-start:56px}
+html[dir="rtl"] .tab{letter-spacing:0}
+
+/* ---------- COVER ---------- */
+.cover{background:var(--graphite);color:#fff}
+.cover .pad{padding:0;justify-content:stretch}
+.cover .cwrap{position:relative;flex:1;display:flex;flex-direction:column;justify-content:space-between;padding:54px 56px}
+.cover::before{content:"";position:absolute;inset-inline-end:-12%;top:-12%;width:60%;height:62%;
+  background:var(--red);transform:rotate(12deg);transform-origin:top right}
+.cover::after{content:"";position:absolute;inset-inline-start:-18%;bottom:-16%;width:75%;height:30%;
+  background:linear-gradient(90deg,var(--red-deep),transparent);transform:rotate(-7deg)}
+.cover .top{position:relative;z-index:2;display:flex;justify-content:space-between;align-items:flex-start}
+.cover .logo{height:46px}
+.cover .issue{text-align:end;font-family:'Archivo';font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#fff}
+.cover .mid{position:relative;z-index:2;margin-top:auto}
+.cover .eyebrow{font-family:'Archivo';font-weight:700;letter-spacing:.28em;text-transform:uppercase;
+  font-size:13px;color:#fff;opacity:.85}
+.cover h1{font-size:64px;text-transform:uppercase;margin:14px 0;line-height:.96}
+.cover h1 .r{color:#ffd2d2}
+.cover .sub{font-size:16px;color:#e7eaee;max-width:30ch}
+.cover .aud{position:relative;z-index:2;display:flex;gap:10px;margin-top:30px;flex-wrap:wrap}
+.cover .aud span{border:1px solid rgba(255,255,255,.4);border-radius:30px;padding:7px 16px;font-size:12px;
+  font-weight:600;letter-spacing:.04em}
+.cover .foot{position:relative;z-index:2;margin-top:34px;font-size:12px;color:#c4c9cf;
+  border-top:1px solid rgba(255,255,255,.18);padding-top:16px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+
+/* section heading */
+.sec-eyebrow{font-family:'Archivo';font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  font-size:11px;color:var(--red);margin-bottom:8px}
+.sec-title{font-size:34px;text-transform:uppercase;margin-bottom:6px}
+.sec-sub{color:var(--muted);font-size:14px;margin-bottom:26px;max-width:54ch}
+.intro-tab{margin-top:30px}
+
+/* news */
+.news{display:flex;flex-direction:column;gap:18px;margin-top:6px}
+.news .item{display:grid;grid-template-columns:54px 1fr;gap:18px;padding-bottom:18px;border-bottom:1px solid var(--line)}
+.news .item:last-child{border-bottom:0}
+.news .num{font-family:'Archivo';font-weight:900;font-size:40px;color:var(--paper-2);
+  -webkit-text-stroke:1px var(--line);line-height:.8}
+.news h3{font-size:18px;margin-bottom:6px}
+.news p{font-size:13.5px;color:var(--ink)}
+.news .src{display:block;margin-top:6px;font-size:11px;color:var(--muted);font-style:italic}
+
+/* cases grid */
+.cases{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:6px}
+.cs{border:1px solid var(--line);border-radius:12px;padding:18px 18px 16px;display:flex;flex-direction:column;
+  position:relative;background:var(--paper)}
+.cs .head{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+.cs .med{width:46px;height:46px;border-radius:50%;border:2px solid var(--red);flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;color:var(--red)}
+.cs .med svg{width:22px;height:22px;stroke:var(--red);fill:none;stroke-width:1.8}
+.cs .sector{font-family:'Archivo';font-weight:800;text-transform:uppercase;letter-spacing:.1em;
+  font-size:10px;color:var(--red)}
+.cs h3{font-size:15.5px;margin-top:2px}
+.cs p{font-size:12.5px;color:var(--ink);margin-bottom:10px}
+.cs .res{margin-top:auto;font-size:12px;background:var(--paper-2);border-radius:8px;padding:9px 11px;
+  border-inline-start:3px solid var(--red)}
+.cs .res b{display:block;font-family:'Archivo';font-size:9px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:3px}
+.cs.featured{border-color:var(--red);box-shadow:0 0 0 1px var(--red) inset}
+.cs .stds{margin-top:8px;font-size:10.5px;color:var(--muted)}
+.cs .stds span{display:inline-block;background:var(--graphite);color:#fff;border-radius:4px;
+  padding:2px 7px;margin:2px 3px 0 0;font-weight:600;letter-spacing:.02em}
+html[dir="rtl"] .cs .stds span{margin:2px 0 0 3px}
+
+/* methodology */
+.prog{display:grid;grid-template-columns:1fr 1fr;gap:14px 26px;margin-top:6px}
+.prog .p{display:grid;grid-template-columns:34px 1fr;gap:12px;align-items:start}
+.prog .n{width:34px;height:34px;border-radius:9px;background:var(--graphite);color:#fff;font-family:'Archivo';
+  font-weight:900;font-size:15px;display:flex;align-items:center;justify-content:center}
+.prog h4{font-size:14px;margin-bottom:3px}
+.prog p{font-size:12.5px;color:var(--muted)}
+.stds-bar{margin-top:30px;background:var(--graphite);color:#fff;border-radius:12px;padding:20px 22px}
+.stds-bar .t{font-family:'Archivo';font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#aeb6c0;margin-bottom:10px}
+.stds-bar .row{display:flex;flex-wrap:wrap;gap:8px}
+.stds-bar .row span{border:1px solid #39414c;border-radius:6px;padding:6px 12px;font-size:12px;font-weight:600}
+.stds-bar .row span i{color:var(--red);font-style:normal}
+
+/* back / contacts */
+.back{background:var(--graphite);color:#fff}
+.back .pad{justify-content:space-between}
+.back .logo{height:40px;margin-bottom:30px}
+.back h2{font-size:30px;text-transform:uppercase;margin-bottom:8px}
+.back .lead{color:#c9cdd3;font-size:15px;max-width:42ch;margin-bottom:30px}
+.cc{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:26px}
+.cc .c{background:#23272F;border:1px solid #333a45;border-radius:11px;padding:16px 18px}
+.cc small{display:block;font-size:11px;color:#8d949c;margin-bottom:4px;letter-spacing:.08em;text-transform:uppercase}
+.cc a,.cc span{font-weight:600;font-size:14.5px;color:#fff}
+.back .disc{font-size:11px;color:#9aa1a9;line-height:1.7;border-top:1px solid rgba(255,255,255,.15);padding-top:16px}
+.back .sign{margin-top:14px;font-size:12px;color:#c9cdd3}
+
+@media(max-width:680px){
+  .pad{padding:34px 26px}
+  .rh,.rf,.tab{padding-inline:26px}.tab{inset-inline-start:26px}
+  .cover .cwrap{padding:34px 26px}.cover h1{font-size:44px}
+  .cases,.prog,.cc{grid-template-columns:1fr}
+  .sec-title{font-size:26px}
+}
+
+/* PRINT */
+@page{size:A4;margin:0}
+@media print{
+  body{background:#fff}
+  .toolbar{display:none}
+  .book{max-width:none;margin:0;padding:0}
+  .page{box-shadow:none;margin:0;aspect-ratio:auto;width:210mm;height:297mm;page-break-after:always;
+    break-after:page}
+  .page:last-child{page-break-after:auto}
+  .cover,.back{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <div class="langs" id="langs">
+    <button data-lang="ru" class="active">RU</button>
+    <button data-lang="en">EN</button>
+    <button data-lang="fr">FR</button>
+    <button data-lang="ar">AR</button>
+  </div>
+  <button class="pbtn" onclick="window.print()" data-i18n="ui.print">Печать / PDF</button>
+</div>
+
+<div class="book">
+
+  <!-- PAGE 1 — COVER -->
+  <section class="page cover">
+    <div class="cwrap">
+      <div class="top">
+        <img class="logo" src="assets/logo_redwhite.svg" alt="PROFFI SQUAD">
+        <div class="issue"><span data-i18n="cover.issue">Дайджест · Выпуск №1</span><br><span id="cover-date"></span></div>
+      </div>
+      <div class="mid">
+        <div class="eyebrow" data-i18n="cover.eyebrow">Экспертно-консалтинговое бюро</div>
+        <h1 data-i18n="cover.title">Дайджест <span class="r">кейсов</span></h1>
+        <p class="sub" data-i18n="cover.sub">Независимая экспертиза активов и сделок: due diligence, оценка, ТЭО, оценка интеллектуальной собственности.</p>
+        <div class="aud">
+          <span data-i18n="cover.a1">Клиентам</span>
+          <span data-i18n="cover.a2">Инвесторам</span>
+          <span data-i18n="cover.a3">Партнёрам</span>
+        </div>
+      </div>
+      <div class="foot">
+        <span data-i18n="cover.foot1">Отчёты уровня Competent / Qualified Person</span>
+        <span data-i18n="cover.foot2">JORC · NI 43-101 · SAMREC · VALMIN · IVS · ISO 10668</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAGE 2 — MARKET NEWS -->
+  <section class="page">
+    <div class="rh"><span><b>PROFFI</b> SQUAD · <span data-i18n="rh.digest">Дайджест кейсов</span></span><span data-i18n="rh.news">Новости рынка</span></div>
+    <span class="tab" data-i18n="tab.news">Новости</span>
+    <div class="pad" style="padding-top:78px">
+      <div class="sec-eyebrow" data-i18n="news.eyebrow">Что происходит на рынке</div>
+      <h2 class="sec-title" data-i18n="news.title">Новости рынка</h2>
+      <p class="sec-sub" data-i18n="news.sub">Тренды, которые влияют на оценку активов и структуру сделок.</p>
+      <div class="news">
+        <div class="item"><div class="num">01</div><div>
+          <h3 data-i18n="news.1.t">Ужесточение требований к ресурсной отчётности</h3>
+          <p data-i18n="news.1.d">Инвесторы и банки всё чаще требуют отчёты уровня CP/QP по JORC и NI 43-101. Декларации без компетентного лица теряют вес в сделках.</p>
+          <span class="src" data-i18n="news.1.s">Тренд отрасли</span>
+        </div></div>
+        <div class="item"><div class="num">02</div><div>
+          <h3 data-i18n="news.2.t">Спрос на независимую оценку при M&A</h3>
+          <p data-i18n="news.2.d">В добыче и промышленности растёт запрос на оценку независимой стороной — как условие финансирования и защита от переплаты.</p>
+          <span class="src" data-i18n="news.2.s">Практика сделок</span>
+        </div></div>
+        <div class="item"><div class="num">03</div><div>
+          <h3 data-i18n="news.3.t">Нематериальные активы — в фокусе стоимости</h3>
+          <p data-i18n="news.3.d">Бренды, патенты и ПО формируют всё большую долю цены сделки. Оценка ИС по IVS 210 и ISO 10668 становится отдельным предметом due diligence.</p>
+          <span class="src" data-i18n="news.3.s">Тренд оценки</span>
+        </div></div>
+      </div>
+    </div>
+    <div class="rf"><span data-i18n="rf.brand">PROFFI SQUAD · Команда профессионалов</span><span class="pageno">02</span></div>
+  </section>
+
+  <!-- PAGE 3 — CASES -->
+  <section class="page">
+    <div class="rh"><span><b>PROFFI</b> SQUAD · <span data-i18n="rh.digest">Дайджест кейсов</span></span><span data-i18n="rh.cases">Кейсы</span></div>
+    <span class="tab" data-i18n="tab.cases">Кейсы</span>
+    <div class="pad" style="padding-top:78px">
+      <div class="sec-eyebrow" data-i18n="cases.eyebrow">Обезличенная практика</div>
+      <h2 class="sec-title" data-i18n="cases.title">Наши кейсы</h2>
+      <p class="sec-sub" data-i18n="cases.sub">Типы мандатов и результаты. Показатели и стороны обобщены, детали — под NDA.</p>
+      <div class="cases">
+
+        <div class="cs"><div class="head">
+          <div class="med"><svg viewBox="0 0 24 24"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6z"/><path d="M9 12l2 2 4-4"/></svg></div>
+          <div><div class="sector" data-i18n="cs.1.s">Золотодобыча</div><h3 data-i18n="cs.1.t">DD рудного актива</h3></div></div>
+          <p data-i18n="cs.1.d">Технический и юридический due diligence лицензионного участка, сверка запасов с госэкспертизой, проверка ресурсной модели.</p>
+          <div class="res"><b data-i18n="cs.res">Результат</b><span data-i18n="cs.1.r">Обоснованный диапазон справедливой стоимости; рекомендация структуры с earnout.</span></div>
+        </div>
+
+        <div class="cs"><div class="head">
+          <div class="med"><svg viewBox="0 0 24 24"><path d="M4 19V9m5 10V5m5 14v-7m5 7V8"/></svg></div>
+          <div><div class="sector" data-i18n="cs.2.s">Нефтегаз</div><h3 data-i18n="cs.2.t">Оценка пакета активов</h3></div></div>
+          <p data-i18n="cs.2.d">Независимая оценка пакета из месторождений и переработки, анализ первоисточников, выявление красных флагов.</p>
+          <div class="res"><b data-i18n="cs.res">Результат</b><span data-i18n="cs.2.r">Диапазон цены под профиль покупателя; карта рисков сделки.</span></div>
+        </div>
+
+        <div class="cs featured"><div class="head">
+          <div class="med"><svg viewBox="0 0 24 24"><path d="M12 3l2.5 5 5.5.8-4 3.9.9 5.5L12 21l-4.9 2.6.9-5.5-4-3.9 5.5-.8z"/></svg></div>
+          <div><div class="sector" data-i18n="cs.3.s">Интеллектуальная собственность</div><h3 data-i18n="cs.3.t">Оценка НМА по межд. стандартам</h3></div></div>
+          <p data-i18n="cs.3.d">Независимая оценка портфеля ИС — патенты, бренд, ПО, ноу-хау — методами освобождения от роялти, MPEEM и затратным.</p>
+          <div class="stds"><span>IVS 210</span><span>ISO 10668</span><span data-i18n="cs.3.m">Relief-from-royalty · MPEEM</span></div>
+          <div class="res"><b data-i18n="cs.res">Результат</b><span data-i18n="cs.3.r">Обоснованная стоимость НМА для сделки, внесения в капитал или лицензирования.</span></div>
+        </div>
+
+        <div class="cs"><div class="head">
+          <div class="med"><svg viewBox="0 0 24 24"><path d="M4 17l5-5 4 4 7-8"/><path d="M4 21h16"/></svg></div>
+          <div><div class="sector" data-i18n="cs.4.s">Цифровые активы</div><h3 data-i18n="cs.4.t">Pre-money оценка платформы</h3></div></div>
+          <p data-i18n="cs.4.d">Оценка технологической платформы методами DCF и мультипликаторов, проверка финмодели и допущений роста.</p>
+          <div class="res"><b data-i18n="cs.res">Результат</b><span data-i18n="cs.4.r">Pre-money диапазон и зелёная зона для раунда финансирования.</span></div>
+        </div>
+
+        <div class="cs"><div class="head">
+          <div class="med"><svg viewBox="0 0 24 24"><path d="M3 21V7l9-4 9 4v14"/><path d="M9 21v-6h6v6"/></svg></div>
+          <div><div class="sector" data-i18n="cs.5.s">Промышленность</div><h3 data-i18n="cs.5.t">Оценка стартапа</h3></div></div>
+          <p data-i18n="cs.5.d">Pre-money оценка промышленного решения, триангуляция методов, анализ ниши и барьеров входа.</p>
+          <div class="res"><b data-i18n="cs.res">Результат</b><span data-i18n="cs.5.r">Обоснованный диапазон стоимости и условия входа инвестора.</span></div>
+        </div>
+
+        <div class="cs"><div class="head">
+          <div class="med"><svg viewBox="0 0 24 24"><path d="M6 2h9l5 5v15H6z"/><path d="M14 2v6h6M9 13h6M9 17h6"/></svg></div>
+          <div><div class="sector" data-i18n="cs.6.s">АПК · Инвестпрограмма</div><h3 data-i18n="cs.6.t">Экспертиза ТЭО</h3></div></div>
+          <p data-i18n="cs.6.d">Технико-экономическая экспертиза инвестпрограммы, проверка CapEx, OpEx и сроков реализации.</p>
+          <div class="res"><b data-i18n="cs.res">Результат</b><span data-i18n="cs.6.r">Заключение и материалы, готовые к показу инвестору.</span></div>
+        </div>
+
+      </div>
+    </div>
+    <div class="rf"><span data-i18n="rf.brand">PROFFI SQUAD · Команда профессионалов</span><span class="pageno">03</span></div>
+  </section>
+
+  <!-- PAGE 4 — METHODOLOGY -->
+  <section class="page">
+    <div class="rh"><span><b>PROFFI</b> SQUAD · <span data-i18n="rh.digest">Дайджест кейсов</span></span><span data-i18n="rh.method">Методология</span></div>
+    <span class="tab" data-i18n="tab.method">Программа</span>
+    <div class="pad" style="padding-top:78px">
+      <div class="sec-eyebrow" data-i18n="prog.eyebrow">Как устроена экспертиза</div>
+      <h2 class="sec-title" data-i18n="prog.title">Что входит в работу</h2>
+      <p class="sec-sub" data-i18n="prog.sub">Прозрачные этапы и фиксированные результаты — от скрининга до отчёта и сопровождения.</p>
+      <div class="prog">
+        <div class="p"><div class="n">1</div><div><h4 data-i18n="prog.1.t">Экспресс-скрининг</h4><p data-i18n="prog.1.d">Быстрая оценка актива и ключевых рисков, решение go / no-go.</p></div></div>
+        <div class="p"><div class="n">2</div><div><h4 data-i18n="prog.2.t">Due diligence</h4><p data-i18n="prog.2.d">Документарная и полевая проверка, сбор и анализ первоисточников.</p></div></div>
+        <div class="p"><div class="n">3</div><div><h4 data-i18n="prog.3.t">Сверка с источниками</h4><p data-i18n="prog.3.d">Сопоставление данных продавца с госэкспертизой и независимыми данными.</p></div></div>
+        <div class="p"><div class="n">4</div><div><h4 data-i18n="prog.4.t">Оценка и моделирование</h4><p data-i18n="prog.4.d">DCF и мультипликаторы; для ИС — relief-from-royalty и MPEEM по IVS / ISO 10668.</p></div></div>
+        <div class="p"><div class="n">5</div><div><h4 data-i18n="prog.5.t">Карта рисков</h4><p data-i18n="prog.5.d">Перечень красных флагов и сценарии их влияния на стоимость.</p></div></div>
+        <div class="p"><div class="n">6</div><div><h4 data-i18n="prog.6.t">Отчёт и сопровождение</h4><p data-i18n="prog.6.d">Заключение уровня CP/QP, диапазон стоимости, поддержка переговоров.</p></div></div>
+      </div>
+      <div class="stds-bar">
+        <div class="t" data-i18n="prog.stds.t">Работаем по стандартам</div>
+        <div class="row">
+          <span><i>•</i> JORC</span><span><i>•</i> NI 43-101</span><span><i>•</i> SAMREC</span>
+          <span><i>•</i> NAEN / ГКЗ</span><span><i>•</i> VALMIN</span><span><i>•</i> CIMVAL</span>
+          <span><i>•</i> IVS 210</span><span><i>•</i> ISO 10668</span>
+        </div>
+      </div>
+    </div>
+    <div class="rf"><span data-i18n="rf.brand">PROFFI SQUAD · Команда профессионалов</span><span class="pageno">04</span></div>
+  </section>
+
+  <!-- PAGE 5 — BACK / CONTACTS -->
+  <section class="page back">
+    <div class="pad">
+      <div>
+        <img class="logo" src="assets/logo_redwhite.svg" alt="PROFFI SQUAD">
+        <h2 data-i18n="back.title">Обсудим вашу задачу</h2>
+        <p class="lead" data-i18n="back.lead">Напишите или позвоните — ответим в течение рабочего дня и предложим формат экспертизы под вашу сделку.</p>
+        <div class="cc">
+          <div class="c"><small data-i18n="back.email">Эл. почта</small><a href="mailto:aslankaa@yandex.ru">aslankaa@yandex.ru</a></div>
+          <div class="c"><small data-i18n="back.phone">Телефон</small><span>+7 (969) 795-55-55</span></div>
+          <div class="c"><small>Telegram</small><a href="https://t.me/aslan_kaa">@aslan_kaa</a></div>
+          <div class="c"><small data-i18n="back.web">Сайт</small><a href="https://aslankaa.com">aslankaa.com</a></div>
+        </div>
+      </div>
+      <div>
+        <p class="disc" data-i18n="back.disc">Кейсы в дайджесте обобщены и обезличены и приведены как иллюстрация типов мандатов; конкретные показатели и стороны раскрытию не подлежат. Материалы носят информационный характер, не являются публичной офертой или инвестиционной рекомендацией. Сайт и дайджест не содержат форм сбора персональных данных.</p>
+        <p class="sign">© <span id="year"></span> PROFFI SQUAD · <span data-i18n="back.person">Кагиров Абдул-Хаким Ахмадович</span></p>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<script>
+const I18N={
+ ru:{"ui.print":"Печать / PDF",
+  "cover.issue":"Дайджест · Выпуск №1","cover.eyebrow":"Экспертно-консалтинговое бюро",
+  "cover.title":"Дайджест <span class='r'>кейсов</span>","cover.sub":"Независимая экспертиза активов и сделок: due diligence, оценка, ТЭО, оценка интеллектуальной собственности.",
+  "cover.a1":"Клиентам","cover.a2":"Инвесторам","cover.a3":"Партнёрам",
+  "cover.foot1":"Отчёты уровня Competent / Qualified Person","cover.foot2":"JORC · NI 43-101 · SAMREC · VALMIN · IVS · ISO 10668",
+  "rh.digest":"Дайджест кейсов","rh.news":"Новости рынка","rh.cases":"Кейсы","rh.method":"Методология",
+  "rf.brand":"PROFFI SQUAD · Команда профессионалов",
+  "tab.news":"Новости","tab.cases":"Кейсы","tab.method":"Программа",
+  "news.eyebrow":"Что происходит на рынке","news.title":"Новости рынка","news.sub":"Тренды, которые влияют на оценку активов и структуру сделок.",
+  "news.1.t":"Ужесточение требований к ресурсной отчётности","news.1.d":"Инвесторы и банки всё чаще требуют отчёты уровня CP/QP по JORC и NI 43-101. Декларации без компетентного лица теряют вес в сделках.","news.1.s":"Тренд отрасли",
+  "news.2.t":"Спрос на независимую оценку при M&A","news.2.d":"В добыче и промышленности растёт запрос на оценку независимой стороной — как условие финансирования и защита от переплаты.","news.2.s":"Практика сделок",
+  "news.3.t":"Нематериальные активы — в фокусе стоимости","news.3.d":"Бренды, патенты и ПО формируют всё большую долю цены сделки. Оценка ИС по IVS 210 и ISO 10668 становится отдельным предметом due diligence.","news.3.s":"Тренд оценки",
+  "cases.eyebrow":"Обезличенная практика","cases.title":"Наши кейсы","cases.sub":"Типы мандатов и результаты. Показатели и стороны обобщены, детали — под NDA.",
+  "cs.res":"Результат",
+  "cs.1.s":"Золотодобыча","cs.1.t":"DD рудного актива","cs.1.d":"Технический и юридический due diligence лицензионного участка, сверка запасов с госэкспертизой, проверка ресурсной модели.","cs.1.r":"Обоснованный диапазон справедливой стоимости; рекомендация структуры с earnout.",
+  "cs.2.s":"Нефтегаз","cs.2.t":"Оценка пакета активов","cs.2.d":"Независимая оценка пакета из месторождений и переработки, анализ первоисточников, выявление красных флагов.","cs.2.r":"Диапазон цены под профиль покупателя; карта рисков сделки.",
+  "cs.3.s":"Интеллектуальная собственность","cs.3.t":"Оценка НМА по межд. стандартам","cs.3.d":"Независимая оценка портфеля ИС — патенты, бренд, ПО, ноу-хау — методами освобождения от роялти, MPEEM и затратным.","cs.3.m":"Relief-from-royalty · MPEEM","cs.3.r":"Обоснованная стоимость НМА для сделки, внесения в капитал или лицензирования.",
+  "cs.4.s":"Цифровые активы","cs.4.t":"Pre-money оценка платформы","cs.4.d":"Оценка технологической платформы методами DCF и мультипликаторов, проверка финмодели и допущений роста.","cs.4.r":"Pre-money диапазон и зелёная зона для раунда финансирования.",
+  "cs.5.s":"Промышленность","cs.5.t":"Оценка стартапа","cs.5.d":"Pre-money оценка промышленного решения, триангуляция методов, анализ ниши и барьеров входа.","cs.5.r":"Обоснованный диапазон стоимости и условия входа инвестора.",
+  "cs.6.s":"АПК · Инвестпрограмма","cs.6.t":"Экспертиза ТЭО","cs.6.d":"Технико-экономическая экспертиза инвестпрограммы, проверка CapEx, OpEx и сроков реализации.","cs.6.r":"Заключение и материалы, готовые к показу инвестору.",
+  "prog.eyebrow":"Как устроена экспертиза","prog.title":"Что входит в работу","prog.sub":"Прозрачные этапы и фиксированные результаты — от скрининга до отчёта и сопровождения.",
+  "prog.1.t":"Экспресс-скрининг","prog.1.d":"Быстрая оценка актива и ключевых рисков, решение go / no-go.",
+  "prog.2.t":"Due diligence","prog.2.d":"Документарная и полевая проверка, сбор и анализ первоисточников.",
+  "prog.3.t":"Сверка с источниками","prog.3.d":"Сопоставление данных продавца с госэкспертизой и независимыми данными.",
+  "prog.4.t":"Оценка и моделирование","prog.4.d":"DCF и мультипликаторы; для ИС — relief-from-royalty и MPEEM по IVS / ISO 10668.",
+  "prog.5.t":"Карта рисков","prog.5.d":"Перечень красных флагов и сценарии их влияния на стоимость.",
+  "prog.6.t":"Отчёт и сопровождение","prog.6.d":"Заключение уровня CP/QP, диапазон стоимости, поддержка переговоров.",
+  "prog.stds.t":"Работаем по стандартам",
+  "back.title":"Обсудим вашу задачу","back.lead":"Напишите или позвоните — ответим в течение рабочего дня и предложим формат экспертизы под вашу сделку.",
+  "back.email":"Эл. почта","back.phone":"Телефон","back.web":"Сайт",
+  "back.disc":"Кейсы в дайджесте обобщены и обезличены и приведены как иллюстрация типов мандатов; конкретные показатели и стороны раскрытию не подлежат. Материалы носят информационный характер, не являются публичной офертой или инвестиционной рекомендацией. Сайт и дайджест не содержат форм сбора персональных данных.",
+  "back.person":"Кагиров Абдул-Хаким Ахмадович"},
+ en:{"ui.print":"Print / PDF",
+  "cover.issue":"Digest · Issue №1","cover.eyebrow":"Expert advisory bureau",
+  "cover.title":"Case <span class='r'>digest</span>","cover.sub":"Independent expertise on assets and deals: due diligence, valuation, feasibility studies, intellectual-property valuation.",
+  "cover.a1":"Clients","cover.a2":"Investors","cover.a3":"Partners",
+  "cover.foot1":"Competent / Qualified Person grade reports","cover.foot2":"JORC · NI 43-101 · SAMREC · VALMIN · IVS · ISO 10668",
+  "rh.digest":"Case digest","rh.news":"Market news","rh.cases":"Cases","rh.method":"Methodology",
+  "rf.brand":"PROFFI SQUAD · A squad of professionals",
+  "tab.news":"News","tab.cases":"Cases","tab.method":"Programme",
+  "news.eyebrow":"What's happening in the market","news.title":"Market news","news.sub":"Trends that shape asset valuation and deal structure.",
+  "news.1.t":"Tighter resource-reporting requirements","news.1.d":"Investors and banks increasingly demand CP/QP-grade reports under JORC and NI 43-101. Declarations without a competent person carry less weight in deals.","news.1.s":"Industry trend",
+  "news.2.t":"Demand for independent valuation in M&A","news.2.d":"In mining and industry, demand grows for an independent valuation — as a financing condition and protection against overpaying.","news.2.s":"Deal practice",
+  "news.3.t":"Intangible assets move into focus","news.3.d":"Brands, patents and software make up a growing share of deal value. IP valuation under IVS 210 and ISO 10668 becomes a distinct due-diligence subject.","news.3.s":"Valuation trend",
+  "cases.eyebrow":"Anonymised practice","cases.title":"Our cases","cases.sub":"Types of mandate and outcomes. Figures and parties are generalised; details under NDA.",
+  "cs.res":"Outcome",
+  "cs.1.s":"Gold mining","cs.1.t":"Ore asset DD","cs.1.d":"Technical and legal due diligence of a licence area, reserve reconciliation against state expertise, resource-model checks.","cs.1.r":"A reasoned fair-value range; recommended structure with an earnout.",
+  "cs.2.s":"Oil & gas","cs.2.t":"Asset-package valuation","cs.2.d":"Independent valuation of a field-and-processing package, source analysis, red-flag detection.","cs.2.r":"A buyer-specific price range; a deal risk map.",
+  "cs.3.s":"Intellectual property","cs.3.t":"IP valuation to international standards","cs.3.d":"Independent valuation of an IP portfolio — patents, brand, software, know-how — using relief-from-royalty, MPEEM and cost methods.","cs.3.m":"Relief-from-royalty · MPEEM","cs.3.r":"A reasoned value of intangibles for a deal, equity contribution or licensing.",
+  "cs.4.s":"Digital assets","cs.4.t":"Platform pre-money valuation","cs.4.d":"Valuation of a technology platform via DCF and multiples, model and growth-assumption checks.","cs.4.r":"A pre-money range and a green zone for the funding round.",
+  "cs.5.s":"Industry","cs.5.t":"Startup valuation","cs.5.d":"Pre-money valuation of an industrial solution, triangulated methods, niche and entry-barrier analysis.","cs.5.r":"A reasoned value range and investor entry terms.",
+  "cs.6.s":"Agri · Investment programme","cs.6.t":"Feasibility review","cs.6.d":"Techno-economic review of an investment programme, CapEx, OpEx and schedule checks.","cs.6.r":"An opinion and investor-ready materials.",
+  "prog.eyebrow":"How the work is built","prog.title":"What the engagement covers","prog.sub":"Transparent stages and fixed deliverables — from screening to the report and support.",
+  "prog.1.t":"Rapid screen","prog.1.d":"A quick read of the asset and key risks, a go / no-go decision.",
+  "prog.2.t":"Due diligence","prog.2.d":"Desktop and field verification, collection and analysis of primary sources.",
+  "prog.3.t":"Source reconciliation","prog.3.d":"Matching the seller's data against state expertise and independent data.",
+  "prog.4.t":"Valuation & modelling","prog.4.d":"DCF and multiples; for IP — relief-from-royalty and MPEEM under IVS / ISO 10668.",
+  "prog.5.t":"Risk map","prog.5.d":"A list of red flags and scenarios of their impact on value.",
+  "prog.6.t":"Report & support","prog.6.d":"A CP/QP-grade opinion, a value range, negotiation support.",
+  "prog.stds.t":"We work to standards",
+  "back.title":"Let's discuss your case","back.lead":"Write or call — we reply within one business day and propose an expertise format for your deal.",
+  "back.email":"E-mail","back.phone":"Phone","back.web":"Website",
+  "back.disc":"Cases in this digest are generalised and anonymised and shown as an illustration of mandate types; specific figures and parties are not disclosed. Materials are informational and are not a public offer or investment advice. The site and digest contain no personal-data collection forms.",
+  "back.person":"Abdul-Khakim A. Kagirov"},
+ fr:{"ui.print":"Imprimer / PDF",
+  "cover.issue":"Digest · Numéro №1","cover.eyebrow":"Cabinet de conseil d'experts",
+  "cover.title":"Digest de <span class='r'>cas</span>","cover.sub":"Expertise indépendante d'actifs et de transactions : due diligence, évaluation, études de faisabilité, évaluation de la propriété intellectuelle.",
+  "cover.a1":"Clients","cover.a2":"Investisseurs","cover.a3":"Partenaires",
+  "cover.foot1":"Rapports de niveau Competent / Qualified Person","cover.foot2":"JORC · NI 43-101 · SAMREC · VALMIN · IVS · ISO 10668",
+  "rh.digest":"Digest de cas","rh.news":"Actualités du marché","rh.cases":"Cas","rh.method":"Méthodologie",
+  "rf.brand":"PROFFI SQUAD · Une équipe de professionnels",
+  "tab.news":"Actualités","tab.cases":"Cas","tab.method":"Programme",
+  "news.eyebrow":"Ce qui se passe sur le marché","news.title":"Actualités du marché","news.sub":"Les tendances qui façonnent l'évaluation des actifs et la structure des opérations.",
+  "news.1.t":"Exigences renforcées de reporting des ressources","news.1.d":"Investisseurs et banques exigent de plus en plus des rapports de niveau CP/QP selon JORC et NI 43-101. Les déclarations sans personne compétente pèsent moins dans les opérations.","news.1.s":"Tendance du secteur",
+  "news.2.t":"Demande d'évaluation indépendante en M&A","news.2.d":"Dans les mines et l'industrie, la demande d'une évaluation indépendante croît — condition de financement et protection contre la surpayer.","news.2.s":"Pratique des opérations",
+  "news.3.t":"Les actifs incorporels au cœur de la valeur","news.3.d":"Marques, brevets et logiciels représentent une part croissante du prix. L'évaluation de la PI selon IVS 210 et ISO 10668 devient un sujet distinct de due diligence.","news.3.s":"Tendance d'évaluation",
+  "cases.eyebrow":"Pratique anonymisée","cases.title":"Nos cas","cases.sub":"Types de mandats et résultats. Chiffres et parties généralisés ; détails sous NDA.",
+  "cs.res":"Résultat",
+  "cs.1.s":"Mines d'or","cs.1.t":"DD d'un actif minier","cs.1.d":"Due diligence technique et juridique d'un périmètre de licence, réconciliation des réserves avec l'expertise d'État, contrôle du modèle de ressources.","cs.1.r":"Fourchette de juste valeur motivée ; structure recommandée avec earnout.",
+  "cs.2.s":"Pétrole & gaz","cs.2.t":"Évaluation d'un portefeuille","cs.2.d":"Évaluation indépendante d'un portefeuille de champs et de traitement, analyse des sources, détection des signaux d'alerte.","cs.2.r":"Fourchette de prix selon l'acquéreur ; cartographie des risques.",
+  "cs.3.s":"Propriété intellectuelle","cs.3.t":"Évaluation des incorporels aux normes internationales","cs.3.d":"Évaluation indépendante d'un portefeuille de PI — brevets, marque, logiciels, savoir-faire — par les méthodes des redevances, MPEEM et coût.","cs.3.m":"Redevances · MPEEM","cs.3.r":"Valeur motivée des incorporels pour une opération, un apport ou une licence.",
+  "cs.4.s":"Actifs numériques","cs.4.t":"Évaluation pre-money d'une plateforme","cs.4.d":"Évaluation d'une plateforme technologique par DCF et multiples, contrôle du modèle et des hypothèses de croissance.","cs.4.r":"Fourchette pre-money et zone verte pour le tour de financement.",
+  "cs.5.s":"Industrie","cs.5.t":"Évaluation d'une start-up","cs.5.d":"Évaluation pre-money d'une solution industrielle, triangulation des méthodes, analyse de la niche et des barrières.","cs.5.r":"Fourchette de valeur motivée et conditions d'entrée de l'investisseur.",
+  "cs.6.s":"Agro · Programme d'investissement","cs.6.t":"Examen de faisabilité","cs.6.d":"Examen technico-économique d'un programme d'investissement, contrôle du CapEx, de l'OpEx et des délais.","cs.6.r":"Un avis et un dossier prêt pour l'investisseur.",
+  "prog.eyebrow":"Comment le travail est construit","prog.title":"Ce que couvre la mission","prog.sub":"Des étapes transparentes et des livrables fixes — du screening au rapport et à l'accompagnement.",
+  "prog.1.t":"Screening rapide","prog.1.d":"Lecture rapide de l'actif et des risques clés, décision go / no-go.",
+  "prog.2.t":"Due diligence","prog.2.d":"Vérification documentaire et de terrain, collecte et analyse des sources primaires.",
+  "prog.3.t":"Réconciliation des sources","prog.3.d":"Comparaison des données du vendeur avec l'expertise d'État et des données indépendantes.",
+  "prog.4.t":"Évaluation & modélisation","prog.4.d":"DCF et multiples ; pour la PI — redevances et MPEEM selon IVS / ISO 10668.",
+  "prog.5.t":"Cartographie des risques","prog.5.d":"Liste des signaux d'alerte et scénarios de leur impact sur la valeur.",
+  "prog.6.t":"Rapport & accompagnement","prog.6.d":"Avis de niveau CP/QP, fourchette de valeur, soutien aux négociations.",
+  "prog.stds.t":"Nous travaillons selon les normes",
+  "back.title":"Discutons de votre projet","back.lead":"Écrivez ou appelez — nous répondons sous un jour ouvré et proposons un format d'expertise pour votre opération.",
+  "back.email":"E-mail","back.phone":"Téléphone","back.web":"Site web",
+  "back.disc":"Les cas de ce digest sont généralisés et anonymisés et présentés à titre d'illustration des types de mandats ; les chiffres et parties précis ne sont pas divulgués. Les contenus sont informatifs et ne constituent pas une offre publique ni un conseil en investissement. Le site et le digest ne contiennent aucun formulaire de collecte de données personnelles.",
+  "back.person":"Abdoul-Khakim A. Kagirov"},
+ ar:{"ui.print":"طباعة / PDF",
+  "cover.issue":"النشرة · العدد №1","cover.eyebrow":"مكتب استشارات الخبراء",
+  "cover.title":"نشرة <span class='r'>الحالات</span>","cover.sub":"خبرة مستقلة في الأصول والصفقات: العناية الواجبة، التقييم، دراسات الجدوى، تقييم الملكية الفكرية.",
+  "cover.a1":"للعملاء","cover.a2":"للمستثمرين","cover.a3":"للشركاء",
+  "cover.foot1":"تقارير بمستوى الشخص الكفؤ / المؤهل","cover.foot2":"JORC · NI 43-101 · SAMREC · VALMIN · IVS · ISO 10668",
+  "rh.digest":"نشرة الحالات","rh.news":"أخبار السوق","rh.cases":"الحالات","rh.method":"المنهجية",
+  "rf.brand":"PROFFI SQUAD · فريق من المحترفين",
+  "tab.news":"أخبار","tab.cases":"حالات","tab.method":"البرنامج",
+  "news.eyebrow":"ما يجري في السوق","news.title":"أخبار السوق","news.sub":"اتجاهات تؤثر على تقييم الأصول وهيكل الصفقات.",
+  "news.1.t":"تشديد متطلبات تقارير الموارد","news.1.d":"يطلب المستثمرون والبنوك بشكل متزايد تقارير بمستوى CP/QP وفق JORC وNI 43-101. الإقرارات بدون شخص كفؤ تفقد وزنها في الصفقات.","news.1.s":"اتجاه القطاع",
+  "news.2.t":"الطلب على التقييم المستقل في الاندماج والاستحواذ","news.2.d":"في التعدين والصناعة يتزايد الطلب على تقييم من طرف مستقل — كشرط للتمويل وحماية من دفع زائد.","news.2.s":"ممارسة الصفقات",
+  "news.3.t":"الأصول غير الملموسة في صلب القيمة","news.3.d":"تشكّل العلامات والبراءات والبرمجيات حصة متزايدة من قيمة الصفقة. تقييم الملكية الفكرية وفق IVS 210 وISO 10668 يصبح موضوعاً مستقلاً للعناية الواجبة.","news.3.s":"اتجاه التقييم",
+  "cases.eyebrow":"ممارسة مجهّلة","cases.title":"حالاتنا","cases.sub":"أنواع التكليفات والنتائج. الأرقام والأطراف معمّمة، والتفاصيل خاضعة لاتفاقية سرية.",
+  "cs.res":"النتيجة",
+  "cs.1.s":"تعدين الذهب","cs.1.t":"عناية واجبة لأصل خام","cs.1.d":"عناية واجبة فنية وقانونية لمنطقة الرخصة، مطابقة الاحتياطيات مع الخبرة الحكومية، فحص نموذج الموارد.","cs.1.r":"نطاق قيمة عادلة مُبرَّر؛ هيكل موصى به مع earnout.",
+  "cs.2.s":"النفط والغاز","cs.2.t":"تقييم حزمة أصول","cs.2.d":"تقييم مستقل لحزمة حقول ومعالجة، تحليل المصادر، رصد إشارات الخطر.","cs.2.r":"نطاق سعر حسب المشتري؛ خريطة مخاطر الصفقة.",
+  "cs.3.s":"الملكية الفكرية","cs.3.t":"تقييم الأصول غير الملموسة وفق المعايير الدولية","cs.3.d":"تقييم مستقل لمحفظة ملكية فكرية — براءات، علامة، برمجيات، معرفة فنية — بطرق الإعفاء من الإتاوة وMPEEM والتكلفة.","cs.3.m":"الإعفاء من الإتاوة · MPEEM","cs.3.r":"قيمة مُبرَّرة للأصول غير الملموسة لصفقة أو مساهمة في رأس المال أو ترخيص.",
+  "cs.4.s":"الأصول الرقمية","cs.4.t":"تقييم منصة قبل التمويل","cs.4.d":"تقييم منصة تقنية بطرق التدفقات المخصومة والمضاعفات، فحص النموذج وفرضيات النمو.","cs.4.r":"نطاق ما قبل التمويل ومنطقة خضراء لجولة التمويل.",
+  "cs.5.s":"الصناعة","cs.5.t":"تقييم شركة ناشئة","cs.5.d":"تقييم ما قبل التمويل لحل صناعي، تثليث المنهجيات، تحليل المجال وحواجز الدخول.","cs.5.r":"نطاق قيمة مُبرَّر وشروط دخول المستثمر.",
+  "cs.6.s":"الزراعة · برنامج استثماري","cs.6.t":"مراجعة دراسة الجدوى","cs.6.d":"مراجعة فنية واقتصادية لبرنامج استثماري، فحص التكاليف الرأسمالية والتشغيلية والجداول.","cs.6.r":"رأي ومواد جاهزة للمستثمر.",
+  "prog.eyebrow":"كيف يُبنى العمل","prog.title":"ما تشمله المهمة","prog.sub":"مراحل شفافة ومخرجات محددة — من الفحص إلى التقرير والمرافقة.",
+  "prog.1.t":"فحص سريع","prog.1.d":"قراءة سريعة للأصل والمخاطر الرئيسية، قرار المضي / التوقف.",
+  "prog.2.t":"العناية الواجبة","prog.2.d":"تحقق مكتبي وميداني، جمع وتحليل المصادر الأولية.",
+  "prog.3.t":"مطابقة المصادر","prog.3.d":"مقارنة بيانات البائع مع الخبرة الحكومية والبيانات المستقلة.",
+  "prog.4.t":"التقييم والنمذجة","prog.4.d":"التدفقات المخصومة والمضاعفات؛ للملكية الفكرية — الإعفاء من الإتاوة وMPEEM وفق IVS / ISO 10668.",
+  "prog.5.t":"خريطة المخاطر","prog.5.d":"قائمة بإشارات الخطر وسيناريوهات أثرها على القيمة.",
+  "prog.6.t":"التقرير والمرافقة","prog.6.d":"رأي بمستوى CP/QP، نطاق قيمة، دعم المفاوضات.",
+  "prog.stds.t":"نعمل وفق المعايير",
+  "back.title":"لنناقش مشروعك","back.lead":"اكتب أو اتصل — نرد خلال يوم عمل واحد ونقترح صيغة خبرة تناسب صفقتك.",
+  "back.email":"البريد الإلكتروني","back.phone":"الهاتف","back.web":"الموقع",
+  "back.disc":"الحالات في هذه النشرة معمّمة ومجهّلة وتُعرض كتوضيح لأنواع التكليفات؛ الأرقام والأطراف المحددة غير قابلة للإفصاح. المواد للأغراض الإعلامية وليست عرضاً عاماً أو توصية استثمارية. لا يحتوي الموقع والنشرة على نماذج لجمع البيانات الشخصية.",
+  "back.person":"عبد الحكيم أ. كاجيروف"}
+};
+const RTL=new Set(["ar"]);
+const DATE={ru:"июнь 2026",en:"June 2026",fr:"juin 2026",ar:"يونيو 2026"};
+function applyLang(l){
+  const d=I18N[l]||I18N.ru;
+  document.documentElement.lang=l;document.documentElement.dir=RTL.has(l)?"rtl":"ltr";
+  document.querySelectorAll("[data-i18n]").forEach(e=>{const k=e.getAttribute("data-i18n");if(d[k]!==undefined)e.innerHTML=d[k];});
+  document.getElementById("cover-date").textContent=DATE[l]||DATE.ru;
+  document.querySelectorAll("#langs button").forEach(b=>b.classList.toggle("active",b.dataset.lang===l));
+  try{localStorage.setItem("pd_lang",l);}catch(e){}
+}
+document.getElementById("langs").addEventListener("click",e=>{if(e.target.dataset.lang)applyLang(e.target.dataset.lang);});
+document.getElementById("year").textContent=new Date().getFullYear();
+(function(){let l="ru";try{l=localStorage.getItem("pd_lang")||"ru";}catch(e){}applyLang(l);})();
+</script>
+</body>
+</html>
