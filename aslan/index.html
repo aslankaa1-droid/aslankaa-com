@@ -198,7 +198,7 @@ footer a:hover{color:var(--gold)}
     </div>
   </div>
   <div class="top-meta">
-    <span><span class="dot"></span> <span id="live-count">16</span> из <span id="total-count">16</span> доменов в сети</span>
+    <span><span class="dot"></span> <span id="live-count">18</span> из <span id="total-count">18</span> доменов в сети</span>
     <span class="clock" id="clock">—</span>
   </div>
 </header>
@@ -206,16 +206,16 @@ footer a:hover{color:var(--gold)}
 <section class="hero">
   <span class="eyebrow">● Premium Dashboard · Каталог онлайн-присутствия</span>
   <h1>Все проекты Аслана,<br><span class="accent">опубликованные в интернете.</span></h1>
-  <p class="lead">Каталог 16 проектов — доменов, поддоменов, подпапок и публичных gh-pages-витрин — с описанием каждого, реальными разделами, списком опубликованных документов и прямыми ссылками. Каждый адрес и каждая ссылка проверены вживую 7 июня 2026 — мёртвые помечены отдельно.</p>
+  <p class="lead">Каталог 18 проектов — доменов, поддоменов, подпапок и публичных gh-pages-витрин — с описанием каждого, реальными разделами, списком опубликованных документов и прямыми ссылками. Каждый адрес и каждая ссылка проверены вживую 7–8 июня 2026 — мёртвые помечены отдельно.</p>
 
   <div class="stat-row">
     <div class="stat">
-      <div class="v">16</div>
+      <div class="v">17</div>
       <div class="k">Живых проектов</div>
-      <div class="h">10 собственных доменов + 3 поддомена aslankaa.com + 2 подпапки + 1 GH-Pages</div>
+      <div class="h">11 собственных доменов + 3 поддомена aslankaa.com + 2 подпапки + 1 GH-Pages</div>
     </div>
     <div class="stat">
-      <div class="v">16</div>
+      <div class="v">17</div>
       <div class="k">Под HTTPS</div>
       <div class="h">SSL Let's Encrypt активен везде</div>
     </div>
@@ -234,9 +234,9 @@ footer a:hover{color:var(--gold)}
 
 <div class="verified-banner">
   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>
-  <span>Базовая проверка curl-запросами 07.06.2026 · все 16 проектов в сети, все под HTTPS</span>
+  <span>Базовая проверка curl-запросами 07–08.06.2026 · все 18 проектов в сети, все под HTTPS</span>
   <span style="margin-left:auto;color:var(--ink-3);font-size:11.5px" id="last-check"></span>
-  <button id="refresh-btn" title="Перепроверить все 16 доменов прямо сейчас (no-cors fetch)">
+  <button id="refresh-btn" title="Перепроверить все 18 доменов прямо сейчас (no-cors fetch)">
     <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 0 1 15-6.7L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-15 6.7L3 16"/><path d="M3 21v-5h5"/></svg>
     <span>Обновить статусы</span>
   </button>
@@ -286,6 +286,46 @@ footer a:hover{color:var(--gold)}
 
 <script>
 const PROJECTS = [
+  {
+    domain: "big4.info",
+    folder: "big4.info",
+    project: "BIG4 · AI-платформа сводных отчётов",
+    icon: "⬡",
+    cat: ["ai", "business"],
+    date: "2026-06-08",
+    url: "https://big4.info",
+    status: "live",
+    statusLabel: "Live · HTTPS",
+    desc: "Международная AI-платформа сводных отчётов уровня «Большой четвёрки»: честный аудит, оценка бизнеса и ИС, финмодель, проверка документов, скан шпионских включений и дорожная карта исправлений. Дизайн-система «Obsidian & Verdigris», 3 темы, 4 языка (RU/EN/FR/AR, AR — RTL). Премиум-лендинг + 5 внутренних страниц + личный кабинет клиента (заказы, загрузка материалов, публикация отчёта open/PIN) + рабочее место эксперта + админ-панель (пользователи/роли, заказы, тарифы, журнал). Адаптив под все устройства (мобильное меню-бургер). Без форм сбора ПДн (152-ФЗ), контакт mailto. ⚠️ Бэкенд на Cloudflare Workers (оркестрация Claude-агентов, генерация Word/HTML/DOCX) готов в коде, ещё НЕ задеплоен — кабинет и админка работают как интерфейс до подключения backend.",
+    volume: "Лендинг ≈ 39 КБ + 5 внутр. страниц + кабинет (12 экранов: вход/дашборд/заказы/новый отчёт/отчёт/рефералы/эксперт/админ) · общий CSS/JS (mobile-nav, i18n 4 яз) · репо aslankaa1-droid/big4 · рабочий клон E:\\big4_deploy · HTTPS-сертификат до 2026-09-06",
+    sections: ["Hero — независимый аудитор", "9 модулей услуг", "4 шага процесса", "Стандарт честности + шкала вердикта", "Публикация open / под PIN", "Реферальная программа", "3 тарифа", "Услуги / Как работает / О компании / Оферта / Политика", "Кабинет клиента", "Рабочее место эксперта", "Админ-панель"],
+    docs: [
+      { name: "index.html — лендинг", url: "https://big4.info/" },
+      { name: "Услуги", url: "https://big4.info/uslugi.html" },
+      { name: "Как это работает", url: "https://big4.info/kak-rabotaet.html" },
+      { name: "О компании", url: "https://big4.info/o-kompanii.html" },
+      { name: "Оферта", url: "https://big4.info/oferta.html" },
+      { name: "Политика конфиденциальности", url: "https://big4.info/politika.html" },
+      { name: "Личный кабинет (вход)", url: "https://big4.info/cabinet/login.html" }
+    ]
+  },
+  {
+    domain: "aslankaa1-droid.github.io/caviar",
+    folder: "caviar",
+    project: "CAVIAR · премиальная «икра» из напитков (приватный preview)",
+    icon: "⦿",
+    cat: ["business", "private"],
+    date: "2026-06-07",
+    url: "https://aslankaa1-droid.github.io/caviar/",
+    status: "private",
+    statusLabel: "Приватный · PIN + noindex",
+    desc: "Премиальная съедобная «икра» (капсулы методом обратной сферификации) из БЕЗалкогольных напитков. Зонтичный бренд CAVIAR: Signature (White/Red/Green/Black/Fresh), Prestige (Gold E175 / Silver E174 / Diamond) и ароматизированные оболочки Double Burst. Ноль алкоголя → весь рынок: халяль/Залив, дети, «за рулём», спорт. Премиум-одностраничник: hero с анимированными жемчужинами, брендбук, 6 путей вывода на рынок, моат по МКТУ 30+32. Сознательно приватный: закрыт PIN-overlay (SHA-256, сессия 30 дней) + noindex + robots Disallow — до подачи заявок на товарные знаки, чтобы конкуренты не застолбили названия «[Color] CAVIAR» раньше. Перечень обозначений и классов для патентного поверенного (правообладатель ООО «ГК ЦЕНТР») подготовлен отдельно. PIN — у Аслана.",
+    volume: "Одностраничный лендинг ≈ 38 КБ · PIN-overlay (Web Crypto SHA-256, сессия 30 дней) · noindex + robots.txt Disallow · репо aslankaa1-droid/caviar (Free → public, поэтому защита PIN+noindex)",
+    sections: ["Hero (анимир. жемчужины)", "Концепт «напиток, который едят»", "Signature — 5 цветов", "Prestige — Gold / Silver / Diamond", "Double Burst", "Брендбук (лого / палитра / типографика / voice)", "6 путей реализации", "Моат — МКТУ 30 + 32", "Партнёрам / HoReCa", "Контакты 152-ФЗ"],
+    docs: [
+      { name: "index.html — лендинг (PIN-gate)", url: "https://aslankaa1-droid.github.io/caviar/" }
+    ]
+  },
   {
     domain: "aslankaa.com",
     project: "Сайт-визитка Аслана Кагирова",
@@ -396,18 +436,18 @@ const PROJECTS = [
     project: "ЦПФСР.РФ · Цифровая Платформа Финансирования Социального Развития",
     icon: "🔒",
     cat: ["finance", "private"],
-    date: "2026-05-26",
+    date: "2026-06-11",
     url: "https://dpfsd.ru",
     status: "private",
-    statusLabel: "Live · PIN доступ",
-    desc: "Премиум-перекомплектовка проекта после Горизонта-III. Защищена 6-значным PIN-overlay (по умолчанию 654321, сессия 30 дней). Дизайн-система + 3 темы + i18n. Смена PIN через formsubmit.co (без backend) на aslankaa@yandex.ru.",
+    statusLabel: "Live · PIN · Cloudflare SSL",
+    desc: "Премиум-перекомплектовка проекта после Горизонта-III. Защищена 6-значным PIN-overlay (по умолчанию 654321, сессия 30 дней). Дизайн-система + 3 темы + i18n. Смена PIN через formsubmit.co (без backend) на aslankaa@yandex.ru. Реконсилирован под реальную макру ЦБ (SoT v4): КС 14,5% (24.04.2026), курс 71,55, оценка pre-money $100M / ₽7,15 млрд. DNS переведён на Cloudflare — www-SSL починен (Universal SSL: apex + www). Собрано офлайн Android-приложение (Capacitor 6, без PIN, шрифт Onest офлайн), подписано для RuStore.",
     volume: "236+ HTML файлов · i18n hreflang: ru / en / ar / x-default",
     sections: ["Главная (17 блоков, защищённая PIN)", "site-map.html", "Документы 01–17 (внутри · через i18n)", "Бренд-бук с логотипом «Р»", "14_Аудит (сводный)"],
     docs: [
       { name: "index.html (PIN: 654321)", url: "https://dpfsd.ru/" },
       { name: "site-map.html", url: "https://dpfsd.ru/site-map.html" },
       { name: "_design-system/i18n.js (RU/EN/AR)", url: "https://dpfsd.ru/_design-system/i18n.js" },
-      { name: "www.dpfsd.ru (DNS OK · SSL pending — cert re-issue застрял у Let's Encrypt)", url: "https://www.dpfsd.ru/", dead: true }
+      { name: "www.dpfsd.ru → 301 на apex (Cloudflare Universal SSL)", url: "https://www.dpfsd.ru/" }
     ]
   },
   {
@@ -615,12 +655,12 @@ const PROJECTS = [
     project: "ECG Reader · AI-интерпретация ЭКГ (CDS / SaMD)",
     icon: "♥",
     cat: ["ai", "business"],
-    date: "2026-06-03",
+    date: "2026-06-09",
     url: "https://ecg-reader.com",
     status: "live",
-    statusLabel: "Live · HTTPS (+ docs-хаб)",
-    desc: "Клинический сервис AI-ассистированной интерпретации ЭКГ. Двойной независимый AI-консенсус (собственный движок + партнёрский ИИ) + rule-engine безопасности; маршрутизация CONSENSUS / CAUTION / ALERT с safety-override. Позиционирование — ПО клинической поддержки решений (CDS / SaMD), НЕ автономный диагност (323-ФЗ ст. 36.2 + Приказ 965н). Премиум-лендинг: 4 языка (RU/EN/ZH/AR + RTL), 3 темы, 152-ФЗ-режим (без форм/cookie/аналитики). Отдельный документарный хаб docs.ecg-reader.com — публичная библиотека + 6 doc-страниц + модель из 5 уровней доступа. Переименован из KardioSpec 2026-06-03.",
-    volume: "Лендинг (16 секций) + 4 legal-страницы + docs-хаб (index + 6 doc-страниц) · 2 домена под SSL · RU/EN/ZH/AR",
+    statusLabel: "Live · HTTPS (+ docs-хаб) · ML-бэкенд работает (internal)",
+    desc: "Клинический сервис AI-ассистированной интерпретации ЭКГ. Двойной независимый AI-консенсус (собственный движок + партнёрский ИИ) + rule-engine безопасности; маршрутизация CONSENSUS / CAUTION / ALERT с safety-override. Позиционирование — ПО клинической поддержки решений (CDS / SaMD), НЕ автономный диагност (323-ФЗ ст. 36.2 + Приказ 965н). Премиум-лендинг: 4 языка (RU/EN/ZH/AR + RTL), 3 темы, 152-ФЗ-режим (без форм/cookie/аналитики). Отдельный документарный хаб docs.ecg-reader.com — публичная библиотека + 6 doc-страниц + модель из 5 уровней доступа. Переименован из KardioSpec 2026-06-03. — 2026-06-09: на сервере развёрнут рабочий ML-бэкенд (реальный инференс, 15 обученных моделей): возрастной роутинг взрослые/дети, уточняющий слой спец-детекторов поверх 72-классовой модели: AUTO (LongQT AUROC 0.96, ишемия — поднимают high-stakes) + ADVISORY-второе мнение (STEMI валидирован на острых данных 0.847, Бругада — справочно), все перекалиброваны под реальную долю патологии. Клинико-грейд измерения интервалов: собственный делинеатор (1D-U-Net на LUDB) — QRS/QT/PR MAE ~13 мс (в 2.5–3× точнее NeuroKit2) + HR/ось/ST. Холтер-путь: ЖТ (0.99) + rule-детектор пауз. Регуляторный пакет Model Cards (Mitchell / TRIPOD+AI / GMLP, 12 карт, PDF+Word) + протокол проспективной валидации DECIDE-AI. Публичный API живой: https://api.ecg-reader.com (HTTPS Let's Encrypt, API-ключ-аутентификация, rate-limit) — приложение цепляет бэкенд по интернету.",
+    volume: "Лендинг (16 секций) + 4 legal-страницы + docs-хаб (index + 6 doc-страниц) · 2 домена под SSL · RU/EN/ZH/AR · + рабочий ML-бэкенд (15 моделей, измерения, спец-overlay) · регуляторное досье Model Cards (12 карт PDF+Word)",
     sections: ["Hero (dual-AI)", "Проблема / Решение", "Технология консенсуса", "Целевые метрики (DECIDE-AI)", "Продукт «ЭКГ ХАБ»", "Бизнес-модель", "Команда", "Roadmap", "Privacy / Terms / Disclosure", "docs: Миссия · Продукт · Технология · Клин.база · Регуляторика · Источники"],
     docs: [
       { name: "ecg-reader.com — лендинг (RU/EN/ZH/AR)", url: "https://ecg-reader.com/" },
