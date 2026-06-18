@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Кабинет клиента · EQuilibrium</title>
+<meta name="description" content="Личный кабинет клиента EQuilibrium: статус проекта по гейтам G0→G10, документы, файлы, доля в проекте.">
+<link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body data-cabinet>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="index.html"><img src="assets/logo.svg" width="34" height="34" alt=""><span>EQ<span class="eq">uilibrium</span><small>идея · реализация · доля</small></span></a>
+    <button class="burger" aria-label="Меню">☰</button>
+    <nav><a href="platform.html">Платформа</a><a href="services.html">Услуги</a><a href="investors.html">Инвесторам</a><a href="cabinet.html">Кабинет</a><a class="cta" href="order.html">Оставить заявку</a></nav>
+  </div>
+</header>
+
+<div class="brief-bar">Демо кабинета: данные условные и хранятся локально в вашем браузере. Реальный кабинет с защищённым хранением подключается на этапе запуска backend.</div>
+
+<section style="padding:48px 0 80px">
+  <div class="wrap">
+
+    <!-- LOGIN -->
+    <div data-login-box>
+      <div class="login-box">
+        <img src="assets/logo.svg" width="56" height="56" alt="" style="margin:0 auto 16px">
+        <h2>Вход в кабинет клиента</h2>
+        <p class="muted">Войдите, чтобы посмотреть статус вашего проекта по гейтам, документы и долю. <br>Демо — введите имя и нажмите «Войти».</p>
+        <form data-login class="formcard" style="margin-top:24px;text-align:left">
+          <div class="field"><label>Имя</label><input name="name" placeholder="Иван Петров" required></div>
+          <div class="field"><label>E-mail (демо, любой)</label><input name="email" placeholder="you@company.ru"></div>
+          <button class="btn btn-primary" type="submit" style="width:100%;justify-content:center">Войти в кабинет →</button>
+        </form>
+        <p class="muted" style="margin-top:18px;font-size:.9rem">Ещё не подавали задачу? <a href="order.html">Оставьте заявку →</a></p>
+      </div>
+    </div>
+
+    <!-- SHELL -->
+    <div data-cab-shell class="cab-shell" style="display:none">
+      <aside class="cab-side">
+        <div class="who">Кабинет<br><b data-who>Заказчик</b></div>
+        <a data-tab="pane-over" class="active">📊 Обзор проекта</a>
+        <a data-tab="pane-gates">🧭 Гейты G0→G10</a>
+        <a data-tab="pane-docs">📄 Документы</a>
+        <a data-tab="pane-files">📎 Файлы</a>
+        <a data-tab="pane-deal">🤝 Доля и сделка</a>
+        <a data-logout style="margin-top:14px;color:#7e91a8">↩ Выйти</a>
+      </aside>
+
+      <main class="cab-main">
+
+        <!-- OVERVIEW -->
+        <div class="cab-pane active" id="pane-over">
+          <h2 style="margin-top:0">Проект <span class="mono" style="color:var(--brand-deep)">EQ-2026-014</span></h2>
+          <p class="muted" style="margin-top:-8px">Малогабаритный погружной насосный агрегат · формат: гибрид гонорар+equity</p>
+          <div class="kpi">
+            <div class="k"><b>G3</b><span>текущий гейт</span></div>
+            <div class="k"><b>30%</b><span>прогресс G0→G10</span></div>
+            <div class="k"><b>18%</b><span>доля EQuilibrium</span></div>
+            <div class="k"><b>7</b><span>документов готово</span></div>
+          </div>
+          <div class="card">
+            <h3>Прогресс по конвейеру</h3>
+            <div class="progress"><i style="width:30%"></i></div>
+            <p class="muted" style="margin:.4em 0 0;font-size:.92rem">Закрыты G0–G2 (приём, концепция, ТЗ/ТУ). Идёт G3 — расчёты и КД.</p>
+          </div>
+          <div class="card" style="margin-top:18px">
+            <h3>Последние события</h3>
+            <ul style="margin:0;padding-left:18px;color:var(--text-soft);line-height:2">
+              <li>Загружен черновой каскад чертежей (сборочный + 3 деталировки) — <span class="tag">G3</span></li>
+              <li>Расчёт вала на усталость прошёл адверсариальную проверку — <span class="tag">G3</span></li>
+              <li>Утверждено ТЗ, матрица требований закрыта — <span class="tag">G2</span></li>
+              <li>Подписан предварительный term sheet, доля 18% — <span class="tag gold">G0</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- GATES -->
+        <div class="cab-pane" id="pane-gates">
+          <h2 style="margin-top:0">Маршрут проекта по гейтам</h2>
+          <ul class="timeline">
+            <li class="done"><b>G0 · Приём и feasibility</b> <span class="st">завершён</span><br><span class="muted">Term sheet подписан, доля 18%.</span></li>
+            <li class="done"><b>G1 · Концепция</b> <span class="st">завершён</span><br><span class="muted">Выбрана концепция №2 из 3 по trade-study.</span></li>
+            <li class="done"><b>G2 · ТЗ и ТУ</b> <span class="st">завершён</span><br><span class="muted">Матрица из 24 требований, все измеримы.</span></li>
+            <li class="active"><b>G3 · Расчёты, КД, 3D</b> <span class="st">в работе</span><br><span class="muted">Каскад чертежей и CAE-отчёты — 60%.</span></li>
+            <li><b>G4 · Технология</b> <span class="st wait">ожидает</span></li>
+            <li><b>G5 · IP и патент</b> <span class="st wait">ожидает</span></li>
+            <li><b>G6 · Прототип и V&amp;V</b> <span class="st wait">ожидает</span></li>
+            <li><b>G7 · Финансирование</b> <span class="st wait">ожидает</span></li>
+            <li><b>G8 · Пилот / FAT-SAT</b> <span class="st wait">ожидает</span></li>
+            <li><b>G9 · Производство и продажи</b> <span class="st wait">ожидает</span></li>
+            <li><b>G10 · Партнёрство и развитие</b> <span class="st wait">ожидает</span></li>
+          </ul>
+        </div>
+
+        <!-- DOCS -->
+        <div class="cab-pane" id="pane-docs">
+          <h2 style="margin-top:0">Документы проекта</h2>
+          <table class="tbl">
+            <tr><th>Документ</th><th>Гейт</th><th>Статус</th></tr>
+            <tr><td>Бриф и заключение о реализуемости</td><td>G0</td><td><span class="tag">готов</span></td></tr>
+            <tr><td>Предварительный term sheet (доля 18%)</td><td>G0</td><td><span class="tag gold">подписан</span></td></tr>
+            <tr><td>Trade-study концепций</td><td>G1</td><td><span class="tag">готов</span></td></tr>
+            <tr><td>Техническое задание (ГОСТ 15.016)</td><td>G2</td><td><span class="tag">утверждён</span></td></tr>
+            <tr><td>Технические условия</td><td>G2</td><td><span class="tag">готов</span></td></tr>
+            <tr><td>Каскад чертежей (черновой)</td><td>G3</td><td><span class="tag">в ревизии</span></td></tr>
+            <tr><td>CAE-отчёт: прочность и усталость</td><td>G3</td><td><span class="tag">готов</span></td></tr>
+          </table>
+          <p class="muted" style="font-size:.88rem;margin-top:12px">В демо документы не скачиваются. В реальном кабинете — версионирование, e-подпись и защищённое хранение.</p>
+        </div>
+
+        <!-- FILES (with upload) -->
+        <div class="cab-pane" id="pane-files">
+          <h2 style="margin-top:0">Файлы и обмен</h2>
+          <div class="formcard">
+            <div class="field" style="margin-bottom:0">
+              <label>Загрузить материалы для команды проекта</label>
+              <div class="dropzone" data-dropzone>
+                <input type="file" multiple hidden>
+                <p style="margin:0"><b>Перетащите файлы сюда</b> или нажмите, чтобы выбрать</p>
+                <p class="hint" style="margin:.4em 0 0">Чертежи, образцы, измерения, фото — DWG, STEP, PDF, изображения</p>
+              </div>
+              <ul class="filelist" data-filelist></ul>
+              <div class="note-152" style="margin-top:14px">Демо: файлы добавляются в список локально и на сервер не передаются.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- DEAL -->
+        <div class="cab-pane" id="pane-deal">
+          <h2 style="margin-top:0">Доля и структура сделки</h2>
+          <div class="grid g3">
+            <div class="card"><div class="ic">🧠</div><h3>Клиент-идея</h3><p>Ваша доля: <b>57%</b></p><p class="muted">Идея, доменная экспертиза, рынок.</p></div>
+            <div class="card" style="border-left:4px solid var(--brand)"><div class="ic">⚙️</div><h3>EQuilibrium</h3><p>Доля: <b>18%</b></p><p class="muted">Инжиниринг, КД, IP, доведение по гейтам. Вестинг по гейтам.</p></div>
+            <div class="card" style="border-left:4px solid var(--gold)"><div class="ic">💰</div><h3>Инвестор (резерв)</h3><p>Доля: <b>25%</b></p><p class="muted">Под капитал на оснастку, прототип и пилот (привлекается на G7).</p></div>
+          </div>
+          <div class="card" style="margin-top:18px">
+            <h3>Условия (из term sheet, G0)</h3>
+            <table class="tbl">
+              <tr><th>Параметр</th><th>Значение</th></tr>
+              <tr><td>Формат</td><td>Гибрид: частичный гонорар + equity</td></tr>
+              <tr><td>Доля EQuilibrium</td><td>18% (вестинг по закрытию гейтов)</td></tr>
+              <tr><td>SPV-оператор</td><td>ГК «Центр» / Center Group</td></tr>
+              <tr><td>IP</td><td>Патентование узлов на G5, права в SPV</td></tr>
+            </table>
+          </div>
+        </div>
+
+      </main>
+    </div>
+
+  </div>
+</section>
+
+<footer class="ft">
+  <div class="wrap">
+    <div class="cols">
+      <div><a class="brand" href="index.html" style="margin-bottom:14px"><img src="assets/logo.svg" width="32" height="32" alt=""><span>EQ<span class="eq">uilibrium</span></span></a><p style="max-width:34ch">Цифровое конструкторское бюро, технологический центр и венчур-билдер.</p></div>
+      <div><h4>Платформа</h4><a href="platform.html">Как работает</a><a href="platform.html#gates">Гейты G0→G10</a><a href="platform.html#brigade">Бригада агентов</a><a href="services.html">Услуги и модель</a></div>
+      <div><h4>Бизнес</h4><a href="investors.html">Инвесторам</a><a href="order.html">Подать задачу</a><a href="cabinet.html">Кабинет клиента</a></div>
+      <div><h4>Контакты</h4><a href="mailto:aslankaa@yandex.ru">aslankaa@yandex.ru</a><a href="tel:+79697955555">+7 (969) 795-55-55</a><a href="https://t.me/aslan_kaa">Telegram: @aslan_kaa</a><a href="https://www.aslankaa.com">www.aslankaa.com</a></div>
+    </div>
+    <div class="attr"><b>EQuilibrium</b> — платформа Center Group Company.<br>Кагиров Абдул-Хаким Ахмадович / Abdul-Khakim Kagirov (Аслан Каа · Aslan Kaa) — Founder · CEO Center Group Company.<br>© <span data-year>2026</span> Кагиров Абдул-Хаким Ахмадович. Все права защищены. Материалы носят информационный характер и не являются публичной офертой.</div>
+  </div>
+</footer>
+<script src="assets/app.js"></script>
+</body>
+</html>

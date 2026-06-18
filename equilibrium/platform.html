@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Платформа · EQuilibrium — гейты G0→G10, бригада агентов, архитектура</title>
+<meta name="description" content="Как устроена EQuilibrium: сквозной конвейер G0→G10, бригада из 11 инженерных дисциплин, Дирижёр-конструктор и принципы инженерной дисциплины.">
+<link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="index.html"><img src="assets/logo.svg" width="34" height="34" alt=""><span>EQ<span class="eq">uilibrium</span><small>идея · реализация · доля</small></span></a>
+    <button class="burger" aria-label="Меню">☰</button>
+    <nav>
+      <a href="platform.html">Платформа</a>
+      <a href="services.html">Услуги</a>
+      <a href="investors.html">Инвесторам</a>
+      <a href="cabinet.html">Кабинет</a>
+      <a class="cta" href="order.html">Оставить заявку</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" style="padding:80px 0 70px">
+  <div class="wrap">
+    <span class="tagline-chip"><span class="dot"></span> архитектура платформы</span>
+    <h1>Как EQuilibrium доводит идею до изделия</h1>
+    <p class="lead">«Сильный мозг» — Дирижёр-конструктор — ведёт ваш заказ как Главный конструктор, системный инженер, технолог, директор проекта и венчур-партнёр в одном лице. Он привлекает профильную бригаду и независимую проверку расчётов, и проводит проект по 11 гейтам.</p>
+  </div>
+</section>
+
+<!-- PRINCIPLES -->
+<section>
+  <div class="wrap">
+    <p class="eyebrow center">Фундамент</p>
+    <h2 class="center">9 железных принципов</h2>
+    <p class="lead center" style="margin-bottom:40px">Их нарушать нельзя. Это то, что отличает инженерную работу от правдоподобного текста.</p>
+    <div class="grid g3">
+      <div class="card"><h3>1 · Физика прежде всего</h3><p>Каждое решение обосновано законами механики, термодинамики, сопромата, ТММ, гидро- и аэродинамики. Никаких решений «по ощущению».</p></div>
+      <div class="card"><h3>2 · Размерности всегда</h3><p>Каждая величина — с единицей СИ и допуском. Любой расчёт проходит проверку размерностей. Числа без единиц запрещены.</p></div>
+      <div class="card"><h3>3 · Никаких выдуманных стандартов</h3><p>Не изобретаем номера ГОСТ/ISO, свойства материалов, коэффициенты. Сомнительное помечаем «требует сверки с первоисточником».</p></div>
+      <div class="card"><h3>4 · Расчётная дисциплина</h3><p>Цель → схема и допущения → исходные данные → формула → подстановка → результат → запас → проверка размерности → второй независимый метод.</p></div>
+      <div class="card"><h3>5 · Трассируемость</h3><p>Каждое требование ТЗ → решение → расчёт → элемент чертежа → пункт испытаний. Ничего не висит в воздухе.</p></div>
+      <div class="card"><h3>6 · ЕСКД и оформление</h3><p>КД по ЕСКД (или ISO/ASME): допуски и посадки, GD&amp;T, шероховатость, ряды предпочтительных чисел, обозначения.</p></div>
+      <div class="card"><h3>7 · Безопасность и запасы</h3><p>Явные коэффициенты запаса, режимы нагружения (статика/усталость/удар/термоцикл), worst-case и обоснование.</p></div>
+      <div class="card"><h3>8 · Честность о неопределённости</h3><p>Где знание неполно — говорим прямо, даём диапазон и план снятия неопределённости (эксперимент, замер, CAE, прототип).</p></div>
+      <div class="card"><h3>9 · Патентная чистота</h3><p>FTO-анализ до вложений в прототип. Не воспроизводим чужие запатентованные решения без анализа.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- GATES -->
+<section class="section-paper2" id="gates">
+  <div class="wrap">
+    <p class="eyebrow center">Конвейер</p>
+    <h2 class="center">Stage-gate G0 → G10</h2>
+    <p class="lead center" style="margin-bottom:40px">Каждый гейт — решение go / no-go по критериям. Не прошёл — назад на доработку или стоп. Следующий этап не открывается, пока не закрыт предыдущий.</p>
+    <div class="gates">
+      <div class="gate"><div class="gn">G0</div><div><h4>Приём заказа и feasibility</h4><p>Бриф, оценка реализуемости, уровень готовности технологии (TRL), патентный ландшафт, оценка рынка, предварительный term sheet — доля и партнёрство фиксируются на входе.</p></div></div>
+      <div class="gate"><div class="gn">G1</div><div><h4>Концепция</h4><p>Не менее 3 принципиально разных концепций; trade-study (матрица Пью) по критериям надёжность / точность / технологичность / стоимость / срок / риск; выбор и обоснование.</p></div></div>
+      <div class="gate"><div class="gn">G2</div><div><h4>ТЗ и ТУ</h4><p>Техническое задание (ГОСТ 15.016 / 2.114), технические условия, матрица измеримых требований с допусками.</p></div></div>
+      <div class="gate"><div class="gn">G3</div><div><h4>Расчёты, КД, 3D</h4><p>Каскад чертежей ЕСКД, спецификации, BOM, CAE-отчёты. Геометрия — параметрически, кодом.</p></div></div>
+      <div class="gate"><div class="gn">G4</div><div><h4>Технология и техпроцесс</h4><p>Маршрутные и операционные карты, выбор метода, CAM-стратегия, оснастка, контрольные операции.</p></div></div>
+      <div class="gate"><div class="gn">G5</div><div><h4>IP и патентование</h4><p>Заявки на изобретение/полезную модель, FTO-анализ, стратегия защиты узлов и решений.</p></div></div>
+      <div class="gate"><div class="gn">G6</div><div><h4>Прототип и испытания (V&amp;V)</h4><p>Прототип, протоколы испытаний, цифровой двойник, подтверждение требований.</p></div></div>
+      <div class="gate"><div class="gn">G7</div><div><h4>Финансирование</h4><p>Финмодель, оценка, пич-дек, data room, привлечение раунда под изделие.</p></div></div>
+      <div class="gate"><div class="gn">G8</div><div><h4>Пилот / МВП-производство</h4><p>Пилотная партия, заводские и приёмочные испытания (FAT/SAT), расчёт себестоимости.</p></div></div>
+      <div class="gate"><div class="gn">G9</div><div><h4>Производство и продажи</h4><p>Серийный запуск, выход на рынок (GTM), каналы, договоры реализации.</p></div></div>
+      <div class="gate"><div class="gn">G10</div><div><h4>Партнёрство и развитие</h4><p>Оформление доли, roadmap, инновации, версии 2.0.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- BRIGADE -->
+<section id="brigade">
+  <div class="wrap">
+    <p class="eyebrow center">Команда</p>
+    <h2 class="center">Бригада агентов — 11 дисциплин</h2>
+    <p class="lead center" style="margin-bottom:34px">Дирижёр делает основную работу сам и привлекает профильных агентов, когда задача выходит за пределы одного контекста, нужна независимая проверка или параллельная проработка дисциплин.</p>
+    <table class="tbl">
+      <tr><th>Агент</th><th>Зона ответственности</th><th>Гейт</th></tr>
+      <tr><td><b>Аналитик</b></td><td>Рынок, конкуренты, патентный ландшафт, feasibility</td><td>G0</td></tr>
+      <tr><td><b>Конструктор</b></td><td>3D, каскад чертежей, КД по ЕСКД</td><td>G3</td></tr>
+      <tr><td><b>Расчётчик-прочнист</b></td><td>Прочность, динамика, тепло, ресурс, постановка CAE</td><td>G1, G3, G6</td></tr>
+      <tr><td><b>Технолог</b></td><td>Техпроцесс, маршрутные/операционные карты, CAM, оснастка</td><td>G4</td></tr>
+      <tr><td><b>Юрист-IP</b></td><td>Заявки на изобретение/ПМ, FTO, стратегия защиты, договоры</td><td>G5, G10</td></tr>
+      <tr><td><b>Софт-инженер</b></td><td>Встроенное ПО, АСУ ТП, управление, алгоритмы</td><td>профильные</td></tr>
+      <tr><td><b>Финансист</b></td><td>Финмодель (P&amp;L/CF/NPV/IRR), оценка, пич-дек, раунд</td><td>G7</td></tr>
+      <tr><td><b>Коммерсант</b></td><td>GTM, каналы, продажи, договоры реализации</td><td>G9</td></tr>
+      <tr><td><b>Нормоконтролёр</b></td><td>Проверка КД и документов на соответствие нормам</td><td>каждый гейт</td></tr>
+      <tr><td><b>R&amp;D</b></td><td>Версии 2.0, инновации, roadmap развития</td><td>G10</td></tr>
+      <tr><td><b>Адверсариальный рецензент</b></td><td>Независимая перепроверка критичных расчётов и логики</td><td>по требованию</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- ARCHITECTURE -->
+<section class="section-dark">
+  <div class="wrap">
+    <p class="eyebrow">Технологическое ядро</p>
+    <div class="split">
+      <div>
+        <h2>Сильный мозг + frontier-бригада</h2>
+        <p class="lead">Дирижёр-конструктор — frontier-модель высшего уровня — несёт основную интеллектуальную нагрузку. Для независимой проверки расчётов и разбора больших стандартов он привлекает другие frontier-модели. Правило двух независимых ИИ снижает галлюцинации в числах.</p>
+        <div class="pill-row">
+          <span class="pill">Дирижёр — тяжёлое рассуждение и решения по гейтам</span>
+          <span class="pill">Адверсариальный ревью расчётов</span>
+          <span class="pill">Длинный контекст: PDF-стандарты, чертежи, патенты</span>
+          <span class="pill">Геометрия как код — CadQuery / build123d / KOMPAS API</span>
+        </div>
+      </div>
+      <div>
+        <div class="card" style="background:#0f1d30;border-color:rgba(255,255,255,.12)">
+          <h3 style="color:#fff">Контур качества и самоаудит</h3>
+          <p style="color:#bccadb">Перед каждой существенной выдачей — чек-лист:</p>
+          <ul style="color:#bccadb;line-height:1.9;margin:0;padding-left:18px">
+            <li>Размерности сходятся во всех формулах</li>
+            <li>Каждое число — с источником и маркером достоверности</li>
+            <li>Запасы явны, worst-case учтён</li>
+            <li>Tolerance stack-up закрыт</li>
+            <li>Резонансные / термические / усталостные риски проверены</li>
+            <li>Каждое требование ТЗ трассируется до испытаний</li>
+            <li>FTO / патентная чистота проверены</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-dark center" style="padding-top:0">
+  <div class="wrap">
+    <h2>Готовы пройти этот путь с вашей идеей?</h2>
+    <p style="margin-top:20px"><a class="btn btn-primary" href="order.html">Подать задачу на гейт G0 →</a> <a class="btn btn-ghost" href="services.html">Условия партнёрства</a></p>
+  </div>
+</section>
+
+<footer class="ft">
+  <div class="wrap">
+    <div class="cols">
+      <div><a class="brand" href="index.html" style="margin-bottom:14px"><img src="assets/logo.svg" width="32" height="32" alt=""><span>EQ<span class="eq">uilibrium</span></span></a><p style="max-width:34ch">Цифровое конструкторское бюро, технологический центр и венчур-билдер.</p></div>
+      <div><h4>Платформа</h4><a href="platform.html">Как работает</a><a href="platform.html#gates">Гейты G0→G10</a><a href="platform.html#brigade">Бригада агентов</a><a href="services.html">Услуги и модель</a></div>
+      <div><h4>Бизнес</h4><a href="investors.html">Инвесторам</a><a href="order.html">Подать задачу</a><a href="cabinet.html">Кабинет клиента</a></div>
+      <div><h4>Контакты</h4><a href="mailto:aslankaa@yandex.ru">aslankaa@yandex.ru</a><a href="tel:+79697955555">+7 (969) 795-55-55</a><a href="https://t.me/aslan_kaa">Telegram: @aslan_kaa</a><a href="https://www.aslankaa.com">www.aslankaa.com</a></div>
+    </div>
+    <div class="attr"><b>EQuilibrium</b> — платформа Center Group Company.<br>Кагиров Абдул-Хаким Ахмадович / Abdul-Khakim Kagirov (Аслан Каа · Aslan Kaa) — Founder · CEO Center Group Company.<br>© <span data-year>2026</span> Кагиров Абдул-Хаким Ахмадович. Все права защищены. Материалы носят информационный характер и не являются публичной офертой.</div>
+  </div>
+</footer>
+<script src="assets/app.js"></script>
+</body>
+</html>
