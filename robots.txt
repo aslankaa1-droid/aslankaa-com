@@ -2,5 +2,7 @@ User-agent: *
 Allow: /
 Disallow: /aslan/
 Disallow: /noah-ark/
+Disallow: /sunthesis/
+Disallow: /equilibrium/en/
 
 Sitemap: https://aslankaa.com/sitemap.xml
