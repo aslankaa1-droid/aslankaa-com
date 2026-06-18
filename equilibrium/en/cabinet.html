@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Client area · EQuilibrium</title>
+<meta name="description" content="EQuilibrium client area: project status by gates G0→G10, documents, files, your share in the project.">
+<link rel="icon" href="../assets/logo.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body data-cabinet>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="index.html"><img src="../assets/logo.svg" width="34" height="34" alt=""><span>EQ<span class="eq">uilibrium</span><small>idea · realization · equity</small></span></a>
+    <button class="burger" aria-label="Menu">☰</button>
+    <nav><a href="platform.html">Platform</a><a href="services.html">Services</a><a href="investors.html">Investors</a><a href="cabinet.html">Client area</a><a href="https://aslankaa.com/">Founder</a><a href="../cabinet.html">RU</a><a class="cta" href="order.html">Submit a task</a></nav>
+  </div>
+</header>
+
+<div class="brief-bar">Client-area demo: data is illustrative and stored locally in your browser. A real area with secure storage is connected when the backend launches.</div>
+
+<section style="padding:48px 0 80px">
+  <div class="wrap">
+
+    <!-- LOGIN -->
+    <div data-login-box>
+      <div class="login-box">
+        <img src="../assets/logo.svg" width="56" height="56" alt="" style="margin:0 auto 16px">
+        <h2>Sign in to the client area</h2>
+        <p class="muted">Sign in to view your project status by gates, documents and share. <br>Demo — enter a name and click “Sign in”.</p>
+        <form data-login class="formcard" style="margin-top:24px;text-align:left">
+          <div class="field"><label>Name</label><input name="name" placeholder="John Smith" required></div>
+          <div class="field"><label>E-mail (demo, any)</label><input name="email" placeholder="you@company.com"></div>
+          <button class="btn btn-primary" type="submit" style="width:100%;justify-content:center">Sign in →</button>
+        </form>
+        <p class="muted" style="margin-top:18px;font-size:.9rem">Haven’t submitted a task yet? <a href="order.html">Submit one →</a></p>
+      </div>
+    </div>
+
+    <!-- SHELL -->
+    <div data-cab-shell class="cab-shell" style="display:none">
+      <aside class="cab-side">
+        <div class="who">Client area<br><b data-who>Client</b></div>
+        <a data-tab="pane-over" class="active">📊 Project overview</a>
+        <a data-tab="pane-gates">🧭 Gates G0→G10</a>
+        <a data-tab="pane-docs">📄 Documents</a>
+        <a data-tab="pane-files">📎 Files</a>
+        <a data-tab="pane-deal">🤝 Share & deal</a>
+        <a data-logout style="margin-top:14px;color:#7e91a8">↩ Sign out</a>
+      </aside>
+
+      <main class="cab-main">
+
+        <!-- OVERVIEW -->
+        <div class="cab-pane active" id="pane-over">
+          <h2 style="margin-top:0">Project <span class="mono" style="color:var(--brand-deep)">EQ-2026-014</span></h2>
+          <p class="muted" style="margin-top:-8px">Compact submersible pump unit · format: hybrid fee+equity</p>
+          <div class="kpi">
+            <div class="k"><b>G3</b><span>current gate</span></div>
+            <div class="k"><b>30%</b><span>progress G0→G10</span></div>
+            <div class="k"><b>18%</b><span>EQuilibrium share</span></div>
+            <div class="k"><b>7</b><span>documents ready</span></div>
+          </div>
+          <div class="card">
+            <h3>Pipeline progress</h3>
+            <div class="progress"><i style="width:30%"></i></div>
+            <p class="muted" style="margin:.4em 0 0;font-size:.92rem">G0–G2 closed (intake, concept, specs). G3 in progress — calculations and design docs.</p>
+          </div>
+          <div class="card" style="margin-top:18px">
+            <h3>Recent events</h3>
+            <ul style="margin:0;padding-left:18px;color:var(--text-soft);line-height:2">
+              <li>Draft drawing cascade uploaded (assembly + 3 detail drawings) — <span class="tag">G3</span></li>
+              <li>Shaft fatigue calculation passed adversarial review — <span class="tag">G3</span></li>
+              <li>Spec approved, requirements matrix closed — <span class="tag">G2</span></li>
+              <li>Preliminary term sheet signed, share 18% — <span class="tag gold">G0</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- GATES -->
+        <div class="cab-pane" id="pane-gates">
+          <h2 style="margin-top:0">Project route through the gates</h2>
+          <ul class="timeline">
+            <li class="done"><b>G0 · Intake & feasibility</b> <span class="st">done</span><br><span class="muted">Term sheet signed, share 18%.</span></li>
+            <li class="done"><b>G1 · Concept</b> <span class="st">done</span><br><span class="muted">Concept #2 of 3 chosen via trade-study.</span></li>
+            <li class="done"><b>G2 · Specs (TS & TC)</b> <span class="st">done</span><br><span class="muted">Matrix of 24 requirements, all measurable.</span></li>
+            <li class="active"><b>G3 · Calculations, design docs, 3D</b> <span class="st">in progress</span><br><span class="muted">Drawing cascade and CAE reports — 60%.</span></li>
+            <li><b>G4 · Manufacturing</b> <span class="st wait">pending</span></li>
+            <li><b>G5 · IP & patent</b> <span class="st wait">pending</span></li>
+            <li><b>G6 · Prototype & V&V</b> <span class="st wait">pending</span></li>
+            <li><b>G7 · Financing</b> <span class="st wait">pending</span></li>
+            <li><b>G8 · Pilot / FAT-SAT</b> <span class="st wait">pending</span></li>
+            <li><b>G9 · Production & sales</b> <span class="st wait">pending</span></li>
+            <li><b>G10 · Partnership & development</b> <span class="st wait">pending</span></li>
+          </ul>
+        </div>
+
+        <!-- DOCS -->
+        <div class="cab-pane" id="pane-docs">
+          <h2 style="margin-top:0">Project documents</h2>
+          <table class="tbl">
+            <tr><th>Document</th><th>Gate</th><th>Status</th></tr>
+            <tr><td>Brief and feasibility conclusion</td><td>G0</td><td><span class="tag">ready</span></td></tr>
+            <tr><td>Preliminary term sheet (share 18%)</td><td>G0</td><td><span class="tag gold">signed</span></td></tr>
+            <tr><td>Concept trade-study</td><td>G1</td><td><span class="tag">ready</span></td></tr>
+            <tr><td>Technical specification (per GOST)</td><td>G2</td><td><span class="tag">approved</span></td></tr>
+            <tr><td>Technical conditions</td><td>G2</td><td><span class="tag">ready</span></td></tr>
+            <tr><td>Drawing cascade (draft)</td><td>G3</td><td><span class="tag">in review</span></td></tr>
+            <tr><td>CAE report: strength and fatigue</td><td>G3</td><td><span class="tag">ready</span></td></tr>
+          </table>
+          <p class="muted" style="font-size:.88rem;margin-top:12px">In the demo, documents are not downloadable. The real area offers versioning, e-signature and secure storage.</p>
+        </div>
+
+        <!-- FILES (with upload) -->
+        <div class="cab-pane" id="pane-files">
+          <h2 style="margin-top:0">Files and exchange</h2>
+          <div class="formcard">
+            <div class="field" style="margin-bottom:0">
+              <label>Upload materials for the project team</label>
+              <div class="dropzone" data-dropzone>
+                <input type="file" multiple hidden>
+                <p style="margin:0"><b>Drag files here</b> or click to select</p>
+                <p class="hint" style="margin:.4em 0 0">Drawings, samples, measurements, photos — DWG, STEP, PDF, images</p>
+              </div>
+              <ul class="filelist" data-filelist></ul>
+              <div class="note-152" style="margin-top:14px">Demo: files are added to the list locally and not sent to a server.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- DEAL -->
+        <div class="cab-pane" id="pane-deal">
+          <h2 style="margin-top:0">Share & deal structure</h2>
+          <div class="grid g3">
+            <div class="card"><div class="ic">🧠</div><h3>Client-idea</h3><p>Your share: <b>57%</b></p><p class="muted">Idea, domain expertise, market.</p></div>
+            <div class="card" style="border-left:4px solid var(--brand)"><div class="ic">⚙️</div><h3>EQuilibrium</h3><p>Share: <b>18%</b></p><p class="muted">Engineering, design docs, IP, carrying through the gates. Vesting by gates.</p></div>
+            <div class="card" style="border-left:4px solid var(--gold)"><div class="ic">💰</div><h3>Investor (reserved)</h3><p>Share: <b>25%</b></p><p class="muted">For capital on tooling, prototype and pilot (raised at G7).</p></div>
+          </div>
+          <div class="card" style="margin-top:18px">
+            <h3>Terms (from the term sheet, G0)</h3>
+            <table class="tbl">
+              <tr><th>Parameter</th><th>Value</th></tr>
+              <tr><td>Format</td><td>Hybrid: partial fee + equity</td></tr>
+              <tr><td>EQuilibrium share</td><td>18% (vesting on gate closure)</td></tr>
+              <tr><td>SPV operator</td><td>Center Group</td></tr>
+              <tr><td>IP</td><td>Patenting of units at G5, rights held in the SPV</td></tr>
+            </table>
+          </div>
+        </div>
+
+      </main>
+    </div>
+
+  </div>
+</section>
+
+<footer class="ft">
+  <div class="wrap">
+    <div class="cols">
+      <div><a class="brand" href="index.html" style="margin-bottom:14px"><img src="../assets/logo.svg" width="32" height="32" alt=""><span>EQ<span class="eq">uilibrium</span></span></a><p style="max-width:34ch">Digital engineering bureau, technology center and venture builder.</p></div>
+      <div><h4>Platform</h4><a href="platform.html">How it works</a><a href="platform.html#gates">Gates G0→G10</a><a href="platform.html#brigade">Agent brigade</a><a href="services.html">Services & model</a></div>
+      <div><h4>Business</h4><a href="investors.html">Investors</a><a href="order.html">Submit a task</a><a href="cabinet.html">Client area</a></div>
+      <div><h4>Contacts</h4><a href="mailto:aslankaa@yandex.ru">aslankaa@yandex.ru</a><a href="tel:+79697955555">+7 (969) 795-55-55</a><a href="https://t.me/aslan_kaa">Telegram: @aslan_kaa</a><a href="https://www.aslankaa.com">www.aslankaa.com</a></div>
+    </div>
+    <div class="attr"><b>EQuilibrium</b> — a Center Group Company platform.<br>Abdul-Khakim Kagirov (Aslan Kaa) — Founder · CEO, Center Group Company.<br>© <span data-year>2026</span> Abdul-Khakim Kagirov. All rights reserved. This material is informational and is not a public offer.</div>
+  </div>
+</footer>
+<script src="../assets/app.js"></script>
+</body>
+</html>

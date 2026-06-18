@@ -2,6 +2,7 @@
    Всё работает локально в браузере (localStorage). Реальная связь — mailto/Telegram. */
 (function(){
   "use strict";
+  var EN = (document.documentElement.lang || "ru").toLowerCase().indexOf("en") === 0;
 
   /* ---------- мобильное меню ---------- */
   var burger = document.querySelector('.burger');
@@ -51,7 +52,7 @@
       new FormData(form).forEach(function(v,k){ data[k]=v; });
       data.id = 'EQ-' + Date.now().toString(36).toUpperCase();
       data.created = new Date().toISOString().slice(0,16).replace('T',' ');
-      data.status = 'Заявка принята · G0 (приём заказа)';
+      data.status = EN ? 'Order received · G0 (intake)' : 'Заявка принята · G0 (приём заказа)';
       try{
         var q = JSON.parse(localStorage.getItem('eq_orders')||'[]');
         q.push(data); localStorage.setItem('eq_orders', JSON.stringify(q));
@@ -60,9 +61,13 @@
       var ok = form.parentNode.querySelector('[data-ok]');
       if (ok){
         ok.style.display='block';
-        ok.innerHTML = '<b>Заявка зарегистрирована.</b> Номер: <span class="mono">'+data.id+'</span>. '+
-          'Дирижёр-конструктор откроет гейт G0 (приём заказа, feasibility, предварительный term sheet). '+
-          'Мы свяжемся по указанным контактам. Демо-режим: данные сохранены локально в этом браузере и не передаются на сервер.';
+        ok.innerHTML = EN
+          ? '<b>Your request is registered.</b> Number: <span class="mono">'+data.id+'</span>. '+
+            'The Lead Designer-Conductor will open gate G0 (intake, feasibility, preliminary term sheet). '+
+            'We’ll be in touch via the details provided. Demo mode: data is stored locally in this browser and not sent to a server.'
+          : '<b>Заявка зарегистрирована.</b> Номер: <span class="mono">'+data.id+'</span>. '+
+            'Дирижёр-конструктор откроет гейт G0 (приём заказа, feasibility, предварительный term sheet). '+
+            'Мы свяжемся по указанным контактам. Демо-режим: данные сохранены локально в этом браузере и не передаются на сервер.';
         ok.scrollIntoView({behavior:'smooth',block:'center'});
       }
       form.reset();
@@ -80,8 +85,8 @@
       if (loginBox) loginBox.style.display='none';
       if (shell) shell.style.display='grid';
       var who = document.querySelector('[data-who]');
-      if (who) who.textContent = name || 'Заказчик';
-      localStorage.setItem('eq_demo_user', name||'Заказчик');
+      if (who) who.textContent = name || (EN ? 'Client' : 'Заказчик');
+      localStorage.setItem('eq_demo_user', name || (EN ? 'Client' : 'Заказчик'));
     }
     if (loginForm){
       loginForm.addEventListener('submit', function(e){

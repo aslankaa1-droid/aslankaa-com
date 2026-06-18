@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Platform · EQuilibrium — gates G0→G10, agent brigade, architecture</title>
+<meta name="description" content="How EQuilibrium works: the end-to-end G0→G10 pipeline, a brigade of 11 engineering disciplines, the Lead Designer-Conductor, and the principles of engineering discipline.">
+<link rel="icon" href="../assets/logo.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="index.html"><img src="../assets/logo.svg" width="34" height="34" alt=""><span>EQ<span class="eq">uilibrium</span><small>idea · realization · equity</small></span></a>
+    <button class="burger" aria-label="Menu">☰</button>
+    <nav>
+      <a href="platform.html">Platform</a>
+      <a href="services.html">Services</a>
+      <a href="investors.html">Investors</a>
+      <a href="cabinet.html">Client area</a>
+      <a href="https://aslankaa.com/">Founder</a>
+      <a href="../platform.html">RU</a>
+      <a class="cta" href="order.html">Submit a task</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" style="padding:80px 0 70px">
+  <div class="wrap">
+    <span class="tagline-chip"><span class="dot"></span> platform architecture</span>
+    <h1>How EQuilibrium carries an idea to a product</h1>
+    <p style="font-size:1.08rem;line-height:1.5;color:#eaf6f7;background:rgba(34,193,200,.08);border-left:3px solid var(--brand);border-radius:0 10px 10px 0;padding:14px 18px;max-width:62ch;margin-bottom:22px"><b>We work with no upfront payments and no cost to the client</b> — on a contractual basis and within our capabilities.</p>
+    <p class="lead">EQuilibrium applies a hybrid strategy for delivering engineering projects. A “strong brain” — the Lead Designer-Conductor — runs your order as chief designer, systems engineer, chief process engineer, project director and venture partner in one, drawing in a domain brigade and independent calculation review, and carries the project through 11 gates — from a component or instrument to a machine tool, an automated line or a full production facility.</p>
+  </div>
+</section>
+
+<!-- PRINCIPLES -->
+<section>
+  <div class="wrap">
+    <p class="eyebrow center">The foundation</p>
+    <h2 class="center">9 iron principles</h2>
+    <p class="lead center" style="margin-bottom:40px">They cannot be broken. This is what separates engineering work from plausible text.</p>
+    <div class="grid g3">
+      <div class="card"><h3>1 · Physics first</h3><p>Every decision is grounded in the laws of mechanics, thermodynamics, strength of materials, mechanism theory, hydro- and aerodynamics. No “gut feeling” decisions.</p></div>
+      <div class="card"><h3>2 · Units always</h3><p>Every quantity carries an SI unit and a tolerance. Every calculation passes a dimensional check. Numbers without units are forbidden.</p></div>
+      <div class="card"><h3>3 · No invented standards</h3><p>We don’t invent standard numbers (GOST/ISO), material properties or coefficients. Anything uncertain is flagged “to be verified against the primary source”.</p></div>
+      <div class="card"><h3>4 · Calculation discipline</h3><p>Goal → schema and assumptions → input data → formula → substitution → result → safety factor → dimensional check → a second independent method.</p></div>
+      <div class="card"><h3>5 · Traceability</h3><p>Every requirement → solution → calculation → drawing element → verification item. Nothing hangs in the air.</p></div>
+      <div class="card"><h3>6 · ESKD and formatting</h3><p>Design docs per ESKD (or ISO/ASME): fits and tolerances, GD&T, surface finish, preferred-number series, designations.</p></div>
+      <div class="card"><h3>7 · Safety and margins</h3><p>Explicit safety factors, loading regimes (static/fatigue/impact/thermal cycling), worst-case and justification.</p></div>
+      <div class="card"><h3>8 · Honesty about uncertainty</h3><p>Where knowledge is incomplete we say so plainly, give a range and a plan to remove the uncertainty (experiment, measurement, CAE, prototype).</p></div>
+      <div class="card"><h3>9 · Patent clearance</h3><p>FTO analysis before any prototype spend. We don’t reproduce others’ patented solutions without analysis.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- GATES -->
+<section class="section-paper2" id="gates">
+  <div class="wrap">
+    <p class="eyebrow center">The pipeline</p>
+    <h2 class="center">Stage-gate G0 → G10</h2>
+    <p class="lead center" style="margin-bottom:40px">Each gate is a go/no-go decision against criteria. Didn’t pass — back for rework, or stop. The next stage doesn’t open until the previous one is closed.</p>
+    <div class="gates">
+      <div class="gate"><div class="gn">G0</div><div><h4>Intake & feasibility</h4><p>Brief, feasibility, technology readiness level (TRL), patent landscape, market estimate, preliminary term sheet — the share and partnership are fixed at the entry point.</p></div></div>
+      <div class="gate"><div class="gn">G1</div><div><h4>Concept</h4><p>At least 3 fundamentally different concepts; a trade-study (Pugh matrix) on reliability / precision / manufacturability / cost / schedule / risk; selection and justification.</p></div></div>
+      <div class="gate"><div class="gn">G2</div><div><h4>Specifications (TS & TC)</h4><p>Technical specification (per GOST), technical conditions, a matrix of measurable requirements with tolerances.</p></div></div>
+      <div class="gate"><div class="gn">G3</div><div><h4>Calculations, design docs, 3D</h4><p>Drawing cascade (ESKD), specifications, BOM, CAE reports. Geometry — parametric, as code.</p></div></div>
+      <div class="gate"><div class="gn">G4</div><div><h4>Process & manufacturing</h4><p>Routing and operation cards, method selection, CAM strategy, tooling, inspection operations.</p></div></div>
+      <div class="gate"><div class="gn">G5</div><div><h4>IP & patenting</h4><p>Invention / utility-model applications, FTO analysis, protection strategy for units and solutions.</p></div></div>
+      <div class="gate"><div class="gn">G6</div><div><h4>Prototype & testing (V&V)</h4><p>Prototype, test protocols, digital twin, requirement verification.</p></div></div>
+      <div class="gate"><div class="gn">G7</div><div><h4>Financing</h4><p>Financial model, valuation, pitch deck, data room, raising a round for the product.</p></div></div>
+      <div class="gate"><div class="gn">G8</div><div><h4>Pilot / MVP production</h4><p>Pilot batch, factory and site acceptance tests (FAT/SAT), cost calculation.</p></div></div>
+      <div class="gate"><div class="gn">G9</div><div><h4>Production & sales</h4><p>Series launch, go-to-market, channels, sales contracts.</p></div></div>
+      <div class="gate"><div class="gn">G10</div><div><h4>Partnership & development</h4><p>Formalizing the share, roadmap, innovation, version 2.0.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- BRIGADE -->
+<section id="brigade">
+  <div class="wrap">
+    <p class="eyebrow center">The team</p>
+    <h2 class="center">Agent brigade — 11 disciplines</h2>
+    <p class="lead center" style="margin-bottom:34px">The Conductor does the core work himself and calls in domain agents when a task exceeds a single context, needs independent verification, or requires parallel work across disciplines.</p>
+    <table class="tbl">
+      <tr><th>Agent</th><th>Area of responsibility</th><th>Gate</th></tr>
+      <tr><td><b>Analyst</b></td><td>Market, competitors, patent landscape, feasibility</td><td>G0</td></tr>
+      <tr><td><b>Designer</b></td><td>3D, drawing cascade, design docs per ESKD</td><td>G3</td></tr>
+      <tr><td><b>Stress engineer</b></td><td>Strength, dynamics, thermal, fatigue life, CAE setup</td><td>G1, G3, G6</td></tr>
+      <tr><td><b>Process engineer</b></td><td>Manufacturing process, routing/operation cards, CAM, tooling</td><td>G4</td></tr>
+      <tr><td><b>IP lawyer</b></td><td>Invention/UM applications, FTO, protection strategy, contracts</td><td>G5, G10</td></tr>
+      <tr><td><b>Software engineer</b></td><td>Embedded software, industrial control, algorithms</td><td>domain</td></tr>
+      <tr><td><b>Financier</b></td><td>Financial model (P&L/CF/NPV/IRR), valuation, pitch deck, round</td><td>G7</td></tr>
+      <tr><td><b>Commercial lead</b></td><td>Go-to-market, channels, sales, supply contracts</td><td>G9</td></tr>
+      <tr><td><b>Standards controller</b></td><td>Checking design docs and documents against standards</td><td>every gate</td></tr>
+      <tr><td><b>R&D</b></td><td>Version 2.0, innovation, development roadmap</td><td>G10</td></tr>
+      <tr><td><b>Adversarial reviewer</b></td><td>Independent re-check of critical calculations and logic</td><td>on demand</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- ARCHITECTURE -->
+<section class="section-dark">
+  <div class="wrap">
+    <p class="eyebrow">Technology core</p>
+    <div class="split">
+      <div>
+        <h2>Strong brain + frontier brigade</h2>
+        <p class="lead">The Lead Designer-Conductor — a top-tier frontier model — carries the core intellectual load. For independent calculation review and parsing of large standards it draws in other frontier models. The rule of two independent AIs reduces hallucinations in the numbers.</p>
+        <div class="pill-row">
+          <span class="pill">Conductor — heavy reasoning and gate decisions</span>
+          <span class="pill">Adversarial calculation review</span>
+          <span class="pill">Long context: PDF standards, drawings, patents</span>
+          <span class="pill">Geometry as code — CadQuery / build123d / KOMPAS API</span>
+        </div>
+      </div>
+      <div>
+        <div class="card" style="background:#0f1d30;border-color:rgba(255,255,255,.12)">
+          <h3 style="color:#fff">Quality loop and self-audit</h3>
+          <p style="color:#bccadb">Before every significant output — a checklist:</p>
+          <ul style="color:#bccadb;line-height:1.9;margin:0;padding-left:18px">
+            <li>Units balance across all formulas</li>
+            <li>Every number has a source and a confidence marker</li>
+            <li>Margins are explicit, worst-case accounted for</li>
+            <li>Tolerance stack-up is closed</li>
+            <li>Resonance / thermal / fatigue risks checked</li>
+            <li>Every requirement traces to a test</li>
+            <li>FTO / patent clearance verified</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-dark center" style="padding-top:0">
+  <div class="wrap">
+    <h2>Ready to take this path with your idea?</h2>
+    <p style="margin-top:20px"><a class="btn btn-primary" href="order.html">Submit a task to gate G0 →</a> <a class="btn btn-ghost" href="services.html">Partnership terms</a></p>
+  </div>
+</section>
+
+<footer class="ft">
+  <div class="wrap">
+    <div class="cols">
+      <div><a class="brand" href="index.html" style="margin-bottom:14px"><img src="../assets/logo.svg" width="32" height="32" alt=""><span>EQ<span class="eq">uilibrium</span></span></a><p style="max-width:34ch">Digital engineering bureau, technology center and venture builder.</p></div>
+      <div><h4>Platform</h4><a href="platform.html">How it works</a><a href="platform.html#gates">Gates G0→G10</a><a href="platform.html#brigade">Agent brigade</a><a href="services.html">Services & model</a></div>
+      <div><h4>Business</h4><a href="investors.html">Investors</a><a href="order.html">Submit a task</a><a href="cabinet.html">Client area</a></div>
+      <div><h4>Contacts</h4><a href="mailto:aslankaa@yandex.ru">aslankaa@yandex.ru</a><a href="tel:+79697955555">+7 (969) 795-55-55</a><a href="https://t.me/aslan_kaa">Telegram: @aslan_kaa</a><a href="https://www.aslankaa.com">www.aslankaa.com</a></div>
+    </div>
+    <div class="attr"><b>EQuilibrium</b> — a Center Group Company platform.<br>Abdul-Khakim Kagirov (Aslan Kaa) — Founder · CEO, Center Group Company.<br>© <span data-year>2026</span> Abdul-Khakim Kagirov. All rights reserved. This material is informational and is not a public offer.</div>
+  </div>
+</footer>
+<script src="../assets/app.js"></script>
+</body>
+</html>
