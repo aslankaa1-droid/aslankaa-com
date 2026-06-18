@@ -129,6 +129,14 @@ button{font-family:inherit}
 .status.live .pulse{animation:pulse 2s infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
 
+.seo-line{display:flex;align-items:center;gap:9px;margin:-4px 0 16px;flex-wrap:wrap}
+.seo-badge{display:inline-flex;align-items:center;gap:5px;padding:4px 10px;border-radius:999px;font-size:10.5px;font-weight:700;letter-spacing:.7px;text-transform:uppercase;white-space:nowrap}
+.seo-badge.ok,.seo-badge.fixed{background:rgba(84,192,140,.13);color:var(--green);border:1px solid rgba(84,192,140,.32)}
+.seo-badge.private{background:rgba(122,168,224,.13);color:var(--blue);border:1px solid rgba(122,168,224,.32)}
+.seo-badge.demo{background:rgba(108,117,136,.14);color:var(--ink-3);border:1px solid var(--line-2)}
+.seo-note{color:var(--ink-3);font-size:11px;line-height:1.35}
+td .seo-badge{font-size:9.5px;padding:3px 8px}
+
 .card h3{font-family:"Cormorant Garamond",serif;font-weight:600;font-size:24px;margin:0 0 6px;line-height:1.18}
 .card .url{font-family:"JetBrains Mono",monospace;font-size:13px;color:var(--gold);display:inline-flex;align-items:center;gap:6px;margin-bottom:14px}
 .card .desc{color:var(--ink-2);font-size:14px;line-height:1.55;margin:0 0 16px}
@@ -234,7 +242,7 @@ footer a:hover{color:var(--gold)}
 
 <div class="verified-banner">
   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>
-  <span>Базовая проверка curl-запросами 07–08.06.2026 · все 18 проектов в сети, все под HTTPS</span>
+  <span>Базовая проверка curl-запросами 07–08.06.2026 · все 18 проектов в сети, все под HTTPS · <strong style="color:var(--green)">SEO (robots.txt + sitemap.xml) приведён в порядок 18.06.2026</strong></span>
   <span style="margin-left:auto;color:var(--ink-3);font-size:11.5px" id="last-check"></span>
   <button id="refresh-btn" title="Перепроверить все 18 доменов прямо сейчас (no-cors fetch)">
     <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 0 1 15-6.7L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-15 6.7L3 16"/><path d="M3 21v-5h5"/></svg>
@@ -269,14 +277,14 @@ footer a:hover{color:var(--gold)}
 <section class="table-wrap" id="tablewrap">
   <table>
     <thead>
-      <tr><th>Проект</th><th>Адрес</th><th>Дата</th><th>Объём</th><th>Разделы</th><th>Статус</th></tr>
+      <tr><th>Проект</th><th>Адрес</th><th>Дата</th><th>Объём</th><th>Разделы</th><th>Статус</th><th>SEO</th></tr>
     </thead>
     <tbody id="tbody"></tbody>
   </table>
 </section>
 
 <footer>
-  <div>© Aslan Kaa · Center Group Company · Сформировано 2026-05-28 · Обновлено 2026-06-07 (+ PROFFI SQUAD · aslankaa.com/ps — сайт бюро + дайджест кейсов, проверено вживую)</div>
+  <div>© Aslan Kaa · Center Group Company · Сформировано 2026-05-28 · Обновлено 2026-06-18 (SEO-аудит: robots.txt + sitemap.xml добавлены/проверены на всех 18 проектах — закрыта единственная реальная претензия из холодного SEO-письма)</div>
   <div class="links">
     <a href="mailto:aslankaa@yandex.ru">aslankaa@yandex.ru</a>
     <a href="tel:+79697955555">+7 (969) 795-55-55</a>
@@ -412,6 +420,23 @@ const PROJECTS = [
       { name: "style-guide.html", url: "https://sintem.app/style-guide.html" },
       { name: "privacy.html", url: "https://sintem.app/privacy.html" },
       { name: "terms.html", url: "https://sintem.app/terms.html" }
+    ]
+  },
+  {
+    domain: "hot-book.com",
+    project: "Hot Book · ИИ-соавтор для написания книг",
+    icon: "📖",
+    cat: ["ai", "business"],
+    date: "2026-06-13",
+    url: "https://hot-book.com",
+    status: "live",
+    statusLabel: "Live · HTTPS",
+    desc: "Лендинг приложения Hot Book — кросс-платформенный (Windows · Android · iOS) редактор книг с локальным ИИ-соавтором «Атос» (приватность, офлайн-first). Два контура: hot-book.com (международный) и hot-book.ru (РФ). На сайте — без форм и трекеров (152-ФЗ); доступен APK для скачивания.",
+    volume: "1 страница · ≈ 82 КБ · + APK · 2 домена (.com / .ru), оба HTTPS",
+    sections: ["Лендинг продукта", "Скачать APK"],
+    docs: [
+      { name: "hot-book.com — международный контур (HTTPS)", url: "https://hot-book.com/" },
+      { name: "hot-book.ru — РФ-контур (HTTPS)", url: "https://hot-book.ru/" }
     ]
   },
   {
@@ -697,6 +722,33 @@ const PROJECTS = [
   }
 ];
 
+/* ── SEO-статус по доменам (проверено вживую 2026-06-18) ──────────
+   ok    — robots.txt + sitemap.xml уже были
+   fixed — добавлены 18.06.2026 в рамках SEO-приведения
+   private — намеренно закрыт от индексации (moat)
+   demo  — github.io подпуть, robots на уровне сайта не применяется      */
+const SEO_STATUS = {
+  "big4.info":                              { cls:"ok",      label:"robots ✓ · sitemap ✓", note:"проверено 18.06.2026" },
+  "aslankaa1-droid.github.io/caviar":       { cls:"private", label:"noindex · приватный",  note:"robots Disallow — moat до подачи ТЗ" },
+  "aslankaa.com":                           { cls:"fixed",   label:"robots ✓ · sitemap ✓", note:"добавлено 18.06.2026 · /aslan, /noah-ark закрыты · покрывает /kau и /ps" },
+  "noahsark.su":                            { cls:"fixed",   label:"robots ✓ · sitemap ✓", note:"18.06.2026 · тизер индексируется, PIN-документы закрыты в robots" },
+  "sintem.app":                             { cls:"fixed",   label:"robots ✓ · sitemap ✓", note:"добавлено 18.06.2026" },
+  "hot-book.com":                           { cls:"fixed",   label:"robots ✓ · sitemap ✓", note:"18.06.2026 · оба контура .com и .ru" },
+  "gccenter.ru":                            { cls:"fixed",   label:"robots ✓ · sitemap ✓", note:"добавлено 18.06.2026" },
+  "dpfsd.ru":                               { cls:"ok",      label:"robots ✓ · sitemap ✓", note:"были · сайт под PIN" },
+  "grandhubai.com":                         { cls:"fixed",   label:"robots ✓ · sitemap ✓", note:"18.06.2026 · ветка gh-pages" },
+  "chapan.market":                          { cls:"fixed",   label:"robots ✓ · sitemap ✓ · meta", note:"18.06.2026 · + description на splash · зеркало закрыто от индексации" },
+  "inertum.tech":                           { cls:"ok",      label:"robots ✓ · sitemap ✓", note:"были изначально" },
+  "zs.aslankaa.com":                        { cls:"ok",      label:"robots ✓ · sitemap ✓", note:"были изначально" },
+  "fabian.aslankaa.com":                    { cls:"fixed",   label:"robots ✓ · sitemap ✓", note:"добавлено 18.06.2026" },
+  "intercom.aslankaa.com":                  { cls:"fixed",   label:"robots ✓ · sitemap ✓", note:"добавлено 18.06.2026" },
+  "aslankaa.com/kau":                       { cls:"ok",      label:"покрыт хостом aslankaa.com", note:"robots/sitemap на уровне домена" },
+  "stampscaner.com":                        { cls:"fixed",   label:"robots ✓ · sitemap ✓", note:"18.06.2026 · /app и /cert закрыты" },
+  "aslankaa1-droid.github.io/sintem-fond":  { cls:"demo",    label:"демо · github.io",     note:"подпуть github.io — robots на уровне сайта не применяется" },
+  "ecg-reader.com":                         { cls:"ok",      label:"robots ✓ · sitemap ✓", note:"был; docs.ecg-reader.com — добавлено 18.06.2026" },
+  "aslankaa.com/ps":                        { cls:"ok",      label:"покрыт хостом aslankaa.com", note:"robots/sitemap на уровне домена" }
+};
+
 const grid = document.getElementById("grid");
 const tbody = document.getElementById("tbody");
 
@@ -710,6 +762,7 @@ function render(items){
     const visitBtn = p.status==="offline"
       ? `<span class="btn disabled">Сайт недоступен</span>`
       : `<a class="btn primary" href="${p.url}" target="_blank">Открыть сайт →</a>`;
+    const seo = SEO_STATUS[p.domain] || {cls:"demo",label:"—",note:""};
     return `
     <article class="${cardCls}" data-cat="${p.cat.join(' ')}">
       <div class="top">
@@ -727,6 +780,7 @@ function render(items){
         <div><div class="k">Опубликован</div><div class="v">${p.date}</div></div>
       </div>
       <div class="sections">${p.sections.map(s=>`<span class="tag">${s}</span>`).join("")}</div>
+      <div class="seo-line"><span class="seo-badge ${seo.cls}">SEO · ${seo.label}</span><span class="seo-note">${seo.note}</span></div>
       <div class="docs">
         <div class="docs-title">Документы и ссылки (${p.docs.length})</div>
         <ul>${docsHtml}</ul>
@@ -738,7 +792,9 @@ function render(items){
     </article>`;
   }).join("");
 
-  tbody.innerHTML = items.map(p=>`
+  tbody.innerHTML = items.map(p=>{
+    const seo = SEO_STATUS[p.domain] || {cls:"demo",label:"—",note:""};
+    return `
     <tr data-cat="${p.cat.join(' ')}" class="${p.status==='offline'?'offline':''}">
       <td class="proj">${p.icon}&nbsp;&nbsp;${p.project}</td>
       <td><a class="url" href="${p.url}" target="_blank">${p.domain}</a></td>
@@ -746,8 +802,9 @@ function render(items){
       <td><span class="vol">${p.volume}</span></td>
       <td><div class="secs">${p.sections.map(s=>`<span class="tag">${s}</span>`).join("")}</div></td>
       <td><span class="status ${p.status}"><span class="pulse"></span>${p.statusLabel}</span></td>
+      <td><span class="seo-badge ${seo.cls}" title="${seo.note}">${seo.label}</span></td>
     </tr>
-  `).join("");
+  `;}).join("");
 }
 render(PROJECTS);
 
