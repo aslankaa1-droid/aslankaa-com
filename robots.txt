@@ -3,6 +3,6 @@ Allow: /
 Disallow: /aslan/
 Disallow: /noah-ark/
 Disallow: /sunthesis/
-Disallow: /equilibrium/en/
+Disallow: /equilibrium/
 
 Sitemap: https://aslankaa.com/sitemap.xml
