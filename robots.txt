@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /aslan/
+Disallow: /noah-ark/
+
+Sitemap: https://aslankaa.com/sitemap.xml
