@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SUNTHESIS — кабинет клиента</title>
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="assets/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%230b2a4a'/><circle cx='16' cy='16' r='3.4' fill='%23c9a227'/></svg>">
+</head>
+<body>
+<div class="app">
+  <!-- SIDEBAR -->
+  <aside class="side" id="side">
+    <div class="brand">⬡ SUNTHESIS</div>
+    <a data-view="dash" class="active">📊 Дашборд</a>
+    <a data-view="intake">📝 Приём заказа (G0)</a>
+    <a data-view="files">📎 Загрузка файлов</a>
+    <a data-view="docs">📁 Документы и КД</a>
+    <a data-view="gates">🚦 Гейты G0→G10</a>
+    <a data-view="msg">💬 Сообщения</a>
+    <a data-view="deal">🤝 Партнёрство</a>
+    <div class="sgroup">Аккаунт</div>
+    <a onclick="logout()">⎋ Выйти</a>
+    <a href="index.html">↩ На сайт</a>
+  </aside>
+
+  <div class="main-area">
+    <div class="topbar">
+      <button class="btn btn-navy" style="padding:8px 12px" onclick="document.getElementById('side').classList.toggle('open')">☰</button>
+      <h1 id="ptitle">Дашборд</h1>
+      <div class="who">
+        <span id="whoText"></span>
+        <div class="avatar" id="avatar">?</div>
+      </div>
+    </div>
+    <div class="content">
+
+      <!-- DASHBOARD -->
+      <div class="view active" id="view-dash">
+        <div class="stats4">
+          <div class="stat-card"><div class="k">Проект</div><div class="v" id="dProj" style="font-size:18px">—</div></div>
+          <div class="stat-card"><div class="k">Текущий гейт</div><div class="v" id="dGate">G0</div></div>
+          <div class="stat-card"><div class="k">Прогресс</div><div class="v" id="dProg">0%</div></div>
+          <div class="stat-card"><div class="k">Доля SUNTHESIS</div><div class="v" id="dShare">—</div></div>
+        </div>
+        <div class="panel-box">
+          <h2>Движение по конвейеру</h2>
+          <div class="sub">Каждый гейт — решение go/no-go. Следующий не открывается, пока не закрыт предыдущий.</div>
+          <div class="bar"><i id="dbar" style="width:0%"></i></div>
+          <div class="gate-track" id="dtrack"></div>
+        </div>
+        <div class="row">
+          <div class="panel-box">
+            <h2>Последние события</h2>
+            <div class="sub">Журнал по вашему проекту</div>
+            <div id="feed"></div>
+          </div>
+          <div class="panel-box">
+            <h2>Что дальше</h2>
+            <div class="sub">Один конкретный следующий шаг</div>
+            <div id="nextStep" class="note">Заполните бриф приёма заказа (G0), чтобы запустить проект.</div>
+            <button class="btn btn-gold" style="margin-top:14px" onclick="nav('intake')">Перейти к приёму заказа →</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- INTAKE -->
+      <div class="view" id="view-intake">
+        <div class="panel-box">
+          <h2>Приём заказа · Бриф G0</h2>
+          <div class="sub">Заполняется на входе. До закрытия G0 инженерная работа не начинается. Числа — обязательно с единицами и допусками.</div>
+          <form id="briefForm">
+            <div class="row">
+              <div class="field"><label>Изделие / задача</label><input name="title" placeholder="напр. компактный насос-дозатор" required></div>
+              <div class="field"><label>Класс</label>
+                <select name="klass"><option>Прибор</option><option>Узел</option><option>Машина / станок</option><option>Автоматическая линия</option><option>Двигатель</option><option>Летательный аппарат</option><option>Иное</option></select>
+              </div>
+            </div>
+            <div class="field"><label>Назначение (что изделие должно делать)</label><textarea name="purpose" placeholder="функция, для чего нужно"></textarea></div>
+            <div class="row">
+              <div class="field"><label>Среда эксплуатации</label><input name="env" placeholder="t°, влажность, вибрации, давление…"></div>
+              <div class="field"><label>Ресурс / наработка</label><input name="life" placeholder="напр. 10 000 ч / 5 лет"></div>
+            </div>
+            <div class="field"><label>Критические требования (с метриками и допусками)</label><textarea name="reqs" placeholder="R1: расход = 5 ± 0,2 л/мин; R2: масса ≤ 3 кг; R3: …"></textarea></div>
+            <div class="row">
+              <div class="field"><label>Серийность (шт./год)</label><input name="series" placeholder="напр. 500"></div>
+              <div class="field"><label>Бюджет проекта</label><input name="budget" placeholder="ориентир"></div>
+            </div>
+            <div class="row">
+              <div class="field"><label>Сроки (ключевые вехи)</label><input name="deadline" placeholder="напр. прототип за 6 мес."></div>
+              <div class="field"><label>Нормативная база приёмки</label>
+                <select name="norm"><option>ЕСКД</option><option>ISO</option><option>ASME</option><option>Отраслевые</option><option>Уточнить</option></select>
+              </div>
+            </div>
+            <div class="field"><label>Условия партнёрства (предложение по доле / модели)</label><textarea name="deal" placeholder="идея клиента / исполнение SUNTHESIS / капитал инвестора; ожидаемая доля"></textarea></div>
+            <button type="submit" class="btn btn-gold">Отправить бриф Дирижёру →</button>
+            <div class="note">После отправки Дирижёр (Tier 0) проведёт предварительную оценку реализуемости и предложит term sheet. Проект перейдёт к решению гейта G0.</div>
+          </form>
+        </div>
+      </div>
+
+      <!-- FILES -->
+      <div class="view" id="view-files">
+        <div class="panel-box">
+          <h2>Загрузка файлов</h2>
+          <div class="sub">Чертежи, эскизы, ТЗ, фото образцов, патенты, расчёты — всё, что поможет проекту. До 25 МБ на файл.</div>
+          <div class="drop" id="drop">
+            <div class="big">⬆</div>
+            <div><b>Перетащите файлы сюда</b> или нажмите, чтобы выбрать</div>
+            <div class="hint" style="margin-top:6px">PDF, DWG, STEP, PNG/JPG, DOCX, XLSX…</div>
+            <input type="file" id="fileInput" multiple style="display:none">
+          </div>
+          <div class="filelist" id="filelist"></div>
+          <div class="note">Демо-режим: файлы регистрируются локально в браузере (имя, размер, дата). В боевой версии — защищённое S3-хранилище с доступом по ролям.</div>
+        </div>
+      </div>
+
+      <!-- DOCS -->
+      <div class="view" id="view-docs">
+        <div class="panel-box">
+          <h2>Документы и КД</h2>
+          <div class="sub">Артефакты, которые SUNTHESIS выпускает по ходу конвейера. Сквозная нумерация по ГОСТ 2.201.</div>
+          <table class="t" id="docsTable">
+            <thead><tr><th>Обозначение</th><th>Документ</th><th>Гейт</th><th>Статус</th></tr></thead>
+            <tbody id="docsBody"></tbody>
+          </table>
+          <div class="note">Список наполняется автоматически по мере прохождения гейтов. Сейчас показаны типовые артефакты конвейера.</div>
+        </div>
+      </div>
+
+      <!-- GATES -->
+      <div class="view" id="view-gates">
+        <div class="panel-box">
+          <h2>Гейты G0→G10</h2>
+          <div class="sub">Нажмите на гейт, чтобы увидеть состав и критерии go/no-go.</div>
+          <div class="gate-track" id="gtrackFull"></div>
+          <div id="gateDetail" class="panel-box" style="margin-top:18px;background:#fafcfe"></div>
+        </div>
+      </div>
+
+      <!-- MESSAGES -->
+      <div class="view" id="view-msg">
+        <div class="panel-box">
+          <h2>Сообщения с Дирижёром</h2>
+          <div class="sub">Прямой канал с головным агентом проекта (Tier 0).</div>
+          <div class="chat" id="chat"></div>
+          <div class="chat-input">
+            <input id="msgInput" placeholder="Напишите сообщение…">
+            <button class="btn btn-gold" onclick="sendMsg()">Отправить</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- DEAL -->
+      <div class="view" id="view-deal">
+        <div class="panel-box">
+          <h2>Партнёрство · Term Sheet</h2>
+          <div class="sub">Условия фиксируются на входе (G0). Оператор сделки — ООО «ГК «Центр».</div>
+          <table class="t">
+            <tr><th style="width:38%">Параметр</th><th>Условие</th></tr>
+            <tr><td>Модель</td><td>Идея клиента · исполнение SUNTHESIS · капитал инвестора</td></tr>
+            <tr><td>Доля SUNTHESIS</td><td id="tsShare">обсуждается (база 10–30%)</td></tr>
+            <tr><td>Оператор / SPV</td><td>ООО «ГК «Центр» (ИНН 7713644459)</td></tr>
+            <tr><td>IP</td><td>Принадлежность и лицензирование фиксируются в договоре; FTO до прототипа</td></tr>
+            <tr><td>Вехи</td><td>Привязка траншей и прав к гейтам G0→G10</td></tr>
+            <tr><td>Конфиденциальность</td><td>NDA на весь период сотрудничества</td></tr>
+          </table>
+          <div class="note">Предварительный, необязывающий документ (кроме разделов о конфиденциальности и эксклюзивности). Не является публичной офертой.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+<div class="toast" id="toast"></div>
+<script src="assets/app.js"></script>
+</body>
+</html>
