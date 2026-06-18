@@ -206,7 +206,7 @@ footer a:hover{color:var(--gold)}
     </div>
   </div>
   <div class="top-meta">
-    <span><span class="dot"></span> <span id="live-count">19</span> из <span id="total-count">19</span> доменов в сети</span>
+    <span><span class="dot"></span> <span id="live-count">21</span> из <span id="total-count">21</span> доменов в сети</span>
     <span class="clock" id="clock">—</span>
   </div>
 </header>
@@ -214,16 +214,16 @@ footer a:hover{color:var(--gold)}
 <section class="hero">
   <span class="eyebrow">● Premium Dashboard · Каталог онлайн-присутствия</span>
   <h1>Все проекты Аслана,<br><span class="accent">опубликованные в интернете.</span></h1>
-  <p class="lead">Каталог 19 проектов — доменов, поддоменов, подпапок и публичных gh-pages-витрин — с описанием каждого, реальными разделами, списком опубликованных документов и прямыми ссылками. Каждый адрес и каждая ссылка проверены вживую 7–8 июня 2026 — мёртвые помечены отдельно.</p>
+  <p class="lead">Каталог 21 проекта — доменов, поддоменов, подпапок и публичных gh-pages-витрин — с описанием каждого, реальными разделами, списком опубликованных документов и прямыми ссылками. Каждый адрес и каждая ссылка проверены вживую 7–8 июня 2026 — мёртвые помечены отдельно.</p>
 
   <div class="stat-row">
     <div class="stat">
-      <div class="v">19</div>
+      <div class="v">21</div>
       <div class="k">Живых проектов</div>
-      <div class="h">12 собственных доменов + 3 поддомена aslankaa.com + 2 подпапки + 2 GH-Pages</div>
+      <div class="h">12 собственных доменов + 3 поддомена aslankaa.com + 4 подпапки + 2 GH-Pages</div>
     </div>
     <div class="stat">
-      <div class="v">19</div>
+      <div class="v">21</div>
       <div class="k">Под HTTPS</div>
       <div class="h">SSL Let's Encrypt активен везде</div>
     </div>
@@ -314,6 +314,25 @@ const PROJECTS = [
       { name: "Подать заявку (форма + загрузка)", url: "https://aslankaa.com/equilibrium/order.html" },
       { name: "Кабинет клиента (демо)", url: "https://aslankaa.com/equilibrium/cabinet.html" },
       { name: "Инвесторам", url: "https://aslankaa.com/equilibrium/investors.html" }
+    ]
+  },
+  {
+    domain: "aslankaa.com/sunthesis",
+    folder: "sunthesis",
+    project: "SUNTHESIS · цифровое КБ + венчур-билдер (3-tier «Синтез»)",
+    icon: "⬡",
+    cat: ["ai", "business"],
+    date: "2026-06-18",
+    url: "https://aslankaa.com/sunthesis/",
+    status: "live",
+    statusLabel: "Live · HTTPS",
+    desc: "Та же платформа «идея→изделие→партнёрство», что и EQuilibrium, но в трёхуровневой архитектуре «Синтез»: сильный мозг-Дирижёр (Tier 0, Claude Opus) принимает решения и верифицирует, средние модели (Tier 1) тянут объём, локальная дообученная модель (Tier 2) делает рутину под обязательной проверкой — это снижает себестоимость инжиниринга в 5–10× и делает экономически возможным вход долей, а не гонораром. Сквозной конвейер G0→G10: feasibility → ТЗ/ТУ → КД по ЕСКД → технология → IP/патент → прототип → финмодель → пилот → серия → продажи. Бригада из 11 ИИ-агентов, дисциплина ЕСКД/GD&T, FTO до прототипа, контур качества с верификацией Tier 0. Сайт: лендинг + вход + кабинет клиента (приём заказа G0, загрузка файлов, дашборд гейтов, реестр документов, чат с Дирижёром, term sheet) — рабочее демо в браузере без отправки ПДн (152-ФЗ, контакт mailto). Собран полный бизнес-пакет (описание и функционал, одностраничник, инвест-предложение, оценка, независимый аудит) в Word/PDF + дек PPTX. Сейчас работает в режиме «Синтез-lite» (Tier 0+1); Tier 2 включается после апгрейда инференс-станции. Ключевые цифры (модель): раунд pre-seed ₽75 млн, pre-money Base ₽225 млн (диапазон ₽120–400 млн), доля инвестора 25% post-money, доля платформы в проектах 10–30%.",
+    volume: "Сайт: 3 страницы (лендинг / вход / кабинет) + общий CSS/JS (mobile-nav, drag-and-drop загрузка, демо-кабинет на localStorage) + SVG-лого и OG-превью · подпапка sunthesis/ в репо aslankaa1-droid/aslankaa-com · исходник E:\\SUNTHESIS · промт Дирижёра + бригада 11 агентов + гейты G0→G10 + шаблоны + карта маршрутизации Tier 0/1/2 · бизнес-пакет в E:\\SUNTHESIS\\08_Бизнес-пакет (MD/PDF/DOCX + дек PPTX) · независимый аудит 3,4/10 · HTTPS под общим сертификатом визитки",
+    sections: ["Лендинг — идея→изделие→доля, конвейер G0→G10, архитектура «Синтез»", "Архитектура Tier 0/1/2 и матрица маршрутизации", "Бригада из 11 ИИ-агентов и stage-gate G0→G10", "Кабинет клиента: приём заказа / загрузка файлов / дашборд гейтов / документы / чат / term sheet", "Инвесторам — раунд pre-seed ₽75 млн, оценка ₽120–400 млн", "Бизнес-пакет: описание, одностраничник, инвест-предложение, оценка, аудит"],
+    docs: [
+      { name: "Лендинг", url: "https://aslankaa.com/sunthesis/" },
+      { name: "Вход в кабинет", url: "https://aslankaa.com/sunthesis/login.html" },
+      { name: "Кабинет клиента (демо)", url: "https://aslankaa.com/sunthesis/cabinet.html" }
     ]
   },
   {
