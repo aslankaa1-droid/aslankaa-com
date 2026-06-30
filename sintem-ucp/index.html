@@ -1,0 +1,547 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SINTEM — маркетплейс утилитарных цифровых прав</title>
+<meta name="description" content="SINTEM — премиальная цифровая платформа выпуска и обращения утилитарных цифровых прав (УЦП) экосистемы Center Group. Инвестируй в реальные товары, услуги и технологии.">
+<link rel="icon" href="assets/logo.png">
+<meta property="og:title" content="SINTEM — маркетплейс УЦП">
+<meta property="og:description" content="Премиальная платформа выпуска утилитарных цифровых прав. Реальные права на товары, услуги и технологии экосистемы Center Group.">
+<meta property="og:image" content="assets/logo.png">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;500;600;700;800&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#08070d;
+  --bg-2:#0d0b16;
+  --panel:rgba(20,17,34,.55);
+  --panel-solid:#13101f;
+  --line:rgba(150,130,255,.14);
+  --line-2:rgba(150,130,255,.28);
+  --txt:#ece9f6;
+  --muted:#9a93b8;
+  --muted-2:#6f6890;
+  --violet:#8b5cf6;
+  --magenta:#b14bf4;
+  --blue:#3b82f6;
+  --cyan:#22d3ee;
+  --grad:linear-gradient(120deg,#b14bf4 0%,#7c5cff 38%,#3b82f6 70%,#22d3ee 100%);
+  --grad-soft:linear-gradient(120deg,rgba(177,75,244,.18),rgba(34,211,238,.12));
+  --glow:0 0 60px rgba(124,92,255,.45);
+  --r:22px;
+  --maxw:1240px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Manrope',system-ui,sans-serif;
+  background:var(--bg);color:var(--txt);
+  line-height:1.6;overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+/* atmosphere */
+.bg-field{position:fixed;inset:0;z-index:-2;overflow:hidden;background:
+  radial-gradient(1200px 700px at 80% -10%,rgba(124,92,255,.18),transparent 60%),
+  radial-gradient(900px 600px at -10% 30%,rgba(34,211,238,.10),transparent 55%),
+  radial-gradient(800px 800px at 50% 120%,rgba(177,75,244,.12),transparent 60%),
+  var(--bg);}
+.orb{position:absolute;border-radius:50%;filter:blur(60px);opacity:.5;mix-blend-mode:screen;will-change:transform}
+.orb.a{width:420px;height:420px;background:radial-gradient(circle,#7c5cff,transparent 70%);top:8%;left:62%;animation:drift1 22s ease-in-out infinite}
+.orb.b{width:360px;height:360px;background:radial-gradient(circle,#22d3ee,transparent 70%);top:55%;left:5%;animation:drift2 26s ease-in-out infinite}
+.orb.c{width:300px;height:300px;background:radial-gradient(circle,#b14bf4,transparent 70%);top:78%;left:70%;animation:drift1 30s ease-in-out infinite reverse}
+@keyframes drift1{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-60px,50px) scale(1.12)}}
+@keyframes drift2{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(70px,-40px) scale(1.08)}}
+.grain{position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.04;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
+
+/* layout helpers */
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+section{position:relative;padding:120px 0}
+.eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--cyan);font-weight:600;margin-bottom:22px}
+.eyebrow::before{content:"";width:26px;height:1px;background:linear-gradient(90deg,var(--cyan),transparent)}
+h1,h2,h3,.brand{font-family:'Unbounded',sans-serif;font-weight:600;line-height:1.08;letter-spacing:-.01em}
+h2{font-size:clamp(30px,4.4vw,54px);font-weight:500}
+.lead{color:var(--muted);font-size:clamp(16px,1.6vw,19px);max-width:620px}
+.grad-text{background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+
+/* nav */
+header{position:fixed;top:0;left:0;right:0;z-index:50;transition:.4s}
+header.scrolled{background:rgba(8,7,13,.72);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
+nav{display:flex;align-items:center;justify-content:space-between;max-width:var(--maxw);margin:0 auto;padding:18px 28px}
+.logo{display:flex;align-items:center;gap:13px;text-decoration:none;color:var(--txt)}
+.logo img{width:40px;height:40px;border-radius:11px;box-shadow:var(--glow)}
+.logo .brand{font-size:21px;font-weight:700;letter-spacing:.04em}
+.navlinks{display:flex;gap:34px;list-style:none}
+.navlinks a{color:var(--muted);text-decoration:none;font-size:14.5px;font-weight:500;transition:.25s;position:relative}
+.navlinks a:hover{color:var(--txt)}
+.navlinks a::after{content:"";position:absolute;left:0;bottom:-6px;width:0;height:1.5px;background:var(--grad);transition:.3s}
+.navlinks a:hover::after{width:100%}
+.btn{display:inline-flex;align-items:center;gap:9px;padding:13px 26px;border-radius:100px;font-family:'Manrope';font-weight:600;font-size:14.5px;text-decoration:none;cursor:pointer;border:none;transition:.3s;white-space:nowrap}
+.btn-primary{background:var(--grad);color:#0a0810;box-shadow:0 8px 30px rgba(124,92,255,.4)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 14px 44px rgba(124,92,255,.6)}
+.btn-ghost{background:rgba(255,255,255,.04);color:var(--txt);border:1px solid var(--line-2)}
+.btn-ghost:hover{background:rgba(255,255,255,.09);border-color:var(--cyan)}
+.nav-cta{display:flex;gap:12px;align-items:center}
+.burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px}
+.burger span{width:24px;height:2px;background:var(--txt);border-radius:2px}
+
+/* hero */
+.hero{padding:200px 0 120px;text-align:center}
+.hero-badge{display:inline-flex;align-items:center;gap:10px;padding:8px 18px;border-radius:100px;background:var(--panel);border:1px solid var(--line-2);font-size:13px;color:var(--muted);margin-bottom:34px;backdrop-filter:blur(10px)}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--cyan);box-shadow:0 0 10px var(--cyan);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+.hero h1{font-size:clamp(40px,7vw,86px);font-weight:500;max-width:14ch;margin:0 auto 28px;letter-spacing:-.02em}
+.hero .lead{margin:0 auto 40px;font-size:clamp(17px,1.9vw,21px)}
+.hero-cta{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-bottom:60px}
+.hero-orbit{position:relative;height:0}
+.float-icon{position:absolute;width:62px;height:62px;border-radius:18px;background:var(--panel);border:1px solid var(--line-2);display:grid;place-items:center;backdrop-filter:blur(12px);box-shadow:0 10px 40px rgba(0,0,0,.5);color:var(--cyan)}
+.float-icon svg{width:28px;height:28px}
+.fi1{top:-470px;left:6%;animation:float 7s ease-in-out infinite}
+.fi2{top:-540px;right:8%;animation:float 8s ease-in-out infinite .8s;color:var(--magenta)}
+.fi3{top:-300px;left:12%;animation:float 9s ease-in-out infinite .4s;color:var(--violet)}
+.fi4{top:-250px;right:11%;animation:float 7.5s ease-in-out infinite 1.2s;color:var(--blue)}
+.fi5{top:-130px;left:46%;animation:float 8.5s ease-in-out infinite .6s;color:var(--cyan)}
+@keyframes float{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-22px) rotate(2deg)}}
+
+/* trust strip */
+.strip{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:rgba(13,11,22,.5)}
+.strip .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;padding-top:46px;padding-bottom:46px}
+.stat .n{font-family:'Unbounded';font-size:clamp(28px,3.4vw,42px);font-weight:600;background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.stat .l{color:var(--muted);font-size:14px;margin-top:4px}
+
+/* cards generic */
+.grid{display:grid;gap:24px}
+.cols-4{grid-template-columns:repeat(4,1fr)}
+.cols-3{grid-template-columns:repeat(3,1fr)}
+.cols-2{grid-template-columns:repeat(2,1fr)}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:32px;backdrop-filter:blur(14px);transition:.4s;position:relative;overflow:hidden}
+.card::before{content:"";position:absolute;inset:0;background:var(--grad-soft);opacity:0;transition:.4s}
+.card:hover{transform:translateY(-6px);border-color:var(--line-2)}
+.card:hover::before{opacity:1}
+.card>*{position:relative;z-index:1}
+.card .ic{width:54px;height:54px;border-radius:15px;background:rgba(124,92,255,.12);border:1px solid var(--line-2);display:grid;place-items:center;margin-bottom:22px;color:var(--cyan)}
+.card .ic svg{width:26px;height:26px}
+.card h3{font-size:19px;font-weight:600;margin-bottom:10px}
+.card p{color:var(--muted);font-size:14.5px}
+.tag{display:inline-block;font-family:'Unbounded';font-size:12px;font-weight:600;letter-spacing:.05em;color:var(--cyan);margin-bottom:14px}
+
+/* section head */
+.shead{margin-bottom:60px;max-width:740px}
+.shead.center{margin-left:auto;margin-right:auto;text-align:center}
+.shead.center .eyebrow::before{display:none}
+.shead p{margin-top:18px}
+
+/* marketplace projects */
+.proj{background:var(--panel-solid);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;transition:.4s;display:flex;flex-direction:column}
+.proj:hover{transform:translateY(-8px);border-color:var(--line-2);box-shadow:0 30px 70px rgba(0,0,0,.5)}
+.proj .cover{height:170px;position:relative;display:grid;place-items:center;overflow:hidden}
+.proj .cover .glyph{font-family:'Unbounded';font-weight:700;font-size:54px;color:rgba(255,255,255,.92);text-shadow:0 4px 30px rgba(0,0,0,.4);z-index:2}
+.proj .cover::after{content:"";position:absolute;inset:0;background-image:radial-gradient(circle at 30% 20%,rgba(255,255,255,.25),transparent 40%);mix-blend-mode:overlay}
+.cover.c1{background:linear-gradient(135deg,#7c5cff,#22d3ee)}
+.cover.c2{background:linear-gradient(135deg,#b14bf4,#3b82f6)}
+.cover.c3{background:linear-gradient(135deg,#3b82f6,#22d3ee)}
+.cover.c4{background:linear-gradient(135deg,#8b5cf6,#b14bf4)}
+.ticker{position:absolute;top:14px;left:14px;font-family:'Unbounded';font-size:11px;font-weight:600;letter-spacing:.08em;background:rgba(8,7,13,.7);border:1px solid var(--line-2);padding:5px 11px;border-radius:8px;color:#fff;z-index:3;backdrop-filter:blur(6px)}
+.proj .body{padding:24px;display:flex;flex-direction:column;flex:1}
+.proj .cat{font-size:12px;color:var(--muted-2);letter-spacing:.05em;text-transform:uppercase;margin-bottom:8px}
+.proj h3{font-size:20px;font-weight:600;margin-bottom:8px}
+.proj .desc{color:var(--muted);font-size:14px;margin-bottom:18px;flex:1}
+.proj .get{font-size:13px;color:var(--cyan);background:rgba(34,211,238,.08);border:1px solid rgba(34,211,238,.2);border-radius:10px;padding:10px 12px;margin-bottom:18px}
+.proj .get b{color:var(--txt);font-weight:600}
+.bar{height:6px;border-radius:6px;background:rgba(255,255,255,.07);overflow:hidden;margin-bottom:8px}
+.bar i{display:block;height:100%;background:var(--grad);border-radius:6px}
+.proj .meta{display:flex;justify-content:space-between;font-size:12.5px;color:var(--muted)}
+
+/* comparison */
+.cmp{width:100%;border-collapse:collapse;background:var(--panel-solid);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.cmp th,.cmp td{padding:18px 22px;text-align:left;border-bottom:1px solid var(--line);font-size:14.5px;vertical-align:top}
+.cmp thead th{font-family:'Unbounded';font-weight:500;font-size:14px;background:rgba(124,92,255,.08)}
+.cmp thead th.us{background:var(--grad);color:#0a0810;font-weight:600}
+.cmp td.feat{color:var(--txt);font-weight:600}
+.cmp td.market{color:var(--muted-2)}
+.cmp td.us{color:var(--txt)}
+.cmp td.us::before{content:"✦ ";color:var(--cyan)}
+.cmp tr:last-child td{border-bottom:none}
+.cmp tr:hover td{background:rgba(124,92,255,.04)}
+
+/* steps */
+.steps{counter-reset:s}
+.step{counter-increment:s}
+.step .num{font-family:'Unbounded';font-size:13px;color:var(--cyan);margin-bottom:16px;display:flex;align-items:center;gap:10px}
+.step .num::before{content:"0" counter(s);font-size:34px;font-weight:700;background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+
+/* roadmap */
+.road{position:relative;padding-left:34px}
+.road::before{content:"";position:absolute;left:7px;top:6px;bottom:6px;width:2px;background:linear-gradient(180deg,var(--magenta),var(--cyan))}
+.rstep{position:relative;padding-bottom:38px}
+.rstep:last-child{padding-bottom:0}
+.rstep::before{content:"";position:absolute;left:-34px;top:5px;width:16px;height:16px;border-radius:50%;background:var(--bg);border:2px solid var(--cyan);box-shadow:0 0 14px var(--cyan)}
+.rstep .ph{font-family:'Unbounded';font-size:13px;color:var(--cyan);letter-spacing:.05em}
+.rstep h3{font-size:19px;font-weight:600;margin:6px 0 8px}
+.rstep p{color:var(--muted);font-size:14.5px;max-width:640px}
+
+/* uctype chips */
+.types{display:flex;gap:14px;flex-wrap:wrap;margin-top:8px}
+.chip{padding:10px 18px;border-radius:100px;border:1px solid var(--line-2);background:var(--panel);font-size:13.5px;font-weight:500;display:flex;align-items:center;gap:9px}
+.chip b{font-family:'Unbounded';color:var(--cyan);font-weight:600}
+
+/* cta band */
+.band{text-align:center;background:linear-gradient(135deg,rgba(177,75,244,.14),rgba(34,211,238,.10));border:1px solid var(--line-2);border-radius:32px;padding:72px 40px;position:relative;overflow:hidden}
+.band h2{margin-bottom:18px}
+.band .lead{margin:0 auto 34px}
+
+/* footer */
+footer{border-top:1px solid var(--line);padding:64px 0 40px;background:var(--bg-2)}
+.fgrid{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:40px;margin-bottom:44px}
+footer .logo{margin-bottom:18px}
+footer p.fdesc{color:var(--muted);font-size:14px;max-width:340px}
+footer h4{font-family:'Unbounded';font-size:13px;font-weight:500;letter-spacing:.05em;margin-bottom:18px;color:var(--txt)}
+footer ul{list-style:none}
+footer ul li{margin-bottom:11px}
+footer a{color:var(--muted);text-decoration:none;font-size:14px;transition:.25s}
+footer a:hover{color:var(--cyan)}
+.legal{border-top:1px solid var(--line);padding-top:26px;color:var(--muted-2);font-size:12.5px;line-height:1.7}
+.legal .disc{margin-top:12px;max-width:920px}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(26px);transition:.8s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+.reveal[data-d="1"]{transition-delay:.08s}
+.reveal[data-d="2"]{transition-delay:.16s}
+.reveal[data-d="3"]{transition-delay:.24s}
+
+::-webkit-scrollbar{width:11px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:linear-gradient(180deg,var(--violet),var(--cyan));border-radius:10px;border:3px solid var(--bg)}
+
+@media(max-width:980px){
+  .cols-4{grid-template-columns:repeat(2,1fr)}
+  .cols-3{grid-template-columns:1fr}
+  .fgrid{grid-template-columns:1fr;gap:30px}
+  .strip .wrap{grid-template-columns:repeat(2,1fr);gap:30px}
+}
+@media(max-width:760px){
+  .navlinks,.nav-cta .btn-ghost{display:none}
+  .burger{display:flex}
+  section{padding:80px 0}
+  .hero{padding:150px 0 80px}
+  .cols-2{grid-template-columns:1fr}
+  .float-icon{display:none}
+  .cmp{display:block;overflow-x:auto;white-space:nowrap}
+}
+/* mobile menu */
+.mmenu{position:fixed;inset:0;z-index:60;background:rgba(8,7,13,.97);backdrop-filter:blur(20px);display:none;flex-direction:column;align-items:center;justify-content:center;gap:30px}
+.mmenu.open{display:flex}
+.mmenu a{color:var(--txt);font-family:'Unbounded';font-size:24px;text-decoration:none}
+.mmenu .close{position:absolute;top:28px;right:28px;background:none;border:none;color:var(--txt);font-size:34px;cursor:pointer}
+</style>
+</head>
+<body>
+<div class="bg-field"><div class="orb a"></div><div class="orb b"></div><div class="orb c"></div></div>
+<div class="grain"></div>
+
+<header id="hdr">
+  <nav>
+    <a href="#" class="logo"><img src="assets/logo.png" alt="SINTEM"><span class="brand">SINTEM</span></a>
+    <ul class="navlinks">
+      <li><a href="#uchp">Что такое УЦП</a></li>
+      <li><a href="#market">Маркетплейс</a></li>
+      <li><a href="#why">Почему SINTEM</a></li>
+      <li><a href="#how">Как это работает</a></li>
+      <li><a href="#road">Дорожная карта</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="#market" class="btn btn-ghost">Инвесторам</a>
+      <a href="#emit" class="btn btn-primary">Разместить проект</a>
+    </div>
+    <button class="burger" id="burger"><span></span><span></span><span></span></button>
+  </nav>
+</header>
+
+<div class="mmenu" id="mmenu">
+  <button class="close" id="mclose">×</button>
+  <a href="#uchp">Что такое УЦП</a>
+  <a href="#market">Маркетплейс</a>
+  <a href="#why">Почему SINTEM</a>
+  <a href="#how">Как это работает</a>
+  <a href="#road">Дорожная карта</a>
+  <a href="#emit" class="btn btn-primary" style="color:#0a0810">Разместить проект</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-badge reveal in"><span class="dot"></span>Платформа на этапе включения в реестр операторов инвестиционных платформ Банка России</div>
+    <h1 class="reveal in" data-d="1">Инвестируй в <span class="grad-text">реальное</span>, а не в проценты</h1>
+    <p class="lead reveal in" data-d="2">SINTEM — премиальный маркетплейс утилитарных цифровых прав. Здесь УЦП — это право на реальный товар, услугу, технологию или интеллектуальную собственность брендов экосистемы Center Group. Не абстрактная доходность — осязаемая ценность.</p>
+    <div class="hero-cta reveal in" data-d="3">
+      <a href="#market" class="btn btn-primary">Смотреть проекты →</a>
+      <a href="#uchp" class="btn btn-ghost">Как работают УЦП</a>
+    </div>
+  </div>
+  <div class="hero-orbit wrap">
+    <div class="float-icon fi1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 7H4M16 3l4 4-4 4M4 17h16M8 21l-4-4 4-4"/></svg></div>
+    <div class="float-icon fi2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M9 9h6v6H9z"/></svg></div>
+    <div class="float-icon fi3"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l3 7 7 .5-5.5 4.5L18 21l-6-4-6 4 1.5-7L2 9.5 9 9z"/></svg></div>
+    <div class="float-icon fi4"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
+    <div class="float-icon fi5"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg></div>
+  </div>
+</section>
+
+<!-- STRIP -->
+<div class="strip">
+  <div class="wrap">
+    <div class="stat reveal"><div class="n">4</div><div class="l">типа УЦП: товар · услуга · IP · гибрид</div></div>
+    <div class="stat reveal" data-d="1"><div class="n">15+</div><div class="l">проектов экосистемы в пайплайне</div></div>
+    <div class="stat reveal" data-d="2"><div class="n">259-ФЗ</div><div class="l">правовая основа выпуска УЦП</div></div>
+    <div class="stat reveal" data-d="3"><div class="n">0 %</div><div class="l">скрытых комиссий — прозрачный тариф</div></div>
+  </div>
+</div>
+
+<!-- UCHP -->
+<section id="uchp">
+  <div class="wrap">
+    <div class="shead">
+      <span class="eyebrow">Утилитарные цифровые права</span>
+      <h2>Право, которое можно <span class="grad-text">потрогать</span></h2>
+      <p class="lead">По закону 259-ФЗ утилитарное цифровое право — это право требовать передачи вещи, выполнения работ, оказания услуг или прав на результат интеллектуальной деятельности. SINTEM выпускает четыре типа УЦП.</p>
+    </div>
+    <div class="grid cols-4">
+      <div class="card reveal">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M21 16V8a2 2 0 0 0-1-1.7l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.7l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="M3.3 7L12 12l8.7-5M12 22V12"/></svg></div>
+        <span class="tag">УЦП-Т</span>
+        <h3>Товар</h3>
+        <p>Право на получение реального товара бренда: премиальной продукции, урожая, недвижимости.</p>
+      </div>
+      <div class="card reveal" data-d="1">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 2a7 7 0 0 1 7 7c0 5-7 13-7 13S5 14 5 9a7 7 0 0 1 7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></div>
+        <span class="tag">УЦП-У</span>
+        <h3>Услуга</h3>
+        <p>Право на получение услуги: обучение, сертификация, профессиональные и кадастровые сервисы.</p>
+      </div>
+      <div class="card reveal" data-d="2">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></div>
+        <span class="tag">УЦП-IP</span>
+        <h3>Интеллект. собственность</h3>
+        <p>Право на использование лицензий, подписок и результатов интеллектуальной деятельности.</p>
+      </div>
+      <div class="card reveal" data-d="3">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 2v20M2 12h20M5 5l14 14M19 5L5 19"/></svg></div>
+        <span class="tag">УЦП-H</span>
+        <h3>Гибрид</h3>
+        <p>Комбинированное право, объединяющее несколько видов ценности в одном инструменте.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARKETPLACE -->
+<section id="market">
+  <div class="wrap">
+    <div class="shead">
+      <span class="eyebrow">Маркетплейс УЦП · Очередь №1</span>
+      <h2>Первые выпуски экосистемы</h2>
+      <p class="lead">Каждый проект — не строка в таблице с процентом, а живая витрина бренда: продукт, команда и то, что именно получит держатель УЦП. Изображения проектов подставляются из медиатеки бренда.</p>
+    </div>
+    <div class="grid cols-4">
+
+      <article class="proj reveal">
+        <div class="cover c1"><span class="ticker">GHAI · IP</span><span class="glyph">G</span></div>
+        <div class="body">
+          <div class="cat">Технологии · AI</div>
+          <h3>GrandHubAI</h3>
+          <p class="desc">Мультиагентная AI-платформа. УЦП на лицензии и подписки к 244 ИИ-агентам.</p>
+          <div class="get">Вы получаете: <b>лицензии и подписки GrandHubAI</b></div>
+          <div class="bar"><i style="width:62%"></i></div>
+          <div class="meta"><span>Собрано 62 %</span><span>УЦП-IP</span></div>
+        </div>
+      </article>
+
+      <article class="proj reveal" data-d="1">
+        <div class="cover c2"><span class="ticker">HOTB · IP</span><span class="glyph">H</span></div>
+        <div class="body">
+          <div class="cat">Образование и медиа</div>
+          <h3>Hot Book</h3>
+          <p class="desc">Платформа для написания книг с ИИ-агентом. УЦП на доступ к контенту и программам.</p>
+          <div class="get">Вы получаете: <b>доступ к книгам и обучению</b></div>
+          <div class="bar"><i style="width:48%"></i></div>
+          <div class="meta"><span>Собрано 48 %</span><span>УЦП-IP</span></div>
+        </div>
+      </article>
+
+      <article class="proj reveal" data-d="2">
+        <div class="cover c3"><span class="ticker">PROF · У</span><span class="glyph">P</span></div>
+        <div class="body">
+          <div class="cat">Профессиональные сервисы</div>
+          <h3>PROFFI SQUAD</h3>
+          <p class="desc">Обучение и профессиональная сертификация. УЦП на образовательные программы.</p>
+          <div class="get">Вы получаете: <b>обучение и сертификацию</b></div>
+          <div class="bar"><i style="width:35%"></i></div>
+          <div class="meta"><span>Собрано 35 %</span><span>УЦП-У</span></div>
+        </div>
+      </article>
+
+      <article class="proj reveal" data-d="3">
+        <div class="cover c4"><span class="ticker">ZEML · У</span><span class="glyph">З</span></div>
+        <div class="body">
+          <div class="cat">Недвижимость · право</div>
+          <h3>Земельный Сервис</h3>
+          <p class="desc">Земельные и кадастровые услуги, спасение земли от изъятия. УЦП на сервисы.</p>
+          <div class="get">Вы получаете: <b>земельные и кадастровые услуги</b></div>
+          <div class="bar"><i style="width:41%"></i></div>
+          <div class="meta"><span>Собрано 41 %</span><span>УЦП-У</span></div>
+        </div>
+      </article>
+
+    </div>
+    <p style="text-align:center;margin-top:38px;color:var(--muted);font-size:14px">Очередь №2 — АПК «Орлиное Гнездо», Ноев Ковчег, КП «Большевицы» · Очередь №3 — CAVIAR, Чапан, Fabian, BIG4, Inertum</p>
+  </div>
+</section>
+
+<!-- WHY -->
+<section id="why">
+  <div class="wrap">
+    <div class="shead center">
+      <span class="eyebrow">Почему SINTEM лучше рынка</span>
+      <h2>105 операторов. Все продают <span class="grad-text">процент</span>. Мы — ценность.</h2>
+      <p class="lead">Рынок инвестиционных платформ — это десятки почти одинаковых бело-синих сайтов про займы и доходность. SINTEM меняет правила по продукту, подаче и доверию.</p>
+    </div>
+    <table class="cmp reveal">
+      <thead>
+        <tr><th>Критерий</th><th>Рынок ОИП</th><th class="us">SINTEM</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="feat">Что покупает инвестор</td><td class="market">Процент / доля — абстракция</td><td class="us">Право на реальный товар, услугу, IP</td></tr>
+        <tr><td class="feat">Наполнение витрины</td><td class="market">Ищут эмитентов «с улицы»</td><td class="us">Собственный пайплайн 15+ проектов на старте</td></tr>
+        <tr><td class="feat">Подача проекта</td><td class="market">Сухая карточка с процентом</td><td class="us">Кинематографичный лонгрид бренда</td></tr>
+        <tr><td class="feat">Комиссия</td><td class="market">Скрыта, непрозрачна</td><td class="us">Фиксированная и видна сразу</td></tr>
+        <tr><td class="feat">Дизайн</td><td class="market">Бело-синий банковский шаблон</td><td class="us">Премиальная узнаваемая эстетика</td></tr>
+        <tr><td class="feat">Вторичный рынок УЦП</td><td class="market">Почти ни у кого</td><td class="us">Заложен — ликвидность для держателя</td></tr>
+        <tr><td class="feat">Экосистема</td><td class="market">Нет синергии</td><td class="us">Бренды усиливают друг друга</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- HOW -->
+<section id="how">
+  <div class="wrap">
+    <div class="shead">
+      <span class="eyebrow">Как это работает</span>
+      <h2>Три шага до владения правом</h2>
+    </div>
+    <div class="grid cols-3 steps">
+      <div class="step reveal">
+        <div class="num"></div>
+        <h3>Выберите проект</h3>
+        <p>Изучите витрину брендов: что за продукт, какая команда и что именно вы получите как держатель УЦП.</p>
+      </div>
+      <div class="step reveal" data-d="1">
+        <div class="num"></div>
+        <h3>Приобретите УЦП</h3>
+        <p>Пройдите идентификацию, примите условия выпуска и получите утилитарное цифровое право в свой кабинет. Учитываются лимиты неквалифицированного инвестора.</p>
+      </div>
+      <div class="step reveal" data-d="2">
+        <div class="num"></div>
+        <h3>Получите ценность</h3>
+        <p>Реализуйте право на товар или услугу либо продайте УЦП на вторичном рынке платформы. Всё — в прозрачном личном кабинете.</p>
+      </div>
+    </div>
+    <div class="types reveal" style="margin-top:46px;justify-content:center">
+      <span class="chip"><b>ЕСИА / КЭП</b> идентификация</span>
+      <span class="chip"><b>115-ФЗ</b> AML / KYC</span>
+      <span class="chip"><b>152-ФЗ</b> данные в РФ</span>
+      <span class="chip"><b>Эскроу</b> защита средств</span>
+      <span class="chip"><b>Реестр</b> владельцев УЦП</span>
+    </div>
+  </div>
+</section>
+
+<!-- ROADMAP -->
+<section id="road">
+  <div class="wrap">
+    <div class="shead">
+      <span class="eyebrow">Дорожная карта</span>
+      <h2>Путь к статусу оператора инвестиционной платформы</h2>
+    </div>
+    <div class="road reveal">
+      <div class="rstep"><div class="ph">Этап 1 · Фундамент</div><h3>Бренд и премиальная витрина</h3><p>Запуск платформы, брендбук, первые 4 проекта Очереди №1 как премиум-выпуски УЦП.</p></div>
+      <div class="rstep"><div class="ph">Этап 2 · Продукт</div><h3>Технологическое ядро (MVP)</h3><p>Идентификация, личный кабинет с ролями инвестор/эмитент/партнёр, модуль выпуска УЦП, эскроу, реестр владельцев.</p></div>
+      <div class="rstep"><div class="ph">Этап 3 · Ликвидность</div><h3>Вторичный рынок и приложение</h3><p>Обращение УЦП, автоинвестирование, мобильное приложение с RuStore, iOS и Android.</p></div>
+      <div class="rstep"><div class="ph">Этап 4 · Лицензия</div><h3>Включение в реестр Банка России</h3><p>Правила платформы, система управления рисками, ПОД/ФТ, собственные средства, подача пакета документов в ЦБ РФ.</p></div>
+      <div class="rstep"><div class="ph">Этап 5 · Масштаб</div><h3>Экосистема 50–100 проектов</h3><p>Очереди №2 и №3, открытие платформы для внешних брендов — крупнейшая в РФ экосистема выпуска и обращения УЦП.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="emit">
+  <div class="wrap">
+    <div class="band reveal">
+      <span class="eyebrow" style="justify-content:center">Брендам и проектам</span>
+      <h2>Привлеките финансирование <span class="grad-text">через УЦП</span></h2>
+      <p class="lead">Разместите проект на SINTEM и привлеките капитал, выпустив права на свои товары, услуги или технологии. Доступ к аудитории экосистемы и премиальная подача вашего бренда.</p>
+      <div class="hero-cta" style="margin-bottom:0">
+        <a href="mailto:aslankaa@yandex.ru?subject=Размещение%20проекта%20на%20SINTEM" class="btn btn-primary">Разместить проект</a>
+        <a href="#market" class="btn btn-ghost">Посмотреть примеры</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="fgrid">
+      <div>
+        <a href="#" class="logo"><img src="assets/logo.png" alt="SINTEM" style="width:38px;height:38px"><span class="brand">SINTEM</span></a>
+        <p class="fdesc">Премиальный маркетплейс утилитарных цифровых прав экосистемы Center Group. Реальная ценность вместо абстрактных процентов.</p>
+      </div>
+      <div>
+        <h4>Платформа</h4>
+        <ul>
+          <li><a href="#uchp">Что такое УЦП</a></li>
+          <li><a href="#market">Маркетплейс</a></li>
+          <li><a href="#why">Почему SINTEM</a></li>
+          <li><a href="#how">Как это работает</a></li>
+          <li><a href="#road">Дорожная карта</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Контакты</h4>
+        <ul>
+          <li><a href="mailto:aslankaa@yandex.ru">aslankaa@yandex.ru</a></li>
+          <li><a href="#emit">Разместить проект</a></li>
+          <li><a href="#market">Инвесторам</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="legal">
+      Оператор: ООО «ГК «Центр» (Center Group Company). Утилитарные цифровые права выпускаются в соответствии с Федеральным законом № 259-ФЗ. Платформа находится на этапе подготовки к включению в реестр операторов инвестиционных платформ Банка России. Инвестиции в УЦП связаны с риском; действуют лимиты для неквалифицированных инвесторов. Материалы не являются индивидуальной инвестиционной рекомендацией или публичной офертой.
+      <div class="disc">Сайт не собирает персональные данные через формы и не использует системы веб-аналитики. Для связи используйте указанную электронную почту. © 2026 SINTEM · ООО «ГК «Центр».</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// nav scroll
+const hdr=document.getElementById('hdr');
+addEventListener('scroll',()=>hdr.classList.toggle('scrolled',scrollY>30));
+// mobile menu
+const mm=document.getElementById('mmenu');
+document.getElementById('burger').onclick=()=>mm.classList.add('open');
+document.getElementById('mclose').onclick=()=>mm.classList.remove('open');
+mm.querySelectorAll('a').forEach(a=>a.onclick=()=>mm.classList.remove('open'));
+// reveal on scroll
+const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.14});
+document.querySelectorAll('.reveal:not(.in)').forEach(el=>io.observe(el));
+// subtle parallax on orbs
+addEventListener('mousemove',e=>{
+  const x=(e.clientX/innerWidth-.5),y=(e.clientY/innerHeight-.5);
+  document.querySelectorAll('.orb').forEach((o,i)=>{const f=(i+1)*14;o.style.marginLeft=x*f+'px';o.style.marginTop=y*f+'px';});
+});
+</script>
+</body>
+</html>
